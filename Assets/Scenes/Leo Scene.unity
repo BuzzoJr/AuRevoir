@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0017122723, g: 0.016077155, b: 0.041486114, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5263,7 +5263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1886707847
 Transform:
   m_ObjectHideFlags: 0
@@ -5527,7 +5527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2032771328
 Transform:
   m_ObjectHideFlags: 0
@@ -6994,7 +6994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &441989268448939635
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10167,6 +10167,11 @@ PrefabInstance:
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1612404042697151141, guid: 53aa8f57447cd8a4fbce9439150949f4,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1612404042697151142, guid: 53aa8f57447cd8a4fbce9439150949f4,
         type: 3}
       propertyPath: m_RootOrder
@@ -10224,8 +10229,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1612404042697151143, guid: 53aa8f57447cd8a4fbce9439150949f4,
         type: 3}
+      propertyPath: m_StopNaN
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612404042697151143, guid: 53aa8f57447cd8a4fbce9439150949f4,
+        type: 3}
+      propertyPath: m_Dithering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612404042697151143, guid: 53aa8f57447cd8a4fbce9439150949f4,
+        type: 3}
       propertyPath: m_CameraType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612404042697151143, guid: 53aa8f57447cd8a4fbce9439150949f4,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612404042697151143, guid: 53aa8f57447cd8a4fbce9439150949f4,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1612404042697151147, guid: 53aa8f57447cd8a4fbce9439150949f4,
         type: 3}
@@ -16980,7 +17005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4317869879429179829
 GameObject:
   m_ObjectHideFlags: 0
