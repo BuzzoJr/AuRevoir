@@ -1,6 +1,6 @@
 ﻿namespace Assets.Script.Locale
 {
-    public enum LangType
+    public enum Lang
     {
         enUS = 0,
         ptBR

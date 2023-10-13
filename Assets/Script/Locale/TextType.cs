@@ -1,6 +1,6 @@
 ﻿namespace Assets.Script.Locale
 {
-    public enum MessageType
+    public enum TextType
     {
         System = 0,
         Player,

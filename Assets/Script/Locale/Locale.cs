@@ -5,25 +5,25 @@ namespace Assets.Script.Locale
 {
     public static class Locale
     {
-        public static Dictionary<LangType, List<Message>> Options => new()
+        public static Dictionary<Lang, Dictionary<TextGroup, List<TextData>>> Options => new()
         {
-            { LangType.enUS, Locale_enUS.Messages },
-            { LangType.ptBR, Locale_ptBR.Messages },
+            { Lang.enUS, Locale_enUS.Texts },
+            { Lang.ptBR, Locale_ptBR.Texts },
         };
 
-        public static LangType Lang { get; set; }
-        public static List<Message> Messages { get; set; }
+        public static Lang Lang { get; set; }
+        public static Dictionary<TextGroup, List<TextData>> Texts { get; set; }
 
         static Locale()
         {
-            Lang = LangType.enUS;
-            Messages = Locale_enUS.Messages;
+            Lang = Lang.enUS;
+            Texts = Locale_enUS.Texts;
         }
 
-        public static void LoadLang(LangType newLang)
+        public static void LoadLang(Lang newLang)
         {
             Lang = newLang;
-            Messages = Options[newLang];
+            Texts = Options[newLang];
             Debug.Log(Lang.ToString() + " lang loaded!");
         }
     }
