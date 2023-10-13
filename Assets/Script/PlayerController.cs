@@ -31,10 +31,11 @@ public class PlayerController : MonoBehaviour
             RaycastHit hitPoint;
             if(Physics.Raycast(ray, out hitPoint)) 
             {
-                destination.position = hitPoint.point;
-                navMeshAgent.destination = hitPoint.point;
-
-
+                if(hitPoint.transform.CompareTag("Door") || hitPoint.transform.CompareTag("Floor"))
+                {
+                    destination.position = hitPoint.point;
+                    navMeshAgent.destination = hitPoint.point;
+                }
             }
         }
 
