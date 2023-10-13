@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CursorController : MonoBehaviour
 {
     [SerializeField] private Texture2D moveCursorRight;
     [SerializeField] private Texture2D moveCursorLeft;
     public Camera cam;
+    private string currentCursor = "null";
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = cam.ScreenPointToRay(mousePosition);
@@ -21,18 +17,21 @@ public class CursorController : MonoBehaviour
         {
             if (hitPoint.transform.CompareTag("Door"))
             {
-                if (mousePosition.x < Screen.width / 2)
+                if (mousePosition.x < Screen.width / 2 && currentCursor != "moveCursorLeft")
                 {
                     Cursor.SetCursor(moveCursorLeft, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "moveCursorLeft";
                 }
-                else
+                else if (currentCursor != "moveCursorRight")
                 {
                     Cursor.SetCursor(moveCursorRight, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "moveCursorRight";
                 }
             }
-            else
+            else if(currentCursor != "null")
             {
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                currentCursor = "null";
             }
         }
 
