@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class LangTest : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Test());
     }
 
-    // Update is called once per frame
     void Update()
     {
-
     }
 
     IEnumerator Test()

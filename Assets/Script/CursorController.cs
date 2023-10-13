@@ -7,7 +7,10 @@ public class CursorController : MonoBehaviour
     public Camera cam;
     private string currentCursor = "null";
 
-    // Update is called once per frame
+    void Start() {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     void FixedUpdate()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -22,7 +25,7 @@ public class CursorController : MonoBehaviour
                     Cursor.SetCursor(moveCursorLeft, Vector2.zero, CursorMode.Auto);
                     currentCursor = "moveCursorLeft";
                 }
-                else if (currentCursor != "moveCursorRight")
+                else if (mousePosition.x >= Screen.width / 2 && currentCursor != "moveCursorRight")
                 {
                     Cursor.SetCursor(moveCursorRight, Vector2.zero, CursorMode.Auto);
                     currentCursor = "moveCursorRight";
