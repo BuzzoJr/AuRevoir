@@ -10,19 +10,20 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Rigidbody rb;
     private AudioSource audioSource;
+    private Animator anim;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -42,10 +43,12 @@ public class PlayerController : MonoBehaviour
         if ((int)navMeshAgent.destination.x != (int)transform.position.x || (int)navMeshAgent.destination.z != (int)transform.position.z)
         {
             audioSource.enabled = true;
+            anim.SetBool("Walk", true);
         }
         else
         {
             audioSource.enabled = false;
+            anim.SetBool("Walk", false);
         }
     }
 }
