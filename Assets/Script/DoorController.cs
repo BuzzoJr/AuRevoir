@@ -11,11 +11,16 @@ public class DoorController : MonoBehaviour
     public enum SceneRef
     {
         C1Bedroom,
+        C2Livingroom,
+        C7Beco,
         C8ExteriorLavanderia,
         SampleScene
     }
     public void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Scenes/"+moveRef.ToString());
+        if(other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Scenes/"+moveRef.ToString());
+        }
     }
 }

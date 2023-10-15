@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,14 +29,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            var viewportPos = new Vector2((Input.mousePosition.x * 1920 )/ Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+
+            Ray ray = cam.ScreenPointToRay(viewportPos);
             RaycastHit hitPoint;
             if(Physics.Raycast(ray, out hitPoint)) 
             {
-                if(hitPoint.transform.CompareTag("Door") || hitPoint.transform.CompareTag("Floor"))
+                if(hitPoint.transform.CompareTag("Floor") )
                 {
                     destination.position = hitPoint.point;
                     navMeshAgent.destination = hitPoint.point;
+                }
+                else if (hitPoint.transform.CompareTag("Door"))
+                {
+                    destination.position = hitPoint.transform.GetChild(0).transform.position;
+                    navMeshAgent.destination = hitPoint.transform.GetChild(0).transform.position;
                 }
             }
         }
