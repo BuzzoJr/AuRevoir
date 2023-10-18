@@ -14,6 +14,7 @@ public class DoorController : MonoBehaviour
         C2Livingroom,
         C7Beco,
         C8ExteriorLavanderia,
+        C9InteriorLavanderia,
         C10Transicao,
         SampleScene
     }
