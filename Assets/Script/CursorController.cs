@@ -4,6 +4,7 @@ public class CursorController : MonoBehaviour
 {
     [SerializeField] private Texture2D moveCursorRight;
     [SerializeField] private Texture2D moveCursorLeft;
+    [SerializeField] private Texture2D interactCursor;
     public Camera cam;
     private string currentCursor = "null";
 
@@ -20,15 +21,28 @@ public class CursorController : MonoBehaviour
         {
             if (hitPoint.transform.CompareTag("Door"))
             {
-                if (mousePosition.x < Screen.width / 2 && currentCursor != "moveCursorLeft")
+                if (mousePosition.x < Screen.width / 2)
                 {
-                    Cursor.SetCursor(moveCursorLeft, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "moveCursorLeft";
+                    if (currentCursor != "moveCursorLeft")
+                    {
+                        Cursor.SetCursor(moveCursorLeft, Vector2.zero, CursorMode.Auto);
+                        currentCursor = "moveCursorLeft";
+                    }
                 }
-                else if (mousePosition.x >= Screen.width / 2 && currentCursor != "moveCursorRight")
+                else if (mousePosition.x >= Screen.width / 2)
                 {
-                    Cursor.SetCursor(moveCursorRight, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "moveCursorRight";
+                    if (currentCursor != "moveCursorRight")
+                    { 
+                        Cursor.SetCursor(moveCursorRight, Vector2.zero, CursorMode.Auto);
+                        currentCursor = "moveCursorRight";
+                    }
+                }
+            }else if (hitPoint.transform.CompareTag("Interactable"))
+            {
+                if (currentCursor != "interactCursor")
+                {
+                    Cursor.SetCursor(interactCursor, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "interactCursor";
                 }
             }
             else if(currentCursor != "null")
