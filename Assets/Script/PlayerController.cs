@@ -1,3 +1,4 @@
+using Assets.Script.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,12 +42,13 @@ public class PlayerController : MonoBehaviour
                         break;
 
                     case "Character":
+                        OpenInteractionWheel(hitPoint.transform.gameObject);
                         GoTo(hitPoint.transform.position);
                         break;
 
                     case "Interactable":
                     case "Object":
-                        OpenInteractionWheel();
+                        OpenInteractionWheel(hitPoint.transform.gameObject);
                         GoTo(hitPoint.transform.position); // Remove
                         break;
                 }
@@ -71,9 +73,23 @@ public class PlayerController : MonoBehaviour
         navMeshAgent.destination = dest;
     }
 
-    private void OpenInteractionWheel()
+    private void OpenInteractionWheel(GameObject target)
     {
-        Debug.Log("OpenInteractionWheel at " + Input.mousePosition);
-        // Input.mousePosition
+        Debug.Log("Vamos mostrar a roda de interações?");
+
+        IUse use = target.GetComponentInChildren<IUse>();
+        if (use is not null)
+            use.Use(gameObject);
+
+        ILook look = target.GetComponentInChildren<ILook>();
+        if (look is not null)
+            Debug.Log("- Mostrar a opção de Olhar");
+
+        ITalk talk = target.GetComponentInChildren<ITalk>();
+        if (talk is not null)
+            talk.Talk(gameObject);
+
+        if (use is null && look is null && talk is null)
+            Debug.LogError("Não tem interação possível nesse objeto!");
     }
 }
