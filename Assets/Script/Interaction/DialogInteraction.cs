@@ -10,6 +10,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     public bool shouldWalk = true;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject itemPrefab;
 
     private Dialog dialog;
 
@@ -25,6 +26,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     {
         //StartCoroutine(CoroutineExample());
         StartCoroutine(Execute());
+        Inventory.instance.AddItem(new Item("Telefone", 1, "Descrição deste item", itemPrefab));
     }
 
     IEnumerator Execute()
