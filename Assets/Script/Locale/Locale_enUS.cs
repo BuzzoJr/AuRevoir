@@ -43,7 +43,9 @@ namespace Assets.Script.Locale
                 TextGroup.ExWifeVoicemail,
                 new List<TextData>()
                 {
-                    new TextData(TextType.ExWife, "Hey, Tristan, what's happening over there at your job? I went to get Julie's medications, and they were denied! This Au Revoir is just making me look bad! I don't know why I married you... can't even ensure your own daughter's health."),
+                    new TextData(TextType.ExWife, "Hey, Tristan, what's happening over there at your job? "),
+                    new TextData(TextType.ExWife, "I went to get Julie's medications, and they were denied! This Au Revoir is just making me look bad! "),
+                    new TextData(TextType.ExWife, "I don't know why I married you... can't even ensure your own daughter's health."),
                     new TextData(TextType.PlayerThinking, "She thinks my job is easy. Selfish..."),
                 }
             },

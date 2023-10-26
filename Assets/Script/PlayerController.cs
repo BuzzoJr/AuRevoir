@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public Transform destination;
 
-    private NavMeshAgent navMeshAgent;
+    public static NavMeshAgent navMeshAgent;
     private AudioSource audioSource;
-    private Animator anim;
+    public static Animator anim;
 
     private void Awake()
     {
@@ -42,14 +42,9 @@ public class PlayerController : MonoBehaviour
                         break;
 
                     case "Character":
-                        OpenInteractionWheel(hitPoint.transform.gameObject);
-                        GoTo(hitPoint.transform.position);
-                        break;
-
                     case "Interactable":
                     case "Object":
                         OpenInteractionWheel(hitPoint.transform.gameObject);
-                        GoTo(hitPoint.transform.position); // Remove
                         break;
                 }
             }

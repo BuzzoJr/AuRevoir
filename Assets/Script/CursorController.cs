@@ -14,14 +14,14 @@ public class CursorController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        Ray ray = cam.ScreenPointToRay(mousePosition);
+        var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+        Ray ray = cam.ScreenPointToRay(viewportPos);
         RaycastHit hitPoint;
         if (Physics.Raycast(ray, out hitPoint))
         {
             if (hitPoint.transform.CompareTag("Door"))
             {
-                if (mousePosition.x < Screen.width / 2)
+                if (viewportPos.x < Screen.width / 2)
                 {
                     if (currentCursor != "moveCursorLeft")
                     {
@@ -29,7 +29,7 @@ public class CursorController : MonoBehaviour
                         currentCursor = "moveCursorLeft";
                     }
                 }
-                else if (mousePosition.x >= Screen.width / 2)
+                else if (viewportPos.x >= Screen.width / 2)
                 {
                     if (currentCursor != "moveCursorRight")
                     { 
