@@ -1,23 +1,22 @@
-using static UnityEditor.Progress;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+using System.Collections;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public List<Item> items = new List<Item>();
-
+    [SerializeField] private float radius = 20f;
     [SerializeField] private TMP_Text ItemName;
     [SerializeField] private TMP_Text ItemInfo;
-    [SerializeField] private GameObject ItemPlaceholder;
-    [SerializeField] private GameObject ItemPlaceholderPrefab;
-    [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private Transform itemsParent; 
+    [SerializeField] private float rotationDuration = 1.0f;
+
+    private bool isRotating = false;
     private GameObject inventoryUI;
     private int currentItem = -1;
-    private float lastItemPos = 1f;
 
     private void Awake()
     {
@@ -41,37 +40,90 @@ public class Inventory : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             UpdateInfo();
-            scrollRect.horizontalNormalizedPosition = lastItemPos;
         }
     }
+
+    private void UpdateInfo()
+    {
+        if (items.Count != 0)
+        {
+            ItemName.text = items[currentItem].itemName;
+            ItemInfo.text = items[currentItem].itemInfo;
+        }
+    }
+
     public void AddItem(Item item)
     {
+        //EXAMPLE -> Inventory.instance.AddItem(new Item("Telefone", 1, "Descrição deste item", itemPrefab));
         items.Add(item);
-        GameObject newUIPlaceholder = Instantiate(ItemPlaceholderPrefab, ItemPlaceholder.transform);
-        GameObject newItem = Instantiate(item.itemPrefab, newUIPlaceholder.transform);
-        lastItemPos = 1;
+        ClearItems();
+        PopulateCircle();
         currentItem += 1;
     }
 
     public void ChangeItem(int direction)
     {
         currentItem += direction;
-        currentItem = Mathf.Clamp(currentItem, 0, items.Count - 1);
+        currentItem = (currentItem + items.Count) % items.Count;
+        Debug.Log(currentItem);
         UpdateInfo();
-        ScrollByDelta((1f * direction) / (items.Count - 1));
     }
 
-    private void UpdateInfo()
+    public void RotateItemsParent(int dir)
     {
-        if(items.Count != 0)
+        if (items.Count <= 1 || isRotating) return;
+
+        float angleBetweenItems = 360f / items.Count;
+        StartCoroutine(SmoothRotation(angleBetweenItems * dir));
+    }
+
+    private void ClearItems()
+    {
+        foreach (Transform child in itemsParent)
         {
-            ItemName.text = items[currentItem].itemName;
-            ItemInfo.text = items[currentItem].itemInfo;
+            Destroy(child.gameObject);
         }
     }
-    public void ScrollByDelta(float delta)
+
+    private void PopulateCircle()
     {
-        scrollRect.horizontalNormalizedPosition += delta;
-        lastItemPos = scrollRect.horizontalNormalizedPosition;
+        for (int i = 0; i < items.Count; i++)
+        {
+            float angle = i * 360f / items.Count;
+            Vector3 position = CalculatePosition(angle);
+            Instantiate(items[i].itemPrefab, position, Quaternion.identity, itemsParent);
+        }
+    }
+
+    private Vector3 CalculatePosition(float angle)
+    {
+        // Convert angle from degrees to radians
+        float radian = angle * Mathf.Deg2Rad;
+
+        // Calculate x and z position for a horizontal circle on X-Z plane
+        float x = radius * Mathf.Cos(radian);
+        float z = radius * Mathf.Sin(radian);
+
+        // Adjust position based on the itemsParent's position
+        return new Vector3(x + itemsParent.position.x, itemsParent.position.y, z + itemsParent.position.z);
+    }
+
+    private IEnumerator SmoothRotation(float angle)
+    {
+        isRotating = true;
+        float elapsedTime = 0;
+        Quaternion startingRotation = itemsParent.rotation;
+        Quaternion finalRotation = Quaternion.Euler(itemsParent.eulerAngles + new Vector3(0, angle, 0));
+
+        while (elapsedTime < rotationDuration)
+        {
+            itemsParent.rotation = Quaternion.Slerp(startingRotation, finalRotation, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        itemsParent.rotation = finalRotation; 
+        isRotating = false;
+        ChangeItem(angle > 0 ? 1 : -1);
     }
 }
