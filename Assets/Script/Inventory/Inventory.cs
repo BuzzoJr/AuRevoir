@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject ItemPlaceholderPrefab;
     [SerializeField] private ScrollRect scrollRect;
     private GameObject inventoryUI;
-    private int currentItem = 0;
+    private int currentItem = -1;
+    private float lastItemPos = 1f;
 
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class Inventory : MonoBehaviour
             Destroy(gameObject);
         }
         inventoryUI = transform.GetChild(0).gameObject;
+        ItemName.text = "none";
+        ItemInfo.text = "none";
     }
 
     private void Update()
@@ -37,16 +41,16 @@ public class Inventory : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             UpdateInfo();
+            scrollRect.horizontalNormalizedPosition = lastItemPos;
         }
     }
     public void AddItem(Item item)
     {
         items.Add(item);
-        // Instantiate the UI placeholder as a child of the main ItemPlaceholder (which contains the HorizontalLayoutGroup)
         GameObject newUIPlaceholder = Instantiate(ItemPlaceholderPrefab, ItemPlaceholder.transform);
-
-        // Instantiate the 3D object as a child of this new UI placeholder
         GameObject newItem = Instantiate(item.itemPrefab, newUIPlaceholder.transform);
+        lastItemPos = 1;
+        currentItem += 1;
     }
 
     public void ChangeItem(int direction)
@@ -54,7 +58,7 @@ public class Inventory : MonoBehaviour
         currentItem += direction;
         currentItem = Mathf.Clamp(currentItem, 0, items.Count - 1);
         UpdateInfo();
-        ScrollByDelta((1f * direction)/ items.Count);
+        ScrollByDelta((1f * direction) / (items.Count - 1));
     }
 
     private void UpdateInfo()
@@ -64,17 +68,10 @@ public class Inventory : MonoBehaviour
             ItemName.text = items[currentItem].itemName;
             ItemInfo.text = items[currentItem].itemInfo;
         }
-        else
-        {
-            ItemName.text = "none";
-            ItemInfo.text = "none";
-        }
     }
     public void ScrollByDelta(float delta)
     {
         scrollRect.horizontalNormalizedPosition += delta;
-        Debug.Log(delta);
-        Debug.Log(items.Count);
-        Debug.Log(scrollRect.horizontalNormalizedPosition);
+        lastItemPos = scrollRect.horizontalNormalizedPosition;
     }
 }
