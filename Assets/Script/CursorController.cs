@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-    [SerializeField] private Texture2D moveCursorRight;
-    [SerializeField] private Texture2D moveCursorLeft;
-    [SerializeField] private Texture2D interactCursor;
+    [SerializeField] private Texture2D doorCursor;
+    [SerializeField] private Texture2D clickCursor;
     public Camera cam;
     private string currentCursor = "null";
 
@@ -21,28 +20,18 @@ public class CursorController : MonoBehaviour
         {
             if (hitPoint.transform.CompareTag("Door"))
             {
-                if (viewportPos.x < Screen.width / 2)
+                if (currentCursor != "doorCursor")
                 {
-                    if (currentCursor != "moveCursorLeft")
-                    {
-                        Cursor.SetCursor(moveCursorLeft, Vector2.zero, CursorMode.Auto);
-                        currentCursor = "moveCursorLeft";
-                    }
+                    Cursor.SetCursor(doorCursor, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "doorCursor";
                 }
-                else if (viewportPos.x >= Screen.width / 2)
-                {
-                    if (currentCursor != "moveCursorRight")
-                    { 
-                        Cursor.SetCursor(moveCursorRight, Vector2.zero, CursorMode.Auto);
-                        currentCursor = "moveCursorRight";
-                    }
-                }
-            }else if (hitPoint.transform.CompareTag("Interactable"))
+            }
+            else if (hitPoint.transform.CompareTag("Interactable"))
             {
-                if (currentCursor != "interactCursor")
+                if (currentCursor != "clickCursor")
                 {
-                    Cursor.SetCursor(interactCursor, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "interactCursor";
+                    Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "clickCursor";
                 }
             }
             else if(currentCursor != "null")
