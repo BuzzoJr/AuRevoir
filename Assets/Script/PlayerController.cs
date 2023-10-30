@@ -1,6 +1,9 @@
 using Assets.Script.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +13,14 @@ public class PlayerController : MonoBehaviour
     public static NavMeshAgent navMeshAgent;
     private AudioSource audioSource;
     public static Animator anim;
+    [SerializeField] private GameObject interactionWheel;
+    private ITalk talk;
+    private IUse use;
+    private ILook look;
+    private Button useChild;
+    private Button lookChild;
+    private Button talkChild;
+
 
     private void Awake()
     {
@@ -35,16 +46,21 @@ public class PlayerController : MonoBehaviour
                 {
                     case "Floor":
                         GoTo(hitPoint.point);
+                        CloseInteractionWheel();
                         break;
 
                     case "Door":
                         GoTo(hitPoint.transform.GetChild(0).transform.position);
+                        CloseInteractionWheel();
                         break;
 
                     case "Character":
                     case "Interactable":
                     case "Object":
-                        OpenInteractionWheel(hitPoint.transform.gameObject);
+                        if (!interactionWheel.activeSelf)
+                            OpenInteractionWheel(hitPoint.transform.gameObject, viewportPos);
+                        else 
+                            CloseInteractionWheel();
                         break;
                 }
             }
@@ -68,23 +84,60 @@ public class PlayerController : MonoBehaviour
         navMeshAgent.destination = dest;
     }
 
-    private void OpenInteractionWheel(GameObject target)
+    private void OpenInteractionWheel(GameObject target, Vector2 position)
     {
-        Debug.Log("Vamos mostrar a roda de interações?");
+        interactionWheel.transform.position = position;
+        interactionWheel.SetActive(true);
+        useChild = interactionWheel.transform.Find("Use").GetComponent<Button>();
+        lookChild = interactionWheel.transform.Find("Inspect").GetComponent<Button>();
+        talkChild = interactionWheel.transform.Find("Talk").GetComponent<Button>();
 
-        IUse use = target.GetComponentInChildren<IUse>();
+        use = target.GetComponentInChildren<IUse>();
         if (use is not null)
-            use.Use(gameObject);
+        {
+            useChild.interactable = true;
+            useChild.onClick.AddListener(UseEvent);
+        }
 
-        ILook look = target.GetComponentInChildren<ILook>();
+        look = target.GetComponentInChildren<ILook>();
         if (look is not null)
-            Debug.Log("- Mostrar a opção de Olhar");
+        {
+            lookChild.interactable = true;
+            lookChild.onClick.AddListener(LookEvent);
+        }
 
-        ITalk talk = target.GetComponentInChildren<ITalk>();
+        talk = target.GetComponentInChildren<ITalk>();
         if (talk is not null)
-            talk.Talk(gameObject);
-
+        {
+            talkChild.interactable = true;
+            talkChild.onClick.AddListener(TalkEvent);
+        }
         if (use is null && look is null && talk is null)
-            Debug.LogError("Não tem interação possível nesse objeto!");
+            Debug.LogWarning("Não tem interação possível nesse objeto!");
+    }
+    
+    void TalkEvent()
+    {
+        talk.Talk(gameObject);
+        CloseInteractionWheel();
+    }
+
+    void LookEvent()
+    {
+        look.Look(gameObject);
+        CloseInteractionWheel();
+    }
+    void UseEvent()
+    {
+        use.Use(gameObject);
+        CloseInteractionWheel();
+    }
+
+    void CloseInteractionWheel()
+    {
+        useChild.interactable = false;
+        lookChild.interactable = false;
+        talkChild.interactable = false;
+        interactionWheel.SetActive(false);
     }
 }
