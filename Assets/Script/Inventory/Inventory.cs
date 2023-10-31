@@ -38,10 +38,14 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
 
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
             if (inventoryUI.activeSelf)
+            {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+                ClearItems();
+                PopulateCircle();
+            }
             else
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
@@ -61,8 +65,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item)
     {
         items.Add(item);
-        ClearItems();
-        PopulateCircle();
+
         currentItem += 1;
     }
 

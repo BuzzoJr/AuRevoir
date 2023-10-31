@@ -68,10 +68,6 @@ public class PlayerController : MonoBehaviour
                         else 
                             CloseInteractionWheel();
                         break;
-
-                    default:
-                        CloseInteractionWheel();
-                        break;
                 }
             }
         }

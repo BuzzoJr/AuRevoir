@@ -1,9 +1,11 @@
 ﻿using Assets.Script.Locale;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Script.Dialog
 {
@@ -12,6 +14,8 @@ namespace Assets.Script.Dialog
         public GameObject DialogBox { get; set; }
         public TMP_Text DialogText { get; set; }
         public TextGroup TextGroup { get; set; }
+
+        int? selectedKey = null;
 
         public IEnumerator Execute()
         {
@@ -60,20 +64,35 @@ namespace Assets.Script.Dialog
                 // Dict = Opções de interação de diálogo
                 if (seq[pos] is Dictionary<int, List<object>> options)
                 {
+                    List<Button> optionButtons = new List<Button>();
+                    optionButtons.Add(GameObject.Find("Option1").GetComponent<Button>());
+                    optionButtons.Add(GameObject.Find("Option2").GetComponent<Button>());
+                    optionButtons.Add(GameObject.Find("Option3").GetComponent<Button>());
+                    int interaction = 0;
+                    DialogText.text = "";
                     foreach (int key in options.Keys)
                     {
-                        // TODO: Mostrar cada opção como clicável
-                        TextData data = Locale.Locale.Texts[TextGroup][key];
-                        DialogText.color = TextColorManager.textTypeColors[data.Type];
-                        DialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+                        optionButtons[interaction].interactable = true;
+                        TextMeshProUGUI buttonText = optionButtons[interaction].GetComponentInChildren<TextMeshProUGUI>();
+                        optionButtons[interaction].onClick.AddListener(() => SelectKey(key));
 
+                        TextData data = Locale.Locale.Texts[TextGroup][key];
+                        buttonText.color = TextColorManager.textTypeColors[data.Type];
+                        buttonText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+                        interaction += 1;
                     }
 
-                    yield return new WaitForSeconds(1f); // TODO: Esperar a escolha da opção
-                    int selected = options.Keys.First(); // Colocar a opção selecionada
+                    yield return new WaitUntil(() => selectedKey.HasValue);
+                    int selected = (int)selectedKey; // Colocar a opção selecionada
+                    selectedKey = null;
+
+                    foreach (Button btn in optionButtons)
+                    {
+                        btn.interactable = false;
+                    }
 
                     yield return StartCoroutine(Execute(options[selected], (value) => result = value));
-
+                    
                     // Ações de controle
                     if (result == DialogAction.End)
                         break;
@@ -87,6 +106,10 @@ namespace Assets.Script.Dialog
             }
 
             callback(result);
+        }
+        private void SelectKey(int key)
+        {
+            selectedKey = key;
         }
     }
 }
