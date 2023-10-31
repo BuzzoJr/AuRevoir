@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Button useChild;
     private Button lookChild;
     private Button talkChild;
+    private string currentState = "Playing";
 
 
     private void Awake()
@@ -27,12 +28,17 @@ public class PlayerController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
     }
-
-    void Start()
+    void OnDestroy()
     {
+        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
     }
 
+    private void GameManagerOnGameStateChange(GameManager.GameState state)
+    {
+        currentState = state.ToString();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
             Ray ray = cam.ScreenPointToRay(viewportPos);
-            if (Physics.Raycast(ray, out RaycastHit hitPoint))
+            if (Physics.Raycast(ray, out RaycastHit hitPoint) && currentState == "Playing")
             {
                 switch (hitPoint.transform.tag)
                 {
@@ -61,6 +67,10 @@ public class PlayerController : MonoBehaviour
                             OpenInteractionWheel(hitPoint.transform.gameObject, viewportPos);
                         else 
                             CloseInteractionWheel();
+                        break;
+
+                    default:
+                        CloseInteractionWheel();
                         break;
                 }
             }
@@ -135,9 +145,12 @@ public class PlayerController : MonoBehaviour
 
     void CloseInteractionWheel()
     {
-        useChild.interactable = false;
-        lookChild.interactable = false;
-        talkChild.interactable = false;
-        interactionWheel.SetActive(false);
+        if (interactionWheel.activeSelf)
+        {
+            useChild.interactable = false;
+            lookChild.interactable = false;
+            talkChild.interactable = false;
+            interactionWheel.SetActive(false);
+        }
     }
 }

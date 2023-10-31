@@ -39,6 +39,12 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+            if (inventoryUI.activeSelf)
+                GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+            else
+                GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+
             UpdateInfo();
         }
     }
@@ -54,7 +60,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        //EXAMPLE -> Inventory.instance.AddItem(new Item("Telefone", 1, "Descrição deste item", itemPrefab));
         items.Add(item);
         ClearItems();
         PopulateCircle();

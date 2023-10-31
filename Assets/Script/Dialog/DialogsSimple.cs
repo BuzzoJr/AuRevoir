@@ -5,43 +5,25 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class DialogInteraction : MonoBehaviour, ITalk
+public class DialogSimple : MonoBehaviour, ITalk
 {
     public bool shouldWalk = true;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject itemPrefab;
-
-    private Dialog dialog;
+    private TMP_Text dialogText;
 
     void Awake()
     {
-        dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.TextGroup = textGroup;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
     }
-
     public void Talk(GameObject who)
     {
-        //StartCoroutine(CoroutineExample());
-        StartCoroutine(Execute());
+        StartCoroutine(CoroutineExample());
     }
 
-    IEnumerator Execute()
+    IEnumerator CoroutineExample()
     {
-        if (shouldWalk)
-        {
-            PlayerController.navMeshAgent.destination = transform.position;
-            yield return null;
-            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
-        }
-
-        yield return StartCoroutine(dialog.Execute());
-    }
-
-    /*IEnumerator CoroutineExample()
-    {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         PlayerController.navMeshAgent.destination = transform.position;
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
@@ -67,5 +49,6 @@ public class DialogInteraction : MonoBehaviour, ITalk
             }
         }
         dialogBox.SetActive(false);
-    }*/
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+    }
 }

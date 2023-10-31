@@ -18,6 +18,7 @@ namespace Assets.Script.Dialog
             DialogBox.SetActive(true);
             yield return StartCoroutine(Execute(AllDialogs.Sequence[TextGroup], (value) => { }));
             DialogBox.SetActive(false);
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         }
 
         public IEnumerator Execute(List<object> seq, System.Action<DialogAction> callback)
@@ -39,11 +40,19 @@ namespace Assets.Script.Dialog
                     DialogText.color = TextColorManager.textTypeColors[data.Type];
                     DialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
 
-                    if (data.Delay >= 0)
-                        yield return new WaitForSeconds(data.Delay > 0 ? data.Delay : 1.5f);
-                    else
-                        yield return new WaitForSeconds(1f); // TODO: Trocar para esperar por um click
+                    bool clicked = false;
+                    float delayTime = data.Delay > 0 ? data.Delay : 2.5f;
+                    float elapsedTime = 0;
 
+                    while (elapsedTime < delayTime && !clicked)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            clicked = true;
+                        }
+                        elapsedTime += Time.deltaTime;
+                        yield return null;
+                    }
                     pos += 1;
                     continue;
                 }
