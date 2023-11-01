@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public static NavMeshAgent navMeshAgent;
     private AudioSource audioSource;
     public static Animator anim;
-    [SerializeField] private GameObject interactionWheel;
+    private GameObject interactionWheel;
     private ITalk talk;
     private IUse use;
     private ILook look;
@@ -33,6 +33,21 @@ public class PlayerController : MonoBehaviour
     void OnDestroy()
     {
         GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    }
+
+    void Start()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        if (canvas != null)
+        {
+            Transform interactionWheelTransform = canvas.transform.Find("WheelInteraction");
+            if (interactionWheelTransform != null)
+            {
+                interactionWheel = interactionWheelTransform.gameObject;
+            }
+            else Debug.LogWarning("WheelInteraction not found!");
+        }
+        else Debug.LogWarning("Canvas not found!");
     }
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
@@ -64,7 +79,7 @@ public class PlayerController : MonoBehaviour
                     case "Interactable":
                     case "Object":
                         if (!interactionWheel.activeSelf)
-                            OpenInteractionWheel(hitPoint.transform.gameObject, viewportPos);
+                            OpenInteractionWheel(hitPoint.transform.gameObject);
                         else 
                             CloseInteractionWheel();
                         break;
@@ -90,9 +105,9 @@ public class PlayerController : MonoBehaviour
         navMeshAgent.destination = dest;
     }
 
-    private void OpenInteractionWheel(GameObject target, Vector2 position)
+    private void OpenInteractionWheel(GameObject target)
     {
-        interactionWheel.transform.position = position;
+        interactionWheel.transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         interactionWheel.SetActive(true);
         useChild = interactionWheel.transform.Find("Use").GetComponent<Button>();
         lookChild = interactionWheel.transform.Find("Inspect").GetComponent<Button>();
@@ -101,6 +116,7 @@ public class PlayerController : MonoBehaviour
         use = target.GetComponentInChildren<IUse>();
         if (use is not null)
         {
+            useChild.onClick.RemoveListener(UseEvent);
             useChild.interactable = true;
             useChild.onClick.AddListener(UseEvent);
         }
@@ -108,6 +124,7 @@ public class PlayerController : MonoBehaviour
         look = target.GetComponentInChildren<ILook>();
         if (look is not null)
         {
+            lookChild.onClick.RemoveListener(LookEvent);
             lookChild.interactable = true;
             lookChild.onClick.AddListener(LookEvent);
         }
@@ -115,6 +132,7 @@ public class PlayerController : MonoBehaviour
         talk = target.GetComponentInChildren<ITalk>();
         if (talk is not null)
         {
+            talkChild.onClick.RemoveListener(TalkEvent);
             talkChild.interactable = true;
             talkChild.onClick.AddListener(TalkEvent);
         }

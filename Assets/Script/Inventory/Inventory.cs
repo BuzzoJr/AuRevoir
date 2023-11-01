@@ -43,6 +43,7 @@ public class Inventory : MonoBehaviour
             if (inventoryUI.activeSelf)
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+                currentItem = 0;
                 ClearItems();
                 PopulateCircle();
             }
@@ -64,16 +65,13 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        items.Add(item);
-
-        currentItem += 1;
+        items.Insert(0, item);
     }
 
     public void ChangeItem(int direction)
     {
         currentItem += direction;
         currentItem = (currentItem + items.Count) % items.Count;
-        Debug.Log(currentItem);
         UpdateInfo();
     }
 

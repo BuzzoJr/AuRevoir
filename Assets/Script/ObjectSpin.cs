@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class ObjectSpin : MonoBehaviour {
     void Update() {
-        transform.Rotate (Vector3.forward * 25f * Time.deltaTime, Space.Self);
+        transform.Rotate (Vector3.up * 25f * Time.deltaTime, Space.Self);
     }
 }
