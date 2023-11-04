@@ -1,34 +1,36 @@
-using System;
-using System.IO;
-using UnityEditor;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class DoorController : MonoBehaviour
 {
-    public SceneRef moveRef = SceneRef.C1Bedroom;
+    public SceneRef moveRef = SceneRef.SampleScene;
     public GameObject transObj, globalObj;
+    public bool locked = false;
 
     public enum SceneRef
     {
         C1Bedroom,
         C2Livingroom,
+        C3Office,
         C7Beco,
         C8ExteriorLavanderia,
         C9InteriorLavanderia,
         C10Transicao,
+        C15ExteriorLab,
+        C16Laboratory,
         SampleScene
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (!locked && other.CompareTag("Player"))
         {
-            if(transObj != null)
+            Debug.Log(moveRef.ToString());
+            if (transObj != null)
                 StartCoroutine(delayTransition());
             else
-                SceneManager.LoadScene("Scenes/"+moveRef.ToString());
+                SceneManager.LoadScene("Scenes/" + moveRef.ToString());
         }
     }
 
@@ -37,6 +39,6 @@ public class DoorController : MonoBehaviour
         globalObj.SetActive(false);
         transObj.SetActive(true);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Scenes/"+moveRef.ToString());
+        SceneManager.LoadScene("Scenes/" + moveRef.ToString());
     }
 }
