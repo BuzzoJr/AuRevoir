@@ -57,6 +57,16 @@ namespace Assets.Script.Locale
                     new TextData(TextType.PlayerThinking, "Mais uma lembrança da minha filha querida."),
                 }
             },
+            {
+                TextGroup.WallGuard,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Guard, "Afaste-se cidadão! Esta área está isolada e ninguém entra ou sai."),
+                    new TextData(TextType.Player, "Eu tenho permissão (blefar)"),
+                    new TextData(TextType.Player, "É muito perigoso aí dentro?"),
+                    new TextData(TextType.Player, "O que faz esse elevador atrás de você?"),
+                }
+            },
         };
     }
 }

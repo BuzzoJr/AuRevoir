@@ -8,5 +8,6 @@
         DialogWakeUpCall,
         ExWifeVoicemail,
         RememberingDaughter,
+        WallGuard,
     }
 }

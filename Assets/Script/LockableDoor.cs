@@ -1,25 +1,19 @@
 using UnityEngine;
 
-public class C16Door : MonoBehaviour
+public class LockableDoor : MonoBehaviour
 {
-    private DoorController controller;
+    public bool locked = false;
     private Animator anim;
 
     void Start()
     {
-        controller = GetComponentInChildren<DoorController>();
         anim = GetComponent<Animator>();
     }
 
-    public void Close()
+    public void SetLock(bool value)
     {
-        controller.locked = true;
-        // TODO: play close anim
-    }
-
-    public void Open()
-    {
-        // TODO: play open anim
-        controller.locked = false;
+        locked = value;
+        if (anim)
+            anim.SetBool("Locked", locked);
     }
 }

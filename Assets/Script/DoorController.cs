@@ -8,6 +8,8 @@ public class DoorController : MonoBehaviour
     public GameObject transObj, globalObj;
     public bool locked = false;
 
+    private Animator anim;
+
     public enum SceneRef
     {
         C1Bedroom,
@@ -25,23 +27,36 @@ public class DoorController : MonoBehaviour
         SampleScene
     }
 
+    void Start()
+    {
+        if (transform.parent.TryGetComponent(out anim))
+            anim.SetBool("Locked", locked);
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (!locked && other.CompareTag("Player"))
         {
             Debug.Log(moveRef.ToString());
             if (transObj != null)
-                StartCoroutine(delayTransition());
+                StartCoroutine(DelayTransition());
             else
                 SceneManager.LoadScene("Scenes/" + moveRef.ToString());
         }
     }
 
-    IEnumerator delayTransition()
+    IEnumerator DelayTransition()
     {
         globalObj.SetActive(false);
         transObj.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Scenes/" + moveRef.ToString());
+    }
+
+    public void SetLock(bool value)
+    {
+        locked = value;
+        if (anim)
+            anim.SetBool("Locked", locked);
     }
 }
