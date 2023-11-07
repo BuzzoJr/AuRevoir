@@ -17,4 +17,9 @@ namespace Assets.Script.Interaction
     {
         void Talk(GameObject who);
     }
+
+    public interface ISpecial
+    {
+        void Special(GameObject who);
+    }
 }

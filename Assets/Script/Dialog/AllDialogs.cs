@@ -11,7 +11,7 @@ namespace Assets.Script.Dialog
                 TextGroup.DialogWakeUpCall,
                 new List<object>()
                 {
-                    0, 1, 2,
+                    DialogAction.Special, 0, 1, 2,
                     new Dictionary<int, List<object>>()
                     {
                         {
@@ -29,7 +29,7 @@ namespace Assets.Script.Dialog
                             }
                         },
                     },
-                    9,
+                    9, DialogAction.RemoveDialog
                 }
             },
             {

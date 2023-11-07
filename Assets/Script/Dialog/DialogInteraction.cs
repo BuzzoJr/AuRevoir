@@ -23,10 +23,10 @@ public class DialogInteraction : MonoBehaviour, ITalk
 
     public void Talk(GameObject who)
     {
-        StartCoroutine(Execute());
+        StartCoroutine(Execute(who));
     }
 
-    IEnumerator Execute()
+    IEnumerator Execute(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         if (shouldWalk)
@@ -36,6 +36,6 @@ public class DialogInteraction : MonoBehaviour, ITalk
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         }
 
-        yield return StartCoroutine(dialog.Execute());
+        yield return StartCoroutine(dialog.Execute(who));
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Script.Locale;
+﻿using Assets.Script.Interaction;
+using Assets.Script.Locale;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Script.Dialog
 {
@@ -17,15 +19,15 @@ namespace Assets.Script.Dialog
 
         int? selectedKey = null;
 
-        public IEnumerator Execute()
+        public IEnumerator Execute(GameObject who)
         {
             DialogBox.SetActive(true);
-            yield return StartCoroutine(Execute(AllDialogs.Sequence[TextGroup], (value) => { }));
+            yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => { }));
             DialogBox.SetActive(false);
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         }
 
-        public IEnumerator Execute(List<object> seq, System.Action<DialogAction> callback)
+        public IEnumerator Execute(GameObject who, List<object> seq, System.Action<DialogAction> callback)
         {
             DialogAction result = DialogAction.None;
 
@@ -34,8 +36,18 @@ namespace Assets.Script.Dialog
             {
                 if (seq[pos] is DialogAction action)
                 {
-                    result = action;
-                    break;
+                    if (action == DialogAction.Special)
+                    {
+                        var special = GetComponentInChildren<ISpecial>();
+                        if (special != null)
+                            special.Special(who);
+                    } //precisa destruit o (DialogInteraction que chamou esse Dialog)
+                    // Lembando que precisa alterar gameState quando está em diálogo e voltar para o GameState Playing
+                    else
+                    {
+                        result = action;
+                        break;
+                    }
                 }
 
                 if (seq[pos] is int i)
@@ -91,7 +103,7 @@ namespace Assets.Script.Dialog
                         btn.interactable = false;
                     }
 
-                    yield return StartCoroutine(Execute(options[selected], (value) => result = value));
+                    yield return StartCoroutine(Execute(who,options[selected], (value) => result = value));
                     
                     // Ações de controle
                     if (result == DialogAction.End)
