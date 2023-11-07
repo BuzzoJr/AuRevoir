@@ -5,7 +5,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class DialogSimple : MonoBehaviour, ITalk
+public class Inspect : MonoBehaviour, ILook
 {
     public bool shouldWalk = true;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
@@ -16,7 +16,7 @@ public class DialogSimple : MonoBehaviour, ITalk
     {
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
     }
-    public void Talk(GameObject who)
+    void ILook.Look(GameObject who)
     {
         StartCoroutine(CoroutineExample());
     }

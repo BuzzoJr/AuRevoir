@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Script.Interaction;
+using Assets.Script.Locale;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class AddItem : MonoBehaviour, IUse
@@ -8,7 +11,17 @@ public class AddItem : MonoBehaviour, IUse
     [SerializeField] private string ItemName;
     [SerializeField] private string ItemDescription;
     [SerializeField] private GameObject ItemPrefab;
+    [SerializeField] private AudioClip pickupAudio;
+    [Header("DIALOG ON PICKUP ITEM")]
+    [SerializeField] private bool HasText = false;
+    public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    [SerializeField] private GameObject dialogBox;          
+    private TMP_Text dialogText;
 
+    private void Awake()
+    {
+        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+    }
     public void Use(GameObject who)
     {
         StartCoroutine(GettingItem());
@@ -22,7 +35,32 @@ public class AddItem : MonoBehaviour, IUse
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
         Inventory.instance.AddItem(new Item(ItemName, 1, ItemDescription, ItemPrefab));
-        Destroy(gameObject);
+        if (HasText)
+        {
+            dialogBox.SetActive(true);
+            foreach (TextData data in Locale.Texts[textGroup])
+            {
+                dialogText.color = TextColorManager.textTypeColors[data.Type];
+                dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+
+                bool clicked = false;
+                float delayTime = data.Delay > 0 ? data.Delay : 2.5f;
+                float elapsedTime = 0;
+
+                while (elapsedTime < delayTime && !clicked)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        clicked = true;;
+                    }
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+            }
+            dialogBox.SetActive(false);
+        }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Inventory.instance.PickUpAudio(pickupAudio);
+        Destroy(gameObject);
     }
 }

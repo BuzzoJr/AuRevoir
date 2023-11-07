@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform itemsParent; 
     [SerializeField] private float rotationDuration = 1.0f;
 
+    private AudioSource audioSource;
     private bool isRotating = false;
     private GameObject inventoryUI;
     private int currentItem = -1;
@@ -29,6 +30,7 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
         inventoryUI = transform.GetChild(0).gameObject;
         ItemName.text = "none";
         ItemInfo.text = "none";
@@ -131,5 +133,10 @@ public class Inventory : MonoBehaviour
         itemsParent.rotation = finalRotation; 
         isRotating = false;
         ChangeItem(angle > 0 ? 1 : -1);
+    }
+
+    public void PickUpAudio(AudioClip audio)
+    {
+        audioSource.PlayOneShot(audio);
     }
 }

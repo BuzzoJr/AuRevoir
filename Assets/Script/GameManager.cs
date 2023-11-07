@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static event System.Action<GameState> OnGameStateChange;
 
+    private HashSet<string> visitedScenes = new HashSet<string>();
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -54,5 +56,18 @@ public class GameManager : MonoBehaviour
         Menu,
         Interacting,
         Playing,
+    }
+
+    public bool IsFirstTimeInScene(string sceneName)
+    {
+        if (visitedScenes.Contains(sceneName))
+        {
+            return false;
+        }
+        else
+        {
+            visitedScenes.Add(sceneName);
+            return true;
+        }
     }
 }
