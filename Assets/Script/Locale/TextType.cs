@@ -13,6 +13,7 @@
         RevolutionaryBrother,
         NewsAnchor,
         Guard,
+        Robot,
         Beggar,
     }
 }
