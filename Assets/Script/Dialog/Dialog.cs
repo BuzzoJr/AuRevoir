@@ -1,13 +1,10 @@
 ﻿using Assets.Script.Interaction;
 using Assets.Script.Locale;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Script.Dialog
 {
@@ -19,12 +16,13 @@ namespace Assets.Script.Dialog
 
         int? selectedKey = null;
 
-        public IEnumerator Execute(GameObject who)
+        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
         {
+            DialogAction result = DialogAction.None;
             DialogBox.SetActive(true);
-            yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => { }));
+            yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
             DialogBox.SetActive(false);
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+            callback(result);
         }
 
         public IEnumerator Execute(GameObject who, List<object> seq, System.Action<DialogAction> callback)
@@ -41,8 +39,10 @@ namespace Assets.Script.Dialog
                         var special = GetComponentInChildren<ISpecial>();
                         if (special != null)
                             special.Special(who);
-                    } //precisa destruit o (DialogInteraction que chamou esse Dialog)
-                    // Lembando que precisa alterar gameState quando está em diálogo e voltar para o GameState Playing
+
+                        pos += 1;
+                        continue;
+                    }
                     else
                     {
                         result = action;
@@ -103,8 +103,8 @@ namespace Assets.Script.Dialog
                         btn.interactable = false;
                     }
 
-                    yield return StartCoroutine(Execute(who,options[selected], (value) => result = value));
-                    
+                    yield return StartCoroutine(Execute(who, options[selected], (value) => result = value));
+
                     // Ações de controle
                     if (result == DialogAction.End)
                         break;
@@ -119,6 +119,7 @@ namespace Assets.Script.Dialog
 
             callback(result);
         }
+
         private void SelectKey(int key)
         {
             selectedKey = key;

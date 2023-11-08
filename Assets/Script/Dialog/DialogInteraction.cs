@@ -29,6 +29,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     IEnumerator Execute(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+
         if (shouldWalk)
         {
             PlayerController.navMeshAgent.destination = transform.position;
@@ -36,6 +37,12 @@ public class DialogInteraction : MonoBehaviour, ITalk
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         }
 
-        yield return StartCoroutine(dialog.Execute(who));
+        DialogAction result = DialogAction.None;
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+
+        if (result == DialogAction.RemoveDialog)
+            Destroy(this);
     }
 }
