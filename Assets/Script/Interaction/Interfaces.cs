@@ -22,4 +22,9 @@ namespace Assets.Script.Interaction
     {
         void Special(GameObject who);
     }
+
+    public interface IUseItem
+    {
+        void UseItem(GameObject who);
+    }
 }

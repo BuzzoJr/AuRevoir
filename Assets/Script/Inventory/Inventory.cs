@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private TMP_Text ItemInfo;
     [SerializeField] private Transform itemsParent; 
     [SerializeField] private float rotationDuration = 1.0f;
+    [SerializeField] private Camera inventoryCam;
+    [SerializeField] private GameObject useText;
 
     private AudioSource audioSource;
     private bool isRotating = false;
@@ -40,7 +43,6 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             if (inventoryUI.activeSelf)
             {
@@ -54,6 +56,49 @@ public class Inventory : MonoBehaviour
 
             UpdateInfo();
         }
+
+        if (Input.GetMouseButtonDown(0) && inventoryUI.activeSelf)
+        {
+            // Use the mouse position directly for the PointerEventData
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            };
+
+            // Raycast using the event system and mouse position
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            foreach (var result in raycastResults)
+            {
+                // Ensure we hit the UI layer
+                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                {
+                    switch (result.gameObject.name)
+                    {
+                        case "NextItem":
+                            Debug.Log("NextItem");
+                            RotateItemsParent(1);
+                            break;
+
+                        case "PrevioustItem":
+                            Debug.Log("PrevioustItem");
+                            RotateItemsParent(-1);
+                            break;
+
+                        case "UseItem":
+                            if (items[currentItem].itemMousePrefab != null)
+                            {
+                                GameObject followingObject = Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
+                                followingObject.name = "FollowingMousePrefab";
+                                inventoryUI.SetActive(false);
+                                GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+                            }
+                            break;
+                    }
+                }
+            }
+        }
     }
 
     private void UpdateInfo()
@@ -62,6 +107,10 @@ public class Inventory : MonoBehaviour
         {
             ItemName.text = items[currentItem].itemName;
             ItemInfo.text = items[currentItem].itemInfo;
+            if(items[currentItem].itemMousePrefab == null)
+                useText.SetActive(false);
+            else
+                useText.SetActive(true);
         }
     }
 

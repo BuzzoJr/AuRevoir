@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CursorController : MonoBehaviour
 {
@@ -6,39 +8,63 @@ public class CursorController : MonoBehaviour
     [SerializeField] private Texture2D clickCursor;
     public Camera cam;
     private string currentCursor = "null";
+    private string currentState;
 
+    private void Awake()
+    {
+        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
+    }
+
+
+    void OnDestroy()
+    {
+        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    }
+
+    private void GameManagerOnGameStateChange(GameManager.GameState state)
+    {
+        currentState = state.ToString();
+    }
     void Start() {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     void FixedUpdate()
     {
-        var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
-        Ray ray = cam.ScreenPointToRay(viewportPos);
-        RaycastHit hitPoint;
-        if (Physics.Raycast(ray, out hitPoint))
+        if(currentState == "Playing")
         {
-            if (hitPoint.transform.CompareTag("Door"))
+            var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+            Ray ray = cam.ScreenPointToRay(viewportPos);
+            RaycastHit hitPoint;
+            if (Physics.Raycast(ray, out hitPoint))
             {
-                if (currentCursor != "doorCursor")
+                if (hitPoint.transform.CompareTag("Door"))
                 {
-                    Cursor.SetCursor(doorCursor, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "doorCursor";
+                    if (currentCursor != "doorCursor")
+                    {
+                        Cursor.SetCursor(doorCursor, Vector2.zero, CursorMode.Auto);
+                        currentCursor = "doorCursor";
+                    }
+                }
+                else if (hitPoint.transform.CompareTag("Interactable"))
+                {
+                    if (currentCursor != "clickCursor")
+                    {
+                        Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
+                        currentCursor = "clickCursor";
+                    }
+                }
+                else if(currentCursor != "null")
+                {
+                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                    currentCursor = "null";
                 }
             }
-            else if (hitPoint.transform.CompareTag("Interactable"))
-            {
-                if (currentCursor != "clickCursor")
-                {
-                    Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "clickCursor";
-                }
-            }
-            else if(currentCursor != "null")
-            {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                currentCursor = "null";
-            }
+        }
+        else
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            currentCursor = "null";
         }
 
     }

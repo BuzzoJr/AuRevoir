@@ -6,13 +6,15 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class AddItem : MonoBehaviour, IUse
+public class ManualAddItem : MonoBehaviour, IUse
 {
     [SerializeField] private string ItemName;
     [SerializeField] private string ItemDescription;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject ItemMousePrefab;
     [SerializeField] private AudioClip pickupAudio;
+    [Header("Special")]
+    [SerializeField] private GameObject Key;
     [Header("DIALOG ON PICKUP ITEM")]
     [SerializeField] private bool HasText = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
@@ -62,6 +64,7 @@ public class AddItem : MonoBehaviour, IUse
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Inventory.instance.PickUpAudio(pickupAudio);
+        Key.SetActive(true);
         Destroy(gameObject);
     }
 }
