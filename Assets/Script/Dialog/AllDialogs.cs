@@ -43,7 +43,7 @@ namespace Assets.Script.Dialog
                 TextGroup.BossOfferMisson,
                 new List<object>()
                 {
-                    0, 1, 2, 3, 4, 5, 6,
+                    DialogAction.Special,0, 1, 2, 3, 4, 5, 6,
                     new Dictionary<int, List<object>>()
                     {
                         {

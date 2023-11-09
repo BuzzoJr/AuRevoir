@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(viewportPos);
             if (Physics.Raycast(ray, out RaycastHit hitPoint) && currentState == "Playing")
             {
-                Debug.Log(hitPoint.transform.tag);
                 switch (hitPoint.transform.tag)
                 {
                     case "Floor":
