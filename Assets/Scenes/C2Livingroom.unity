@@ -132,6 +132,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7675589525231906483, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: moveRef
@@ -140,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.339
+      value: -0.847
       objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -150,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.423
+      value: 0.341
       objectReference: {fileID: 0}
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -334,6 +344,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1228084633}
+  door: {fileID: 88287828}
+--- !u!114 &88287828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+    type: 3}
+  m_PrefabInstance: {fileID: 88287824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57154fafa55840749a417cf19c2a772f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &107634102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1428,6 +1451,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7675589525231906483, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: moveRef
@@ -1436,7 +1464,7 @@ PrefabInstance:
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.265
+      value: 0.266
       objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -1446,7 +1474,7 @@ PrefabInstance:
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44
+      value: 0.484
       objectReference: {fileID: 0}
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -2539,7 +2567,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335465475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3690,7 +3718,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775257890586566006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3760,7 +3788,7 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 1335465475}
   - {fileID: 775257890586566006}
-  HasText: 1
+  HasText: 0
   textGroup: 5
   dialogBox: {fileID: 4357632719355704092}
 --- !u!1 &775257890919768761
@@ -4023,9 +4051,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
         type: 3}
+      propertyPath: HasText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
+        type: 3}
       propertyPath: dialogBox
       value: 
       objectReference: {fileID: 4357632719355704092}
+    - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
+        type: 3}
+      propertyPath: textGroup
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
         type: 3}
       propertyPath: pickupAudio
@@ -4208,7 +4246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 5
+  textGroup: 9
   dialogBox: {fileID: 4357632719355704092}
 --- !u!65 &3469287837061436052
 BoxCollider:
@@ -4452,6 +4490,7 @@ GameObject:
   - component: {fileID: 7226833859015146561}
   - component: {fileID: 4876879783759972491}
   - component: {fileID: 7226833859015146562}
+  - component: {fileID: 7226833859015146563}
   - component: {fileID: 2831044652044046090}
   m_Layer: 0
   m_Name: manual
@@ -4601,8 +4640,23 @@ MonoBehaviour:
   ItemMousePrefab: {fileID: 0}
   pickupAudio: {fileID: 8300000, guid: ec63f2915f00fa442813af7928e33b37, type: 3}
   Key: {fileID: 1911938698702053658}
-  HasText: 0
-  textGroup: 3
+  HasText: 1
+  textGroup: 7
+  dialogBox: {fileID: 4357632719355704092}
+--- !u!114 &7226833859015146563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6390278168709933406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 6
   dialogBox: {fileID: 4357632719355704092}
 --- !u!1001 &7383347091124567804
 PrefabInstance:

@@ -15,7 +15,6 @@ public class CursorController : MonoBehaviour
         GameManager.OnGameStateChange += GameManagerOnGameStateChange;
     }
 
-
     void OnDestroy()
     {
         GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
@@ -25,13 +24,15 @@ public class CursorController : MonoBehaviour
     {
         currentState = state.ToString();
     }
-    void Start() {
+    void Start() 
+    {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        currentState = GameManager.Instance.State.ToString();
     }
 
     void FixedUpdate()
     {
-        if(currentState == "Playing")
+        if (currentState == "Playing")
         {
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
             Ray ray = cam.ScreenPointToRay(viewportPos);
@@ -46,7 +47,7 @@ public class CursorController : MonoBehaviour
                         currentCursor = "doorCursor";
                     }
                 }
-                else if (hitPoint.transform.CompareTag("Interactable"))
+                else if (hitPoint.transform.CompareTag("Interactable") || hitPoint.transform.CompareTag("Character"))
                 {
                     if (currentCursor != "clickCursor")
                     {
