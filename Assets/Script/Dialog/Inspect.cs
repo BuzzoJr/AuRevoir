@@ -11,6 +11,7 @@ public class Inspect : MonoBehaviour, ILook
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
     void Awake()
     {
@@ -24,7 +25,7 @@ public class Inspect : MonoBehaviour, ILook
     IEnumerator CoroutineExample()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = transform.position;
+        PlayerController.navMeshAgent.destination = new Vector3 (transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 

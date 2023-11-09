@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,11 +59,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                //Previne o bug the fechar o intereaction sheen mesmo quando clica no botão, pq o raycast registra colisão antes com outra coisa
+                return;
+            }
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
             Ray ray = cam.ScreenPointToRay(viewportPos);
             if (Physics.Raycast(ray, out RaycastHit hitPoint) && currentState == "Playing")
             {
+                Debug.Log(hitPoint.transform.tag);
                 switch (hitPoint.transform.tag)
                 {
                     case "Floor":

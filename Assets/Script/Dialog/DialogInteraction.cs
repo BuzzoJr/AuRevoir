@@ -10,6 +10,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     public bool shouldWalk = true;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
+    [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
     private Dialog dialog;
 
@@ -32,7 +33,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
 
         if (shouldWalk)
         {
-            PlayerController.navMeshAgent.destination = transform.position;
+            PlayerController.navMeshAgent.destination = new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         }
