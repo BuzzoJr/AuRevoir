@@ -9,6 +9,7 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip pickupPhone;
+    public AudioClip IntroductionSong;
 
     void Awake()
     {
@@ -25,6 +26,6 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
         audioSource.Stop();
         audioSource.loop = false;
         audioSource.PlayOneShot(pickupPhone);
-        Destroy(this);
+        GameManager.Instance.UpdateSong(IntroductionSong);
     }
 }

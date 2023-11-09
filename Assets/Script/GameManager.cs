@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static event System.Action<GameState> OnGameStateChange;
 
+    private AudioSource AudioInstance;
+
     private HashSet<string> visitedScenes = new HashSet<string>();
 
     void Awake()
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
             // Mark this GameManager object to persist between scene changes
             DontDestroyOnLoad(gameObject);
         }
+        AudioInstance = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -49,6 +52,11 @@ public class GameManager : MonoBehaviour
         }
 
         OnGameStateChange?.Invoke(newState);
+    }
+
+    public void UpdateSong(AudioClip newSong)
+    {
+        AudioInstance.PlayOneShot(newSong);
     }
 
     public enum GameState
