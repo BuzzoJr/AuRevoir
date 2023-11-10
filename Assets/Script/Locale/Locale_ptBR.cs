@@ -10,9 +10,9 @@ namespace Assets.Script.Locale
                 TextGroup.Menu,
                 new List<TextData>()
                 {
-                    new TextData("Iniciar Jogo"),
-                    new TextData("Sair"),
-                    new TextData("Continuar"),
+                    new TextData("> Jogar"),
+                    new TextData("> Sair"),
+                    new TextData("> Continuar"),
                     new TextData("Volume"),
                 }
             },
@@ -20,7 +20,7 @@ namespace Assets.Script.Locale
                 TextGroup.Intro,
                 new List<TextData>()
                 {
-                    new TextData("No ano de 2068, a Au Revoir Ltda desencadeou sua expansão ao apresentar ao mundo a maior inovação tecnológica que o mundo já viu. A novidade foi um chip revolucionário, capaz de armazenar a consciência completa de uma pessoa. Esse avanço permitiu que, mesmo após a morte do corpo, a consciência pudesse persistir, aguardando a oportunidade de habitar uma nova \"capa\". A marca Au Revoir rapidamente ascendeu, expandindo suas operações para outros ramos, e se tornou a maior corporação do todo o planeta."),
+                    new TextData("No ano de 2068, a Au Revoir Ltda desencadeou sua expansão ao apresentar ao mundo a maior inovação tecnológica que o mundo já viu. A novidade foi um chip revolucionário, capaz de armazenar a consciência completa de uma pessoa. Esse avanço permitiu que, mesmo após a morte do corpo, a consciência pudesse persistir, aguardando a oportunidade de habitar uma nova \"capa\". A marca Au Revoir rapidamente ascendeu, expandindo suas operações para outros ramos, e se tornou a maior corporação de todo o planeta."),
                     new TextData("A partir da grande inovação, os poderosos passaram a viver eternamente, alternando suas capas sempre que o seus corpos faleciam. E para garantir a continuidade da existência destes, uma nova profissão surgiu. Os chamados Sentinelas são os responsáveis pelo resgate seguro dos chips de todos os assegurados de vida eterna pela Au Revoir Ltda, garantindo a continuidade da existência de forma digital."),
                     new TextData("Embora os avanços em pesquisa da Au Revoir tenham aprimorado com sucesso a geração de órgãos artificiais, garantindo segurança e precisão, a criação completa de \"capas\" permanece um desafio não superado. O uso dos chips em terceiros é estritamente proibido, deixando uma sociedade marcada e limitada por fronteiras éticas e o medo do surgimento de um mercado de substituição de corpos. O equilíbrio entre a busca pela imortalidade digital e as limitações tecnológicas continua a moldar o mundo até hoje."),
                 }

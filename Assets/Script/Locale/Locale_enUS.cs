@@ -10,9 +10,9 @@ namespace Assets.Script.Locale
                 TextGroup.Menu,
                 new List<TextData>()
                 {
-                    new TextData("Start Game"),
-                    new TextData("Quit"),
-                    new TextData("Continue"),
+                    new TextData("> Play"),
+                    new TextData("> Quit"),
+                    new TextData("> Continue"),
                     new TextData("Volume"),
                 }
             },
