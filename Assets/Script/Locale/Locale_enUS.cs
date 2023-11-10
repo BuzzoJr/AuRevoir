@@ -122,7 +122,7 @@ namespace Assets.Script.Locale
                 {
                     new TextData(TextType.Player, "I'm here boss!"),
                     new TextData(TextType.Boss, "Look who's here! Right on time this time."),
-                    new TextData(TextType.Boss, "As you may already suspect, another trust fund kid has kicked the bucket, and we need to retrieve his chip."),
+                    new TextData(TextType.Boss, "As you may already suspect, another rich boy has fucked up, and we need to retrieve his chip."),
                     new TextData(TextType.Boss, "The problem is, it happened within the Disconnected District, and we don't have free access to that place."),
                     new TextData(TextType.Boss, "And we can't wait two weeks for authorization."),
                     new TextData(TextType.Boss, "Directives from higher up."),
@@ -132,7 +132,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "I don't want to go in there!"),
                     new TextData(TextType.Player, "I don't want to go in there! That place is too dangerous."),
                     new TextData(TextType.Boss, "That's why we can't wait two weeks. By then, the chip will be long gone."),
-                    new TextData(TextType.Boss, "That's why I need you to go now. You owe me this one!"),
+                    new TextData(TextType.Boss, "That's why I need you to go now. You owe me one!"),
                     new TextData(TextType.Boss, "I thought about calling Barry, but I know you need the cash."),
                     new TextData(TextType.Player, "We had another issue with Julie's medicine. I really need it."),
                     new TextData(TextType.Boss, "So, you know what to do."),
@@ -147,7 +147,7 @@ namespace Assets.Script.Locale
                 TextGroup.BossMoreInfo,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "No documentation? Name or photo?"),
+                    new TextData(TextType.Player, "No files? Name or photo?"),
                     new TextData(TextType.Boss, "Confidential, must be someone important."),
                     new TextData(TextType.PlayerThinking, "Important? In the Disconnected District?"),
                     new TextData(TextType.Player, "And how do I get there?"),
