@@ -22,6 +22,9 @@ public class DoorController : MonoBehaviour
         C8ExteriorLavanderia,
         C9InteriorLavanderia,
         C10Transicao,
+        C11RuaNecroterio,
+        C12Necroterio,
+        C13EscritorioMafia,
         C15ExteriorLab,
         C16Laboratory,
         SampleScene
