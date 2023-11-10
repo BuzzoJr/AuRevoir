@@ -54,4 +54,23 @@
         ClubDoorUseAccessCard,
         ClubDoorUseFinger,
     }
+
+    public enum ItemGroup
+    {
+        Default = 0,
+        Julie_Drawing,
+        Coke,
+        TV_Manual,
+        Keys,
+        Pink_Sock,
+        Finger,
+        KeyCard,
+        Mafia_Doc_Equipment,
+        Mafia_Doc_Visitors,
+        Mafia_Doc_Addicts,
+        Mafia_Doc_TestSubjects,
+        Mafia_Doc_NewSleave,
+        Chip_CEO,
+        Chip_Revolutionary,
+    }
 }

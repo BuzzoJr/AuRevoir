@@ -8,8 +8,9 @@ using UnityEngine;
 
 public class ManualAddItem : MonoBehaviour, IUse
 {
-    [SerializeField] private string ItemName;
-    [SerializeField] private string ItemDescription;
+    private string ItemName;
+    private string ItemDescription;
+    public ItemGroup itemGroup = ItemGroup.Default;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject ItemMousePrefab;
     [SerializeField] private AudioClip pickupAudio;
@@ -24,6 +25,8 @@ public class ManualAddItem : MonoBehaviour, IUse
     private void Awake()
     {
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        ItemName = Locale.Item[itemGroup][0].Name;
+        ItemDescription = Locale.Item[itemGroup][0].Description;
     }
     public void Use(GameObject who)
     {

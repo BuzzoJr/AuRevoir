@@ -474,5 +474,108 @@ namespace Assets.Script.Locale
             // Cena 16
             // TODO
         };
+
+        public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()
+        {
+            {
+                ItemGroup.Coke,
+                new List<ItemData>()
+                {
+                    new ItemData("Coke", "Lata de refrigerante"),
+                }
+            },
+            {
+                ItemGroup.Julie_Drawing,
+                new List<ItemData>()
+                {
+                    new ItemData("Desenho de Julie", "Um desenho feito pela Julie"),
+                }
+            },
+            {
+                ItemGroup.TV_Manual,
+                new List<ItemData>()
+                {
+                    new ItemData("Manual da TV", "Manual da televisão nova"),
+                }
+            },
+            {
+                ItemGroup.Keys,
+                new List<ItemData>()
+                {
+                    new ItemData("Chaves", "Chaves de casa"),
+                }
+            },
+            {
+                ItemGroup.Pink_Sock,
+                new List<ItemData>()
+                {
+                    new ItemData("Meia Rosa", "Uma única meia rosa"),
+                }
+            },
+            {
+                ItemGroup.Finger,
+                new List<ItemData>()
+                {
+                    new ItemData("Dedo Cortado", ""),
+                }
+            },
+            {
+                ItemGroup.KeyCard,
+                new List<ItemData>()
+                {
+                    new ItemData("Cartão de Acesso", "Cartão de Acesso de Laboratório Au-Revoir"),
+                }
+            },
+            {
+                ItemGroup.Mafia_Doc_Equipment,
+                new List<ItemData>()
+                {
+                    new ItemData("Documento de Equipamento da Máfia", ""),
+                }
+            },
+            {
+                ItemGroup.Mafia_Doc_Visitors,
+                new List<ItemData>()
+                {
+                    new ItemData("Documento de Visitantes da Máfia", ""),
+                }
+            },
+            {
+                ItemGroup.Mafia_Doc_Addicts,
+                new List<ItemData>()
+                {
+                    new ItemData("Documento de Viciados da Máfia", ""),
+                }
+            },
+            {
+                ItemGroup.Mafia_Doc_TestSubjects,
+                new List<ItemData>()
+                {
+                    new ItemData("Documento de Cobaias da Máfia", ""),
+                }
+            },
+            {
+                ItemGroup.Mafia_Doc_NewSleave,
+                new List<ItemData>()
+                {
+                    new ItemData("Documento de Novo Escravo da Máfia", ""),
+                }
+            },
+            {
+                ItemGroup.Chip_CEO,
+                new List<ItemData>()
+                {
+                    new ItemData("Chip CEO", ""),
+                }
+            },
+            {
+                ItemGroup.Chip_Revolutionary,
+                new List<ItemData>()
+                {
+                    new ItemData("Chip Revolucionário", ""),
+                }
+            },
+        };
+
     }
 }

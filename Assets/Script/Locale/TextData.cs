@@ -23,4 +23,16 @@
 
         public TextData(string text) : this(TextType.System, text, 0) { }
     }
+
+    public class ItemData
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public ItemData(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+    }
 }
