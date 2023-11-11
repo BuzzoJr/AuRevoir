@@ -32,7 +32,7 @@ public class CursorController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentState == "Playing")
+        if (currentState == "Playing" && cam.gameObject.activeSelf)
         {
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
             Ray ray = cam.ScreenPointToRay(viewportPos);

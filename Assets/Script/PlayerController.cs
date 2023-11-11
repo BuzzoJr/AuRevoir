@@ -57,11 +57,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                //Previne o bug the fechar o intereaction sheen mesmo quando clica no botão, pq o raycast registra colisão antes com outra coisa
+                //Previne o bug the fechar o intereaction sheen mesmo quando clica no botï¿½o, pq o raycast registra colisï¿½o antes com outra coisa
                 return;
             }
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
             talkChild.onClick.AddListener(TalkEvent);
         }
         if (use is null && look is null && talk is null)
-            Debug.LogWarning("Não tem interação possível nesse objeto!");
+            Debug.LogWarning("Nï¿½o tem interaï¿½ï¿½o possï¿½vel nesse objeto!");
     }
     
     void TalkEvent()
