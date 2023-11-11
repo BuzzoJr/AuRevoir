@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
+using System.Collections;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class AddItem : MonoBehaviour, IUse
@@ -17,7 +16,7 @@ public class AddItem : MonoBehaviour, IUse
     [Header("DIALOG ON PICKUP ITEM")]
     [SerializeField] private bool HasText = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
-    [SerializeField] private GameObject dialogBox;          
+    [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
 
     private void Awake()
@@ -48,14 +47,14 @@ public class AddItem : MonoBehaviour, IUse
                 dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
 
                 bool clicked = false;
-                float delayTime = data.Delay > 0 ? data.Delay : 2.5f;
+                float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
                 float elapsedTime = 0;
 
                 while (elapsedTime < delayTime && !clicked)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        clicked = true;;
+                        clicked = true; ;
                     }
                     elapsedTime += Time.deltaTime;
                     yield return null;

@@ -1,6 +1,6 @@
+using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Script.Locale;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,7 +27,7 @@ public class SceneController : MonoBehaviour
                     playerPos.position = new Vector3(spawnPos.transform.position.x, playerPos.position.y, spawnPos.transform.position.z);
                     playerPos.rotation = Quaternion.Euler(0f, spawnPos.transform.rotation.eulerAngles.y, 0f);
 
-                    break; 
+                    break;
                 }
             }
         }
@@ -52,7 +52,7 @@ public class SceneController : MonoBehaviour
             dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
 
             bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : 2.5f;
+            float delayTime = data.Delay > 0 ? data.Delay : 120f;
             float elapsedTime = 0;
 
             while (elapsedTime < delayTime && !clicked)

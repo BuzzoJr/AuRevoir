@@ -36,7 +36,7 @@ public class TVInspect : MonoBehaviour, ILook
             dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
 
             bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : 2.5f;
+            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
             float elapsedTime = 0;
 
             while (elapsedTime < delayTime && !clicked)

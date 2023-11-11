@@ -5,6 +5,8 @@ namespace Assets.Script.Dialog
 {
     public static class AllDialogs
     {
+        public static float defaultDelay = 120f;
+
         public static Dictionary<TextGroup, List<object>> Sequence = new()
         {
             {
