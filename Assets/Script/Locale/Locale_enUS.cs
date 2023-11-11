@@ -344,6 +344,14 @@ namespace Assets.Script.Locale
                 }
             },
             // Scene 11
+            // Scene 12
+            {
+                TextGroup.Morgue,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "There's no one here. It seems to be a self-service system. Didn't expect that in a morgue."),
+                }
+            },
             {
                 TextGroup.MorgueHUD,
                 new List<TextData>()
@@ -357,52 +365,44 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Viktor\nSteele"),
-                    new TextData("07/11/2068"),
+                    new TextData("11/07/2068"),
                     new TextData("Neon Eclipse Bar"),
                     new TextData("Poisoning by unknown substance"),
 
                     new TextData("Marie\nLeClaire"),
-                    new TextData("10/11/2068"),
+                    new TextData("11/10/2068"),
                     new TextData("Renaissance Motel"),
                     new TextData("Concussions throughout the body"),
 
                     new TextData("Barbie\nPoupée"),
-                    new TextData("12/11/2068"),
+                    new TextData("11/12/2068"),
                     new TextData("Au Revoir Toys"),
                     new TextData("3rd-degree burns from melted plastic"),
 
-                    new TextData("Desconhecido"),
-                    new TextData("13/11/2068"),
+                    new TextData("Unknown"),
+                    new TextData("11/13/2068"),
                     new TextData("Sewer"),
                     new TextData("Decapitated with erased fingerprints"),
 
                     new TextData("Sébastien\nBain"),
-                    new TextData("17/11/2068"),
+                    new TextData("11/17/2068"),
                     new TextData("Main Street"),
                     new TextData("Overdose of hallucinogenic nanobots"),
 
                     new TextData("Vincent\nNoir"),
-                    new TextData("19/11/2068"),
+                    new TextData("11/19/2068"),
                     new TextData("Laundry"),
                     new TextData("Shot in the neck with signs of physical combat"),
 
                     new TextData("Diane\nLevasseur"),
-                    new TextData("20/11/2068"),
+                    new TextData("11/20/2068"),
                     new TextData("Clandestine Factory"),
                     new TextData("Accidental explosion"),
 
                     new TextData("Jean\nTrouvé"),
-                    new TextData("20/11/2068"),
+                    new TextData("11/20/2068"),
                     new TextData("Maximum Height Residential"),
                     new TextData("Fall from 30 floors"),
-                }
-            },
-            // Scene 12
-            {
-                TextGroup.Morgue,
-                new List<TextData>()
-                {
-                    new TextData(TextType.PlayerThinking, "There's no one here. It seems to be a self-service system. Didn't expect that in a morgue."),
                 }
             },
             // Scene 13

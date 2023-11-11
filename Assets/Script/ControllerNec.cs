@@ -1,15 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Assets.Script.Locale;
+using UnityEngine.UI;
 
 public class ControllerNec : MonoBehaviour {
     public GameObject cameraScene;
     public GameObject allBody;
     public GameObject target;
     public PanelNec panelScrpt;
+    public TMP_Text nameTxt;
+    public TMP_Text dataTxt;
+    public TMP_Text localDesc;
+    public TMP_Text causaDesc;
+    public TMP_Text localTitle;
+    public TMP_Text causaTitle;
     public float speed = 5f;
     private int pos = 0;
     private bool panelClick;
+
+    void Awake() {
+        localTitle.text = Locale.Texts[TextGroup.MorgueHUD][0].Text;
+        causaTitle.text = Locale.Texts[TextGroup.MorgueHUD][1].Text;
+
+        UpdateCorpse(pos);
+    }
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -32,12 +48,14 @@ public class ControllerNec : MonoBehaviour {
             if(pos > 0) {
                 MoveBody(5f);
                 pos--;
+                UpdateCorpse(pos);
             }
         }
         else if(gameObject.name == "Right") {
             if(pos < 7) {
                 MoveBody(-5f);
                 pos++;
+                UpdateCorpse(pos);
             }
         }
         else if(gameObject.name == "RedButton") {
@@ -63,5 +81,14 @@ public class ControllerNec : MonoBehaviour {
         Vector3 currentPosition = target.transform.position;
         currentPosition.x += qtd;
         target.transform.position = currentPosition;
+    }
+
+    void UpdateCorpse(int pos) {
+        int index = pos * 4;
+
+        nameTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index].Text;
+        dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index+1].Text;
+        localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+2].Text;
+        causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+3].Text;
     }
 }

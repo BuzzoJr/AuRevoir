@@ -379,7 +379,7 @@ namespace Assets.Script.Locale
                     new TextData("Au Revoir Brinquedos"),
                     new TextData("Queimaduras de 3º grau por plástico derretido"),
 
-                    new TextData("Desconhecido"),
+                    new TextData("Desconhe-\ncido"),
                     new TextData("13/11/2068"),
                     new TextData("Esgoto"),
                     new TextData("Decapitado e com digitais apagadas"),
