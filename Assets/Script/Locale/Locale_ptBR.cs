@@ -352,6 +352,59 @@ namespace Assets.Script.Locale
                     new TextData(TextType.PlayerThinking, "Não tem ninguém aqui. Parece ser um sistema de autoatendimento. Não esperava isso em um necrotério."),
                 }
             },
+            {
+                TextGroup.MorgueHUD,
+                new List<TextData>()
+                {
+                    new TextData("Local da morte:"),
+                    new TextData("Causa da morte:"),
+                }
+            },
+            {
+                TextGroup.MorgueCorpses,
+                new List<TextData>()
+                {
+                    new TextData("Viktor\nSteele"),
+                    new TextData("07/11/2068"),
+                    new TextData("Bar Neon Eclipse"),
+                    new TextData("Envenamento por substância desconhecida"),
+
+                    new TextData("Marie\nLeClaire"),
+                    new TextData("10/11/2068"),
+                    new TextData("Motel Renaissance"),
+                    new TextData("Concussões em todo o corpo"),
+
+                    new TextData("Barbie\nPoupée"),
+                    new TextData("12/11/2068"),
+                    new TextData("Au Revoir Brinquedos"),
+                    new TextData("Queimaduras de 3º grau por plástico derretido"),
+
+                    new TextData("Desconhecido"),
+                    new TextData("13/11/2068"),
+                    new TextData("Esgoto"),
+                    new TextData("Decapitado e com digitais apagadas"),
+
+                    new TextData("Sébastien\nBain"),
+                    new TextData("17/11/2068"),
+                    new TextData("Rua Principal"),
+                    new TextData("Overdose de nanorobôs alucinógenos"),
+
+                    new TextData("Vincent\nNoir"),
+                    new TextData("19/11/2068"),
+                    new TextData("Lavanderia"),
+                    new TextData("Tiro na nuca e sinais de combate físico"),
+
+                    new TextData("Diane\nLevasseur"),
+                    new TextData("20/11/2068"),
+                    new TextData("Fábrica Clandestina"),
+                    new TextData("Explosão acidental"),
+
+                    new TextData("Jean\nTrouvé"),
+                    new TextData("20/11/2068"),
+                    new TextData("Residencial Altura Máxima"),
+                    new TextData("Queda de 30 andares"),
+                }
+            },
             // Cena 13
             {
                 TextGroup.MafiaOffice,

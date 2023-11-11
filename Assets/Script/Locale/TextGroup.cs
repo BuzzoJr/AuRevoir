@@ -37,6 +37,8 @@
         ClosedBuildings,
         Homeless,
         Morgue,
+        MorgueHUD,
+        MorgueCorpses,
         MafiaOffice,
         MafiaVoicemail,
         MafiaDocument1,
