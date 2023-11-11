@@ -4,24 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
     public Animator animTextIntro;
+    public Button brBtn, enBtn;
     public TMP_Text textIntro, textPlay, textQuit, textContinue;
     public float timeFade;
     public AudioSource menuSong;
     private bool btnPressed = false;
 
     void Awake() {
-        ChangeTxt();
+        if(PlayerPrefs.HasKey("Language")) {
+            if(PlayerPrefs.GetString("Language") == "PTBR") {
+                brBtn.interactable = false;
+                enBtn.interactable = true;
+                ToPtBr();
+            }
+            else if(PlayerPrefs.GetString("Language") == "PTBR") {
+                ToEnUs();
+            }
+        }
+        else {
+            ChangeTxt();
+        }
     }
 
     public void ToPtBr() {
+        PlayerPrefs.SetString("Language", "PTBR");
         Locale.LoadLang(Lang.ptBR);
         ChangeTxt();
     }
 
     public void ToEnUs() {
+        PlayerPrefs.SetString("Language", "ENG");
         Locale.LoadLang(Lang.enUS);
         ChangeTxt();
     }
