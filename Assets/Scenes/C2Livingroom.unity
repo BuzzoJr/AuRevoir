@@ -343,8 +343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6b3bf7c6f605b4c92dbc76cc463bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldWalk: 0
+  targetItem: MouseKey(Clone)
+  errorClip: {fileID: 8300000, guid: fd5a967cae597e148bf2073b8c7a8478, type: 3}
   animator: {fileID: 1228084633}
   door: {fileID: 88287828}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &88287828 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,

@@ -27,16 +27,13 @@ public class MouseFollower : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(viewportPos);
             if (Physics.Raycast(ray, out RaycastHit hitPoint))
             {
+                GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
                 useItem = hitPoint.transform.GetComponentInChildren<IUseItem>();
                 if (useItem is not null)
                 {
-                    useItem.UseItem(hitPoint.transform.gameObject);
-                    Destroy(this.gameObject);
+                    useItem.UseItem(gameObject);
                 }
-                else
-                {
-                    Destroy(this.gameObject);
-                }
+                Destroy(this.gameObject);
             }
         }
 

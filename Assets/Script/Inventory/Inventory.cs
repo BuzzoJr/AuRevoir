@@ -98,8 +98,7 @@ public class Inventory : MonoBehaviour
                         case "UseItem":
                             if (items[currentItem].itemMousePrefab != null)
                             {
-                                GameObject followingObject = Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
-                                followingObject.name = "FollowingMousePrefab";
+                                Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
                                 inventoryUI.SetActive(false);
                                 GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
                             }else if (items[currentItem].itemDetails != null)

@@ -10,12 +10,17 @@ public class ItemInteraction : MonoBehaviour, IUseItem
 {
     private AudioSource m_AudioSource;
     public bool shouldWalk = false;
+    public string targetItem;
+    [SerializeField] private AudioClip errorClip;
     [SerializeField] private Animator animator = null;
     [SerializeField] private DoorController door;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
     public void UseItem(GameObject who)
     {
-        StartCoroutine(CoroutineExample());
+        if (targetItem == who.name)
+            StartCoroutine(CoroutineExample());
+        else
+            m_AudioSource.PlayOneShot(errorClip);
     }
 
     // Start is called before the first frame update
