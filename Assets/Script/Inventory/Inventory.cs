@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using Assets.Script.Interaction;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float radius = 20f;
     [SerializeField] private TMP_Text ItemName;
     [SerializeField] private TMP_Text ItemInfo;
+    [SerializeField] private TMP_Text ItemDetails;
+    [SerializeField] private GameObject ItemDetailsParent;
     [SerializeField] private Transform itemsParent; 
     [SerializeField] private float rotationDuration = 1.0f;
     [SerializeField] private Camera inventoryCam;
@@ -21,6 +24,7 @@ public class Inventory : MonoBehaviour
     private bool isRotating = false;
     private GameObject inventoryUI;
     private int currentItem = -1;
+    private TMP_Text interactItem;
 
     private void Awake()
     {
@@ -37,6 +41,8 @@ public class Inventory : MonoBehaviour
         inventoryUI = transform.GetChild(0).gameObject;
         ItemName.text = "none";
         ItemInfo.text = "none";
+        ItemDetails.text = "none";
+        interactItem = useText.GetComponentInChildren<TMP_Text>();
     }
 
     private void Update()
@@ -59,6 +65,8 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && inventoryUI.activeSelf)
         {
+            if (ItemDetailsParent.activeSelf)
+                ItemDetailsParent.SetActive(false);
             // Use the mouse position directly for the PointerEventData
             PointerEventData pointerData = new PointerEventData(EventSystem.current)
             {
@@ -93,6 +101,9 @@ public class Inventory : MonoBehaviour
                                 followingObject.name = "FollowingMousePrefab";
                                 inventoryUI.SetActive(false);
                                 GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+                            }else if (items[currentItem].itemDetails != null)
+                            {
+                                ItemDetailsParent.SetActive(true);
                             }
                             break;
                     }
@@ -107,10 +118,21 @@ public class Inventory : MonoBehaviour
         {
             ItemName.text = items[currentItem].itemName;
             ItemInfo.text = items[currentItem].itemInfo;
-            if(items[currentItem].itemMousePrefab == null)
-                useText.SetActive(false);
-            else
+            if (items[currentItem].itemMousePrefab != null)
+            {
                 useText.SetActive(true);
+                interactItem.text = "Use Item";
+            }
+            else if(items[currentItem].itemDetails != null)
+            {
+                useText.SetActive(true);
+                interactItem.text = "Inspect Item";
+                ItemDetails.text = items[currentItem].itemDetails;
+            }
+            else
+            {
+                useText.SetActive(false);
+            }
         }
     }
 

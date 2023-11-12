@@ -28,11 +28,13 @@
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Details { get; set; }
 
-        public ItemData(string name, string description)
+        public ItemData(string name, string description, string details = null)
         {
             Name = name;
             Description = description;
+            Details = details ?? null;
         }
     }
 }
