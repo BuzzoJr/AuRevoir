@@ -17,6 +17,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.LockedDoor,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Locked"),
+                }
+            },
+            {
                 TextGroup.Intro,
                 new List<TextData>()
                 {

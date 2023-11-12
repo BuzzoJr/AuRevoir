@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Script.Dialog;
 using Assets.Script.Interaction;
+using Assets.Script.Locale;
 using UnityEngine;
 
 public class BossSpecial : MonoBehaviour, ISpecial
@@ -14,6 +16,7 @@ public class BossSpecial : MonoBehaviour, ISpecial
     private ParticleSystem.EmissionModule rainEmission; // To modify the emission rate
     public void Special(GameObject who)
     {
+        GetComponent<DialogInteraction>().textGroup = TextGroup.BossMoreInfo;
         rain = rainObject.GetComponent<ParticleSystem>();
         rainSound = rainObject.GetComponent<AudioSource>();
         if (rain != null)

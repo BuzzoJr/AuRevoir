@@ -69,7 +69,7 @@ public class ManualAddItem : MonoBehaviour, IUse
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        clicked = true; ;
+                        clicked = true;
                     }
                     elapsedTime += Time.deltaTime;
                     yield return null;

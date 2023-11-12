@@ -24,6 +24,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
 
     public void Talk(GameObject who)
     {
+        dialog.TextGroup = textGroup;
         StartCoroutine(Execute(who));
     }
 

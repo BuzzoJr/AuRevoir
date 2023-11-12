@@ -62,6 +62,7 @@
         BrainHUD,
         BrainMenu,
         BrainInstructions,
+        LockedDoor,
     }
 
     public enum ItemGroup

@@ -2,7 +2,7 @@ using Assets.Script.Locale;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextColorManager : MonoBehaviour
+public static class TextColorManager
 {
     public static Dictionary<TextType, Color> textTypeColors = new Dictionary<TextType, Color>
     {
