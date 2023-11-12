@@ -553,98 +553,98 @@ namespace Assets.Script.Locale
                 ItemGroup.Coke,
                 new List<ItemData>()
                 {
-                    new ItemData("Coke", "Can of soda"),
+                    new ItemData(1,  "Coke", "Can of soda"),
                 }
             },
             {
                 ItemGroup.Julie_Drawing,
                 new List<ItemData>()
                 {
-                    new ItemData("Julie's Drawing", "A drawing made by Julie"),
+                    new ItemData(2,  "Julie's Drawing", "A drawing made by Julie"),
                 }
             },
             {
                 ItemGroup.TV_Manual,
                 new List<ItemData>()
                 {
-                    new ItemData("TV Manual", "Manual for the new television"),
+                    new ItemData(3,  "TV Manual", "Manual for the new television"),
                 }
             },
             {
                 ItemGroup.Keys,
                 new List<ItemData>()
                 {
-                    new ItemData("Keys", "House keys"),
+                    new ItemData(4,  "Keys", "House keys"),
                 }
             },
             {
                 ItemGroup.Pink_Sock,
                 new List<ItemData>()
                 {
-                    new ItemData("Pink Sock", "A single pink sock"),
+                    new ItemData(5,  "Pink Sock", "A single pink sock"),
                 }
             },
             {
                 ItemGroup.Finger,
                 new List<ItemData>()
                 {
-                    new ItemData("Severed Finger", ""),
+                    new ItemData(6,  "Severed Finger", ""),
                 }
             },
             {
                 ItemGroup.KeyCard,
                 new List<ItemData>()
                 {
-                    new ItemData("Keycard", "Au-Revoir laboratory keycard"),
+                    new ItemData(7,  "Keycard", "Au-Revoir laboratory keycard"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData("Mafia Equipment Document", ""),
+                    new ItemData(8,  "Mafia Equipment Document", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData("Mafia Visitors Document", ""),
+                    new ItemData(9,  "Mafia Visitors Document", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData("Mafia Addicts Document", ""),
+                    new ItemData(10, "Mafia Addicts Document", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData("Mafia Test Subjects Document", ""),
+                    new ItemData(11, "Mafia Test Subjects Document", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_NewSleave,
                 new List<ItemData>()
                 {
-                    new ItemData("Mafia New Sleave Document", ""),
+                    new ItemData(12, "Mafia New Sleave Document", ""),
                 }
             },
             {
                 ItemGroup.Chip_CEO,
                 new List<ItemData>()
                 {
-                    new ItemData("CEO Chip", ""),
+                    new ItemData(13, "CEO Chip", ""),
                 }
             },
             {
                 ItemGroup.Chip_Revolutionary,
                 new List<ItemData>()
                 {
-                    new ItemData("Revolutionary Chip", ""),
+                    new ItemData(14, "Revolutionary Chip", ""),
                 }
             },
         };

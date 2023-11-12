@@ -10,6 +10,7 @@ public class AddItem : MonoBehaviour, IUse
     private string ItemName;
     private string ItemDescription;
     private string ItemDetails = null;
+    private int ItemID;
     public ItemGroup itemGroup = ItemGroup.Default;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject ItemMousePrefab;
@@ -26,6 +27,7 @@ public class AddItem : MonoBehaviour, IUse
         ItemName = Locale.Item[itemGroup][0].Name;
         ItemDescription = Locale.Item[itemGroup][0].Description;
         ItemDetails = Locale.Item[itemGroup][0].Details;
+        ItemID = Locale.Item[itemGroup][0].ID;
     }
     public void Use(GameObject who)
     {
@@ -39,7 +41,7 @@ public class AddItem : MonoBehaviour, IUse
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
-        Inventory.instance.AddItem(new Item(ItemName, 1, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
         if (HasText)
         {
             dialogBox.SetActive(true);

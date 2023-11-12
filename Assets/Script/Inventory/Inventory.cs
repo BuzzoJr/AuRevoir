@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 using Assets.Script.Interaction;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public List<Item> items = new List<Item>();
+    public List<GameObject> itemNavigation = new List<GameObject>();
     [SerializeField] private float radius = 20f;
     [SerializeField] private TMP_Text ItemName;
     [SerializeField] private TMP_Text ItemInfo;
@@ -25,6 +27,7 @@ public class Inventory : MonoBehaviour
     private GameObject inventoryUI;
     private int currentItem = -1;
     private TMP_Text interactItem;
+    private TMP_Text itemNavigationText;
 
     private void Awake()
     {
@@ -85,12 +88,10 @@ public class Inventory : MonoBehaviour
                     switch (result.gameObject.name)
                     {
                         case "NextItem":
-                            Debug.Log("NextItem");
                             RotateItemsParent(1);
                             break;
 
                         case "PrevioustItem":
-                            Debug.Log("PrevioustItem");
                             RotateItemsParent(-1);
                             break;
 
@@ -114,10 +115,17 @@ public class Inventory : MonoBehaviour
 
     private void UpdateInfo()
     {
+        foreach (var navText in itemNavigation)
+        {
+            itemNavigationText = navText.GetComponentInChildren<TMP_Text>();
+            itemNavigationText.color = Color.grey;
+        }
         if (items.Count != 0)
         {
             ItemName.text = items[currentItem].itemName;
             ItemInfo.text = items[currentItem].itemInfo;
+            itemNavigationText = itemNavigation[items[currentItem].itemID - 1].GetComponentInChildren<TMP_Text>();
+            itemNavigationText.color = Color.white;
             if (items[currentItem].itemMousePrefab != null)
             {
                 useText.SetActive(true);
@@ -139,6 +147,8 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item)
     {
         items.Insert(0, item);
+        itemNavigationText = itemNavigation[item.itemID - 1].GetComponentInChildren<TMP_Text>();
+        itemNavigationText.text = item.itemName;
     }
 
     public void ChangeItem(int direction)

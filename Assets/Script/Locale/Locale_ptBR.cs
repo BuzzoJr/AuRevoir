@@ -553,98 +553,98 @@ namespace Assets.Script.Locale
                 ItemGroup.Coke,
                 new List<ItemData>()
                 {
-                    new ItemData("Coke", "Lata de refrigerante"),
+                    new ItemData(1, "Coke", "Lata de refrigerante"),
                 }
             },
             {
                 ItemGroup.Julie_Drawing,
                 new List<ItemData>()
                 {
-                    new ItemData("Desenho de Julie", "Um desenho feito pela Julie"),
+                    new ItemData(2, "Desenho de Julie", "Um desenho feito pela Julie"),
                 }
             },
             {
                 ItemGroup.TV_Manual,
                 new List<ItemData>()
                 {
-                    new ItemData("Manual da TV", "Manual da televisão nova"),
+                    new ItemData(3, "Manual da TV", "Manual da televisão nova"),
                 }
             },
             {
                 ItemGroup.Keys,
                 new List<ItemData>()
                 {
-                    new ItemData("Chaves", "Chaves de casa"),
+                    new ItemData(4, "Chaves", "Chaves de casa"),
                 }
             },
             {
                 ItemGroup.Pink_Sock,
                 new List<ItemData>()
                 {
-                    new ItemData("Meia Rosa", "Uma única meia rosa"),
+                    new ItemData(5, "Meia Rosa", "Uma única meia rosa"),
                 }
             },
             {
                 ItemGroup.Finger,
                 new List<ItemData>()
                 {
-                    new ItemData("Dedo Cortado", ""),
+                    new ItemData(6, "Dedo Cortado", ""),
                 }
             },
             {
                 ItemGroup.KeyCard,
                 new List<ItemData>()
                 {
-                    new ItemData("Cartão de Acesso", "Cartão de Acesso de Laboratório Au-Revoir"),
+                    new ItemData(7, "Cartão de Acesso", "Cartão de Acesso de Laboratório Au-Revoir"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData("Documento de Equipamento da Máfia", ""),
+                    new ItemData(8, "Documento de Equipamento da Máfia", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData("Documento de Visitantes da Máfia", ""),
+                    new ItemData(9, "Documento de Visitantes da Máfia", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData("Documento de Viciados da Máfia", ""),
+                    new ItemData(10, "Documento de Viciados da Máfia", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData("Documento de Cobaias da Máfia", ""),
+                    new ItemData(11, "Documento de Cobaias da Máfia", ""),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_NewSleave,
                 new List<ItemData>()
                 {
-                    new ItemData("Documento de Novo Escravo da Máfia", ""),
+                    new ItemData(12, "Documento de Novo Escravo da Máfia", ""),
                 }
             },
             {
                 ItemGroup.Chip_CEO,
                 new List<ItemData>()
                 {
-                    new ItemData("Chip CEO", ""),
+                    new ItemData(13, "Chip CEO", ""),
                 }
             },
             {
                 ItemGroup.Chip_Revolutionary,
                 new List<ItemData>()
                 {
-                    new ItemData("Chip Revolucionário", ""),
+                    new ItemData(14, "Chip Revolucionário", ""),
                 }
             },
         };

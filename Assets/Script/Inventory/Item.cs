@@ -9,7 +9,7 @@ public class Item
     public GameObject itemPrefab;
     public GameObject itemMousePrefab;
     public string itemDetails;
-    public Item(string _name, int _id, string _info, GameObject _prefab, GameObject _itemMousePrefab = null, string _details = null)
+    public Item(int _id, string _name, string _info, GameObject _prefab, GameObject _itemMousePrefab = null, string _details = null)
     {
         itemName = _name;
         itemID = _id;

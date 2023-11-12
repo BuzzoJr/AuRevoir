@@ -29,10 +29,12 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Details { get; set; }
+        public int ID { get; set; }
 
-        public ItemData(string name, string description, string details = null)
+        public ItemData(int id, string name, string description, string details = null)
         {
             Name = name;
+            ID = id;
             Description = description;
             Details = details ?? null;
         }

@@ -4,11 +4,14 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ManualAddItem : MonoBehaviour, IUse
 {
     private string ItemName;
     private string ItemDescription;
+    private int ItemID;
+
     public ItemGroup itemGroup = ItemGroup.Default;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject ItemMousePrefab;
@@ -26,6 +29,7 @@ public class ManualAddItem : MonoBehaviour, IUse
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         ItemName = Locale.Item[itemGroup][0].Name;
         ItemDescription = Locale.Item[itemGroup][0].Description;
+        ItemID = Locale.Item[itemGroup][0].ID;
     }
     public void Use(GameObject who)
     {
@@ -39,7 +43,7 @@ public class ManualAddItem : MonoBehaviour, IUse
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
-        Inventory.instance.AddItem(new Item(ItemName, 1, ItemDescription, ItemPrefab, ItemMousePrefab));
+        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab));
         if (HasText)
         {
             dialogBox.SetActive(true);
