@@ -2,6 +2,7 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +30,13 @@ public class AddItem : MonoBehaviour, IUse
         ItemDetails = Locale.Item[itemGroup][0].Details;
         ItemID = Locale.Item[itemGroup][0].ID;
     }
+
+    void Start()
+    {
+        if (Inventory.instance.items.Any(item => item.itemName == ItemName))
+            Destroy(gameObject);
+    }
+
     public void Use(GameObject who)
     {
         StartCoroutine(GettingItem());
