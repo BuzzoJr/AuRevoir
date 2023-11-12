@@ -1,3 +1,4 @@
+using Assets.Script.Dialog;
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ public class SceneController : MonoBehaviour
             dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
 
             bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : 120f;
+            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
             float elapsedTime = 0;
 
             while (elapsedTime < delayTime && !clicked)

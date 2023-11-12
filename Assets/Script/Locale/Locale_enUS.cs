@@ -525,6 +525,24 @@ namespace Assets.Script.Locale
                 }
             },
             // Scene 16
+            {
+                TextGroup.BrainMiniGame,
+                new List<TextData>()
+                {
+                    new TextData("Consciousness Extraction"),
+                    new TextData("Zones"),
+                    new TextData("Temporal"),
+                    new TextData("Frontal"),
+                    new TextData("Pariental"),
+                    new TextData("Occipital"),
+                    new TextData("Cerebellum"),
+                    new TextData("Text about Temporal zone"),
+                    new TextData("Text about Frontal zone"),
+                    new TextData("Text about Pariental zone"),
+                    new TextData("Text about Occipital zone"),
+                    new TextData("Text about Cerebellum zone"),
+                }
+            },
             // TODO
         };
 

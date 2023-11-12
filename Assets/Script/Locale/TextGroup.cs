@@ -55,6 +55,7 @@
         ClubDoor,
         ClubDoorUseAccessCard,
         ClubDoorUseFinger,
+        BrainMiniGame,
     }
 
     public enum ItemGroup

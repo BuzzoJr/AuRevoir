@@ -525,6 +525,24 @@ namespace Assets.Script.Locale
                 }
             },
             // Cena 16
+            {
+                TextGroup.BrainMiniGame,
+                new List<TextData>()
+                {
+                    new TextData("Extração de Consciência"),
+                    new TextData("Zonas"),
+                    new TextData("Temporal"),
+                    new TextData("Frontal"),
+                    new TextData("Pariental"),
+                    new TextData("Occipital"),
+                    new TextData("Cerebelo"),
+                    new TextData("Texto sobre a zona Temporal"),
+                    new TextData("Texto sobre a zona Frontal"),
+                    new TextData("Texto sobre a zona Pariental"),
+                    new TextData("Texto sobre a zona Occipital"),
+                    new TextData("Texto sobre a zona Cerebelo"),
+                }
+            },
             // TODO
         };
 
