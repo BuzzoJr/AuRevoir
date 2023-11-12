@@ -5,7 +5,6 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class ManualAddItem : MonoBehaviour, IUse
 {
