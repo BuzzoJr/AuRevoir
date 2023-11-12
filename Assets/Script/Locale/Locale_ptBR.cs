@@ -530,17 +530,18 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Extração de Consciência"),
+                    new TextData("Sair"),
                     new TextData("Zonas"),
                     new TextData("Temporal"),
                     new TextData("Frontal"),
-                    new TextData("Pariental"),
+                    new TextData("Parietal"),
                     new TextData("Occipital"),
                     new TextData("Cerebelo"),
-                    new TextData("Texto sobre a zona Temporal"),
-                    new TextData("Texto sobre a zona Frontal"),
-                    new TextData("Texto sobre a zona Pariental"),
-                    new TextData("Texto sobre a zona Occipital"),
-                    new TextData("Texto sobre a zona Cerebelo"),
+                    new TextData("O lobo temporal é crucial para o processamento de informações auditivas e está intrinsecamente ligado à formação de memórias. Abriga o hipocampo, uma estrutura-chave na consolidação da memória. Além disso, o lobo temporal está associado à compreensão da linguagem e desempenha um papel no reconhecimento de rostos e objetos."),
+                    new TextData("O lobo frontal é frequentemente considerado o local das funções executivas. É responsável pela tomada de decisões, resolução de problemas e controle do comportamento social. Esta área, especialmente o córtex pré-frontal, é fundamental para o desenvolvimento da personalidade, regulação emocional e habilidade de planejar para o futuro."),
+                    new TextData("O lobo parietal está envolvido no processamento de informações sensoriais do ambiente externo, incluindo o tato e a percepção espacial. Ele integra inputs de vários sentidos para criar uma percepção coerente do mundo circundante."),
+                    new TextData("O lobo occipital é principalmente responsável pelo processamento visual. Ele recebe e interpreta sinais dos olhos, permitindo que as pessoas percebam e compreendam o mundo visual."),
+                    new TextData("Embora frequentemente associado à coordenação motora, o cerebelo também desempenha um papel em funções cognitivas. Ele ajuda a ajustar movimentos, equilíbrio e postura. Além disso, o cerebelo está implicado em certos aspectos do processamento da linguagem e contribui para a memória procedural."),
                 }
             },
             // TODO
