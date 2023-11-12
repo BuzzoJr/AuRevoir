@@ -22,12 +22,10 @@ public class BrainMiniGame : MonoBehaviour, IUse
     private readonly List<string> selectOrder = new()
     {
         "FrontalLobeRight",
-        "ParietalLobeLeft",
-        "TemporalLobeRight",
-        "FrontalLobeLeft",
         "OccipitalLobe",
-        "TemporalLobeLeft",
-        "ParietalLobeRight",
+        "TemporalLobe",
+        "FrontalLobeLeft",
+        "ParietalLobe",
         "Cerebellum",
     };
 
@@ -42,7 +40,11 @@ public class BrainMiniGame : MonoBehaviour, IUse
         for (int i = 0; i < menuLabels.Length; i++)
             menuLabels[i].text = Locale.Texts[TextGroup.BrainMenu][i].Text;
 
-        for (int i = 0; i < instructions.transform.childCount; i++)
+        menuLabels = instructions.transform.GetChild(0).GetComponentsInChildren<TMP_Text>();
+        for (int i = 0; i < menuLabels.Length; i++)
+            menuLabels[i].text = Locale.Texts[TextGroup.BrainMenu][i + 1].Text;
+
+        for (int i = 1; i < instructions.transform.childCount; i++)
         {
             TMP_Text instruction = instructions.transform.GetChild(i).GetComponentInChildren<TMP_Text>();
             if (instruction != null)
