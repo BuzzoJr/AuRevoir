@@ -1,16 +1,16 @@
-using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BrainMiniGame : MonoBehaviour, IUse
+public class BrainMiniGame : MonoBehaviour
 {
     public GameObject camMain;
     public GameObject camMiniGame;
     public GameObject canvas;
-    public GameObject brain;
+    public GameObject interactObj;
+    public GameObject player;
     public TMP_Text title;
     public TMP_Text quit;
     public GameObject menus;
@@ -125,27 +125,13 @@ public class BrainMiniGame : MonoBehaviour, IUse
             instructions.transform.GetChild(i).gameObject.SetActive(i == page);
     }
 
-    public void Use(GameObject who)
-    {
-        StartCoroutine(UseBrainMiniGame());
-    }
-
-    IEnumerator UseBrainMiniGame()
-    {
-        PlayerController.navMeshAgent.destination = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
-        canvas.SetActive(true);
-        brain.SetActive(true);
-        camMain.SetActive(false);
-        camMiniGame.SetActive(true);
-    }
-
     public void EndMiniGame()
     {
         camMiniGame.SetActive(false);
         camMain.SetActive(true);
         canvas.SetActive(false);
-        brain.SetActive(false);
+        interactObj.SetActive(true);
+        player.SetActive(true);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 }

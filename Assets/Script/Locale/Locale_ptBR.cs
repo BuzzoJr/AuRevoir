@@ -162,6 +162,13 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "Pode deixar! Eu volto daqui a pouco."),
                 }
             },
+            {
+                TextGroup.LockedDoorOffice,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Devo falar com a chefe antes."),
+                }
+            },
             // Cena 4
             {
                 TextGroup.WallGuard,

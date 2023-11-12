@@ -162,6 +162,13 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "Alright! I'll be back shortly."),
                 }
             },
+            {
+                TextGroup.LockedDoorOffice,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "I should talk to the boss first."),
+                }
+            },
             // Scene 4
             {
                 TextGroup.WallGuard,
