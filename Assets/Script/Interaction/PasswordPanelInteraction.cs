@@ -6,7 +6,7 @@ using UnityEngine;
 public class PasswordPanelInteraction : MonoBehaviour, IUse
 {
     public DoorController door;
-    public Light light;
+    public Light alertLight;
     public GameObject canvas;
     public TMP_Text password;
 
@@ -38,7 +38,7 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
         if (password.text == "#0000")
         {
             door.SetLock(false);
-            light.color = Color.green;
+            alertLight.color = Color.green;
             Destroy(this);
             return;
         }

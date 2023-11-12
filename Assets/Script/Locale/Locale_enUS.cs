@@ -526,25 +526,39 @@ namespace Assets.Script.Locale
             },
             // Scene 16
             {
-                TextGroup.BrainMiniGame,
+                TextGroup.BrainHUD,
                 new List<TextData>()
                 {
                     new TextData("Consciousness Extraction"),
                     new TextData("Quit"),
+                }
+            },
+            {
+                TextGroup.BrainMenu,
+                new List<TextData>()
+                {
                     new TextData("Zones"),
                     new TextData("Temporal"),
                     new TextData("Frontal"),
                     new TextData("Parietal"),
                     new TextData("Occipital"),
                     new TextData("Cerebellum"),
-                    new TextData("The temporal lobe is crucial for processing auditory information and is intricately linked to the formation of memories. It houses the hippocampus, a key structure in memory consolidation. Additionally, the temporal lobe is associated with the comprehension of language and plays a role in the recognition of faces and objects."),
-                    new TextData("The frontal lobe is often considered the seat of executive functions. It is responsible for decision-making, problem-solving, and control of social behavior. This area, particularly the prefrontal cortex, is integral to personality development, emotional regulation, and the ability to plan for the future."),
-                    new TextData("The parietal lobe is involved in processing sensory information from the external environment, including touch and spatial awareness. It integrates inputs from various senses to create a coherent perception of the surrounding world."),
-                    new TextData("The occipital lobe is primarily responsible for visual processing. It receives and interprets signals from the eyes, allowing individuals to perceive and understand the visual world."),
-                    new TextData("While often associated with motor coordination, the cerebellum also plays a role in cognitive functions. It helps fine-tune movements, balance, and posture. Additionally, the cerebellum is implicated in certain aspects of language processing and contributes to procedural memory."),
                 }
             },
-            // TODO
+            {
+                TextGroup.BrainInstructions,
+                new List<TextData>()
+                {
+                    new TextData(""),
+                    new TextData("\tThe temporal lobe is crucial for the processing of auditory information and is intrinsically linked to memory formation. It houses the hippocampus, a key structure in memory consolidation. Additionally, the temporal lobe is associated with language comprehension and plays a role in recognizing faces and objects.\n\n\tFor the extraction process, we should always start with the right frontal lobe and then move to the left shortly after connecting one of the areas of the temporal lobe."),
+                    new TextData("\tThe frontal lobe is often considered the site of executive functions. It is responsible for decision-making, problem-solving, and control of social behavior. This area, especially the prefrontal cortex, is fundamental for personality development, emotional regulation, and the ability to plan for the future.\n\n\tTo correctly extract data, the right temporal lobe should be the third to be activated, while the left one waits for the connection from the occipital lobe."),
+                    new TextData("\tThe parietal lobe is involved in processing sensory information from the external environment, including touch and spatial perception. It integrates inputs from various senses to create a coherent perception of the surrounding world.\n\n\tAfter the right frontal lobe, the left parietal lobe needs to be connected, leaving the right lobe for last."),
+                    new TextData("\tThe occipital lobe is primarily responsible for visual processing. It receives and interprets signals from the eyes, allowing people to perceive and understand the visual world.\n\n\tThe right time to connect the occipital lobe is right after completing all connections of the frontal lobe."),
+                    new TextData("\tAlthough often associated with motor coordination, the cerebellum also plays a role in cognitive functions. It helps adjust movements, balance, and posture. Additionally, the cerebellum is implicated in certain aspects of language processing and contributes to procedural memory.\n\n\tAs the cerebellum deals with cognitive functions, we must leave it for the end."),
+                    new TextData("Select an item from the menu on the side"),
+                    new TextData("Extraction successful!\n\nThe subject's cape is now disposable."),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()

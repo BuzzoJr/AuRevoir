@@ -356,8 +356,8 @@ GameObject:
   - component: {fileID: 80825640}
   - component: {fileID: 80825639}
   m_Layer: 0
-  m_Name: TemporalLobe2
-  m_TagString: Untagged
+  m_Name: TemporalLobeRight
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +375,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 95553804}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &80825639
 SphereCollider:
@@ -472,10 +472,10 @@ Transform:
   - {fileID: 1190024677}
   - {fileID: 833676870}
   - {fileID: 1472906321}
-  - {fileID: 1577984979}
   - {fileID: 80825638}
-  - {fileID: 297722953}
+  - {fileID: 1577984979}
   - {fileID: 1347426442}
+  - {fileID: 297722953}
   - {fileID: 482521571}
   - {fileID: 878562071}
   m_Father: {fileID: 0}
@@ -1831,8 +1831,8 @@ GameObject:
   - component: {fileID: 297722955}
   - component: {fileID: 297722954}
   m_Layer: 0
-  m_Name: ParietalLobe1
-  m_TagString: Untagged
+  m_Name: ParietalLobeLeft
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1850,7 +1850,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 95553804}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &297722954
 SphereCollider:
@@ -3539,7 +3539,7 @@ GameObject:
   - component: {fileID: 482521572}
   m_Layer: 0
   m_Name: OccipitalLobe
-  m_TagString: Untagged
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3637,7 +3637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493105310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3824,20 +3824,8 @@ MonoBehaviour:
   brain: {fileID: 95553803}
   title: {fileID: 1365809257}
   quit: {fileID: 749299513}
-  menus:
-  - {fileID: 1454746894}
-  - {fileID: 909620976}
-  - {fileID: 1301325891}
-  - {fileID: 476569931}
-  - {fileID: 345630380}
-  - {fileID: 285120808}
-  pages:
-  - {fileID: 493105309}
-  - {fileID: 688590401}
-  - {fileID: 1229558709}
-  - {fileID: 770212362}
-  - {fileID: 1104712042}
-  - {fileID: 984512073}
+  menus: {fileID: 1880990832}
+  instructions: {fileID: 1570790457}
 --- !u!4 &604100684
 Transform:
   m_ObjectHideFlags: 0
@@ -5352,8 +5340,8 @@ GameObject:
   - component: {fileID: 833676872}
   - component: {fileID: 833676871}
   m_Layer: 0
-  m_Name: FrontalLobe1
-  m_TagString: Untagged
+  m_Name: FrontalLobeRight
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5450,7 +5438,7 @@ GameObject:
   - component: {fileID: 878562072}
   m_Layer: 0
   m_Name: Cerebellum
-  m_TagString: Untagged
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6328,9 +6316,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The occipital lobe is primarily responsible for visual processing. It receives
-    and interprets signals from the eyes, allowing individuals to perceive and understand
-    the visual world.
+  m_text: "\tThe occipital lobe is primarily responsible for visual processing. It
+    receives and interprets signals from the eyes, allowing people to perceive and
+    understand the visual world.\n\n\tThe right time to connect the occipital lobe
+    is right after completing all connections of the frontal lobe."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
   m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
@@ -6358,17 +6347,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6589,6 +6578,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038841222}
   m_CullTransparentMesh: 1
+--- !u!1 &1045930631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045930632}
+  - component: {fileID: 1045930634}
+  - component: {fileID: 1045930633}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1045930632
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045930631}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2016734070}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 620, y: 220}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1045930633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045930631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Extraction successful, the subject cape is now disposable
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
+  m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 17
+  m_fontSizeBase: 17
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 2
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1045930634
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045930631}
+  m_CullTransparentMesh: 1
 --- !u!1 &1057373491
 GameObject:
   m_ObjectHideFlags: 0
@@ -6773,11 +6898,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The temporal lobe is crucial for processing auditory information and is
-    intricately linked to the formation of memories. It houses the hippocampus, a
+  m_text: "\tThe temporal lobe is crucial for the processing of auditory information
+    and is intrinsically linked to memory formation. It houses the hippocampus, a
     key structure in memory consolidation. Additionally, the temporal lobe is associated
-    with the comprehension of language and plays a role in the recognition of faces
-    and objects.
+    with language comprehension and plays a role in recognizing faces and objects.\n\n\tFor
+    the extraction process, we should always start with the right frontal lobe and
+    then move to the left shortly after connecting one of the areas of the temporal
+    lobe."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
   m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
@@ -6805,17 +6932,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7411,10 +7538,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The frontal lobe is often considered the seat of executive functions. It
-    is responsible for decision-making, problem-solving, and control of social behavior.
-    This area, particularly the prefrontal cortex, is integral to personality development,
-    emotional regulation, and the ability to plan for the future.
+  m_text: "\tThe frontal lobe is often considered the site of executive functions.
+    It is responsible for decision-making, problem-solving, and control of social
+    behavior. This area, especially the prefrontal cortex, is fundamental for personality
+    development, emotional regulation, and the ability to plan for the future.\n\n\tTo
+    correctly extract data, the right temporal lobe should be the third to be activated,
+    while the left one waits for the connection from the occipital lobe."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
   m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
@@ -7442,17 +7571,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7797,8 +7926,8 @@ GameObject:
   - component: {fileID: 1347426444}
   - component: {fileID: 1347426443}
   m_Layer: 0
-  m_Name: ParietalLobe2
-  m_TagString: Untagged
+  m_Name: ParietalLobeRight
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7816,7 +7945,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 95553804}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1347426443
 SphereCollider:
@@ -8016,6 +8145,142 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365809255}
+  m_CullTransparentMesh: 1
+--- !u!1 &1388632195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388632196}
+  - component: {fileID: 1388632198}
+  - component: {fileID: 1388632197}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1388632196
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388632195}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2107547725}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 620, y: 220}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1388632197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388632195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Select an item from the menu on the left to start
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
+  m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 17
+  m_fontSizeBase: 17
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 2
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1388632198
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388632195}
   m_CullTransparentMesh: 1
 --- !u!1001 &1388741407
 PrefabInstance:
@@ -8602,8 +8867,8 @@ GameObject:
   - component: {fileID: 1472906323}
   - component: {fileID: 1472906322}
   m_Layer: 0
-  m_Name: FrontalLobe2
-  m_TagString: Untagged
+  m_Name: FrontalLobeLeft
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9069,7 +9334,7 @@ GameObject:
   - component: {fileID: 1570790460}
   - component: {fileID: 1570790459}
   m_Layer: 5
-  m_Name: Details
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9093,6 +9358,8 @@ RectTransform:
   - {fileID: 770212363}
   - {fileID: 1104712043}
   - {fileID: 984512074}
+  - {fileID: 2107547725}
+  - {fileID: 2016734070}
   m_Father: {fileID: 152929819}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9231,8 +9498,8 @@ GameObject:
   - component: {fileID: 1577984981}
   - component: {fileID: 1577984980}
   m_Layer: 0
-  m_Name: TemporalLobe1
-  m_TagString: Untagged
+  m_Name: TemporalLobeLeft
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9250,7 +9517,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 95553804}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1577984980
 SphereCollider:
@@ -9559,9 +9826,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The parietal lobe is involved in processing sensory information from the
-    external environment, including touch and spatial awareness. It integrates inputs
-    from various senses to create a coherent perception of the surrounding world.
+  m_text: "\tThe parietal lobe is involved in processing sensory information from
+    the external environment, including touch and spatial perception. It integrates
+    inputs from various senses to create a coherent perception of the surrounding
+    world.\n\n\tAfter the right frontal lobe, the left parietal lobe needs to be
+    connected, leaving the right lobe for last."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
   m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
@@ -9589,17 +9858,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -10604,7 +10873,7 @@ GameObject:
   - component: {fileID: 1880990835}
   - component: {fileID: 1880990834}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Menus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11115,10 +11384,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: While often associated with motor coordination, the cerebellum also plays
-    a role in cognitive functions. It helps fine-tune movements, balance, and posture.
-    Additionally, the cerebellum is implicated in certain aspects of language processing
-    and contributes to procedural memory.
+  m_text: "\tAlthough often associated with motor coordination, the cerebellum also
+    plays a role in cognitive functions. It helps adjust movements, balance, and
+    posture. Additionally, the cerebellum is implicated in certain aspects of language
+    processing and contributes to procedural memory.\n\n\tAs the cerebellum deals
+    with cognitive functions, we must leave it for the end."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f637840e0d3f24f97f1f1e3dede87e, type: 2}
   m_sharedMaterial: {fileID: 941485033333413895, guid: f1f637840e0d3f24f97f1f1e3dede87e,
@@ -11146,17 +11416,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -11593,6 +11863,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016673980}
   m_CullTransparentMesh: 1
+--- !u!1 &2016734069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016734070}
+  m_Layer: 5
+  m_Name: Success
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2016734070
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016734069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1045930632}
+  m_Father: {fileID: 1570790458}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2034443026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11799,6 +12106,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2098670648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2107547724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107547725}
+  m_Layer: 5
+  m_Name: Unselected
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2107547725
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107547724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1388632196}
+  m_Father: {fileID: 1570790458}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2113198729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1612404042697151147, guid: 53aa8f57447cd8a4fbce9439150949f4,
