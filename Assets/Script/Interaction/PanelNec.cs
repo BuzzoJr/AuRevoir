@@ -24,11 +24,14 @@ public class PanelNec : MonoBehaviour, IUse
         playerMesh.SetActive(false);
     }
 
-    public void exitPanel() {
+    public void exitPanel(bool finalExit = false) {
         canvasObj.SetActive(false);
         camMain.SetActive(true);
         camPanel.SetActive(false);
-        objInt.SetActive(true);
+
+        if(!finalExit)
+            objInt.SetActive(true);
+
         playerMesh.SetActive(true);
     }
 }

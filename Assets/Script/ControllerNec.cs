@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Script.Interaction;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -9,6 +10,12 @@ public class ControllerNec : MonoBehaviour {
     public GameObject cameraScene;
     public GameObject allBody;
     public GameObject target;
+    public GameObject floorGlass;
+    public GameObject wall;
+    public GameObject panelObj;
+    public GameObject finger;
+    public GameObject[] bodies;
+    public Animator glassDoor;
     public PanelNec panelScrpt;
     public TMP_Text nameTxt;
     public TMP_Text dataTxt;
@@ -16,6 +23,8 @@ public class ControllerNec : MonoBehaviour {
     public TMP_Text causaDesc;
     public TMP_Text localTitle;
     public TMP_Text causaTitle;
+    public Image photoIcon;
+    public Sprite[] photos;
     public float speed = 5f;
     private int pos = 0;
     private bool panelClick;
@@ -29,9 +38,9 @@ public class ControllerNec : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f)) {
+            var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(viewportPos), out RaycastHit raycastHit, 100f)) {
                 if (raycastHit.transform != null) {
                     CurrentClickedGameObject(raycastHit.transform.gameObject);
                 }
@@ -59,6 +68,20 @@ public class ControllerNec : MonoBehaviour {
             }
         }
         else if(gameObject.name == "RedButton") {
+            ILook look = bodies[pos].GetComponentInChildren<ILook>();
+            if (look is not null)
+            {
+                look.Look(null);
+            }
+
+            if(pos == 5) { //Corpo correto
+                glassDoor.SetBool("Open", true);
+                floorGlass.tag = "Floor";
+                wall.SetActive(false);
+                panelObj.SetActive(false);
+                panelScrpt.exitPanel(true);
+                finger.SetActive(true);
+            }
         }
         else if(gameObject.name == "Panel") {
             if(!panelClick) {
@@ -73,7 +96,7 @@ public class ControllerNec : MonoBehaviour {
             panelClick = !panelClick;
         }
         else if(gameObject.name == "Exit") {
-            panelScrpt.exitPanel();
+            panelScrpt.exitPanel(false);
         }
     }
 
@@ -90,5 +113,6 @@ public class ControllerNec : MonoBehaviour {
         dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index+1].Text;
         localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+2].Text;
         causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+3].Text;
+        photoIcon.sprite = photos[pos];
     }
 }

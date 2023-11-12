@@ -25,9 +25,14 @@ public class Inspect : MonoBehaviour, ILook
     IEnumerator CoroutineExample()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
+
+        if(shouldWalk) {
+            PlayerController.navMeshAgent.destination = new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
+
+            yield return null;
+            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+        }
         yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
         dialogBox.SetActive(true);
         foreach (TextData data in Locale.Texts[textGroup])

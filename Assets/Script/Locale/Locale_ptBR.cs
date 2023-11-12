@@ -405,6 +405,35 @@ namespace Assets.Script.Locale
                     new TextData("Queda de 30 andares"),
                 }
             },
+            {
+                TextGroup.MorgueButtonCorrect,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Os dados desse corpo batem com as informações passadas."),
+                }
+            },
+            {
+                TextGroup.MorgueButtonWrong,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Acho que isso não faz sentido..."),
+                }
+            },
+            {
+                TextGroup.MorgueFinger,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "O dedo da vítima caiu de repente, isso pode vir a ser útil."),
+                }
+            },
+            {
+                TextGroup.MorgueCorpseVincent,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Que estranho, o chip não está aqui."),
+                    new TextData(TextType.PlayerThinking, "Preciso investigar mais."),
+                }
+            },
             // Cena 13
             {
                 TextGroup.MafiaOffice,
