@@ -18,7 +18,9 @@ public class SceneController : MonoBehaviour
     private TMP_Text dialogText;
     private void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        if (dialogBox)
+            dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+
         if (playerData.previousScene != null)
         {
             foreach (GameObject spawnPos in spawnPosition)
@@ -45,6 +47,9 @@ public class SceneController : MonoBehaviour
 
     IEnumerator DoFirstTimeAction()
     {
+        if (!dialogBox)
+            yield break;
+
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         dialogBox.SetActive(true);
         foreach (TextData data in Locale.Texts[textGroup])

@@ -76,6 +76,7 @@ namespace Assets.Script.Dialog
                 // Dict = Opções de interação de diálogo
                 if (seq[pos] is Dictionary<int, List<object>> options)
                 {
+                    yield return new WaitUntil(() => !Input.GetMouseButton(0));
                     List<Button> optionButtons = new List<Button>();
                     optionButtons.Add(GameObject.Find("Option1").GetComponent<Button>());
                     optionButtons.Add(GameObject.Find("Option2").GetComponent<Button>());
