@@ -24,7 +24,9 @@ public class AddItem : MonoBehaviour, IUse
 
     private void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        if (dialogBox)
+            dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+
         ItemName = Locale.Item[itemGroup][0].Name;
         ItemDescription = Locale.Item[itemGroup][0].Description;
         ItemDetails = Locale.Item[itemGroup][0].Details;
@@ -50,7 +52,7 @@ public class AddItem : MonoBehaviour, IUse
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
         Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
-        if (HasText)
+        if (HasText && dialogBox)
         {
             dialogBox.SetActive(true);
             foreach (TextData data in Locale.Texts[textGroup])
