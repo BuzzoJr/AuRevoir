@@ -18,6 +18,7 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
 
     IEnumerator UsePanel()
     {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         PlayerController.navMeshAgent.destination = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
@@ -33,6 +34,7 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
 
     private void CheckPassword()
     {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         canvas.SetActive(false);
 
         if (password.text == "#0000")
@@ -52,11 +54,5 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
             AddCharToPassword(c);
         else
             CheckPassword();
-    }
-
-    public void QuitPanel()
-    {
-        canvas.SetActive(false);
-        password.text = "";
     }
 }
