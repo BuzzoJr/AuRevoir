@@ -69,6 +69,10 @@ public class MenuController : MonoBehaviour {
         textContinue.text = Locale.Texts[TextGroup.Menu][2].Text;
     }
 
+    public void Quit() {
+        Application.Quit();
+    }
+
     IEnumerator WaitStartGame() {
         float startVolume = 0.8f;
         float targetVolume = 0f;
