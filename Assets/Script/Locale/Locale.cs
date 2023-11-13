@@ -10,6 +10,11 @@ namespace Assets.Script.Locale
             { Lang.enUS, Locale_enUS.Texts },
             { Lang.ptBR, Locale_ptBR.Texts },
         };
+        public static Dictionary<Lang, Dictionary<ItemGroup, List<ItemData>>> ItemOptions => new()
+        {
+            { Lang.enUS, Locale_enUS.Item },
+            { Lang.ptBR, Locale_ptBR.Item },
+        };
 
         public static Lang Lang { get; set; }
         public static Dictionary<TextGroup, List<TextData>> Texts { get; set; }
@@ -26,6 +31,7 @@ namespace Assets.Script.Locale
         {
             Lang = newLang;
             Texts = Options[newLang];
+            Item = ItemOptions[newLang];
             Debug.Log(Lang.ToString() + " lang loaded!");
         }
     }
