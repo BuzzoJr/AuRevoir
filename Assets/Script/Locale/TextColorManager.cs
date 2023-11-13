@@ -20,4 +20,48 @@ public static class TextColorManager
         { TextType.Robot, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.Beggar, new Color(0.71f, 0.49f, 0.255f, 1f) },
     };
+
+    public static string TextSpeaker(TextType type, string text)
+    {
+        switch (type)
+        {
+            case TextType.PlayerThinking:
+                return "* " + text + " *";
+
+            case TextType.Daughter:
+                return "Julie: " + text;
+
+            case TextType.ExWife:
+                return "Vivian (Ex): " + text;
+
+            case TextType.Boss:
+                return "Béatrice: " + text;
+
+            case TextType.CEO:
+                return "René Revoir: " + text;
+
+            case TextType.Revolutionary:
+                return "Philippe: " + text;
+
+            case TextType.RevolutionaryBrother:
+                return "Vincent: " + text;
+
+            case TextType.NewsAnchor:
+                return (Locale.Lang == Lang.enUS ? "News" : "Jornal") + ": " + text;
+
+            case TextType.Guard:
+                return (Locale.Lang == Lang.enUS ? "Guard" : "Guarda") + ": " + text;
+
+            case TextType.Robot:
+                return (Locale.Lang == Lang.enUS ? "Robot" : "Robô") + ": " + text;
+
+            case TextType.Beggar:
+                return (Locale.Lang == Lang.enUS ? "Beggar" : "Mendigo") + ": " + text;
+
+            case TextType.System:
+            case TextType.Player:
+            default:
+                return text;
+        }
+    }
 }

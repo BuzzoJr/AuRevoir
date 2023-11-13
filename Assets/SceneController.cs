@@ -56,7 +56,7 @@ public class SceneController : MonoBehaviour
         foreach (TextData data in Locale.Texts[textGroup])
         {
             dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
 
             bool clicked = false;
             float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;

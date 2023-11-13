@@ -54,7 +54,7 @@ namespace Assets.Script.Dialog
                 {
                     TextData data = Locale.Locale.Texts[TextGroup][i];
                     DialogText.color = TextColorManager.textTypeColors[data.Type];
-                    DialogText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+                    DialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
 
                     bool clicked = false;
                     float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
@@ -91,7 +91,7 @@ namespace Assets.Script.Dialog
 
                         TextData data = Locale.Locale.Texts[TextGroup][key];
                         buttonText.color = TextColorManager.textTypeColors[data.Type];
-                        buttonText.text = data.Type != TextType.Player ? data.Type + ": " + data.Text : data.Text;
+                        buttonText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
                         interaction += 1;
                     }
 
