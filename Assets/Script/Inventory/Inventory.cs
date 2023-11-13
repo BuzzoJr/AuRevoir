@@ -111,6 +111,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void OpenInventory()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        if (inventoryUI.activeSelf)
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+            currentItem = 0;
+            ClearItems();
+            PopulateCircle();
+            UpdateInfo();
+        }
+    }
+
     private void UpdateInfo()
     {
         foreach (var navText in itemNavigation)
