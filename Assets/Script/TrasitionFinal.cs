@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TrasitionFinal : MonoBehaviour {
     public GameObject anim;
+    public GameObject credits;
+    public GameObject mainCanvas;
+    public float delay = 8.12f;
 
     public void FinalGame() {
         StartCoroutine(NextScene());
@@ -12,7 +15,8 @@ public class TrasitionFinal : MonoBehaviour {
 
     private IEnumerator NextScene() {
         anim.SetActive(true);
-        yield return new WaitForSeconds(8.2f);
-        SceneManager.LoadScene("Credits");
+        yield return new WaitForSeconds(delay);
+        credits.SetActive(true);
+        mainCanvas.SetActive(false);
     }
 }

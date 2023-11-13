@@ -699,7 +699,7 @@ namespace Assets.Script.Locale
                 {
                     new TextData(TextType.Boss, "Look who's back, everything worked out?"),
                     new TextData(TextType.Player, "Yes boss, here it is."),
-                    new TextData(TextType.Player, "CEOs CHIP"),
+                    new TextData(TextType.Player, "CEO CHIP"),
                     new TextData(TextType.Player, "Revolutionary CHIP"),
                 }
             },
@@ -709,6 +709,14 @@ namespace Assets.Script.Locale
                 {
                     new TextData("After Life"),
                     new TextData("Morgue"),
+                }
+            },
+            {
+                TextGroup.Credits,
+                new List<TextData>()
+                {
+                    new TextData("Thank's for playing!"),
+                    new TextData("Made by \r\n\r\nEric Gama Müller\r\nLeonardo Pedroso\r\nOsny Buzzo Junior"),
                 }
             },
         };

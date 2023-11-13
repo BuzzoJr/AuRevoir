@@ -712,6 +712,14 @@ namespace Assets.Script.Locale
                     new TextData("Necroterio"),
                 }
             },
+            {
+                TextGroup.Credits,
+                new List<TextData>()
+                {
+                    new TextData("Obrigado por jogar!"),
+                    new TextData("Feito por \r\n\r\nEric Gama Müller\r\nLeonardo Pedroso\r\nOsny Buzzo Junior"),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()

@@ -71,6 +71,7 @@
         LockedDoorLab,
         LockedDoorLaundry,
         Places,
+        Credits,
     }
 
     public enum ItemGroup
