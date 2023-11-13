@@ -1826,6 +1826,8 @@ GameObject:
   m_Component:
   - component: {fileID: 562618796}
   - component: {fileID: 562618797}
+  - component: {fileID: 562618799}
+  - component: {fileID: 562618798}
   m_Layer: 0
   m_Name: ClubDoor
   m_TagString: Interactable
@@ -1861,6 +1863,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 8.449498, z: 4}
   m_Center: {x: 0, y: -0.78440607, z: 0}
+--- !u!114 &562618798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562618795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06468c64ceeea71478d0941eb800f37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  targetItem1: KeyCard
+  textGroup1: 55
+  targetItem2: Finger
+  textGroup2: 56
+  dialogBox: {fileID: 366102123}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &562618799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562618795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 54
+  dialogBox: {fileID: 366102123}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &605454611
 GameObject:
   m_ObjectHideFlags: 0
