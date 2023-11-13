@@ -704,6 +704,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "CHIP DO REVOLUCIONÁRIO"),
                 }
             },
+            {
+                TextGroup.Places,
+                new List<TextData>()
+                {
+                    new TextData("Paraiso"),
+                    new TextData("Necroterio"),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()

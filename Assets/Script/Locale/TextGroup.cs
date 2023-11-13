@@ -70,6 +70,7 @@
         LabPickUpChips,
         LockedDoorLab,
         LockedDoorLaundry,
+        Places,
     }
 
     public enum ItemGroup
