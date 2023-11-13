@@ -64,6 +64,7 @@
         BrainInstructions,
         LockedDoor,
         LockedDoorOffice,
+        LabDiscussion,
     }
 
     public enum ItemGroup

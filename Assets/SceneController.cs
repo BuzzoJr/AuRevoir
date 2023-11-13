@@ -1,4 +1,5 @@
 using Assets.Script.Dialog;
+using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
@@ -70,6 +71,14 @@ public class SceneController : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
+            if (textGroup == TextGroup.LabDiscussion && data == Locale.Texts[textGroup][6])
+            {
+                var special = GetComponentInChildren<ISpecial>();
+                if (special != null)
+                    special.Special(playerPos.gameObject);
+            }
+
         }
         dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
