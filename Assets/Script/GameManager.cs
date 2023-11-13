@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private AudioSource AudioInstance;
 
+    public AudioClip LavanderiaClip;
+
     private HashSet<string> visitedScenes = new HashSet<string>();
 
     void Awake()
@@ -74,6 +76,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (sceneName == "C8ExteriorLavanderia")
+                AudioInstance.PlayOneShot(LavanderiaClip);
             visitedScenes.Add(sceneName);
             return true;
         }
