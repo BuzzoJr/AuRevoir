@@ -31,6 +31,14 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.LockedDoorLaundry,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Fingerprint lock"),
+                    new TextData(TextType.PlayerThinking, "Unfortunately my finger is not the default password"),
+                }
+            },
+            {
                 TextGroup.Inventory,
                 new List<TextData>()
                 {
