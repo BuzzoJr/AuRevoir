@@ -15,6 +15,7 @@ public class ControllerNec : MonoBehaviour {
     public GameObject panelObj;
     public GameObject finger;
     public GameObject[] bodies;
+    public AudioSource soundDirection, soundRed, soundDoor;
     public Animator glassDoor;
     public PanelNec panelScrpt;
     public TMP_Text nameTxt;
@@ -27,7 +28,7 @@ public class ControllerNec : MonoBehaviour {
     public Sprite[] photos;
     public float speed = 5f;
     private int pos = 0;
-    private bool panelClick;
+    private bool panelClick, delayToMove = true;
 
     void Awake() {
         localTitle.text = Locale.Texts[TextGroup.MorgueHUD][0].Text;
@@ -53,15 +54,17 @@ public class ControllerNec : MonoBehaviour {
     }
 
     public void CurrentClickedGameObject(GameObject gameObject) {
-        if(gameObject.name == "Left") {
+        if(gameObject.name == "Left" && delayToMove) {
             if(pos > 0) {
+                StartCoroutine(DelayMove());
                 MoveBody(5f);
                 pos--;
                 UpdateCorpse(pos);
             }
         }
-        else if(gameObject.name == "Right") {
+        else if(gameObject.name == "Right" && delayToMove) {
             if(pos < 7) {
+                StartCoroutine(DelayMove());
                 MoveBody(-5f);
                 pos++;
                 UpdateCorpse(pos);
@@ -81,7 +84,10 @@ public class ControllerNec : MonoBehaviour {
                 panelObj.SetActive(false);
                 panelScrpt.exitPanel(true);
                 finger.SetActive(true);
+                soundDoor.Play();
             }
+
+            soundRed.Play();
         }
         else if(gameObject.name == "Panel") {
             if(!panelClick) {
@@ -104,6 +110,7 @@ public class ControllerNec : MonoBehaviour {
         Vector3 currentPosition = target.transform.position;
         currentPosition.x += qtd;
         target.transform.position = currentPosition;
+        soundDirection.Play();
     }
 
     void UpdateCorpse(int pos) {
@@ -114,5 +121,11 @@ public class ControllerNec : MonoBehaviour {
         localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+2].Text;
         causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+3].Text;
         photoIcon.sprite = photos[pos];
+    }
+
+    private IEnumerator DelayMove() {
+        delayToMove = false;
+        yield return new WaitForSeconds(2.1f);
+        delayToMove = true;
     }
 }

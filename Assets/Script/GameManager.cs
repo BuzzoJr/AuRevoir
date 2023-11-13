@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
         {
             if (sceneName == "C8ExteriorLavanderia")
                 AudioInstance.PlayOneShot(LavanderiaClip);
+            else if (sceneName == "C12Necroterio")
+                AudioInstance.PlayOneShot(LavanderiaClip);
             visitedScenes.Add(sceneName);
             return true;
         }
