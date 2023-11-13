@@ -6,8 +6,9 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class AddItem : MonoBehaviour, IUse
+public class AddItemEnd : MonoBehaviour, IUse
 {
+    public PlayerData playerData;
     private string ItemName;
     private string ItemDescription;
     private string ItemDetails = null;
@@ -75,6 +76,14 @@ public class AddItem : MonoBehaviour, IUse
                 }
             }
             dialogBox.SetActive(false);
+
+            if (textGroup == TextGroup.LabPickUpChips)
+            {
+                var special = GetComponentInChildren<ISpecial>();
+                if (special != null)
+                    special.Special(gameObject);
+                playerData.EndGame = true;
+            }
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Inventory.instance.PickUpAudio(pickupAudio);

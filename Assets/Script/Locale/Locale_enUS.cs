@@ -777,17 +777,10 @@ namespace Assets.Script.Locale
                 }
             },
             {
-                ItemGroup.Chip_CEO,
+                ItemGroup.Chips,
                 new List<ItemData>()
                 {
-                    new ItemData(13, "CEO Chip", ""),
-                }
-            },
-            {
-                ItemGroup.Chip_Revolutionary,
-                new List<ItemData>()
-                {
-                    new ItemData(14, "Revolutionary Chip", ""),
+                    new ItemData(13, "Chips Au Revoir", ""),
                 }
             },
         };
