@@ -56,7 +56,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "Ok, não se atrase novamente."),
                     new TextData(TextType.Player, "Estou sempre pronto."),
                     new TextData(TextType.Player, "Estou sempre pronto. Pode contar comigo!"),
-                    new TextData(TextType.Boss, "Não venha com gracinha pra cima de mim. O trabalho paga bem, não se atrase denovo. Estou te esperando."),
+                    new TextData(TextType.Boss, "Não venha com gracinha pra cima de mim. O trabalho paga bem, não se atrase de novo. Estou te esperando."),
                     new TextData(TextType.PlayerThinking, "Melhor não me atrasar mesmo. Onde que estão minhas chaves?"),
                 }
             },
@@ -697,7 +697,7 @@ namespace Assets.Script.Locale
                 ItemGroup.Coke,
                 new List<ItemData>()
                 {
-                    new ItemData(1, "Coke", "Lata de refrigerante"),
+                    new ItemData(1, "Coca-Cola", "Lata de refrigerante"),
                 }
             },
             {

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PhoneSpecial : MonoBehaviour, ISpecial
 {
+    public PlayerData playerData;
     private AudioSource audioSource;
     [SerializeField] private AudioClip pickupPhone;
     public AudioClip IntroductionSong;
@@ -27,5 +28,6 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
         audioSource.loop = false;
         audioSource.PlayOneShot(pickupPhone);
         GameManager.Instance.UpdateSong(IntroductionSong);
+        playerData.phoneAwnsered = true;
     }
 }

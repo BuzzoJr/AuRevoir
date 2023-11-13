@@ -49,6 +49,22 @@ public class SceneController : MonoBehaviour
             if (HasText)
                 StartCoroutine(DoFirstTimeAction());
         }
+        else
+        {
+            if (gameObject.scene.name == "C1Bedroom" && playerData.phoneAwnsered)
+            {
+                GameObject phone = GameObject.Find("answering-machine");
+                if (phone != null)
+                {
+                    DialogInteraction dialogInteraction = phone.GetComponent<DialogInteraction>();
+                    AudioSource audio = phone.GetComponent<AudioSource>();
+                    if (dialogInteraction != null)
+                        Destroy(dialogInteraction);
+                    if (audio != null)
+                        Destroy(audio);
+                }
+            }
+        }
     }
 
     IEnumerator DoFirstTimeAction()
