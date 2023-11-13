@@ -147,7 +147,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "Quando entrar você vai procurar por uma lavandeira. O chip deve estar lá."),
                     new TextData(TextType.Boss, "Ou em algum lugar ali perto, porque estamos com problemas de sinal na região."),
                     new TextData(TextType.Boss, "Mas você da um jeito de encontrar. Vou te transferir o mapa com a ultima localização."),
-                    new TextData(TextType.Boss, "Qualquer duvida é só falar comigo."),
+                    new TextData(TextType.Boss, "Qualquer dúvida é só falar comigo."),
                 }
             },
             {
