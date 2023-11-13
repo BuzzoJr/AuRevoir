@@ -672,6 +672,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.LabPickUpChips,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Finally! Here are the chips. One contains the CEO and the other for this crazy revolutionary."),
+                }
+            },
+            {
                 TextGroup.EndScene,
                 new List<TextData>()
                 {

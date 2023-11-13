@@ -67,6 +67,7 @@
         LabDiscussion,
         EndScene,
         Inventory,
+        LabPickUpChips,
     }
 
     public enum ItemGroup
