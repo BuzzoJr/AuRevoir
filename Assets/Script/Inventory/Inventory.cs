@@ -122,6 +122,8 @@ public class Inventory : MonoBehaviour
             PopulateCircle();
             UpdateInfo();
         }
+        else
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     private void UpdateInfo()

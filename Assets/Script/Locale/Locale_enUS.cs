@@ -29,7 +29,7 @@ namespace Assets.Script.Locale
                 {
                     new TextData(TextType.PlayerThinking, "None"),
                     new TextData(TextType.PlayerThinking, "> INVENTORY"),
-                    new TextData(TextType.PlayerThinking, "21/11/2068"),
+                    new TextData(TextType.PlayerThinking, "11/21/2068"),
                     new TextData(TextType.PlayerThinking, "USE ITEM"),
                     new TextData(TextType.PlayerThinking, "INSPECT ITEM"),
                 }

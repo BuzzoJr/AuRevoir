@@ -17,6 +17,7 @@ public class SceneController : MonoBehaviour
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    public AudioSource audioSource = null;
     private void Awake()
     {
         if (dialogBox)
@@ -40,9 +41,13 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.IsFirstTimeInScene(gameObject.scene.name) && HasText)
+        if (GameManager.Instance.IsFirstTimeInScene(gameObject.scene.name))
         {
-            StartCoroutine(DoFirstTimeAction());
+            if (audioSource != null)
+                audioSource.Play();
+
+            if (HasText)
+                StartCoroutine(DoFirstTimeAction());
         }
     }
 

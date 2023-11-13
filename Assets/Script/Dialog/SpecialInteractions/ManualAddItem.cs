@@ -82,6 +82,7 @@ public class ManualAddItem : MonoBehaviour, IUse
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Inventory.instance.PickUpAudio(pickupAudio);
         Key.SetActive(true);
+        Inventory.instance.OpenInventory();
         Destroy(gameObject);
     }
 }
