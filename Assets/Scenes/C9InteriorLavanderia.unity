@@ -1365,6 +1365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkelMesh_Bodyguard_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100154, guid: bdd7a03fd93bf2d4cb6babd63ceabee8, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: bdd7a03fd93bf2d4cb6babd63ceabee8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000029118854
@@ -1846,6 +1850,10 @@ PrefabInstance:
     - target: {fileID: 100154, guid: 6996385895b383749b266464bf872c69, type: 3}
       propertyPath: m_Name
       value: SkelMesh_Bodyguard_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100154, guid: 6996385895b383749b266464bf872c69, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 6996385895b383749b266464bf872c69, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2348,6 +2356,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7675589525231906483, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: locked
@@ -2492,6 +2505,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57154fafa55840749a417cf19c2a772f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &831079017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100154, guid: 6996385895b383749b266464bf872c69,
+    type: 3}
+  m_PrefabInstance: {fileID: 731267005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &831079018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831079017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84784615, y: 0.79648304, z: 1.3800155}
+  m_Center: {x: 0.0760768, y: 1.1650275, z: 0.19000824}
+--- !u!114 &831079019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831079017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1ed9bc54cfa8d49a3531caec5ec211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,6 +3723,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7675589525231906483, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: moveRef
@@ -4151,6 +4203,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1591718740}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1595772471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100154, guid: bdd7a03fd93bf2d4cb6babd63ceabee8,
+    type: 3}
+  m_PrefabInstance: {fileID: 641260502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1595772472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595772471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1ed9bc54cfa8d49a3531caec5ec211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &1595772473
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595772471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91178215, y: 1.7372985, z: 1}
+  m_Center: {x: 0.044108916, y: 0.92799205, z: 0.0000000016745344}
 --- !u!1 &1597565839
 GameObject:
   m_ObjectHideFlags: 0
@@ -4783,6 +4869,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2007104525}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2018335091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100154, guid: 765e2fde8c84f094e99304c6198491ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 2113435110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2018335092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018335091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2025355, y: 1.9568318, z: 0.4819417}
+  m_Center: {x: 0.10126787, y: 0.47841594, z: 0.2590292}
+--- !u!114 &2018335093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018335091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1ed9bc54cfa8d49a3531caec5ec211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &2026789081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,7 +4928,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026789081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5050,6 +5170,10 @@ PrefabInstance:
     - target: {fileID: 100154, guid: 765e2fde8c84f094e99304c6198491ea, type: 3}
       propertyPath: m_Name
       value: SkelMesh_Bodyguard_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100154, guid: 765e2fde8c84f094e99304c6198491ea, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 765e2fde8c84f094e99304c6198491ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5689,9 +5813,11 @@ GameObject:
   - component: {fileID: 1783193716017131011}
   - component: {fileID: 1700781244093510005}
   - component: {fileID: 357034024754887644}
+  - component: {fileID: 1783193716017131013}
+  - component: {fileID: 1783193716017131012}
   m_Layer: 0
   m_Name: Laundry_012
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -6373,9 +6499,11 @@ GameObject:
   - component: {fileID: 8651255237100989024}
   - component: {fileID: 8143065875359340498}
   - component: {fileID: 6040435580061402554}
+  - component: {fileID: 8651255237100989026}
+  - component: {fileID: 8651255237100989025}
   m_Layer: 0
   m_Name: Laundry_011
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -7008,9 +7136,11 @@ GameObject:
   - component: {fileID: 1142203262227781537}
   - component: {fileID: 6043094738871909244}
   - component: {fileID: 1847815649672427388}
+  - component: {fileID: 6043094738871909246}
+  - component: {fileID: 6043094738871909245}
   m_Layer: 0
   m_Name: Laundry
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -7494,9 +7624,11 @@ GameObject:
   - component: {fileID: 4956473402926857860}
   - component: {fileID: 9094315627605348994}
   - component: {fileID: 349426136872973003}
+  - component: {fileID: 9094315627605348996}
+  - component: {fileID: 9094315627605348995}
   m_Layer: 0
   m_Name: Laundry_001
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -8692,9 +8824,11 @@ GameObject:
   - component: {fileID: 6400372005486807037}
   - component: {fileID: 3918876308451076628}
   - component: {fileID: 8213557526505273157}
+  - component: {fileID: 8213557526505273159}
+  - component: {fileID: 8213557526505273158}
   m_Layer: 0
   m_Name: Laundry_013
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -10297,6 +10431,35 @@ Transform:
   m_Father: {fileID: 6540953792423832952}
   m_RootOrder: 111
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1783193716017131012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102527113811246789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &1783193716017131013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102527113811246789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.0102179535, z: 0.0020980565}
 --- !u!23 &1783419881726972103
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12022,9 +12185,11 @@ GameObject:
   - component: {fileID: 401046106949735484}
   - component: {fileID: 1504812496229561528}
   - component: {fileID: 3610442513839821744}
+  - component: {fileID: 3610442513839821746}
+  - component: {fileID: 3610442513839821745}
   m_Layer: 0
   m_Name: Laundry_01_003
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12810,9 +12975,11 @@ GameObject:
   - component: {fileID: 1505757574787225590}
   - component: {fileID: 7811118577129185792}
   - component: {fileID: 2522042335984679540}
+  - component: {fileID: 7811118577129185794}
+  - component: {fileID: 7811118577129185793}
   m_Layer: 0
   m_Name: Laundry_015
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -12943,9 +13110,11 @@ GameObject:
   - component: {fileID: 8914586036363046785}
   - component: {fileID: 7636489773278530832}
   - component: {fileID: 7154069491115520438}
+  - component: {fileID: 8914586036363046787}
+  - component: {fileID: 8914586036363046786}
   m_Layer: 0
   m_Name: Laundry_009
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -13256,9 +13425,11 @@ GameObject:
   - component: {fileID: 9208895254148812050}
   - component: {fileID: 8676590551195438356}
   - component: {fileID: 5730282971039599321}
+  - component: {fileID: 9208895254148812052}
+  - component: {fileID: 9208895254148812051}
   m_Layer: 0
   m_Name: Laundry_01_005
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -13912,6 +14083,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3610442513839821745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543933808451444077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &3610442513839821746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543933808451444077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.010219861, z: 0.0020981757}
 --- !u!23 &3612315386608058901
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13965,9 +14165,11 @@ GameObject:
   - component: {fileID: 399862462571222571}
   - component: {fileID: 3314744207073773827}
   - component: {fileID: 7259332229376539811}
+  - component: {fileID: 7259332229376539813}
+  - component: {fileID: 7259332229376539812}
   m_Layer: 0
   m_Name: Laundry_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -14810,9 +15012,11 @@ GameObject:
   - component: {fileID: 3581745573744553939}
   - component: {fileID: 4312595799131894399}
   - component: {fileID: 8161203973488169439}
+  - component: {fileID: 8161203973488169441}
+  - component: {fileID: 8161203973488169440}
   m_Layer: 0
   m_Name: Laundry_01_001
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -31712,13 +31916,44 @@ GameObject:
   - component: {fileID: 1891901575013146769}
   - component: {fileID: 3197259250851260767}
   - component: {fileID: 2877491921142177740}
+  - component: {fileID: 5791089967840445553}
+  - component: {fileID: 5791089967840445552}
   m_Layer: 0
   m_Name: Laundry_014
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &5791089967840445552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791089967840445551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &5791089967840445553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791089967840445551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.03324686, y: 0.010216998, z: 0.0020987075}
 --- !u!1 &5798584911567657140
 GameObject:
   m_ObjectHideFlags: 0
@@ -31730,9 +31965,11 @@ GameObject:
   - component: {fileID: 1581128197377243682}
   - component: {fileID: 5193335873793318776}
   - component: {fileID: 8950772979543992025}
+  - component: {fileID: 8950772979543992027}
+  - component: {fileID: 8950772979543992026}
   m_Layer: 0
   m_Name: Laundry_008
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -32995,6 +33232,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700404385818970995}
   m_Mesh: {fileID: 7285590948254163115, guid: 0fe71043542cefb4096127b5b83c1f21, type: 3}
+--- !u!114 &6043094738871909245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700404385818970995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &6043094738871909246
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700404385818970995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!1 &6065162375121057598
 GameObject:
   m_ObjectHideFlags: 0
@@ -35887,6 +36153,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7259332229376539812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626843689925146092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &7259332229376539813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626843689925146092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!4 &7261573705526907151
 Transform:
   m_ObjectHideFlags: 0
@@ -36100,6 +36395,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7383347092936862945, guid: 062867a14e093864197201172c795fcc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7383347092936862947, guid: 062867a14e093864197201172c795fcc,
         type: 3}
       propertyPath: m_RootOrder
@@ -36173,9 +36473,11 @@ GameObject:
   - component: {fileID: 1371905906402729729}
   - component: {fileID: 2545209752435483623}
   - component: {fileID: 7893161769997841935}
+  - component: {fileID: 7893161769997841937}
+  - component: {fileID: 7893161769997841936}
   m_Layer: 0
   m_Name: Laundry_010
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -36228,7 +36530,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7400991044717967284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -37124,6 +37426,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3031303261241515149}
   m_Mesh: {fileID: -540531768005203687, guid: 0fe71043542cefb4096127b5b83c1f21, type: 3}
+--- !u!114 &7811118577129185793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031303261241515149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &7811118577129185794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031303261241515149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.0102179535, z: 0.0020979969}
 --- !u!33 &7815028582598573755
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37298,6 +37629,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7893161769997841936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395416313411423398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &7893161769997841937
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395416313411423398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.03324686, y: 0.010217952, z: 0.0020986479}
 --- !u!33 &7907944821022757043
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37765,13 +38125,44 @@ GameObject:
   - component: {fileID: 1500100287890766743}
   - component: {fileID: 7011102237022062198}
   - component: {fileID: 1906189200484534707}
+  - component: {fileID: 8067327712321791419}
+  - component: {fileID: 8067327712321791418}
   m_Layer: 0
   m_Name: Laundry_01_002
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &8067327712321791418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067327712321791417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8067327712321791419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067327712321791417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!23 &8089838652542413489
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38022,6 +38413,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8161203973488169440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000794536485493230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8161203973488169441
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000794536485493230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!4 &8168173338891002377
 Transform:
   m_ObjectHideFlags: 0
@@ -38097,6 +38517,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8213557526505273158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232847280301919700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 29
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8213557526505273159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232847280301919700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.010217477, z: 0.0020983545}
 --- !u!33 &8218959307119264906
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38854,6 +39303,35 @@ Transform:
   m_Father: {fileID: 6540953792423832952}
   m_RootOrder: 110
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8651255237100989025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428984254908485531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8651255237100989026
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428984254908485531}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.010219861, z: 0.0020982353}
 --- !u!4 &8657196736187029575
 Transform:
   m_ObjectHideFlags: 0
@@ -39612,6 +40090,35 @@ Transform:
   m_Father: {fileID: 6540953792423832952}
   m_RootOrder: 108
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8914586036363046786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132769394506366952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8914586036363046787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132769394506366952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.033247814, y: 0.010218905, z: 0.002098469}
 --- !u!4 &8930306294957348763
 Transform:
   m_ObjectHideFlags: 0
@@ -39669,6 +40176,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8950772979543992026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798584911567657140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8950772979543992027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798584911567657140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.03324686, y: 0.010216521, z: 0.0020988267}
 --- !u!4 &8957267140436147946
 Transform:
   m_ObjectHideFlags: 0
@@ -39748,13 +40284,44 @@ GameObject:
   - component: {fileID: 7745492547942484388}
   - component: {fileID: 4378172122922709691}
   - component: {fileID: 7326710920857634695}
+  - component: {fileID: 8991446366908812883}
+  - component: {fileID: 8991446366908812882}
   m_Layer: 0
   m_Name: Laundry_002
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &8991446366908812882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991446366908812881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &8991446366908812883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991446366908812881}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!4 &9001237778631913350
 Transform:
   m_ObjectHideFlags: 0
@@ -40007,6 +40574,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844098087227223371}
   m_Mesh: {fileID: 8794258397467844817, guid: 0fe71043542cefb4096127b5b83c1f21, type: 3}
+--- !u!114 &9094315627605348995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844098087227223371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &9094315627605348996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844098087227223371}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8805156, y: 0.83445776, z: 1.2938607}
+  m_Center: {x: 0.0332478, y: 0.010218903, z: 0.0020985305}
 --- !u!4 &9097620116477963927
 Transform:
   m_ObjectHideFlags: 0
@@ -40223,6 +40819,35 @@ Transform:
   m_Father: {fileID: 6540953792423832952}
   m_RootOrder: 105
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9208895254148812051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224834795778843131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 28
+  dialogBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!65 &9208895254148812052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224834795778843131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.880516, y: 0.83445823, z: 1.2938613}
+  m_Center: {x: 0.03324686, y: 0.010218905, z: 0.0020985287}
 --- !u!4 &9222760735103452602
 Transform:
   m_ObjectHideFlags: 0
