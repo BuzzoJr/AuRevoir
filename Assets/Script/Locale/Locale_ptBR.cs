@@ -659,35 +659,35 @@ namespace Assets.Script.Locale
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData(8, "Documento de Equipamento da Máfia", ""),
+                    new ItemData(8, "Documento de Equipamento da Máfia", "", "Recibo de recebimento de equipamentos de laboratório."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData(9, "Documento de Visitantes da Máfia", ""),
+                    new ItemData(9, "Documento de Visitantes da Máfia", "", "Visitantes frequentes da balada Widow's Wine"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData(10, "Documento de Viciados da Máfia", ""),
+                    new ItemData(10, "Documento de Viciados da Máfia", "", "Documento com a lista de dependentes químicos que devem para a máfia."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData(11, "Documento de Cobaias da Máfia", ""),
+                    new ItemData(11, "Documento de Cobaias da Máfia", "", "Lista de alvos para testes biológicos."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_NewSleave,
                 new List<ItemData>()
                 {
-                    new ItemData(12, "Documento de Novo Escravo da Máfia", ""),
+                    new ItemData(12, "Documento de Novo Escravo da Máfia", "", "Relatório de conclusão de preparo da nova capa do chefe da máfia."),
                 }
             },
             {

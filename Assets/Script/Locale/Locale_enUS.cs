@@ -659,35 +659,35 @@ namespace Assets.Script.Locale
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData(8,  "Mafia Equipment Document", ""),
+                    new ItemData(8,  "Mafia Equipment Document", "", "Laboratory Equipment Collection Receipt."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData(9,  "Mafia Visitors Document", ""),
+                    new ItemData(9,  "Mafia Visitors Document", "", "Frequent visitors to the Widow's Wine club"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData(10, "Mafia Addicts Document", ""),
+                    new ItemData(10, "Mafia Addicts Document", "", "Document with the list of drug addicts who owe to the mafia."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData(11, "Mafia Test Subjects Document", ""),
+                    new ItemData(11, "Mafia Test Subjects Document", "", "Target List for Biological Tests."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_NewSleave,
                 new List<ItemData>()
                 {
-                    new ItemData(12, "Mafia New Sleave Document", ""),
+                    new ItemData(12, "Mafia New Sleave Document", "", "Preparation completion report for the mafia boss's new cover."),
                 }
             },
             {
