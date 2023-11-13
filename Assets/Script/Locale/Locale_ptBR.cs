@@ -24,6 +24,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.LockedDoorLab,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Trancado, preciso de um cartão de acesso"),
+                }
+            },
+            {
                 TextGroup.Inventory,
                 new List<TextData>()
                 {

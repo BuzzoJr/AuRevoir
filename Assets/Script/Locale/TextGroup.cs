@@ -68,6 +68,7 @@
         EndScene,
         Inventory,
         LabPickUpChips,
+        LockedDoorLab,
     }
 
     public enum ItemGroup
