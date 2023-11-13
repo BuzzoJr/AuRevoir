@@ -24,6 +24,17 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.Inventory,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "None"),
+                    new TextData(TextType.PlayerThinking, "> INVENTORY"),
+                    new TextData(TextType.PlayerThinking, "21/11/2068"),
+                    new TextData(TextType.PlayerThinking, "USE ITEM"),
+                    new TextData(TextType.PlayerThinking, "INSPECT ITEM"),
+                }
+            },
+            {
                 TextGroup.Intro,
                 new List<TextData>()
                 {

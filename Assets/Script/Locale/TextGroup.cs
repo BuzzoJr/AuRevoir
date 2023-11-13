@@ -66,6 +66,7 @@
         LockedDoorOffice,
         LabDiscussion,
         EndScene,
+        Inventory,
     }
 
     public enum ItemGroup

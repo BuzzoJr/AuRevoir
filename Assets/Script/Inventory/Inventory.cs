@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+using Assets.Script.Locale;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using Assets.Script.Interaction;
 
 public class Inventory : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private TMP_Text ItemInfo;
     [SerializeField] private TMP_Text ItemDetails;
     [SerializeField] private GameObject ItemDetailsParent;
-    [SerializeField] private Transform itemsParent; 
+    [SerializeField] private Transform itemsParent;
     [SerializeField] private float rotationDuration = 1.0f;
     [SerializeField] private Camera inventoryCam;
     [SerializeField] private GameObject useText;
@@ -41,9 +40,9 @@ public class Inventory : MonoBehaviour
         }
         audioSource = GetComponent<AudioSource>();
         inventoryUI = transform.GetChild(0).gameObject;
-        ItemName.text = "none";
-        ItemInfo.text = "none";
-        ItemDetails.text = "none";
+        ItemName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        ItemInfo.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
         interactItem = useText.GetComponentInChildren<TMP_Text>();
     }
 
@@ -100,7 +99,8 @@ public class Inventory : MonoBehaviour
                                 Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
                                 inventoryUI.SetActive(false);
                                 GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-                            }else if (items[currentItem].itemDetails != null)
+                            }
+                            else if (items[currentItem].itemDetails != null)
                             {
                                 ItemDetailsParent.SetActive(true);
                             }
@@ -127,12 +127,12 @@ public class Inventory : MonoBehaviour
             if (items[currentItem].itemMousePrefab != null)
             {
                 useText.SetActive(true);
-                interactItem.text = "Use Item";
+                interactItem.text = Locale.Texts[TextGroup.Inventory][3].Text;
             }
-            else if(items[currentItem].itemDetails != null)
+            else if (items[currentItem].itemDetails != null)
             {
                 useText.SetActive(true);
-                interactItem.text = "Inspect Item";
+                interactItem.text = Locale.Texts[TextGroup.Inventory][4].Text;
                 ItemDetails.text = items[currentItem].itemDetails;
             }
             else
@@ -209,7 +209,7 @@ public class Inventory : MonoBehaviour
             yield return null;
         }
 
-        itemsParent.rotation = finalRotation; 
+        itemsParent.rotation = finalRotation;
         isRotating = false;
         ChangeItem(angle > 0 ? 1 : -1);
     }
