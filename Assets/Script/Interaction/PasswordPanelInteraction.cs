@@ -9,6 +9,7 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
     public Light alertLight;
     public GameObject canvas;
     public TMP_Text password;
+    public AudioSource click, confirm, wrong;
 
     public void Use(GameObject who)
     {
@@ -28,8 +29,10 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
 
     private void AddCharToPassword(string c)
     {
-        if (password.text.Length < 5)
+        if (password.text.Length < 5) {
             password.text += c;
+            click.Play();
+        }
     }
 
     private void CheckPassword()
@@ -41,8 +44,12 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
         {
             door.SetLock(false);
             alertLight.color = Color.green;
+            confirm.Play();
             Destroy(this);
             return;
+        }
+        else {
+            wrong.Play();
         }
 
         password.text = "";
