@@ -660,6 +660,16 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Revolutionary, "The choice is yours..."),
                 }
             },
+            {
+                TextGroup.EndScene,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Boss, "Look who's back, everything worked out?"),
+                    new TextData(TextType.Player, "Yes boss, here it is."),
+                    new TextData(TextType.Player, "CEOs CHIP"),
+                    new TextData(TextType.Player, "Revolutionary CHIP"),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()

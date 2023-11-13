@@ -33,7 +33,8 @@ public class DoorController : MonoBehaviour
         C13EscritorioMafia,
         C15ExteriorLab,
         C16Laboratory,
-        SampleScene
+        SampleScene,
+        EndScene,
     }
 
     void Start()

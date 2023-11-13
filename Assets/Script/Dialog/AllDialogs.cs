@@ -197,6 +197,30 @@ namespace Assets.Script.Dialog
                     },
                 }
             },
+            {
+                TextGroup.EndScene,
+                new List<object>()
+                {
+                    0, 1,
+                    new Dictionary<int, List<object>>()
+                    {
+                        {
+                            2,
+                            new List<object>()
+                            {
+                                DialogAction.Special,
+                            }
+                        },
+                        {
+                            3,
+                            new List<object>()
+                            {
+                               DialogAction.Special,
+                            }
+                        },
+                    },
+                }
+            },
         };
     }
 }

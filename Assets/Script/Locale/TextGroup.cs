@@ -65,6 +65,7 @@
         LockedDoor,
         LockedDoorOffice,
         LabDiscussion,
+        EndScene,
     }
 
     public enum ItemGroup

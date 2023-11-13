@@ -4,4 +4,5 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public string previousScene;
+    public bool EndGame = false;
 }

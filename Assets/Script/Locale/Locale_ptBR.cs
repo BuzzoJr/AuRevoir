@@ -661,6 +661,16 @@ namespace Assets.Script.Locale
 
                 }
             },
+            {
+                TextGroup.EndScene,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Boss, "Olha quen voltou, deu tudo certo?"),
+                    new TextData(TextType.Player, "Sim chefe, aqui está."),
+                    new TextData(TextType.Player, "CHIP DO CEO"),
+                    new TextData(TextType.Player, "CHIP DO REVOLUCIONÁRIO"),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()
