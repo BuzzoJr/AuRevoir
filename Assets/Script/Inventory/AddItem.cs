@@ -75,6 +75,12 @@ public class AddItem : MonoBehaviour, IUse
                 }
             }
             dialogBox.SetActive(false);
+
+            if(textGroup == TextGroup.LabPickUpChips) {
+                var special = GetComponentInChildren<ISpecial>();
+                if (special != null)
+                    special.Special(gameObject);
+            }
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Inventory.instance.PickUpAudio(pickupAudio);

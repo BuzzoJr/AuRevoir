@@ -11,6 +11,7 @@ public class BrainMiniGame : MonoBehaviour
     public GameObject canvas;
     public GameObject interactObj;
     public GameObject player;
+    public GameObject interactNpc;
     public TMP_Text title;
     public TMP_Text quit;
     public GameObject menus;
@@ -105,6 +106,7 @@ public class BrainMiniGame : MonoBehaviour
     {
         SelectPage(7);
         success = true;
+        interactNpc.SetActive(true);
     }
 
     public void SelectPage(int page)
