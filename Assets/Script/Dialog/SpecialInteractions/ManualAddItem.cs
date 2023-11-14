@@ -38,7 +38,7 @@ public class ManualAddItem : MonoBehaviour, IUse
 
     void Start()
     {
-        if (Inventory.instance.items.Any(item => item.itemName == ItemName))
+        if (Inventory.instance.items.Any(item => item.itemID == ItemID))
             Destroy(gameObject);
     }
 

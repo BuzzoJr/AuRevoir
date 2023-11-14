@@ -22,6 +22,7 @@ public class AddItemEnd : MonoBehaviour, IUse
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    [SerializeField] private DoorController labDoor;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class AddItemEnd : MonoBehaviour, IUse
 
     void Start()
     {
-        if (Inventory.instance.items.Any(item => item.itemName == ItemName))
+        if (Inventory.instance.items.Any(item => item.itemID == ItemID))
             Destroy(gameObject);
     }
 
@@ -83,6 +84,12 @@ public class AddItemEnd : MonoBehaviour, IUse
                 if (special != null)
                     special.Special(gameObject);
                 playerData.EndGame = true;
+                labDoor.locked = false;
+                int itemIndex = Inventory.instance.items.FindIndex(item => item.itemID == 7);
+                if (itemIndex != -1)
+                {
+                    Inventory.instance.items.RemoveAt(itemIndex);
+                }
             }
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
