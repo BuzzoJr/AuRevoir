@@ -16,6 +16,9 @@ public class BrainMiniGame : MonoBehaviour
     public TMP_Text quit;
     public GameObject menus;
     public GameObject instructions;
+    public AudioSource clickAudio;
+    public AudioSource failAudio;
+    public AudioSource successAudio;
 
     private bool success = false;
     private GameObject enlarged;
@@ -79,6 +82,7 @@ public class BrainMiniGame : MonoBehaviour
     {
         if (clicked)
         {
+            clickAudio.Play();
             if (obj.name == selectOrder[selected.Count])
             {
                 selected.Add(obj);
@@ -93,6 +97,7 @@ public class BrainMiniGame : MonoBehaviour
                     s.transform.localScale = Vector3.one * 0.2f;
 
                 selected.Clear();
+                failAudio.Play();
             }
         }
         else if (!selected.Contains(obj))
@@ -107,6 +112,7 @@ public class BrainMiniGame : MonoBehaviour
         SelectPage(7);
         success = true;
         interactNpc.SetActive(true);
+        successAudio.Play();
     }
 
     public void SelectPage(int page)
