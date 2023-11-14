@@ -576,7 +576,7 @@ namespace Assets.Script.Locale
                 TextGroup.ClubDoor,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "A balada está fechada enquanto mas som segue alto?"),
+                    new TextData(TextType.PlayerThinking, "Estranho... A balada está fechada mas som segue alto?"),
                 }
             },
             {
@@ -666,7 +666,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Revolutionary, "Mas fizeram coisas muito piores com meu irmão. Fizeram parecer que ele era um terrorista."),
                     new TextData(TextType.Revolutionary, "René Revoir usou o corpo do meu irmão como seu próprio \"invólucro\" pessoal."),
                     new TextData(TextType.Revolutionary, "Todos pensavam que Vincent Noir tinha se juntado à máfia, mas apenas eu sabia a verdade."),
-                    new TextData(TextType.Player, "Esse nome... Eu vi o corpo dele na morgue."),
+                    new TextData(TextType.Player, "Esse nome... Eu vi o corpo dele no necrotério."),
                     new TextData(TextType.Revolutionary, "Foi a única maneira. Eu tive que fazer isso."),
                     new TextData(TextType.Player, "Você matou seu próprio irmão?"),
                     new TextData(TextType.Revolutionary, "Eu matei René Revoir!"),
@@ -777,42 +777,42 @@ namespace Assets.Script.Locale
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData(8, "Documento de Equipamento da Máfia", "", "Recibo de recebimento de equipamentos de laboratório."),
+                    new ItemData(8, "Recibo de Equipamentos Au Revoir", "Recibo de recebimento de equipamentos de laboratório", "Recibo de recebimento de equipamentos de laboratório da Au Revoir."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData(9, "Documento de Visitantes da Máfia", "", "Visitantes frequentes da balada Widow's Wine"),
+                    new ItemData(9, "Visitantes da Balada", "Visitantes frequentes da balada Snake Pit", "Lista de Visitantes frequentes da balada Snake Pit"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData(10, "Documento de Viciados da Máfia", "", "Documento com a lista de dependentes químicos que devem para a máfia."),
+                    new ItemData(10, "Lista de Viciados Devedores", "Lista de dependentes químicos que devem para a máfia", "Documento com a lista de dependentes químicos que devem para a máfia."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData(11, "Documento de Cobaias da Máfia", "", "Lista de alvos para testes biológicos."),
+                    new ItemData(11, "Cobaias da Máfia", "Lista de alvos para testes biológicos", "Lista de alvos para testes biológicos."),
                 }
             },
             {
-                ItemGroup.Mafia_Doc_NewSleave,
+                ItemGroup.Mafia_Doc_NewSleeve,
                 new List<ItemData>()
                 {
-                    new ItemData(12, "Documento de Novo Escravo da Máfia", "", "Relatório de conclusão de preparo da nova capa do chefe da máfia."),
+                    new ItemData(12, "Relatório de Nova Capa", "Relatório de conclusão de preparo da nova capa", "Relatório de conclusão de preparo da nova capa do chefe da máfia."),
                 }
             },
             {
                 ItemGroup.Chips,
                 new List<ItemData>()
                 {
-                    new ItemData(13, "Chips Au Revoir", ""),
+                    new ItemData(13, "Chips Au Revoir", "Chips do CEO e Revolucionário"),
                 }
             },
         };

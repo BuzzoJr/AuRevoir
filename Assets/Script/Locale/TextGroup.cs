@@ -88,7 +88,7 @@
         Mafia_Doc_Visitors,
         Mafia_Doc_Addicts,
         Mafia_Doc_TestSubjects,
-        Mafia_Doc_NewSleave,
+        Mafia_Doc_NewSleeve,
         Chips,
     }
 }

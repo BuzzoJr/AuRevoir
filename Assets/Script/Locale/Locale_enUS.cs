@@ -528,14 +528,14 @@ namespace Assets.Script.Locale
                 TextGroup.MafiaDocument6,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Psychological effects of frequent cover changes"), // TODO
+                    new TextData(TextType.PlayerThinking, "Psychological effects of frequent sleeve changes"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument7,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Collection of Chief Noir's new cover 3 months before the game date"), // TODO
+                    new TextData(TextType.PlayerThinking, "Collection of Chief Noir's new sleeve 3 months before the game date"), // TODO
                 }
             },
             {
@@ -699,8 +699,8 @@ namespace Assets.Script.Locale
                 {
                     new TextData(TextType.Boss, "Look who's back, everything worked out?"),
                     new TextData(TextType.Player, "Yes boss, here it is."),
-                    new TextData(TextType.Player, "CEO CHIP"),
-                    new TextData(TextType.Player, "Revolutionary CHIP"),
+                    new TextData(TextType.Player, "CEO's CHIP"),
+                    new TextData(TextType.Player, "Revolutionary's CHIP"),
                 }
             },
             {
@@ -776,42 +776,42 @@ namespace Assets.Script.Locale
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData(8,  "Mafia Equipment Document", "", "Laboratory Equipment Collection Receipt."),
+                    new ItemData(8,  "Au Revoir Lab Equipment Receipt", "Laboratory Equipment Collection Receipt.", "Laboratory Equipment Collection Receipt."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData(9,  "Mafia Visitors Document", "", "Frequent visitors to the Widow's Wine club"),
+                    new ItemData(9,  "Club Visitors", "Frequent visitors to the Snake Pit", "Frequent visitors to the Snake Pit"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData(10, "Mafia Addicts Document", "", "Document with the list of drug addicts who owe to the mafia."),
+                    new ItemData(10, "Mafia Addicts Debtors", "List of drug addicts who owe to the mafia.", "Document with the list of drug addicts who owe to the mafia."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData(11, "Mafia Test Subjects Document", "", "Target List for Biological Tests."),
+                    new ItemData(11, "Mafia Test Subjects", "Target List for Biological Tests.", "Target List for Biological Tests."),
                 }
             },
             {
-                ItemGroup.Mafia_Doc_NewSleave,
+                ItemGroup.Mafia_Doc_NewSleeve,
                 new List<ItemData>()
                 {
-                    new ItemData(12, "Mafia New Sleave Document", "", "Preparation completion report for the mafia boss's new cover."),
+                    new ItemData(12, "New sleeve Report", "Report for the mafia boss's new sleeve", "Preparation completion report for the mafia boss's new sleeve."),
                 }
             },
             {
                 ItemGroup.Chips,
                 new List<ItemData>()
                 {
-                    new ItemData(13, "Chips Au Revoir", ""),
+                    new ItemData(13, "Chips Au Revoir", "CEO's and Revolutionary's Chips"),
                 }
             },
         };
