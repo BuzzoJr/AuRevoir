@@ -15,5 +15,7 @@
         Guard,
         Robot,
         Beggar,
+        LabWorker1,
+        LabWorker2,
     }
 }

@@ -72,6 +72,7 @@
         LockedDoorLaundry,
         Places,
         Credits,
+        CutsceneLab,
     }
 
     public enum ItemGroup

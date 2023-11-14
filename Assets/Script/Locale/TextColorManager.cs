@@ -19,6 +19,8 @@ public static class TextColorManager
         { TextType.Guard, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.Robot, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.Beggar, new Color(0.71f, 0.49f, 0.255f, 1f) },
+        { TextType.LabWorker1, new Color(0.78f, 0.08f, 0.08f, 1f) },
+        { TextType.LabWorker2, new Color(0.749f, 0.737f, 0.38f, 1f) },
     };
 
     public static string TextSpeaker(TextType type, string text)

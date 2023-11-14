@@ -545,6 +545,22 @@ namespace Assets.Script.Locale
                     new TextData(TextType.PlayerThinking, "Esse cartão de acesso pode ser importante para entrar em algum lugar."),
                 }
             },
+            {
+                TextGroup.CutsceneLab,
+                new List<TextData>()
+                {
+                    new TextData(TextType.LabWorker1, 5f, "Continuem trabalhando... continuem trabalhando..."),
+                    new TextData(TextType.LabWorker1, 4f, "O que aconteceu com o sujeito número 3?"),
+                    new TextData(TextType.LabWorker2, 4f, "O senhor quer dizer Vincent Noir?"),
+                    new TextData(TextType.LabWorker1, 8f, "Pare de usar nomes! Eles são o sujeito número X a partir do momento em que entram por esta porta."),
+                    new TextData(TextType.LabWorker2, 3f, "Desculpe, senhor."),
+                    new TextData(TextType.LabWorker2, 8f, "O experimento não teve sucesso desta vez e infelizmente o Vin... sujeito número 3 não sobreviveu."),
+                    new TextData(TextType.LabWorker1, 4f, "Novamente? Vocês são todos incompetentes!"),
+                    new TextData(TextType.LabWorker2, 7f, "Eu também tenho boas notícias. O corpo dele é totalmente compatível com o Chefe."),
+                    new TextData(TextType.LabWorker1, 4f, "Ótimo. Prepare a nova \"capa\" para o Chefe."),
+                    new TextData(TextType.LabWorker2, 3f, "Agora mesmo, senhor."),
+                }
+            },
             // Cena 14
             {
                 TextGroup.AlmostAtTheLab,
