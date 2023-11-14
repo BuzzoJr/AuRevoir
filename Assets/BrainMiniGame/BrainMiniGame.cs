@@ -1,5 +1,4 @@
 using Assets.Script.Locale;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +8,7 @@ public class BrainMiniGame : MonoBehaviour
     public GameObject camMain;
     public GameObject camMiniGame;
     public GameObject canvas;
+    public GameObject canvasColision;
     public GameObject interactObj;
     public GameObject player;
     public GameObject interactNpc;
@@ -58,10 +58,7 @@ public class BrainMiniGame : MonoBehaviour
 
     void Update()
     {
-        if (success)
-            return;
-
-        if (enlarged != null)
+        if (!success && enlarged != null)
         {
             if (!selected.Contains(enlarged))
                 enlarged.transform.localScale = Vector3.one * 0.2f;
@@ -73,8 +70,13 @@ public class BrainMiniGame : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(viewportPos), out RaycastHit raycastHit, 100f))
         {
-            if (raycastHit.transform != null && raycastHit.transform.CompareTag("MiniGame"))
-                MiniGameInteractable(raycastHit.transform.gameObject, Input.GetMouseButtonDown(0));
+            if (raycastHit.transform != null)
+            {
+                if (!success && raycastHit.transform.CompareTag("MiniGame"))
+                    MiniGameInteractable(raycastHit.transform.gameObject, Input.GetMouseButtonDown(0));
+                else if (raycastHit.transform.CompareTag("Button") && Input.GetMouseButtonDown(0))
+                    MiniGameUI(raycastHit.transform.gameObject);
+            }
         }
     }
 
@@ -104,6 +106,44 @@ public class BrainMiniGame : MonoBehaviour
         {
             obj.transform.localScale = Vector3.one * 0.3f;
             enlarged = obj;
+        }
+    }
+    public void MiniGameUI(GameObject obj)
+    {
+        if (obj.name == "Quit")
+        {
+            EndMiniGame();
+            return;
+        }
+
+        if (success)
+            return;
+
+        switch (obj.name)
+        {
+            case "Zones":
+                SelectPage(0);
+                return;
+
+            case "Temporal":
+                SelectPage(1);
+                return;
+
+            case "Frontal":
+                SelectPage(2);
+                return;
+
+            case "Parietal":
+                SelectPage(3);
+                return;
+
+            case "Occipital":
+                SelectPage(4);
+                return;
+
+            case "Cerebellum":
+                SelectPage(5);
+                return;
         }
     }
 
@@ -138,6 +178,7 @@ public class BrainMiniGame : MonoBehaviour
         camMiniGame.SetActive(false);
         camMain.SetActive(true);
         canvas.SetActive(false);
+        canvasColision.SetActive(false);
         interactObj.SetActive(true);
         player.SetActive(true);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);

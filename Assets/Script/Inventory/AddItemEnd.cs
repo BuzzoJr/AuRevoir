@@ -84,7 +84,7 @@ public class AddItemEnd : MonoBehaviour, IUse
                 if (special != null)
                     special.Special(gameObject);
                 playerData.EndGame = true;
-                labDoor.locked = false;
+                labDoor.SetLock(false);
                 int itemIndex = Inventory.instance.items.FindIndex(item => item.itemID == 7);
                 if (itemIndex != -1)
                 {

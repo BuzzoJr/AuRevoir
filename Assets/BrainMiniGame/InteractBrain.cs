@@ -1,8 +1,5 @@
 using Assets.Script.Interaction;
-using Assets.Script.Locale;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class InteractBrain : MonoBehaviour, IUse
@@ -10,6 +7,7 @@ public class InteractBrain : MonoBehaviour, IUse
     public GameObject camMain;
     public GameObject camMiniGame;
     public GameObject canvas;
+    public GameObject canvasColision;
     public GameObject player;
 
     public void Use(GameObject who)
@@ -25,6 +23,7 @@ public class InteractBrain : MonoBehaviour, IUse
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         player.SetActive(false);
         canvas.SetActive(true);
+        canvasColision.SetActive(true);
         camMain.SetActive(false);
         camMiniGame.SetActive(true);
         gameObject.SetActive(false);
