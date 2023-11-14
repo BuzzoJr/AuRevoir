@@ -7129,6 +7129,7 @@ MonoBehaviour:
   camMain: {fileID: 1215200392}
   camMiniGame: {fileID: 5367863950162797811}
   canvas: {fileID: 6637764055673078151}
+  canvasColision: {fileID: 0}
   player: {fileID: 0}
 --- !u!65 &1061436583
 BoxCollider:
@@ -17235,6 +17236,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontSize
+      value: 60.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9774493
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.53207546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066822006, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294965640
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396857536, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8862745
+      objectReference: {fileID: 0}
     - target: {fileID: 4357632719592448451, guid: 17868ca8f286bc54b81104eb68ba8cc3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -22438,6 +22471,7 @@ MonoBehaviour:
   camMain: {fileID: 1215200392}
   camMiniGame: {fileID: 5367863950162797811}
   canvas: {fileID: 6637764055673078151}
+  canvasColision: {fileID: 0}
   interactObj: {fileID: 1061436580}
   player: {fileID: 0}
   interactNpc: {fileID: 1729389262}
@@ -22445,6 +22479,9 @@ MonoBehaviour:
   quit: {fileID: 6637764056773003207}
   menus: {fileID: 6637764056163501198}
   instructions: {fileID: 6637764056520768711}
+  clickAudio: {fileID: 0}
+  failAudio: {fileID: 0}
+  successAudio: {fileID: 0}
 --- !u!222 &6637764056997511796
 CanvasRenderer:
   m_ObjectHideFlags: 0
