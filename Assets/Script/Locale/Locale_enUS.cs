@@ -552,7 +552,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.LabWorker1, 5f, "Keep working... keep working..."),
                     new TextData(TextType.LabWorker1, 4f, "What happened to subject number 3?"),
                     new TextData(TextType.LabWorker2, 4f, "Do you mean Vincent Noir, sir?"),
-                    new TextData(TextType.LabWorker1, 8f, "Stop using names! They are subject number X from the momento they entered this door."),
+                    new TextData(TextType.LabWorker1, 8f, "Stop using names! They are subject number X from the moment they entered this door."),
                     new TextData(TextType.LabWorker2, 3f, "Sorry, sir."),
                     new TextData(TextType.LabWorker2, 8f, "The experiment was unsuccessful this time and unfortunetly Vin... subject number 3 didn't survived."),
                     new TextData(TextType.LabWorker1, 4f, "Again? You are all incompetent!"),
