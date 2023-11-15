@@ -2283,7 +2283,7 @@ GameObject:
   - component: {fileID: 823369440}
   - component: {fileID: 823369439}
   m_Layer: 5
-  m_Name: DialogText_1
+  m_Name: DialogText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4081,7 +4081,6 @@ MonoBehaviour:
   mainCanvas: {fileID: 842896084}
   allInteract: {fileID: 255231892}
   delay: 8.7
-  finalDecision: {fileID: 823369439}
 --- !u!224 &998314097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6570,8 +6569,9 @@ GameObject:
   - component: {fileID: 2071835612}
   - component: {fileID: 2071835614}
   - component: {fileID: 2071835613}
+  - component: {fileID: 2071835615}
   m_Layer: 5
-  m_Name: DialogText
+  m_Name: FinalDecisionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6697,6 +6697,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071835611}
   m_CullTransparentMesh: 1
+--- !u!114 &2071835615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071835611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cca5352b80d3a4ab978998c0c4437c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textGroup: 73
+  index: 0
 --- !u!4 &2081329695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7383347092936862947, guid: 062867a14e093864197201172c795fcc,
