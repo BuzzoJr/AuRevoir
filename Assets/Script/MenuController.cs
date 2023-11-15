@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     public TMP_Text textIntro, textPlay, textQuit, textContinue;
     public float timeFade;
     public AudioSource menuSong;
+    public Color c1, c2;
     private bool btnPressed = false;
 
     void Awake()
@@ -20,15 +21,9 @@ public class MenuController : MonoBehaviour
         if (PlayerPrefs.HasKey("Language"))
         {
             if (PlayerPrefs.GetString("Language") == "PTBR")
-            {
-                brBtn.interactable = false;
-                enBtn.interactable = true;
                 ToPtBr();
-            }
             else if (PlayerPrefs.GetString("Language") == "ENG")
-            {
                 ToEnUs();
-            }
         }
         else
         {
@@ -40,6 +35,17 @@ public class MenuController : MonoBehaviour
     {
         PlayerPrefs.SetString("Language", "PTBR");
         Locale.LoadLang(Lang.ptBR);
+        brBtn.interactable = false;
+        enBtn.interactable = true;
+
+        ColorBlock cb = brBtn.colors;
+        cb.disabledColor = c2;
+        brBtn.colors = cb;
+
+        ColorBlock cb2 = enBtn.colors;
+        cb2.disabledColor = c1;
+        enBtn.colors = cb2;
+
         ChangeTxt();
     }
 
@@ -47,6 +53,17 @@ public class MenuController : MonoBehaviour
     {
         PlayerPrefs.SetString("Language", "ENG");
         Locale.LoadLang(Lang.enUS);
+        brBtn.interactable = true;
+        enBtn.interactable = false;
+
+        ColorBlock cb = brBtn.colors;
+        cb.disabledColor = c1;
+        brBtn.colors = cb;
+
+        ColorBlock cb2 = enBtn.colors;
+        cb2.disabledColor = c2;
+        enBtn.colors = cb2;
+
         ChangeTxt();
     }
 
