@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public string previousScene;
+    public bool laundryVisited = false;
+    public bool cutsceneWatched = false;
     public bool phoneAwnsered = false;
     public bool EndGame = false;
 }

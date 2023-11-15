@@ -546,6 +546,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.CutsceneNotWatched,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "A better look at that computer before leaving might be a good idea."),
+                }
+            },
+            {
                 TextGroup.CutsceneLab,
                 new List<TextData>()
                 {
@@ -665,11 +672,11 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Revolutionary, "Just to tell you a little bit more. Curious?"),
                     new TextData(TextType.Player, "Why should I be curious? I'm just doing my job."),
                     new TextData(TextType.Player, "I just need to get out of here. With the chip."),
-                    new TextData(TextType.Revolutionary, "So you don't whos consciousness is within this chip!"),
+                    new TextData(TextType.Revolutionary, "So you don't know whose consciousness is within this chip!"),
                     new TextData(TextType.Player, "I was told not to question and I cannot afford a failure at thie job. Not today."),
                     new TextData(TextType.Revolutionary, "You are in a much bigger problem than failing your simple job, Sentinel!"),
                     new TextData(TextType.Revolutionary, "This little chip contains the great mind of a terrorist!"),
-                    new TextData(TextType.Revolutionary, "A terrorist who took my brother's body and used as a meer \"sleeve\"."),
+                    new TextData(TextType.Revolutionary, "A terrorist who took my brother's body and used as a mere \"sleeve\"."),
                     new TextData(TextType.Revolutionary, "Have you ever heard of the name René Revoir?"),
                     new TextData(TextType.Player, "The only René Revoir I know exists is the CEO of Au Revoir, but nothing related to this place."),
                     new TextData(TextType.Revolutionary, "You are both correct and incorrect my friend."),

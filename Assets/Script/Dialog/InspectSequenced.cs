@@ -16,6 +16,7 @@ public class InspectSequenced : MonoBehaviour, ILook
     void Awake()
     {
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        StaticSequences.laundryCorpses = 0;
     }
 
     void ILook.Look(GameObject who)

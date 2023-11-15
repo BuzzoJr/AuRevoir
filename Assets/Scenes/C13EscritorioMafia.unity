@@ -400,6 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videocanvas: {fileID: 1041765054}
   videoPlayer: {fileID: 1041765056}
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  door: {fileID: 2000383536}
 --- !u!65 &97804228
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3192,8 +3194,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
       propertyPath: moveRef
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 1248431562}
+    - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: textGroup
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -4218,6 +4235,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968840794}
   m_Mesh: {fileID: 3730132161682731333, guid: 0fe71043542cefb4096127b5b83c1f21, type: 3}
+--- !u!114 &2000383536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1526430434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57154fafa55840749a417cf19c2a772f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2062322457
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,14 +1,17 @@
 using Assets.Script.Interaction;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
 public class CutscenePlayer : MonoBehaviour, ILook
 {
+    public bool shouldWalk = true;
+    [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
     public GameObject videocanvas;
     public VideoPlayer videoPlayer;
+    public PlayerData playerData;
+    public DoorController door;
+
     public void Look(GameObject who)
     {
         StartCoroutine(PlayVideo());
@@ -18,10 +21,18 @@ public class CutscenePlayer : MonoBehaviour, ILook
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
+        if (shouldWalk)
+        {
+            PlayerController.navMeshAgent.destination = new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
+
+            yield return null;
+            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+        }
+
         videocanvas.SetActive(true);
         videoPlayer.Prepare();
 
-        while(!videoPlayer.isPrepared)
+        while (!videoPlayer.isPrepared)
         {
             yield return null;
         }
@@ -32,19 +43,24 @@ public class CutscenePlayer : MonoBehaviour, ILook
         {
             yield return null;
         }
+
         videocanvas.SetActive(false);
+
+        playerData.cutsceneWatched = true;
+        door.SetLock(false);
+
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

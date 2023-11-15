@@ -170,9 +170,9 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "Tivemos problema com o remédio da Julie de novo. Preciso mesmo."),
                     new TextData(TextType.Boss, "Então sabe o que fazer."),
                     new TextData(TextType.Boss, "Tenta convencer um guarda ou qualquer coisa assim."),
-                    new TextData(TextType.Boss, "Quando entrar você vai procurar por uma lavandeira. O chip deve estar lá."),
+                    new TextData(TextType.Boss, "Quando entrar você vai procurar por uma lavanderia. O chip deve estar lá."),
                     new TextData(TextType.Boss, "Ou em algum lugar ali perto, porque estamos com problemas de sinal na região."),
-                    new TextData(TextType.Boss, "Mas você da um jeito de encontrar. Vou te transferir o mapa com a ultima localização."),
+                    new TextData(TextType.Boss, "Mas você da um jeito de encontrar. Vou te transferir o mapa com a última localização."),
                     new TextData(TextType.Boss, "Qualquer dúvida é só falar comigo."),
                 }
             },
@@ -296,7 +296,7 @@ namespace Assets.Script.Locale
                 TextGroup.LaundryStreet,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Uma lavandeira… aqui deve ser o lugar."),
+                    new TextData(TextType.PlayerThinking, "Uma lavanderia… aqui deve ser o lugar."),
                 }
             },
             {
@@ -367,7 +367,7 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Player, "Ei, você!"),
-                    new TextData(TextType.Beggar, "O que você quer? Não quero seu dinheiro?"),
+                    new TextData(TextType.Beggar, "O que você quer? Não quero seu dinheiro."),
                     new TextData(TextType.Player, "Onde fica a lavanderia?"),
                     new TextData(TextType.Player, "Pode me dizer onde fica a lavanderia?"),
                     new TextData(TextType.Beggar, "Ah, você é só mais um maluco. Ou é cego! Você veio de lá."),
@@ -514,7 +514,7 @@ namespace Assets.Script.Locale
                 TextGroup.MafiaDocument4,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Documento sobre como gerir laboratorio de chips"), // TODO
+                    new TextData(TextType.PlayerThinking, "Documento sobre como gerir laboratório de chips"), // TODO
                 }
             },
             {
@@ -543,6 +543,13 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.PlayerThinking, "Esse cartão de acesso pode ser importante para entrar em algum lugar."),
+                }
+            },
+            {
+                TextGroup.CutsceneNotWatched,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PlayerThinking, "Melhor eu dar uma olhada naquele computador antes de sair."),
                 }
             },
             {

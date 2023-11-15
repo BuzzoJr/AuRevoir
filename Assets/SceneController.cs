@@ -37,6 +37,9 @@ public class SceneController : MonoBehaviour
             }
         }
         playerData.previousScene = SceneManager.GetActiveScene().name;
+
+        if (playerData.previousScene == "C9InteriorLavanderia")
+            playerData.laundryVisited = true;
     }
 
     private void Start()

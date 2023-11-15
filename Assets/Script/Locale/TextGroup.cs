@@ -73,6 +73,7 @@
         Places,
         Credits,
         CutsceneLab,
+        CutsceneNotWatched,
     }
 
     public enum ItemGroup
