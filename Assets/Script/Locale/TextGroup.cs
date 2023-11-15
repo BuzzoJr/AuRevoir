@@ -74,6 +74,7 @@
         Credits,
         CutsceneLab,
         CutsceneNotWatched,
+        LaundrySign,
     }
 
     public enum ItemGroup

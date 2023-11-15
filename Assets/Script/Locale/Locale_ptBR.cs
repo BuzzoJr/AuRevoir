@@ -300,6 +300,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.LaundrySign,
+                new List<TextData>()
+                {
+                    new TextData("Lavanderia"),
+                }
+            },
+            {
                 TextGroup.BloodMarks,
                 new List<TextData>()
                 {
