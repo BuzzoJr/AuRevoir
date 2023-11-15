@@ -75,6 +75,7 @@
         CutsceneLab,
         CutsceneNotWatched,
         LaundrySign,
+        FinalDecision,
     }
 
     public enum ItemGroup

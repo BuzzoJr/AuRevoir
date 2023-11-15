@@ -726,6 +726,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.FinalDecision,
+                new List<TextData>()
+                {
+                    new TextData("Decisão final:\nQual chip você vai entregar?"),
+                }
+            },
+            {
                 TextGroup.EndScene,
                 new List<TextData>()
                 {
@@ -748,7 +755,7 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Obrigado por jogar!"),
-                    new TextData("Feito por \r\n\r\nEric Gama Müller\r\nLeonardo Pedroso\r\nOsny Buzzo Junior"),
+                    new TextData("Feito por \r\n\r\nEric Gama Müller\r\nLeonardo André Pedroso\r\nOsny Buzzo Junior"),
                 }
             },
         };

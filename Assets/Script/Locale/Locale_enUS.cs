@@ -725,6 +725,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.FinalDecision,
+                new List<TextData>()
+                {
+                    new TextData("Final decision:\nWhich Chip will you deliver?"),
+                }
+            },
+            {
                 TextGroup.EndScene,
                 new List<TextData>()
                 {
