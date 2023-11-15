@@ -268,17 +268,17 @@ namespace Assets.Script.Locale
                 TextGroup.Alley,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Beggar, "Can you spare some change?"),
+                    new TextData(TextType.RevolutionaryHidden, "Can you spare some change?"),
                 }
             },
             {
                 TextGroup.DirectionsToLaundry,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Beggar, "I've never seen you around here... Are you here to stir up more trouble?"),
+                    new TextData(TextType.RevolutionaryHidden, "I've never seen you around here... Are you here to stir up more trouble?"),
                     new TextData(TextType.Player, "No, I'm looking for a Laundry."),
-                    new TextData(TextType.Beggar, "You're right next to it."),
-                    new TextData(TextType.Beggar, "I just don't think you'll want to wash your clothes there."),
+                    new TextData(TextType.RevolutionaryHidden, "You're right next to it."),
+                    new TextData(TextType.RevolutionaryHidden, "I just don't think you'll want to wash your clothes there."),
                     new TextData(TextType.Player, "Thank you."),
                 }
             },
@@ -287,9 +287,9 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Player, "Have you seen anyone carrying a body around here?"),
-                    new TextData(TextType.Beggar, "A body? Have you thought about checking the morgue?"),
+                    new TextData(TextType.RevolutionaryHidden, "A body? Have you thought about checking the morgue?"),
                     new TextData(TextType.Player, "Good idea! Thank you."),
-                    new TextData(TextType.Beggar, "Follow this street, and you'll find what you're looking for."),
+                    new TextData(TextType.RevolutionaryHidden, "Follow this street, and you'll find what you're looking for."),
                 }
             },
             // Scene 8

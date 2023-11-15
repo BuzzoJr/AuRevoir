@@ -17,5 +17,6 @@
         Beggar,
         LabWorker1,
         LabWorker2,
+        RevolutionaryHidden,
     }
 }

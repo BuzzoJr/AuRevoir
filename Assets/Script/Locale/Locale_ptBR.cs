@@ -268,17 +268,17 @@ namespace Assets.Script.Locale
                 TextGroup.Alley,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Beggar, "Tem um trocado?"),
+                    new TextData(TextType.RevolutionaryHidden, "Tem um trocado?"),
                 }
             },
             {
                 TextGroup.DirectionsToLaundry,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Beggar, "Eu nunca te vi por aqui... Você veio criar mais confusão?"),
+                    new TextData(TextType.RevolutionaryHidden, "Eu nunca te vi por aqui... Você veio criar mais confusão?"),
                     new TextData(TextType.Player, "Não, estou procurando uma Lavanderia."),
-                    new TextData(TextType.Beggar, "Você ta do lado dela."),
-                    new TextData(TextType.Beggar, "Só acho que você não vai querer lavar suas roupas nela."),
+                    new TextData(TextType.RevolutionaryHidden, "Você ta do lado dela."),
+                    new TextData(TextType.RevolutionaryHidden, "Só acho que você não vai querer lavar suas roupas nela."),
                     new TextData(TextType.Player, "Obrigado."),
                 }
             },
@@ -287,9 +287,9 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Player, "Você viu alguem carregando um corpo por aqui?"),
-                    new TextData(TextType.Beggar, "Corpo? Você já pensou em olhar no necrotério?"),
+                    new TextData(TextType.RevolutionaryHidden, "Corpo? Você já pensou em olhar no necrotério?"),
                     new TextData(TextType.Player, "Boa ideia! Obrigado."),
-                    new TextData(TextType.Beggar, "Segue essa rua e você vai achar o que procura."),
+                    new TextData(TextType.RevolutionaryHidden, "Segue essa rua e você vai achar o que procura."),
                 }
             },
             // Cena 8

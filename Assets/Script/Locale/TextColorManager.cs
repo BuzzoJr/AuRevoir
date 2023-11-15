@@ -21,6 +21,7 @@ public static class TextColorManager
         { TextType.Beggar, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.LabWorker2, new Color(1f, 0.32f, 0.84f, 1f) },
         { TextType.LabWorker1, new Color(0.532f, 0.977f, 1f, 1f) },
+        { TextType.RevolutionaryHidden, new Color(0.404f, 0.624f, 0.631f, 1f) },
     };
 
     public static string TextSpeaker(TextType type, string text)
@@ -58,6 +59,9 @@ public static class TextColorManager
                 return (Locale.Lang == Lang.enUS ? "Robot" : "Robô") + ": " + text;
 
             case TextType.Beggar:
+                return (Locale.Lang == Lang.enUS ? "Beggar" : "Mendigo") + ": " + text;
+
+            case TextType.RevolutionaryHidden:
                 return (Locale.Lang == Lang.enUS ? "Beggar" : "Mendigo") + ": " + text;
 
             case TextType.System:
