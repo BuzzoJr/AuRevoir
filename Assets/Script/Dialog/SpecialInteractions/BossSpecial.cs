@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
+using System.Collections;
 using UnityEngine;
 
 public class BossSpecial : MonoBehaviour, ISpecial
 {
+    public PlayerData playerData;
     [SerializeField] private DoorController door;
     [SerializeField] private GameObject rainObject;
 
@@ -14,6 +13,16 @@ public class BossSpecial : MonoBehaviour, ISpecial
     private AudioSource rainSound;
     public float duration = 20f;
     private ParticleSystem.EmissionModule rainEmission; // To modify the emission rate
+
+    void Awake()
+    {
+        if (playerData.missonReceived)
+        {
+            GetComponent<DialogInteraction>().textGroup = TextGroup.BossMoreInfo;
+            door.locked = false;
+        }
+    }
+
     public void Special(GameObject who)
     {
         GetComponent<DialogInteraction>().textGroup = TextGroup.BossMoreInfo;
@@ -33,6 +42,7 @@ public class BossSpecial : MonoBehaviour, ISpecial
         // Start the coroutine to change the rain intensity and sound volume
         StartCoroutine(ChangeRainIntensityAndSound());
         door.locked = false;
+        playerData.missonReceived = true;
     }
 
     IEnumerator ChangeRainIntensityAndSound()

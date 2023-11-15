@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    public PlayerData playerData;
     public Animator animTextIntro;
     public Button brBtn, enBtn;
     public TMP_Text textIntro, textPlay, textQuit, textContinue;
@@ -56,6 +57,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
+        playerData.ResetData();
         StartCoroutine(WaitStartGame());
     }
 
