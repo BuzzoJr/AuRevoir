@@ -94,6 +94,7 @@ public class AddItemEnd : MonoBehaviour, IUse
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Inventory.instance.PickUpAudio(pickupAudio);
+        Inventory.instance.OpenInventory();
         Destroy(gameObject);
     }
 }
