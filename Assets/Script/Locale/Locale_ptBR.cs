@@ -172,7 +172,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "Tenta convencer um guarda ou qualquer coisa assim."),
                     new TextData(TextType.Boss, "Quando entrar você vai procurar por uma lavanderia. O chip deve estar lá."),
                     new TextData(TextType.Boss, "Ou em algum lugar ali perto, porque estamos com problemas de sinal na região."),
-                    new TextData(TextType.Boss, "Mas você da um jeito de encontrar. Vou te transferir o mapa com a última localização."),
+                    new TextData(TextType.Boss, "Mas você dá um jeito de encontrar. Vou te transferir o mapa com a última localização."),
                     new TextData(TextType.Boss, "Qualquer dúvida é só falar comigo."),
                 }
             },
@@ -663,7 +663,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Revolutionary, "Você está procurando por algum tipo de chip? Talvez como este em minha mão?"),
                     new TextData(TextType.Player, "O quê? Por que você... ?"),
                     // Special - Fechar a porta
-                    new TextData(TextType.Revolutionary, "Peguei você, Sentinel!"),
+                    new TextData(TextType.Revolutionary, "Peguei você, Sentinela!"),
                     new TextData(TextType.Player, "Dê o chip e me deixe sair! AGORA!"),
                     new TextData(TextType.Revolutionary, "Desculpe, amigo, mas não vou deixar você sair agora."),
                     new TextData(TextType.Revolutionary, "E não pense em me tirar daqui, porque esta cápsula de experimento é resistente."),
@@ -674,7 +674,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Player, "Eu só preciso sair daqui. Com o chip."),
                     new TextData(TextType.Revolutionary, "Então você não sabe de quem é a consciência dentro deste chip!"),
                     new TextData(TextType.Player, "Me disseram para não questionar e eu não posso me dar ao luxo de falhar neste trabalho. Não hoje."),
-                    new TextData(TextType.Revolutionary, "Você está em um problema muito maior do que falhar em seu trabalho simples, Sentinel!"),
+                    new TextData(TextType.Revolutionary, "Você está em um problema muito maior do que falhar em seu trabalho simples, Sentinela!"),
                     new TextData(TextType.Revolutionary, "Esse pequeno chip contém a grande mente de um terrorista!"),
                     new TextData(TextType.Revolutionary, "Um terrorista que pegou o corpo do meu irmão e usou como um simples \"invólucro\"."),
                     new TextData(TextType.Revolutionary, "Você já ouviu falar no nome René Revoir?"),
