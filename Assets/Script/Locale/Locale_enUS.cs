@@ -42,11 +42,12 @@ namespace Assets.Script.Locale
                 TextGroup.Inventory,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "None"),
-                    new TextData(TextType.PlayerThinking, "> INVENTORY"),
-                    new TextData(TextType.PlayerThinking, "11/21/2068"),
-                    new TextData(TextType.PlayerThinking, "USE ITEM"),
-                    new TextData(TextType.PlayerThinking, "INSPECT ITEM"),
+                    new TextData("None"),
+                    new TextData("> INVENTORY"),
+                    new TextData("11/21/2068"),
+                    new TextData("USE ITEM"),
+                    new TextData("INSPECT ITEM"),
+                    new TextData("Fechar"),
                 }
             },
             {
