@@ -51,7 +51,6 @@ public class AddItem : MonoBehaviour, IUse
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
-        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
         if (HasText && dialogBox)
         {
             dialogBox.SetActive(true);
@@ -77,8 +76,8 @@ public class AddItem : MonoBehaviour, IUse
             dialogBox.SetActive(false);
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
         Inventory.instance.PickUpAudio(pickupAudio);
-        Inventory.instance.OpenInventory();
         Destroy(gameObject);
     }
 }

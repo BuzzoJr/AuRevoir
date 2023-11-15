@@ -793,63 +793,63 @@ namespace Assets.Script.Locale
                 ItemGroup.Pink_Sock,
                 new List<ItemData>()
                 {
-                    new ItemData(5,  "Pink Sock", "A single pink sock"),
+                    new ItemData(99,  "Pink Sock", "A single pink sock"),
                 }
             },
             {
                 ItemGroup.Finger,
                 new List<ItemData>()
                 {
-                    new ItemData(6,  "Severed Finger", ""),
+                    new ItemData(5,  "Severed Finger", ""),
                 }
             },
             {
                 ItemGroup.KeyCard,
                 new List<ItemData>()
                 {
-                    new ItemData(7,  "Keycard", "Au-Revoir laboratory keycard"),
+                    new ItemData(6,  "Keycard", "Au-Revoir laboratory keycard"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
                 new List<ItemData>()
                 {
-                    new ItemData(8,  "Au Revoir Lab Equipment Receipt", "Laboratory Equipment Collection Receipt.", "Laboratory Equipment Collection Receipt."),
+                    new ItemData(7,  "Au Revoir Lab Equipment Receipt", "Laboratory Equipment Collection Receipt.", "Laboratory Equipment Collection Receipt."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
                 new List<ItemData>()
                 {
-                    new ItemData(9,  "Club Visitors", "Frequent visitors to the Snake Pit", "Frequent visitors to the Snake Pit"),
+                    new ItemData(8,  "Club Visitors", "Frequent visitors to the Snake Pit", "Frequent visitors to the Snake Pit"),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
                 new List<ItemData>()
                 {
-                    new ItemData(10, "Mafia Addicts Debtors", "List of drug addicts who owe to the mafia.", "Document with the list of drug addicts who owe to the mafia."),
+                    new ItemData(9, "Mafia Addicts Debtors", "List of drug addicts who owe to the mafia.", "Document with the list of drug addicts who owe to the mafia."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
                 new List<ItemData>()
                 {
-                    new ItemData(11, "Mafia Test Subjects", "Target List for Biological Tests.", "Target List for Biological Tests."),
+                    new ItemData(10, "Mafia Test Subjects", "Target List for Biological Tests.", "Target List for Biological Tests."),
                 }
             },
             {
                 ItemGroup.Mafia_Doc_NewSleeve,
                 new List<ItemData>()
                 {
-                    new ItemData(12, "New sleeve Report", "Report for the mafia boss's new sleeve", "Preparation completion report for the mafia boss's new sleeve."),
+                    new ItemData(11, "New sleeve Report", "Report for the mafia boss's new sleeve", "Preparation completion report for the mafia boss's new sleeve."),
                 }
             },
             {
                 ItemGroup.Chips,
                 new List<ItemData>()
                 {
-                    new ItemData(13, "Chips Au Revoir", "CEO's and Revolutionary's Chips"),
+                    new ItemData(12, "Chips Au Revoir", "CEO's and Revolutionary's Chips"),
                 }
             },
         };

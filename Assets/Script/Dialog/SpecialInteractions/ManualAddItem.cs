@@ -39,7 +39,10 @@ public class ManualAddItem : MonoBehaviour, IUse
     void Start()
     {
         if (Inventory.instance.items.Any(item => item.itemID == ItemID))
+        {
+            Key.SetActive(true);
             Destroy(gameObject);
+        }
     }
 
     public void Use(GameObject who)
@@ -54,7 +57,6 @@ public class ManualAddItem : MonoBehaviour, IUse
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
-        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
         if (HasText && dialogBox)
         {
             dialogBox.SetActive(true);
@@ -80,9 +82,9 @@ public class ManualAddItem : MonoBehaviour, IUse
             dialogBox.SetActive(false);
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
         Inventory.instance.PickUpAudio(pickupAudio);
         Key.SetActive(true);
-        Inventory.instance.OpenInventory();
         Destroy(gameObject);
     }
 }

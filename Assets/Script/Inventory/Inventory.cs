@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float rotationDuration = 1.0f;
     [SerializeField] private Camera inventoryCam;
     [SerializeField] private GameObject useText;
+    [SerializeField] private GameObject inventoryBag;
 
     private AudioSource audioSource;
     private bool isRotating = false;
@@ -26,6 +27,7 @@ public class Inventory : MonoBehaviour
     private int currentItem = -1;
     private TMP_Text interactItem;
     private TMP_Text itemNavigationText;
+    private string currentState = "Playing";
 
     private void Awake()
     {
@@ -44,19 +46,28 @@ public class Inventory : MonoBehaviour
         ItemInfo.text = Locale.Texts[TextGroup.Inventory][0].Text;
         ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
         interactItem = useText.GetComponentInChildren<TMP_Text>();
+        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
+    }
+    void OnDestroy()
+    {
+        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    }
+
+    private void GameManagerOnGameStateChange(GameManager.GameState state)
+    {
+        currentState = state.ToString();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && currentState != "Interacting")
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             if (inventoryUI.activeSelf)
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-                currentItem = 0;
                 ClearItems();
-                PopulateCircle();
+                PopulateCircle(currentItem);
             }
             else
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
@@ -105,21 +116,31 @@ public class Inventory : MonoBehaviour
                                 ItemDetailsParent.SetActive(true);
                             }
                             break;
+                        case "Close":
+                            OpenInventory();
+                            break;
+
                     }
                 }
             }
         }
+
+        if(currentState == "Playing")
+            inventoryBag.SetActive(true);
+        else
+            inventoryBag.SetActive(false);
     }
 
-    public void OpenInventory()
+    public void OpenInventory(int itemID = 0)
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         if (inventoryUI.activeSelf)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            currentItem = 0;
+            if(itemID != 0)
+                currentItem = items.FindIndex(existingItem => existingItem.itemID == itemID);
             ClearItems();
-            PopulateCircle();
+            PopulateCircle(currentItem);
             UpdateInfo();
         }
         else
@@ -159,9 +180,19 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        items.Insert(0, item);
+        if(items.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
+            return;
+
+        int index = items.FindIndex(existingItem => existingItem.itemID -1 > item.itemID -1);
+
+        if (index != -1)
+            items.Insert(index, item);
+        else
+            items.Add(item);
+
         itemNavigationText = itemNavigation[item.itemID - 1].GetComponentInChildren<TMP_Text>();
         itemNavigationText.text = item.itemName;
+        OpenInventory(item.itemID);
     }
 
     public void ChangeItem(int direction)
@@ -187,15 +218,22 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void PopulateCircle()
+private void PopulateCircle(int offset = 0)
+{
+    int itemCount = items.Count;
+    for (int i = 0; i < itemCount; i++)
     {
-        for (int i = 0; i < items.Count; i++)
-        {
-            float angle = i * 360f / items.Count;
-            Vector3 position = CalculatePosition(angle);
-            Instantiate(items[i].itemPrefab, position, Quaternion.identity, itemsParent);
-        }
+        // Calculate the adjusted index with the offset
+        int adjustedIndex = (i + offset) % itemCount;
+
+        // Calculate the angle for the current position
+        float angle = i * 360f / itemCount;
+        Vector3 position = CalculatePosition(angle);
+
+        // Instantiate the prefab at the calculated position
+        Instantiate(items[adjustedIndex].itemPrefab, position, Quaternion.identity, itemsParent);
     }
+}
 
     private Vector3 CalculatePosition(float angle)
     {
