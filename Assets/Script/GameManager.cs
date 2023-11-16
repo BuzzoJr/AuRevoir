@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public AudioClip LavanderiaClip;
 
     private HashSet<string> visitedScenes = new HashSet<string>();
+
+    private string currentSceneName;
+
 
     void Awake()
     {
@@ -32,6 +36,12 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         AudioInstance = GetComponent<AudioSource>();
+        currentSceneName = SceneManager.GetActiveScene().name;
+        if(currentSceneName == "MainMenu")
+        {
+            Destroy(GameObject.Find("MusicEnd"));
+        }
+
     }
 
     void Start()

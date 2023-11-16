@@ -20,6 +20,7 @@ public class TrasitionFinal : MonoBehaviour {
 
     private IEnumerator NextScene() {
         anim.SetActive(true);
+        Destroy(GameObject.Find("InventoryManagement"));
         yield return new WaitForSeconds(delay);
         allInteract.SetActive(false);
         credits.SetActive(true);
