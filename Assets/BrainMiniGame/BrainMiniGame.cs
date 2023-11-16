@@ -19,6 +19,8 @@ public class BrainMiniGame : MonoBehaviour
     public AudioSource clickAudio;
     public AudioSource failAudio;
     public AudioSource successAudio;
+    public Animator body;
+    public List<Light> bodyLight;
 
     private bool success = false;
     private GameObject enlarged;
@@ -181,6 +183,9 @@ public class BrainMiniGame : MonoBehaviour
         canvasColision.SetActive(false);
         interactObj.SetActive(true);
         player.SetActive(true);
+        body.SetBool("dead", true);
+        foreach (Light light in bodyLight)
+            light.color = Color.red;
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 }
