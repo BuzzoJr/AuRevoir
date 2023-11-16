@@ -104,6 +104,12 @@ public class SceneController : MonoBehaviour
             }
 
         }
+        if (textGroup == TextGroup.LabDiscussion)
+        {
+            var special = GetComponentInChildren<ISpecial>();
+            if (special != null)
+                special.Special(playerPos.gameObject);
+        }
         dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
