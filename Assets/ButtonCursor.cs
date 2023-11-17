@@ -23,4 +23,9 @@ public class ButtonCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (allow)
             CursorController.instance.inButton = false;
     }
+
+    public void OnClick() {
+        if (allow)
+            CursorController.instance.inButton = false;
+    }
 }

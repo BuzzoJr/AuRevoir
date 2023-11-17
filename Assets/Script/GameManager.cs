@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     private string currentSceneName;
 
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,14 +40,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("MusicEnd"));
         }
-
     }
 
     void Start()
     {
         UpdateGameState(GameState.Playing);
     }
-    // Start is called before the first frame update
+
     public void UpdateGameState(GameState newState)
     {
         State = newState;

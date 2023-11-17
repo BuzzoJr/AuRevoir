@@ -125,10 +125,12 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(currentState == "Playing")
+        if(currentState == "Playing") {
             inventoryBag.SetActive(true);
-        else
+        }
+        else {
             inventoryBag.SetActive(false);
+        }
     }
 
     public void OpenInventory(int itemID = 0)
@@ -143,8 +145,9 @@ public class Inventory : MonoBehaviour
             PopulateCircle(currentItem);
             UpdateInfo();
         }
-        else
+        else {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        }
     }
 
     private void UpdateInfo()
