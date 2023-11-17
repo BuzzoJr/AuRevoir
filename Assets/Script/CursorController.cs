@@ -31,6 +31,7 @@ public class CursorController : MonoBehaviour
     {
         currentState = state.ToString();
     }
+
     void Start() 
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
