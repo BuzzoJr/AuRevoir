@@ -47,7 +47,7 @@ namespace Assets.Script.Locale
                     new TextData("21/11/2068"),
                     new TextData("USAR ITEM"),
                     new TextData("INSPECIONAR ITEM"),
-                    new TextData("Close"),
+                    new TextData("Fechar"),
                 }
             },
             {
