@@ -1,4 +1,5 @@
 using Assets.Script.Interaction;
+using Assets.Script.Locale;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
@@ -7,13 +8,23 @@ public class CutscenePlayer : MonoBehaviour, ILook
 {
     public bool shouldWalk = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
-    public GameObject videocanvas;
-    public VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayerENUS;
+    public VideoPlayer videoPlayerPTBR;
     public PlayerData playerData;
     public DoorController door;
 
+    private GameObject videocanvas;
+    private VideoPlayer videoPlayer;
+
     public void Look(GameObject who)
     {
+        Locale.LoadLang(Lang.enUS);
+        if (Locale.Lang == Lang.ptBR)
+            videoPlayer = videoPlayerPTBR;
+        else
+            videoPlayer = videoPlayerENUS;
+        videocanvas = videoPlayer.gameObject;
+
         StartCoroutine(PlayVideo());
     }
 
