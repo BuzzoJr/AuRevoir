@@ -808,7 +808,7 @@ namespace Assets.Script.Locale
                 ItemGroup.KeyCard,
                 new List<ItemData>()
                 {
-                    new ItemData(6, "Cartão de Acesso", "Cartão de Acesso de Laboratório Au-Revoir"),
+                    new ItemData(6, "Cartão de Acesso", "Cartão de Acesso do Laboratório Au-Revoir"),
                 }
             },
             {
