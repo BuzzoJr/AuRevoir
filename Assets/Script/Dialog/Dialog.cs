@@ -77,6 +77,11 @@ namespace Assets.Script.Dialog
                 if (seq[pos] is Dictionary<int, List<object>> options)
                 {
                     yield return new WaitUntil(() => !Input.GetMouseButton(0));
+
+                    GameObject seta = GameObject.Find("Seta");
+                    if (seta != null)
+                        seta.SetActive(false);
+
                     List<Button> optionButtons = new List<Button>();
                     optionButtons.Add(GameObject.Find("Option1").GetComponent<Button>());
                     optionButtons.Add(GameObject.Find("Option2").GetComponent<Button>());
@@ -103,6 +108,9 @@ namespace Assets.Script.Dialog
                     {
                         btn.interactable = false;
                     }
+
+                    if (seta != null)
+                        seta.SetActive(true);
 
                     yield return StartCoroutine(Execute(who, options[selected], (value) => result = value));
 
