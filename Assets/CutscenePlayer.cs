@@ -18,7 +18,6 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
     public void Look(GameObject who)
     {
-        Locale.LoadLang(Lang.enUS);
         if (Locale.Lang == Lang.ptBR)
             videoPlayer = videoPlayerPTBR;
         else
