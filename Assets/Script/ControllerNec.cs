@@ -1,12 +1,12 @@
-using System.Collections;
 using Assets.Script.Interaction;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using Assets.Script.Locale;
+using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ControllerNec : MonoBehaviour {
+public class ControllerNec : MonoBehaviour
+{
     public GameObject cameraScene;
     public GameObject allBody;
     public GameObject target;
@@ -30,19 +30,24 @@ public class ControllerNec : MonoBehaviour {
     private int pos = 0;
     private bool panelClick, delayToMove = true;
 
-    void Awake() {
+    void Awake()
+    {
         localTitle.text = Locale.Texts[TextGroup.MorgueHUD][0].Text;
         causaTitle.text = Locale.Texts[TextGroup.MorgueHUD][1].Text;
 
         UpdateCorpse(pos);
     }
 
-    void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(viewportPos), out RaycastHit raycastHit, 100f)) {
-                if (raycastHit.transform != null) {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(viewportPos), out RaycastHit raycastHit, 100f))
+            {
+                if (raycastHit.transform != null)
+                {
                     CurrentClickedGameObject(raycastHit.transform.gameObject);
                 }
             }
@@ -53,31 +58,38 @@ public class ControllerNec : MonoBehaviour {
         allBody.transform.position = Vector3.Lerp(currentPosition, targetPosition, speed * Time.deltaTime);
     }
 
-    public void CurrentClickedGameObject(GameObject gameObject) {
-        if(gameObject.name == "Left" && delayToMove) {
-            if(pos > 0) {
+    public void CurrentClickedGameObject(GameObject gameObject)
+    {
+        if (gameObject.name == "Left" && delayToMove)
+        {
+            if (pos > 0)
+            {
                 StartCoroutine(DelayMove());
                 MoveBody(5f);
                 pos--;
                 UpdateCorpse(pos);
             }
         }
-        else if(gameObject.name == "Right" && delayToMove) {
-            if(pos < 7) {
+        else if (gameObject.name == "Right" && delayToMove)
+        {
+            if (pos < 7)
+            {
                 StartCoroutine(DelayMove());
                 MoveBody(-5f);
                 pos++;
                 UpdateCorpse(pos);
             }
         }
-        else if(gameObject.name == "RedButton") {
+        else if (gameObject.name == "RedButton")
+        {
             ILook look = bodies[pos].GetComponentInChildren<ILook>();
             if (look is not null)
             {
                 look.Look(null);
             }
 
-            if(pos == 5) { //Corpo correto
+            if (pos == 5)
+            { //Corpo correto
                 glassDoor.SetBool("Open", true);
                 floorGlass.tag = "Floor";
                 wall.SetActive(false);
@@ -89,41 +101,48 @@ public class ControllerNec : MonoBehaviour {
 
             soundRed.Play();
         }
-        else if(gameObject.name == "Panel") {
-            if(!panelClick) {
+        else if (gameObject.name == "Panel")
+        {
+            if (panelClick)
+            {
                 cameraScene.transform.rotation = Quaternion.Euler(24, 360, 0);
                 cameraScene.GetComponent<Camera>().fieldOfView = 30;
             }
-            else {
+            else
+            {
                 cameraScene.transform.rotation = Quaternion.Euler(8, 360, 0);
                 cameraScene.GetComponent<Camera>().fieldOfView = 75;
             }
 
             panelClick = !panelClick;
         }
-        else if(gameObject.name == "Exit") {
+        else if (gameObject.name == "Exit")
+        {
             panelScrpt.exitPanel(false);
         }
     }
 
-    public void MoveBody(float qtd) {
+    public void MoveBody(float qtd)
+    {
         Vector3 currentPosition = target.transform.position;
         currentPosition.x += qtd;
         target.transform.position = currentPosition;
         soundDirection.Play();
     }
 
-    void UpdateCorpse(int pos) {
+    void UpdateCorpse(int pos)
+    {
         int index = pos * 4;
 
         nameTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index].Text;
-        dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index+1].Text;
-        localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+2].Text;
-        causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index+3].Text;
+        dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index + 1].Text;
+        localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 2].Text;
+        causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 3].Text;
         photoIcon.sprite = photos[pos];
     }
 
-    private IEnumerator DelayMove() {
+    private IEnumerator DelayMove()
+    {
         delayToMove = false;
         yield return new WaitForSeconds(2.1f);
         delayToMove = true;
