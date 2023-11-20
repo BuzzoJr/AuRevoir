@@ -130,10 +130,12 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(currentState == "Playing") {
+        if (currentState == "Playing")
+        {
             inventoryBag.SetActive(true);
         }
-        else {
+        else
+        {
             inventoryBag.SetActive(false);
         }
     }
@@ -144,15 +146,22 @@ public class Inventory : MonoBehaviour
         if (inventoryUI.activeSelf)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            if(itemID != 0)
+            if (itemID != 0)
                 currentItem = items.FindIndex(existingItem => existingItem.itemID == itemID);
             ClearItems();
             PopulateCircle(currentItem);
             UpdateInfo();
         }
-        else {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        else
+        {
+            StartCoroutine(WaitMouseReleaseToPlay());
         }
+    }
+
+    private IEnumerator WaitMouseReleaseToPlay()
+    {
+        yield return new WaitUntil(() => !Input.GetMouseButton(0));
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     private void UpdateInfo()
@@ -188,10 +197,10 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        if(items.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
+        if (items.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
             return;
 
-        int index = items.FindIndex(existingItem => existingItem.itemID -1 > item.itemID -1);
+        int index = items.FindIndex(existingItem => existingItem.itemID - 1 > item.itemID - 1);
 
         if (index != -1)
             items.Insert(index, item);
