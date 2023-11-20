@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         if(currentSceneName == "MainMenu")
         {
             Destroy(GameObject.Find("MusicEnd"));
+            visitedScenes.Clear();
         }
     }
 

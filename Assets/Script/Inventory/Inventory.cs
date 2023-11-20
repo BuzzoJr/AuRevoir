@@ -94,6 +94,11 @@ public class Inventory : MonoBehaviour
                 // Ensure we hit the UI layer
                 if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {
+                    if (itemNavigation.Contains(result.gameObject))
+                    {
+                        RotateToItem(result.gameObject.name);
+                        break;
+                    }
                     switch (result.gameObject.name)
                     {
                         case "NextItem":
@@ -210,7 +215,7 @@ public class Inventory : MonoBehaviour
         if (items.Count <= 1 || isRotating) return;
 
         float angleBetweenItems = 360f / items.Count;
-        StartCoroutine(SmoothRotation(angleBetweenItems * dir));
+        StartCoroutine(SmoothRotation(angleBetweenItems, dir));
     }
 
     private void ClearItems()
@@ -221,22 +226,22 @@ public class Inventory : MonoBehaviour
         }
     }
 
-private void PopulateCircle(int offset = 0)
-{
-    int itemCount = items.Count;
-    for (int i = 0; i < itemCount; i++)
+    private void PopulateCircle(int offset = 0)
     {
-        // Calculate the adjusted index with the offset
-        int adjustedIndex = (i + offset) % itemCount;
+        int itemCount = items.Count;
+        for (int i = 0; i < itemCount; i++)
+        {
+            // Calculate the adjusted index with the offset
+            int adjustedIndex = (i + offset) % itemCount;
 
-        // Calculate the angle for the current position
-        float angle = i * 360f / itemCount;
-        Vector3 position = CalculatePosition(angle);
+            // Calculate the angle for the current position
+            float angle = i * 360f / itemCount;
+            Vector3 position = CalculatePosition(angle);
 
-        // Instantiate the prefab at the calculated position
-        Instantiate(items[adjustedIndex].itemPrefab, position, Quaternion.identity, itemsParent);
+            // Instantiate the prefab at the calculated position
+            Instantiate(items[adjustedIndex].itemPrefab, position, Quaternion.identity, itemsParent);
+        }
     }
-}
 
     private Vector3 CalculatePosition(float angle)
     {
@@ -251,8 +256,9 @@ private void PopulateCircle(int offset = 0)
         return new Vector3(x + itemsParent.position.x, itemsParent.position.y, z + itemsParent.position.z);
     }
 
-    private IEnumerator SmoothRotation(float angle)
+    private IEnumerator SmoothRotation(float angleItem, int dir)
     {
+        float angle = angleItem * dir;
         isRotating = true;
         float elapsedTime = 0;
         Quaternion startingRotation = itemsParent.rotation;
@@ -267,11 +273,41 @@ private void PopulateCircle(int offset = 0)
 
         itemsParent.rotation = finalRotation;
         isRotating = false;
-        ChangeItem(angle > 0 ? 1 : -1);
+        ChangeItem(dir);
     }
 
     public void PickUpAudio(AudioClip audio)
     {
         audioSource.PlayOneShot(audio);
+    }
+
+
+
+    public void RotateToItem(string gameObjectName)
+    {
+        int targetIndex = int.Parse(gameObjectName) - 1;
+        if (targetIndex == -1 || targetIndex == currentItem) return;
+
+        int direction = CalculateRotationDirection(currentItem, targetIndex);
+        int distance = CalculateRotationDistance(currentItem, targetIndex, direction);
+
+        RotateItemsParent(distance * direction);
+    }
+
+
+    private int CalculateRotationDirection(int currentIndex, int targetIndex)
+    {
+        int forwardDistance = (targetIndex - currentIndex + items.Count) % items.Count;
+        int backwardDistance = (currentIndex - targetIndex + items.Count) % items.Count;
+
+        return forwardDistance <= backwardDistance ? 1 : -1;
+    }
+
+    private int CalculateRotationDistance(int currentIndex, int targetIndex, int direction)
+    {
+        if (direction > 0)
+            return (targetIndex - currentIndex + items.Count) % items.Count;
+        else
+            return (currentIndex - targetIndex + items.Count) % items.Count;
     }
 }

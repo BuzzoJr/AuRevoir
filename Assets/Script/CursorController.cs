@@ -56,7 +56,6 @@ public class CursorController : MonoBehaviour
             RaycastHit hitPoint;
             if (Physics.Raycast(ray, out hitPoint))
             {
-                Debug.Log(currentCursor);
                 if (hitPoint.transform.CompareTag("Door"))
                 {
                     if (currentCursor != "doorCursor")
@@ -67,7 +66,6 @@ public class CursorController : MonoBehaviour
                 }
                 else if (hitPoint.transform.CompareTag("Interactable") || hitPoint.transform.CompareTag("Character"))
                 {
-                    Debug.Log("A");
                     if (currentCursor != "clickCursor")
                     {
                         Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
@@ -76,7 +74,6 @@ public class CursorController : MonoBehaviour
                 }
                 else if(currentCursor != "null")
                 {
-                    Debug.Log("B");
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                     currentCursor = "null";
                 }
