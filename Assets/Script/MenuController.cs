@@ -31,6 +31,12 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Destroy(GameObject.Find("MusicEnd"));
+        GameManager.Instance.visitedScenes.Clear();
+    }
+
     public void ToPtBr()
     {
         PlayerPrefs.SetString("Language", "PTBR");

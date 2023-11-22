@@ -15,9 +15,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip LavanderiaClip;
 
-    private HashSet<string> visitedScenes = new HashSet<string>();
-
-    private string currentSceneName;
+    public HashSet<string> visitedScenes = new HashSet<string>();
 
     void Awake()
     {
@@ -35,12 +33,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         AudioInstance = GetComponent<AudioSource>();
-        currentSceneName = SceneManager.GetActiveScene().name;
-        if(currentSceneName == "MainMenu")
-        {
-            Destroy(GameObject.Find("MusicEnd"));
-            visitedScenes.Clear();
-        }
     }
 
     void Start()
