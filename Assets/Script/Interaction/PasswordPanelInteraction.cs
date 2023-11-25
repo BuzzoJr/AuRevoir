@@ -23,16 +23,34 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
         PlayerController.navMeshAgent.destination = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
-        password.text = "";
+        password.text = "#----";
         canvas.SetActive(true);
     }
 
     private void AddCharToPassword(string c)
     {
-        if (password.text.Length < 5) {
-            password.text += c;
-            click.Play();
+        for (int i = 1; i < password.text.Length; i++)
+        {
+            if (password.text[i] == '-')
+            {
+                password.text = password.text.Remove(i, c.Length).Insert(i, c);
+                break;
+            }
         }
+        click.Play();
+    }
+
+    private void EraseCharFromPassword()
+    {
+        for (int i = password.text.Length - 1; i > 0; i--)
+        {
+            if (password.text[i] != '-')
+            {
+                password.text = password.text.Remove(i, 1).Insert(i, "-");
+                break;
+            }
+        }
+        click.Play();
     }
 
     private void CheckPassword()
@@ -48,18 +66,21 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
             Destroy(this);
             return;
         }
-        else {
+        else
+        {
             wrong.Play();
         }
 
-        password.text = "";
+        password.text = "#----";
     }
 
     public void PressButton(string c)
     {
-        if (c != ">")
-            AddCharToPassword(c);
-        else
+        if (c == ">")
             CheckPassword();
+        else if (c == "-")
+            EraseCharFromPassword();
+        else
+            AddCharToPassword(c);
     }
 }
