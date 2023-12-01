@@ -9,22 +9,26 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public List<Item> items = new List<Item>();
-    public List<GameObject> itemNavigation = new List<GameObject>();
-    [SerializeField] private float radius = 20f;
+    [Header("Clickable Item List")]
+    private List<GameObject> itemNavigation = new List<GameObject>();
+    [SerializeField] private GameObject itemNavigationParent;
+    [SerializeField] private GameObject itemNavigationPrefab;
+    [Header("UI Text")]
     [SerializeField] private TMP_Text ItemName;
-    [SerializeField] private TMP_Text ItemInfo;
     [SerializeField] private TMP_Text ItemDetails;
-    [SerializeField] private GameObject ItemDetailsParent;
-    [SerializeField] private Transform itemsParent;
-    [SerializeField] private float rotationDuration = 1.0f;
-    [SerializeField] private Camera inventoryCam;
     [SerializeField] private GameObject useText;
+    [Header("Reference Points")]
+    [SerializeField] private GameObject ItemDetailsParent;
     [SerializeField] private GameObject inventoryBag;
+    [Header("Item Circle")]
+    [SerializeField] private Transform itemsParent;
+    [SerializeField] private float radius = 20f;
+    [SerializeField] private float rotationDuration = 1.0f;
 
     private AudioSource audioSource;
     private bool isRotating = false;
     private GameObject inventoryUI;
-    private int currentItem = -1;
+    private int currentItem = 0;
     private TMP_Text interactItem;
     private TMP_Text itemNavigationText;
     private string currentState = "Playing";
@@ -43,7 +47,6 @@ public class Inventory : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         inventoryUI = transform.GetChild(0).gameObject;
         ItemName.text = Locale.Texts[TextGroup.Inventory][0].Text;
-        ItemInfo.text = Locale.Texts[TextGroup.Inventory][0].Text;
         ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
         interactItem = useText.GetComponentInChildren<TMP_Text>();
         GameManager.OnGameStateChange += GameManagerOnGameStateChange;
@@ -60,76 +63,74 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && currentState != "Interacting")
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            if (inventoryUI.activeSelf)
-            {
-                GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-                ClearItems();
-                PopulateCircle(currentItem);
-            }
+            if(currentState == "Playing")
+                OpenInventory(true);
             else
-                GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-
-            UpdateInfo();
+                OpenInventory(false);
         }
-
-        if (Input.GetMouseButtonDown(0) && inventoryUI.activeSelf)
+        if (inventoryUI.activeSelf)
         {
-            if (ItemDetailsParent.activeSelf)
-                ItemDetailsParent.SetActive(false);
-            // Use the mouse position directly for the PointerEventData
-            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+            if (Input.GetMouseButtonDown(0))
             {
-                position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
-            };
-
-            // Raycast using the event system and mouse position
-            List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-            foreach (var result in raycastResults)
-            {
-                // Ensure we hit the UI layer
-                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                if (ItemDetailsParent.activeSelf)
+                    ItemDetailsParent.SetActive(false);
+                // Use the mouse position directly for the PointerEventData
+                PointerEventData pointerData = new PointerEventData(EventSystem.current)
                 {
-                    if (itemNavigation.Contains(result.gameObject))
+                    position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+                };
+
+                // Raycast using the event system and mouse position
+                List<RaycastResult> raycastResults = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+                foreach (var result in raycastResults)
+                {
+                    // Ensure we hit the UI layer
+                    if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
                     {
-                        RotateToItem(result.gameObject.name);
-                        break;
-                    }
-                    switch (result.gameObject.name)
-                    {
-                        case "NextItem":
-                            RotateItemsParent(1);
+                        if (itemNavigation.Contains(result.gameObject))
+                        {
+                            RotateToItem(itemNavigation.IndexOf(result.gameObject));
                             break;
-
-                        case "PrevioustItem":
-                            RotateItemsParent(-1);
-                            break;
-
-                        case "UseItem":
-                            if (items[currentItem].itemMousePrefab != null)
-                            {
-                                Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
-                                inventoryUI.SetActive(false);
-                                GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-                            }
-                            else if (items[currentItem].itemDetails != null)
-                            {
-                                ItemDetailsParent.SetActive(true);
-                            }
-                            break;
-                        case "Close":
-                            OpenInventory();
-                            break;
-
+                        }
+                        switch (result.gameObject.name)
+                        {
+                            case "UseItem":
+                                if (items[currentItem].itemMousePrefab != null)
+                                {
+                                    Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
+                                    inventoryUI.SetActive(false);
+                                    GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+                                }
+                                else if (items[currentItem].itemDetails != null)
+                                {
+                                    ItemDetailsParent.SetActive(true);
+                                }
+                                break;
+                            case "Close":
+                                OpenInventory(false);
+                                break;
+                            case "Documents":
+                                Documents.instance.OpenDocuments(true);
+                                OpenInventory(false);
+                                break;
+                            case "Notes":
+                                Notes.instance.OpenNotes(true);
+                                OpenInventory(false);
+                                break;
+                            case "Map":
+                                Map.instance.OpenMap(true);
+                                OpenInventory(false);
+                                break;
+                        }
                     }
                 }
             }
-        }
-
+        } 
         if (currentState == "Playing")
         {
             inventoryBag.SetActive(true);
@@ -140,14 +141,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void OpenInventory(int itemID = 0)
+    public void OpenInventory(bool open = true, int index = 0)
     {
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        inventoryUI.SetActive(open);
         if (inventoryUI.activeSelf)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            if (itemID != 0)
-                currentItem = items.FindIndex(existingItem => existingItem.itemID == itemID);
+            if (index != 0)
+                currentItem = items.Count - 1;
             ClearItems();
             PopulateCircle(currentItem);
             UpdateInfo();
@@ -174,18 +175,17 @@ public class Inventory : MonoBehaviour
         if (items.Count != 0)
         {
             ItemName.text = items[currentItem].itemName;
-            ItemInfo.text = items[currentItem].itemInfo;
-            itemNavigationText = itemNavigation[items[currentItem].itemID - 1].GetComponentInChildren<TMP_Text>();
+            itemNavigationText = itemNavigation[currentItem].GetComponentInChildren<TMP_Text>();
             itemNavigationText.color = Color.white;
             if (items[currentItem].itemMousePrefab != null)
             {
                 useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][3].Text;
+                interactItem.text = Locale.Texts[TextGroup.Inventory][1].Text;
             }
             else if (items[currentItem].itemDetails != null)
             {
                 useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][4].Text;
+                interactItem.text = Locale.Texts[TextGroup.Inventory][2].Text;
                 ItemDetails.text = items[currentItem].itemDetails;
             }
             else
@@ -200,16 +200,13 @@ public class Inventory : MonoBehaviour
         if (items.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
             return;
 
-        int index = items.FindIndex(existingItem => existingItem.itemID - 1 > item.itemID - 1);
-
-        if (index != -1)
-            items.Insert(index, item);
-        else
-            items.Add(item);
-
-        itemNavigationText = itemNavigation[item.itemID - 1].GetComponentInChildren<TMP_Text>();
+        items.Add(item);
+        int index = items.Count - 1;
+        GameObject newItem = Instantiate(itemNavigationPrefab, itemNavigationParent.transform);
+        itemNavigation.Add(newItem);
+        itemNavigationText = itemNavigation[index].GetComponentInChildren<TMP_Text>();
         itemNavigationText.text = item.itemName;
-        OpenInventory(item.itemID);
+        OpenInventory(true, index);
     }
 
     public void ChangeItem(int direction)
@@ -292,14 +289,12 @@ public class Inventory : MonoBehaviour
 
 
 
-    public void RotateToItem(string gameObjectName)
+    public void RotateToItem(int targetIndex)
     {
-        int targetIndex = int.Parse(gameObjectName) - 1;
         if (targetIndex == -1 || targetIndex == currentItem) return;
 
         int direction = CalculateRotationDirection(currentItem, targetIndex);
         int distance = CalculateRotationDistance(currentItem, targetIndex, direction);
-
         RotateItemsParent(distance * direction);
     }
 

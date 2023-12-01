@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class AddItem : MonoBehaviour, IUse
 {
+    [Tooltip("Item or Document")]
+    public ItemType itemType = ItemType.Item;
     private string ItemName;
     private string ItemDescription;
     private string ItemDetails = null;
@@ -35,8 +37,12 @@ public class AddItem : MonoBehaviour, IUse
 
     void Start()
     {
-        if (Inventory.instance.items.Any(item => item.itemID == ItemID))
-            Destroy(gameObject);
+        if (itemType == ItemType.Item)
+            if (Inventory.instance.items.Any(item => item.itemID == ItemID))
+                Destroy(gameObject);
+        else
+            if (Documents.instance.documents.Any(item => item.itemID == ItemID))
+                Destroy(gameObject);
     }
 
     public void Use(GameObject who)
@@ -76,8 +82,18 @@ public class AddItem : MonoBehaviour, IUse
             dialogBox.SetActive(false);
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-        Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+        if (itemType == ItemType.Item)
+            Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+        else
+            Documents.instance.AddDocument(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+
         Inventory.instance.PickUpAudio(pickupAudio);
         Destroy(gameObject);
+    }
+
+    public enum ItemType
+    {
+        Item,
+        Document,
     }
 }

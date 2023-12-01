@@ -43,11 +43,14 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Nada"),
-                    new TextData("> INVENTÁRIO"),
-                    new TextData("21/11/2068"),
                     new TextData("USAR ITEM"),
                     new TextData("INSPECIONAR ITEM"),
                     new TextData("Fechar"),
+                    new TextData("21/11/2068"),
+                    new TextData("ITENS"),
+                    new TextData("DOCUMENTOS"),
+                    new TextData("NOTAS"),
+                    new TextData("MAPA"),
                 }
             },
             {
