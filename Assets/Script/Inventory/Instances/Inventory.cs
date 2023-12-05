@@ -314,4 +314,9 @@ public class Inventory : MonoBehaviour
         else
             return (currentIndex - targetIndex + items.Count) % items.Count;
     }
+
+    public void BagButton()
+    {
+        OpenInventory(true);
+    }
 }
