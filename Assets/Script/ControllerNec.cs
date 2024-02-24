@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControllerNec : MonoBehaviour
+public class ControllerNec : MonoBehaviour, ILangConsumer
 {
     //Controle do painel do necrotério
     public GameObject cameraScene;
@@ -31,12 +31,34 @@ public class ControllerNec : MonoBehaviour
     private int pos = 0;
     private bool panelClick, delayToMove = true;
 
-    void Awake()
+    public void UpdateLangTexts()
     {
         localTitle.text = Locale.Texts[TextGroup.MorgueHUD][0].Text;
         causaTitle.text = Locale.Texts[TextGroup.MorgueHUD][1].Text;
 
+        UpdateCorpseText(pos);
+    }
+
+    private void UpdateCorpseText(int pos)
+    {
+        int index = pos * 4;
+
+        nameTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index].Text;
+        dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index + 1].Text;
+        localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 2].Text;
+        causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 3].Text;
+    }
+
+    void Awake()
+    {
+        Locale.RegisterConsumer(this);
+        UpdateLangTexts();
         UpdateCorpse(pos);
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
     }
 
     void Update()
@@ -133,13 +155,8 @@ public class ControllerNec : MonoBehaviour
 
     void UpdateCorpse(int pos)
     {
-        int index = pos * 4;
-
-        nameTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index].Text;
-        dataTxt.text = Locale.Texts[TextGroup.MorgueCorpses][index + 1].Text;
-        localDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 2].Text;
-        causaDesc.text = Locale.Texts[TextGroup.MorgueCorpses][index + 3].Text;
         photoIcon.sprite = photos[pos];
+        UpdateCorpseText(pos);
     }
 
     private IEnumerator DelayMove()

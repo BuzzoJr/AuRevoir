@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Script.Dialog
 {
-    public class Dialog : MonoBehaviour
+    public class Dialog : MonoBehaviour, ILangConsumer
     {
         public GameObject DialogBox { get; set; }
         public TMP_Text DialogText { get; set; }
@@ -16,12 +16,35 @@ namespace Assets.Script.Dialog
 
         int? selectedKey = null;
 
+        private int currentIndex = -1;
+
+        public void UpdateLangTexts()
+        {
+            if (currentIndex >= 0)
+            {
+                TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
+                DialogText.color = TextColorManager.textTypeColors[data.Type];
+                DialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            }
+        }
+
+        void OnDestroy()
+        {
+            Locale.Locale.UnregisterConsumer(this);
+        }
+
         public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
         {
             DialogAction result = DialogAction.None;
+
             DialogBox.SetActive(true);
+            Locale.Locale.RegisterConsumer(this);
+
             yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
+
+            Locale.Locale.UnregisterConsumer(this);
             DialogBox.SetActive(false);
+
             callback(result);
         }
 
@@ -52,10 +75,10 @@ namespace Assets.Script.Dialog
 
                 if (seq[pos] is int i)
                 {
-                    TextData data = Locale.Locale.Texts[TextGroup][i];
-                    DialogText.color = TextColorManager.textTypeColors[data.Type];
-                    DialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+                    currentIndex = i;
+                    UpdateLangTexts();
 
+                    TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
                     bool clicked = false;
                     float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
                     float elapsedTime = 0;
@@ -87,6 +110,7 @@ namespace Assets.Script.Dialog
                     optionButtons.Add(GameObject.Find("Option2").GetComponent<Button>());
                     optionButtons.Add(GameObject.Find("Option3").GetComponent<Button>());
                     int interaction = 0;
+                    currentIndex = -1;
                     DialogText.text = "";
                     foreach (int key in options.Keys)
                     {

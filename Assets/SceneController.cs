@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SceneController : MonoBehaviour, ILangConsumer
 {
     public PlayerData playerData;
     public Transform playerPos;
@@ -18,6 +18,24 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
     public AudioSource audioSource = null;
+
+    private int currentIndex = -1;
+
+    public void UpdateLangTexts()
+    {
+        if (currentIndex >= 0)
+        {
+            TextData data = Locale.Texts[textGroup][currentIndex];
+            dialogText.color = TextColorManager.textTypeColors[data.Type];
+            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+        }
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
+
     private void Awake()
     {
         if (dialogBox)
@@ -77,11 +95,13 @@ public class SceneController : MonoBehaviour
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         dialogBox.SetActive(true);
-        foreach (TextData data in Locale.Texts[textGroup])
+        Locale.RegisterConsumer(this);
+        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
         {
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            currentIndex = i;
+            UpdateLangTexts();
 
+            TextData data = Locale.Texts[textGroup][currentIndex];
             bool clicked = false;
             float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
             float elapsedTime = 0;
@@ -96,7 +116,7 @@ public class SceneController : MonoBehaviour
                 yield return null;
             }
 
-            if (textGroup == TextGroup.LabDiscussion && data == Locale.Texts[textGroup][6])
+            if (textGroup == TextGroup.LabDiscussion && i == 6)
             {
                 var special = GetComponentInChildren<ISpecial>();
                 if (special != null)
@@ -110,6 +130,7 @@ public class SceneController : MonoBehaviour
             if (special != null)
                 special.Special(playerPos.gameObject);
         }
+        Locale.UnregisterConsumer(this);
         dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }

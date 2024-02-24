@@ -2,7 +2,7 @@ using Assets.Script.Locale;
 using TMPro;
 using UnityEngine;
 
-public class InventoryLang : MonoBehaviour
+public class InventoryLang : MonoBehaviour, ILangConsumer
 {
     public Selected selected = Selected.ITEMS;
     public TMP_Text items;
@@ -11,7 +11,8 @@ public class InventoryLang : MonoBehaviour
     public TMP_Text map;
     public TMP_Text date;
     public TMP_Text close;
-    void Awake()
+
+    public void UpdateLangTexts()
     {
         date.text = Locale.Texts[TextGroup.Inventory][4].Text;
         close.text = Locale.Texts[TextGroup.Inventory][3].Text;
@@ -36,11 +37,23 @@ public class InventoryLang : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
+
+    void Awake()
+    {
+        Locale.RegisterConsumer(this);
+
+        UpdateLangTexts();
+    }
+
     public enum Selected
     {
         ITEMS,
         DOCUMENTS,
-        NOTES,    
-        MAP,        
+        NOTES,
+        MAP,
     }
 }

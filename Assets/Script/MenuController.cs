@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+public class MenuController : MonoBehaviour, ILangConsumer
 {
     public PlayerData playerData;
     public Animator animTextIntro;
@@ -16,6 +16,22 @@ public class MenuController : MonoBehaviour
     public Color c1, c2;
     private bool btnPressed = false;
 
+    public void UpdateLangTexts()
+    {
+        textIntro.text = "\t" + Locale.Texts[TextGroup.Intro][0].Text +
+                         "\n\n\t" + Locale.Texts[TextGroup.Intro][1].Text +
+                         "\n\n\t" + Locale.Texts[TextGroup.Intro][2].Text;
+
+        textPlay.text = Locale.Texts[TextGroup.Menu][0].Text;
+        textQuit.text = Locale.Texts[TextGroup.Menu][1].Text;
+        textContinue.text = Locale.Texts[TextGroup.Menu][2].Text;
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
+
     void Awake()
     {
         if (PlayerPrefs.HasKey("Language"))
@@ -25,10 +41,9 @@ public class MenuController : MonoBehaviour
             else if (PlayerPrefs.GetString("Language") == "ENG")
                 ToEnUs();
         }
-        else
-        {
-            ChangeTxt();
-        }
+
+        Locale.RegisterConsumer(this);
+        UpdateLangTexts();
     }
 
     private void Start()
@@ -51,8 +66,6 @@ public class MenuController : MonoBehaviour
         ColorBlock cb2 = enBtn.colors;
         cb2.disabledColor = c1;
         enBtn.colors = cb2;
-
-        ChangeTxt();
     }
 
     public void ToEnUs()
@@ -69,8 +82,6 @@ public class MenuController : MonoBehaviour
         ColorBlock cb2 = enBtn.colors;
         cb2.disabledColor = c2;
         enBtn.colors = cb2;
-
-        ChangeTxt();
     }
 
     public void ExitGame()
@@ -92,17 +103,6 @@ public class MenuController : MonoBehaviour
             animTextIntro.SetFloat("SpeedText", 5f);
 
         btnPressed = !btnPressed;
-    }
-
-    private void ChangeTxt()
-    {
-        textIntro.text = "\t" + Locale.Texts[TextGroup.Intro][0].Text +
-                         "\n\n\t" + Locale.Texts[TextGroup.Intro][1].Text +
-                         "\n\n\t" + Locale.Texts[TextGroup.Intro][2].Text;
-
-        textPlay.text = Locale.Texts[TextGroup.Menu][0].Text;
-        textQuit.text = Locale.Texts[TextGroup.Menu][1].Text;
-        textContinue.text = Locale.Texts[TextGroup.Menu][2].Text;
     }
 
     public void Quit()

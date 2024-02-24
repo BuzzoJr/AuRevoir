@@ -1,10 +1,8 @@
 using Assets.Script.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -86,7 +84,7 @@ public class PlayerController : MonoBehaviour
                     case "Object":
                         if (!interactionWheel.activeSelf)
                             OpenInteractionWheel(hitPoint.transform.gameObject);
-                        else 
+                        else
                             CloseInteractionWheel();
                         break;
                 }
@@ -145,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (use is null && look is null && talk is null)
             Debug.LogWarning("N�o tem intera��o poss�vel nesse objeto!");
     }
-    
+
     void TalkEvent()
     {
         talk.Talk(gameObject);

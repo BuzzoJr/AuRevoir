@@ -18,8 +18,10 @@ namespace Assets.Script.Locale
 
         public static Lang Lang { get; set; }
         public static Dictionary<TextGroup, List<TextData>> Texts { get; set; }
-
         public static Dictionary<ItemGroup, List<ItemData>> Item { get; set; }
+
+        private static List<ILangConsumer> consumers = new();
+
         static Locale()
         {
             Lang = Lang.enUS;
@@ -29,10 +31,27 @@ namespace Assets.Script.Locale
 
         public static void LoadLang(Lang newLang)
         {
+
             Lang = newLang;
             Texts = Options[newLang];
             Item = ItemOptions[newLang];
+
+            consumers.RemoveAll(item => item == null);
+
+            foreach (ILangConsumer consumer in consumers)
+                consumer.UpdateLangTexts();
+
             Debug.Log(Lang.ToString() + " lang loaded!");
+        }
+
+        public static void RegisterConsumer(ILangConsumer consumer)
+        {
+            consumers.Add(consumer);
+        }
+
+        public static void UnregisterConsumer(ILangConsumer consumer)
+        {
+            consumers.Remove(consumer);
         }
     }
 }

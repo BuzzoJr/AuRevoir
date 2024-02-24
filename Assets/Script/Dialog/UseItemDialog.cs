@@ -5,7 +5,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class UseItemDialog : MonoBehaviour, IUseItem
+public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
 {
     public bool shouldWalk = true;
     public string targetItem1;
@@ -16,6 +16,23 @@ public class UseItemDialog : MonoBehaviour, IUseItem
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+
+    private int currentIndex = -1;
+
+    public void UpdateLangTexts()
+    {
+        if (currentIndex >= 0)
+        {
+            TextData data = Locale.Texts[textGroup][currentIndex];
+            dialogText.color = TextColorManager.textTypeColors[data.Type];
+            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+        }
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
 
     void Awake()
     {
@@ -53,11 +70,13 @@ public class UseItemDialog : MonoBehaviour, IUseItem
         yield return null;
 
         dialogBox.SetActive(true);
-        foreach (TextData data in Locale.Texts[textGroup])
+        Locale.RegisterConsumer(this);
+        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
         {
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            currentIndex = i;
+            UpdateLangTexts();
 
+            TextData data = Locale.Texts[textGroup][currentIndex];
             bool clicked = false;
             float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
             float elapsedTime = 0;
@@ -72,6 +91,7 @@ public class UseItemDialog : MonoBehaviour, IUseItem
                 yield return null;
             }
         }
+        Locale.UnregisterConsumer(this);
         dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }

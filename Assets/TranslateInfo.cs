@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TranslateInfo : MonoBehaviour
+public class TranslateInfo : MonoBehaviour, ILangConsumer
 {
     public List<TMP_Text> textMeshProUGUIs;
     public List<int> index;
@@ -13,8 +13,8 @@ public class TranslateInfo : MonoBehaviour
     public Vector3 objSizeENUS;
 
     public TextGroup textGroupList = TextGroup.Places;
-    // Start is called before the first frame update
-    void Start()
+
+    public void UpdateLangTexts()
     {
         if (textMeshProUGUIs.Count > 0)
         {
@@ -29,5 +29,16 @@ public class TranslateInfo : MonoBehaviour
             else
                 obj.localScale = objSizeENUS;
         }
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
+
+    void Start()
+    {
+        Locale.RegisterConsumer(this);
+        UpdateLangTexts();
     }
 }

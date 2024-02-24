@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ILangConsumer
 {
     public static Inventory instance;
     public List<Item> items = new List<Item>();
@@ -33,6 +33,37 @@ public class Inventory : MonoBehaviour
     private TMP_Text itemNavigationText;
     private string currentState = "Playing";
 
+    public void UpdateLangTexts()
+    {
+        ItemName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+
+        if (items.Count > 0)
+        {
+            if (items[currentItem].itemMousePrefab != null)
+            {
+                useText.SetActive(true);
+                interactItem.text = Locale.Texts[TextGroup.Inventory][1].Text;
+            }
+            else if (items[currentItem].itemDetails != null)
+            {
+                useText.SetActive(true);
+                interactItem.text = Locale.Texts[TextGroup.Inventory][2].Text;
+                ItemDetails.text = items[currentItem].itemDetails;
+            }
+            else
+            {
+                useText.SetActive(false);
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -44,16 +75,14 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Locale.RegisterConsumer(this);
+
         audioSource = GetComponent<AudioSource>();
         inventoryUI = transform.GetChild(0).gameObject;
-        ItemName.text = Locale.Texts[TextGroup.Inventory][0].Text;
-        ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        UpdateLangTexts();
         interactItem = useText.GetComponentInChildren<TMP_Text>();
         GameManager.OnGameStateChange += GameManagerOnGameStateChange;
-    }
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
     }
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
@@ -65,7 +94,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if(currentState == "Playing")
+            if (currentState == "Playing")
                 OpenInventory(true);
             else
                 OpenInventory(false);
@@ -130,7 +159,7 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-        } 
+        }
         if (currentState == "Playing")
         {
             inventoryBag.SetActive(true);
@@ -177,21 +206,7 @@ public class Inventory : MonoBehaviour
             ItemName.text = items[currentItem].itemName;
             itemNavigationText = itemNavigation[currentItem].GetComponentInChildren<TMP_Text>();
             itemNavigationText.color = Color.white;
-            if (items[currentItem].itemMousePrefab != null)
-            {
-                useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][1].Text;
-            }
-            else if (items[currentItem].itemDetails != null)
-            {
-                useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                ItemDetails.text = items[currentItem].itemDetails;
-            }
-            else
-            {
-                useText.SetActive(false);
-            }
+            UpdateLangTexts();
         }
     }
 

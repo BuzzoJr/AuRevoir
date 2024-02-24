@@ -2,14 +2,30 @@ using Assets.Script.Locale;
 using TMPro;
 using UnityEngine;
 
-public class TranslateMe : MonoBehaviour
+public class TranslateMe : MonoBehaviour, ILangConsumer
 {
     public TextGroup textGroup = TextGroup.FinalDecision;
     public int index = 0;
 
+    private TMP_Text text;
+
+    public void UpdateLangTexts()
+    {
+        text.text = Locale.Texts[textGroup][index].Text;
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
+
     void Awake()
     {
-        TMP_Text finalDecision = GetComponent<TMP_Text>();
-        finalDecision.text = Locale.Texts[textGroup][index].Text;
+        text = GetComponent<TMP_Text>();
+        if (text)
+        {
+            Locale.RegisterConsumer(this);
+            UpdateLangTexts();
+        }
     }
 }

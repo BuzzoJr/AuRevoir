@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BrainMiniGame : MonoBehaviour
+public class BrainMiniGame : MonoBehaviour, ILangConsumer
 {
     public GameObject camMain;
     public GameObject camMiniGame;
@@ -35,10 +35,8 @@ public class BrainMiniGame : MonoBehaviour
         "Cerebellum",
     };
 
-    void Awake()
+    public void UpdateLangTexts()
     {
-        selected = new();
-
         title.text = Locale.Texts[TextGroup.BrainHUD][0].Text;
         quit.text = Locale.Texts[TextGroup.BrainHUD][1].Text;
 
@@ -56,6 +54,19 @@ public class BrainMiniGame : MonoBehaviour
             if (instruction != null)
                 instruction.text = Locale.Texts[TextGroup.BrainInstructions][i].Text;
         }
+    }
+
+    void Awake()
+    {
+        selected = new();
+
+        Locale.RegisterConsumer(this);
+        UpdateLangTexts();
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
     }
 
     void Update()

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Documents : MonoBehaviour
+public class Documents : MonoBehaviour, ILangConsumer
 {
     public static Documents instance;
     public List<Item> documents = new List<Item>();
@@ -32,6 +32,37 @@ public class Documents : MonoBehaviour
     private TMP_Text documentNavigationText;
     private string currentState = "Playing";
 
+    public void UpdateLangTexts()
+    {
+        DocumentName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        DocumentDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+
+        if (documents.Count > 0)
+        {
+            if (documents[currentDocument].itemMousePrefab != null)
+            {
+                useText.SetActive(true);
+                interactDocument.text = Locale.Texts[TextGroup.Inventory][1].Text;
+            }
+            else if (documents[currentDocument].itemDetails != null)
+            {
+                useText.SetActive(true);
+                interactDocument.text = Locale.Texts[TextGroup.Inventory][2].Text;
+                DocumentDetails.text = documents[currentDocument].itemDetails;
+            }
+            else
+            {
+                useText.SetActive(false);
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -43,16 +74,14 @@ public class Documents : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Locale.RegisterConsumer(this);
+
         audioSource = GetComponent<AudioSource>();
         documentsUI = transform.GetChild(0).gameObject;
-        DocumentName.text = Locale.Texts[TextGroup.Inventory][0].Text;
-        DocumentDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+        UpdateLangTexts();
         interactDocument = useText.GetComponentInChildren<TMP_Text>();
         GameManager.OnGameStateChange += GameManagerOnGameStateChange;
-    }
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
     }
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
@@ -169,21 +198,7 @@ public class Documents : MonoBehaviour
             Debug.Log(DocumentName.text);
             documentNavigationText = documentNavigation[currentDocument].GetComponentInChildren<TMP_Text>();
             documentNavigationText.color = Color.white;
-            if (documents[currentDocument].itemMousePrefab != null)
-            {
-                useText.SetActive(true);
-                interactDocument.text = Locale.Texts[TextGroup.Inventory][1].Text;
-            }
-            else if (documents[currentDocument].itemDetails != null)
-            {
-                useText.SetActive(true);
-                interactDocument.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                DocumentDetails.text = documents[currentDocument].itemDetails;
-            }
-            else
-            {
-                useText.SetActive(false);
-            }
+            UpdateLangTexts();
         }
     }
 
