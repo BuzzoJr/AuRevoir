@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
+    //Controla para qual cena vai ao colidir com a porta
     public SceneRef moveRef = SceneRef.SampleScene;
     public GameObject transObj, globalObj;
     public bool locked = false;
@@ -59,7 +60,7 @@ public class DoorController : MonoBehaviour
         }
         else if (locked)
         {
-            StartCoroutine(CoroutineExample());
+            StartCoroutine(LockedDialog());
         }
     }
 
@@ -71,7 +72,7 @@ public class DoorController : MonoBehaviour
         SceneManager.LoadScene("Scenes/" + moveRef.ToString());
     }
 
-    IEnumerator CoroutineExample()
+    IEnumerator LockedDialog()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 

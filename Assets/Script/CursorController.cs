@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CursorController : MonoBehaviour
 {
+    //Controla qual icone de cursor está sendo utilizado
     public static CursorController instance;
     [SerializeField] private Texture2D doorCursor;
     [SerializeField] private Texture2D clickCursor;

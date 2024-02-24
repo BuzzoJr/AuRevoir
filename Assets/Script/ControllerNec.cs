@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ControllerNec : MonoBehaviour
 {
+    //Controle do painel do necrotério
     public GameObject cameraScene;
     public GameObject allBody;
     public GameObject target;
