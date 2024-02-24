@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BossSpecial : MonoBehaviour, ISpecial
 {
+    //Ao iniciar dialogo com a chefe altera variáveis. Chuva e More info
     public PlayerData playerData;
     [SerializeField] private DoorController door;
     [SerializeField] private GameObject rainObject;
