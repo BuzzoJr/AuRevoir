@@ -62,7 +62,7 @@ public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
 
         if (shouldWalk)
         {
-            PlayerController.navMeshAgent.destination = new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z);
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), null);
 
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));

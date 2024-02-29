@@ -20,7 +20,8 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
     IEnumerator UsePanel()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x, transform.position.y, transform.position.z), null);
+
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         password.text = "#----";

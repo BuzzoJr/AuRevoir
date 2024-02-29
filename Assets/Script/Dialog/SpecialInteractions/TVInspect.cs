@@ -41,7 +41,8 @@ public class TVInspect : MonoBehaviour, ILook, ILangConsumer
     IEnumerator CoroutineExample()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = transform.position;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(transform.position, null);
+
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 

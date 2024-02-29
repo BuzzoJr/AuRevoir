@@ -66,7 +66,8 @@ public class AddItemEnd : MonoBehaviour, IUse, ILangConsumer
     IEnumerator GettingItem()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = transform.position;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(transform.position, null);
+
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
