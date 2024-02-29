@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private Button talkChild;
     private string currentState = "Playing";
 
+    public Transform lookAtTarget;
+    private float rotationSpeed = 500f;
 
     private void Awake()
     {
@@ -100,11 +102,27 @@ public class PlayerController : MonoBehaviour
         {
             audioSource.enabled = false;
             anim.SetBool("Walk", false);
+
+            if (lookAtTarget)
+            {
+                Vector3 lookDirection = lookAtTarget.position - transform.position;
+                lookDirection.y = 0f;
+
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, targetRotation.eulerAngles.y, 0), Time.deltaTime * rotationSpeed);
+
+                if (targetRotation == transform.rotation)
+                {
+                    lookAtTarget = null;
+                }
+                
+            }
         }
     }
 
-    private void GoTo(Vector3 dest)
+    public void GoTo(Vector3 dest, Transform LookAtTarget = null)
     {
+        lookAtTarget = LookAtTarget;
         destination.position = dest;
         navMeshAgent.destination = dest;
     }

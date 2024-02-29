@@ -55,11 +55,8 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     void Start()
     {
         if (itemType == ItemType.Item)
-            if (Inventory.instance.items.Any(item => item.itemID == ItemID))
-                Destroy(gameObject);
-            else
-            if (Documents.instance.documents.Any(item => item.itemID == ItemID))
-                Destroy(gameObject);
+            if (Inventory.instance.items.Any(item => item.itemID == ItemID) || Documents.instance.documents.Any(item => item.itemID == ItemID))
+                runSpecial();
     }
 
     public void Use(GameObject who)
@@ -70,7 +67,8 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     IEnumerator GettingItem()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        PlayerController.navMeshAgent.destination = transform.position;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(transform.position, transform);
+
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
 
@@ -108,7 +106,16 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
             Documents.instance.AddDocument(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
 
         Inventory.instance.PickUpAudio(pickupAudio);
-        Destroy(gameObject);
+        runSpecial();
+    }
+
+    private void runSpecial()
+    {
+        var special = GetComponent<ISpecial>();
+        if (special != null)
+            special.Special(gameObject);
+        else
+            Destroy(gameObject);
     }
 
     public enum ItemType

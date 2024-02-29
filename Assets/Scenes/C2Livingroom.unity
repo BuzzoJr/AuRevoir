@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 7675589525231906486, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.486
+      value: -0.263
       objectReference: {fileID: 0}
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.41
+      value: -28.68
       objectReference: {fileID: 0}
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -200,7 +200,7 @@ PrefabInstance:
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 34.31
+      value: 32.71
       objectReference: {fileID: 0}
     - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
         type: 3}
@@ -366,9 +366,10 @@ MonoBehaviour:
   shouldWalk: 1
   targetItem: MouseKey(Clone)
   errorClip: {fileID: 8300000, guid: fd5a967cae597e148bf2073b8c7a8478, type: 3}
+  targetTransform: {fileID: 543450653150592305}
   animator: {fileID: 1228084633}
   door: {fileID: 88287828}
-  CustomWalkOffset: {x: -2, y: 0, z: -7}
+  CustomWalkOffset: {x: -2, y: 0, z: -5}
 --- !u!114 &88287828 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
@@ -5812,7 +5813,8 @@ GameObject:
   - component: {fileID: 6045243090251543524}
   - component: {fileID: 7226833859015146561}
   - component: {fileID: 4876879783759972491}
-  - component: {fileID: 7226833859015146562}
+  - component: {fileID: 7226833859015146565}
+  - component: {fileID: 7226833859015146564}
   - component: {fileID: 7226833859015146563}
   - component: {fileID: 2831044652044046090}
   m_Layer: 0
@@ -6058,27 +6060,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6390278168709933406}
   m_Mesh: {fileID: 4849553436221019267, guid: d219b8bca52068942ada6d899b8184af, type: 3}
---- !u!114 &7226833859015146562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6390278168709933406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e3d751a7e1c91e43a941f45ef08f59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemGroup: 3
-  ItemPrefab: {fileID: 8802602178624125057, guid: d2572ef9e0b672944a0714909f161e0a,
-    type: 3}
-  ItemMousePrefab: {fileID: 0}
-  pickupAudio: {fileID: 8300000, guid: ec63f2915f00fa442813af7928e33b37, type: 3}
-  Key: {fileID: 1911938698702053658}
-  HasText: 1
-  textGroup: 7
-  dialogBox: {fileID: 4357632719355704092}
 --- !u!114 &7226833859015146563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6095,6 +6076,40 @@ MonoBehaviour:
   textGroup: 6
   dialogBox: {fileID: 4357632719355704092}
   CustomWalkOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &7226833859015146564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6390278168709933406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c32917abdd71f445b29cc7b906164aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: {fileID: 1911938698702053658}
+--- !u!114 &7226833859015146565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6390278168709933406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b636a37b63fbe0743b0b302a07e8fb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemGroup: 3
+  ItemPrefab: {fileID: 8802602178624125057, guid: d2572ef9e0b672944a0714909f161e0a,
+    type: 3}
+  ItemMousePrefab: {fileID: 0}
+  pickupAudio: {fileID: 8300000, guid: ec63f2915f00fa442813af7928e33b37, type: 3}
+  HasText: 1
+  textGroup: 7
+  dialogBox: {fileID: 4357632719355704092}
 --- !u!1001 &7383347091124567804
 PrefabInstance:
   m_ObjectHideFlags: 0
