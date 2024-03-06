@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IMORTAL : MonoBehaviour {
+public class KeepRunningOnSceneChange : MonoBehaviour {
 
     void Awake()
     {
