@@ -1,7 +1,5 @@
-using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +8,6 @@ public class Map : MonoBehaviour
     public static Map instance;
 
     private GameObject mapUI;
-    private string currentState = "Playing";
 
     private void Awake()
     {
@@ -24,16 +21,6 @@ public class Map : MonoBehaviour
             Destroy(gameObject);
         }
         mapUI = transform.GetChild(0).gameObject;
-        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
-    }
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
-    }
-
-    private void GameManagerOnGameStateChange(GameManager.GameState state)
-    {
-        currentState = state.ToString();
     }
 
     private void Update()
@@ -110,13 +97,13 @@ public class Map : MonoBehaviour
 
     private void UpdateInfo()
     {
-        
+
     }
 
     public void AddNote()
     {
-        
+
     }
 
-    
+
 }

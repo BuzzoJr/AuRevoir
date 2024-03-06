@@ -30,7 +30,6 @@ public class Documents : MonoBehaviour, ILangConsumer
     private int currentDocument = 0;
     private TMP_Text interactDocument;
     private TMP_Text documentNavigationText;
-    private string currentState = "Playing";
 
     public void UpdateLangTexts()
     {
@@ -60,7 +59,6 @@ public class Documents : MonoBehaviour, ILangConsumer
     void OnDestroy()
     {
         Locale.UnregisterConsumer(this);
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
     }
 
     private void Awake()
@@ -81,12 +79,6 @@ public class Documents : MonoBehaviour, ILangConsumer
         documentsUI = transform.GetChild(0).gameObject;
         UpdateLangTexts();
         interactDocument = useText.GetComponentInChildren<TMP_Text>();
-        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
-    }
-
-    private void GameManagerOnGameStateChange(GameManager.GameState state)
-    {
-        currentState = state.ToString();
     }
 
     private void Update()

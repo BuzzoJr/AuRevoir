@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
     private int currentItem = 0;
     private TMP_Text interactItem;
     private TMP_Text itemNavigationText;
-    private string currentState = "Playing";
+    private GameManager.GameState currentState = GameManager.GameState.Playing;
 
     public void UpdateLangTexts()
     {
@@ -87,14 +87,14 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
     {
-        currentState = state.ToString();
+        currentState = state;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (currentState == "Playing")
+            if (currentState == GameManager.GameState.Playing)
                 OpenInventory(true);
             else
                 OpenInventory(false);
@@ -160,7 +160,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
                 }
             }
         }
-        if (currentState == "Playing")
+        if (currentState == GameManager.GameState.Playing)
         {
             inventoryBag.SetActive(true);
         }

@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.EventSystems;
 
 public class CursorController : MonoBehaviour
 {
@@ -12,7 +9,7 @@ public class CursorController : MonoBehaviour
     public Camera cam;
     public bool inButton = false;
     private string currentCursor = "null";
-    private string currentState;
+    private GameManager.GameState currentState;
 
     private void Awake()
     {
@@ -30,18 +27,18 @@ public class CursorController : MonoBehaviour
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
     {
-        currentState = state.ToString();
+        currentState = state;
     }
 
-    void Start() 
+    void Start()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        currentState = GameManager.Instance.State.ToString();
+        currentState = GameManager.Instance.State;
     }
 
     void FixedUpdate()
     {
-        if (currentState == "Playing" && cam.gameObject.activeSelf)
+        if (currentState == GameManager.GameState.Playing && cam.gameObject.activeSelf)
         {
             if (inButton)
             {
@@ -73,7 +70,7 @@ public class CursorController : MonoBehaviour
                         currentCursor = "clickCursor";
                     }
                 }
-                else if(currentCursor != "null")
+                else if (currentCursor != "null")
                 {
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                     currentCursor = "null";

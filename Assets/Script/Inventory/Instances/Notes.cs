@@ -1,7 +1,5 @@
-using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,7 +13,6 @@ public class Notes : MonoBehaviour
     [SerializeField] private GameObject notesNavigationPrefab;
 
     private GameObject notesUI;
-    private string currentState = "Playing";
 
     private void Awake()
     {
@@ -29,16 +26,6 @@ public class Notes : MonoBehaviour
             Destroy(gameObject);
         }
         notesUI = transform.GetChild(0).gameObject;
-        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
-    }
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
-    }
-
-    private void GameManagerOnGameStateChange(GameManager.GameState state)
-    {
-        currentState = state.ToString();
     }
 
     private void Update()
@@ -120,13 +107,13 @@ public class Notes : MonoBehaviour
 
     private void UpdateInfo(int index = 0)
     {
-        
+
     }
 
     public void AddNote()
     {
-        
+
     }
 
-    
+
 }

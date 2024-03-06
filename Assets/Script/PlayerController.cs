@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Button useChild;
     private Button lookChild;
     private Button talkChild;
-    private string currentState = "Playing";
+    private GameManager.GameState currentState = GameManager.GameState.Playing;
 
     public Transform lookAtTarget;
     private float rotationSpeed = 500f;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
     {
-        currentState = state.ToString();
+        currentState = state;
     }
     void Update()
     {
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
             Ray ray = cam.ScreenPointToRay(viewportPos);
-            if (Physics.Raycast(ray, out RaycastHit hitPoint) && currentState == "Playing")
+            if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
             {
                 switch (hitPoint.transform.tag)
                 {
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 {
                     lookAtTarget = null;
                 }
-                
+
             }
         }
     }
