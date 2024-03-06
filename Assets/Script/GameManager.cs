@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,16 +42,6 @@ public class GameManager : MonoBehaviour
     {
         State = newState;
 
-        switch (newState)
-        {
-            case GameState.Menu:
-                break;
-            case GameState.Interacting:
-                break;
-            case GameState.Playing:
-                break;
-        }
-
         OnGameStateChange?.Invoke(newState);
     }
 
@@ -84,5 +72,11 @@ public class GameManager : MonoBehaviour
             visitedScenes.Add(sceneName);
             return true;
         }
+    }
+
+    public void ResetData()
+    {
+        visitedScenes.Clear();
+        UpdateGameState(GameState.Playing);
     }
 }

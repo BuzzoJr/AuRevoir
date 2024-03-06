@@ -92,6 +92,7 @@ public class MenuController : MonoBehaviour, ILangConsumer
     public void StartGame()
     {
         playerData.ResetData();
+        GameManager.Instance.ResetData();
         StartCoroutine(WaitStartGame());
     }
 
