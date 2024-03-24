@@ -9,11 +9,11 @@ public class PlayerData : ScriptableObject
 
     public List<string> visitedScenes = new();
 
-    public List<GameSteps> Steps { get; set; }
+    public List<GameSteps> steps = new();
 
     public void ResetData()
     {
         visitedScenes.Clear();
-        Steps.Clear();
+        steps.Clear();
     }
 }

@@ -1,4 +1,3 @@
-using Assets.Script;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
@@ -12,7 +11,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
     public VideoPlayer videoPlayerENUS;
     public VideoPlayer videoPlayerPTBR;
     public PlayerData playerData;
-    public DoorController door;
+    public MafiaOfficeLocked door;
 
     private GameObject videocanvas;
     private VideoPlayer videoPlayer;
@@ -57,8 +56,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
         videocanvas.SetActive(false);
 
-        playerData.Steps.Add(GameSteps.CutsceneWatched);
-        door.SetLock(false);
+        door.Unlock();
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }

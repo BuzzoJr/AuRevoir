@@ -18,7 +18,7 @@ public class BossSpecial : MonoBehaviour, ISpecial
 
     void Awake()
     {
-        if (playerData.Steps.Contains(GameSteps.MissonReceived))
+        if (playerData.steps.Contains(GameSteps.MissonReceived))
         {
             GetComponent<DialogInteraction>().textGroup = TextGroup.BossMoreInfo;
             door.locked = false;
@@ -44,7 +44,8 @@ public class BossSpecial : MonoBehaviour, ISpecial
         // Start the coroutine to change the rain intensity and sound volume
         StartCoroutine(ChangeRainIntensityAndSound());
         door.locked = false;
-        playerData.Steps.Add(GameSteps.MissonReceived);
+        if (!playerData.steps.Contains(GameSteps.MissonReceived))
+            playerData.steps.Add(GameSteps.MissonReceived);
     }
 
     IEnumerator ChangeRainIntensityAndSound()

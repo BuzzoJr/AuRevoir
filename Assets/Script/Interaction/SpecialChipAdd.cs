@@ -9,7 +9,8 @@ public class SpecialChipAdd : MonoBehaviour, ISpecial
 
     public void Special(GameObject who)
     {
-        playerData.Steps.Add(GameSteps.EndGame);
+        if (!playerData.steps.Contains(GameSteps.EndGame))
+            playerData.steps.Add(GameSteps.EndGame);
         labDoor.SetLock(false);
     }
 }

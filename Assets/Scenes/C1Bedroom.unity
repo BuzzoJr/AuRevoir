@@ -939,12 +939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb195cb41651884b93ba56c36d7e3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
   pickupPhone: {fileID: 8300000, guid: ace8c81b3b1c7cb49aa40ae89673266d, type: 3}
   IntroductionSong: {fileID: 8300000, guid: c704c1521cebc444b973539d6df70fb7, type: 3}
-  voicemailScript: {fileID: 466674427}
-  lightRinging: {fileID: 1015296296}
-  lightVoicemail: {fileID: 93617811}
 --- !u!114 &466674427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3969,6 +3965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653078869052}
   - component: {fileID: 466674422}
+  - component: {fileID: 919132148601458312}
   - component: {fileID: 919132148601458311}
   - component: {fileID: 466674426}
   - component: {fileID: 466674427}
@@ -3996,6 +3993,22 @@ MonoBehaviour:
   textGroup: 3
   dialogBox: {fileID: 1396857534}
   CustomWalkOffset: {x: 0, y: 0, z: -2}
+--- !u!114 &919132148601458312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148601458310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f003919d6e5681c43888c0fc65809b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  voicemailScript: {fileID: 466674427}
+  lightRinging: {fileID: 1015296296}
+  lightVoicemail: {fileID: 93617811}
 --- !u!23 &1102358419392711046
 MeshRenderer:
   m_ObjectHideFlags: 0
