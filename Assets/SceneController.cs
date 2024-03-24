@@ -1,3 +1,4 @@
+using Assets.Script;
 using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
@@ -18,6 +19,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
     public AudioSource audioSource = null;
+    public AudioClip backgroundMusic = null;
 
     private int currentIndex = -1;
 
@@ -57,22 +59,25 @@ public class SceneController : MonoBehaviour, ILangConsumer
         playerData.previousScene = SceneManager.GetActiveScene().name;
 
         if (playerData.previousScene == "C9InteriorLavanderia")
-            playerData.laundryVisited = true;
+            playerData.Steps.Add(GameSteps.LaundryVisited);
     }
 
     private void Start()
     {
-        if (GameManager.Instance.IsFirstTimeInScene(gameObject.scene.name))
+        if (IsFirstTimeInScene(gameObject.scene.name))
         {
             if (audioSource != null)
                 audioSource.Play();
+
+            if (backgroundMusic != null)
+                GameManager.Instance.UpdateSong(backgroundMusic);
 
             if (HasText)
                 StartCoroutine(DoFirstTimeAction());
         }
         else
         {
-            if (gameObject.scene.name == "C1Bedroom" && playerData.phoneAwnsered)
+            if (gameObject.scene.name == "C1Bedroom" && playerData.Steps.Contains(GameSteps.PhoneAnswered))
             {
                 GameObject phone = GameObject.Find("answering-machine");
                 if (phone != null)
@@ -85,6 +90,19 @@ public class SceneController : MonoBehaviour, ILangConsumer
                         Destroy(audio);
                 }
             }
+        }
+    }
+
+    private bool IsFirstTimeInScene(string sceneName)
+    {
+        if (playerData.visitedScenes.Contains(sceneName))
+        {
+            return false;
+        }
+        else
+        {
+            playerData.visitedScenes.Add(sceneName);
+            return true;
         }
     }
 

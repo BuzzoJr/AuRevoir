@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Script;
 using UnityEngine;
 
 public class EndGameDoor : MonoBehaviour
@@ -9,7 +8,7 @@ public class EndGameDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerData.EndGame)
+        if (playerData.Steps.Contains(GameSteps.EndGame))
         {
             door = GetComponent<DoorController>();
             door.moveRef = DoorController.SceneRef.EndScene;
@@ -19,6 +18,6 @@ public class EndGameDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

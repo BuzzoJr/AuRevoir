@@ -22,28 +22,35 @@ public class NewMenuController : MonoBehaviour
 
     void Awake()
     {
-        if(!PlayerPrefs.HasKey("FullS")) {
+        if (!PlayerPrefs.HasKey("FullS"))
+        {
             PlayerPrefs.SetInt("FullS", 1);
         }
-        else {
-            if(PlayerPrefs.GetInt("FullS") == 0) {
+        else
+        {
+            if (PlayerPrefs.GetInt("FullS") == 0)
+            {
                 ChangeFullScreen();
             }
         }
 
-        if(!PlayerPrefs.HasKey("Resolution")) {
+        if (!PlayerPrefs.HasKey("Resolution"))
+        {
             PlayerPrefs.SetInt("Resolution", 0);
         }
-        else {
+        else
+        {
             ChangeResolution(PlayerPrefs.GetInt("Resolution"));
         }
 
-        if(!PlayerPrefs.HasKey("Volume")) {
+        if (!PlayerPrefs.HasKey("Volume"))
+        {
             ChangeVolume();
         }
-        else {
-            volumeOpt.value = (PlayerPrefs.GetFloat("Volume") - 1) *-1;
-            volumeScreen.value = (PlayerPrefs.GetFloat("Volume") - 1) *-1;
+        else
+        {
+            volumeOpt.value = (PlayerPrefs.GetFloat("Volume") - 1) * -1;
+            volumeScreen.value = (PlayerPrefs.GetFloat("Volume") - 1) * -1;
             AudioListener.volume = PlayerPrefs.GetFloat("Volume");
         }
     }
@@ -51,7 +58,7 @@ public class NewMenuController : MonoBehaviour
     private void Start()
     {
         Destroy(GameObject.Find("MusicEnd"));
-        GameManager.Instance.visitedScenes.Clear();
+        playerData.visitedScenes.Clear();
     }
 
     public void ToPtBr()
@@ -83,16 +90,19 @@ public class NewMenuController : MonoBehaviour
         StartCoroutine(WaitStartGame());
     }
 
-    public void ChangeFullScreen() {
+    public void ChangeFullScreen()
+    {
         btnFulls = !btnFulls;
 
-        if(btnFulls) {
+        if (btnFulls)
+        {
             checkFulls.text = "(  X  )";
             PlayerPrefs.SetInt("FullS", 1);
             Screen.fullScreen = true;
             Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
         }
-        else {
+        else
+        {
             checkFulls.text = "(      )";
             PlayerPrefs.SetInt("FullS", 0);
             Screen.fullScreen = false;
@@ -110,18 +120,21 @@ public class NewMenuController : MonoBehaviour
         btnPressed = !btnPressed;
     }
 
-    public void PlayButton() {
+    public void PlayButton()
+    {
         StartCoroutine(AnimPcPlay());
     }
 
-    public void ChangeResolution(int value) {
+    public void ChangeResolution(int value)
+    {
         bool fulls = true;
 
-        if(PlayerPrefs.GetInt("FullS") == 0)
+        if (PlayerPrefs.GetInt("FullS") == 0)
             fulls = false;
 
-        for(int i = 0; i < allCircles.Length; i++) {
-            if(i == value)
+        for (int i = 0; i < allCircles.Length; i++)
+        {
+            if (i == value)
                 allCircles[i].SetActive(true);
             else
                 allCircles[i].SetActive(false);
@@ -129,19 +142,23 @@ public class NewMenuController : MonoBehaviour
 
         Screen.fullScreen = false;
 
-        if(value == 0) {
+        if (value == 0)
+        {
             Screen.SetResolution(1920, 1080, fulls);
             //mainCanvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
         }
-        else if(value == 1) {
+        else if (value == 1)
+        {
             Screen.SetResolution(1600, 900, fulls);
             //mainCanvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1600, 900);
         }
-        else if(value == 2) {
+        else if (value == 2)
+        {
             Screen.SetResolution(1366, 768, fulls);
             //mainCanvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1366, 768);
         }
-        else {
+        else
+        {
             Screen.SetResolution(1280, 720, fulls);
             //mainCanvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1280, 720);
         }
@@ -149,14 +166,16 @@ public class NewMenuController : MonoBehaviour
         PlayerPrefs.SetInt("Resolution", value);
     }
 
-    public void ChangeVolume() {
+    public void ChangeVolume()
+    {
         volumeScreen.value = volumeOpt.value;
         AudioListener.volume = 1f - volumeOpt.value;
 
         PlayerPrefs.SetFloat("Volume", 1f - volumeOpt.value);
     }
 
-    public void ChangeMusic() {
+    public void ChangeMusic()
+    {
         musicScreen.value = musicOpt.value;
         //music.volume = musicSlider.value;
     }

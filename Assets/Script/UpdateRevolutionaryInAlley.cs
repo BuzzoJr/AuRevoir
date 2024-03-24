@@ -8,9 +8,9 @@ public class UpdateRevolutionaryInAlley : MonoBehaviour
 
     void Awake()
     {
-        if (playerData.cutsceneWatched)
+        if (playerData.Steps.Contains(Assets.Script.GameSteps.CutsceneWatched))
             revolutionary.SetActive(false);
-        else if (playerData.laundryVisited)
+        else if (playerData.Steps.Contains(Assets.Script.GameSteps.LaundryVisited))
             revolutionary.GetComponent<DialogInteraction>().textGroup = TextGroup.DirectionsToMorgue;
     }
 }

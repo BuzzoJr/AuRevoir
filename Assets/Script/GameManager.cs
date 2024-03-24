@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,11 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static event System.Action<GameState> OnGameStateChange;
 
-    private AudioSource AudioInstance;
-
-    public AudioClip LavanderiaClip;
-
-    public HashSet<string> visitedScenes = new HashSet<string>();
+    private AudioSource AudioInstance { get; set; }
 
     void Awake()
     {
@@ -57,26 +52,8 @@ public class GameManager : MonoBehaviour
         Playing,
     }
 
-    public bool IsFirstTimeInScene(string sceneName)
-    {
-        if (visitedScenes.Contains(sceneName))
-        {
-            return false;
-        }
-        else
-        {
-            if (sceneName == "C8ExteriorLavanderia")
-                AudioInstance.PlayOneShot(LavanderiaClip);
-            else if (sceneName == "C12Necroterio")
-                AudioInstance.PlayOneShot(LavanderiaClip);
-            visitedScenes.Add(sceneName);
-            return true;
-        }
-    }
-
     public void ResetData()
     {
-        visitedScenes.Clear();
         UpdateGameState(GameState.Playing);
     }
 }

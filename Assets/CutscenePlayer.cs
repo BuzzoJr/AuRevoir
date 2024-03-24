@@ -1,3 +1,4 @@
+using Assets.Script;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
@@ -56,7 +57,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
         videocanvas.SetActive(false);
 
-        playerData.cutsceneWatched = true;
+        playerData.Steps.Add(GameSteps.CutsceneWatched);
         door.SetLock(false);
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);

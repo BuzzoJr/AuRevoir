@@ -49,7 +49,7 @@ public class MenuController : MonoBehaviour, ILangConsumer
     private void Start()
     {
         Destroy(GameObject.Find("MusicEnd"));
-        GameManager.Instance.visitedScenes.Clear();
+        playerData.visitedScenes.Clear();
     }
 
     public void ToPtBr()

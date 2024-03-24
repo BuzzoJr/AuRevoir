@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Script;
 using Assets.Script.Interaction;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class SpecialChipAdd : MonoBehaviour, ISpecial
 
     public void Special(GameObject who)
     {
-        playerData.EndGame = true;
+        playerData.Steps.Add(GameSteps.EndGame);
         labDoor.SetLock(false);
     }
 }

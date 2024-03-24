@@ -1,8 +1,5 @@
-using Assets.Script.Dialog;
+using Assets.Script;
 using Assets.Script.Interaction;
-using Assets.Script.Locale;
-using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class PhoneSpecial : MonoBehaviour, ISpecial
@@ -28,6 +25,6 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
         audioSource.loop = false;
         audioSource.PlayOneShot(pickupPhone);
         GameManager.Instance.UpdateSong(IntroductionSong);
-        playerData.phoneAwnsered = true;
+        playerData.Steps.Add(GameSteps.PhoneAnswered);
     }
 }
