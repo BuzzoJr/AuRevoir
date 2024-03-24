@@ -34,6 +34,12 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     {
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
     }
+
+    void Start()
+    {
+        // Allow enable/disable on unity ui
+    }
+
     void ILook.Look(GameObject who)
     {
         StartCoroutine(CoroutineExample());

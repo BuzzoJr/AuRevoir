@@ -1,4 +1,5 @@
 using Assets.Script.Interaction;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
         lookChild = interactionWheel.transform.Find("Inspect").GetComponent<Button>();
         talkChild = interactionWheel.transform.Find("Talk").GetComponent<Button>();
 
-        use = target.GetComponentInChildren<IUse>();
+        use = target.GetComponentsInChildren<IUse>().FirstOrDefault(c => c is not MonoBehaviour m || m.enabled);
         if (use is not null)
         {
             useChild.onClick.RemoveListener(UseEvent);
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
             useChild.onClick.AddListener(UseEvent);
         }
 
-        look = target.GetComponentInChildren<ILook>();
+        look = target.GetComponentsInChildren<ILook>().FirstOrDefault(c => c is not MonoBehaviour m || m.enabled);
         if (look is not null)
         {
             lookChild.onClick.RemoveListener(LookEvent);
@@ -151,7 +152,7 @@ public class PlayerController : MonoBehaviour
             lookChild.onClick.AddListener(LookEvent);
         }
 
-        talk = target.GetComponentInChildren<ITalk>();
+        talk = target.GetComponentsInChildren<ITalk>().FirstOrDefault(c => c is not MonoBehaviour m || m.enabled);
         if (talk is not null)
         {
             talkChild.onClick.RemoveListener(TalkEvent);
