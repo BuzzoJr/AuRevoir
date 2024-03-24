@@ -8,6 +8,7 @@ using UnityEditor.Rendering;
 
 public class DoorInteraction : MonoBehaviour, IUseItem
 {
+    //Recebe um item para abrir a porta
     private AudioSource m_AudioSource;
     public bool shouldWalk = false;
     public string targetItem;

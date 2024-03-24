@@ -11340,8 +11340,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1729389263}
   - component: {fileID: 1729389264}
-  - component: {fileID: 1729389266}
+  - component: {fileID: 1729389269}
   - component: {fileID: 1729389267}
+  - component: {fileID: 1729389268}
   m_Layer: 0
   m_Name: Interact
   m_TagString: Interactable
@@ -11378,28 +11379,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3163104, y: 3.95, z: 1.47}
   m_Center: {x: 1.1362352, y: 0, z: 0}
---- !u!114 &1729389266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729389262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c30a1cb2d4ba58438c3fc21f2568afc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
-  itemGroup: 13
-  ItemPrefab: {fileID: 5029123661193650617, guid: 9de512ec6993b914487eb2e60e75ec0b,
-    type: 3}
-  ItemMousePrefab: {fileID: 0}
-  pickupAudio: {fileID: 8300000, guid: ace8c81b3b1c7cb49aa40ae89673266d, type: 3}
-  HasText: 1
-  textGroup: 65
-  dialogBox: {fileID: 2003920503}
-  labDoor: {fileID: 1125435017}
 --- !u!82 &1729389267
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11496,6 +11475,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1729389268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729389262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e32f1bb6db88c94dadfa10e126f452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  labDoor: {fileID: 1125435017}
+--- !u!114 &1729389269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729389262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b636a37b63fbe0743b0b302a07e8fb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemGroup: 13
+  ItemPrefab: {fileID: 5029123661193650617, guid: 9de512ec6993b914487eb2e60e75ec0b,
+    type: 3}
+  ItemMousePrefab: {fileID: 0}
+  pickupAudio: {fileID: 8300000, guid: ace8c81b3b1c7cb49aa40ae89673266d, type: 3}
+  HasText: 1
+  textGroup: 65
+  dialogBox: {fileID: 2003920503}
 --- !u!1 &1729669423
 GameObject:
   m_ObjectHideFlags: 0
