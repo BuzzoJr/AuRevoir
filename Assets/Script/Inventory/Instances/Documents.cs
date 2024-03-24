@@ -153,10 +153,6 @@ public class Documents : MonoBehaviour, ILangConsumer
                                 Notes.instance.OpenNotes(true);
                                 OpenDocuments(false);
                                 break;
-                            case "Map":
-                                Map.instance.OpenMap(true);
-                                OpenDocuments(false);
-                                break;
                         }
                     }
                 }

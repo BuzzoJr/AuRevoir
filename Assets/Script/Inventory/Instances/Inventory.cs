@@ -163,10 +163,6 @@ public class Inventory : MonoBehaviour, ILangConsumer
                                 Notes.instance.OpenNotes(true);
                                 OpenInventory(false);
                                 break;
-                            case "Map":
-                                Map.instance.OpenMap(true);
-                                OpenInventory(false);
-                                break;
                         }
                     }
                 }

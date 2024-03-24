@@ -8,7 +8,6 @@ public class InventoryLang : MonoBehaviour, ILangConsumer
     public TMP_Text items;
     public TMP_Text documents;
     public TMP_Text notes;
-    public TMP_Text map;
     public TMP_Text date;
     public TMP_Text close;
 
@@ -19,7 +18,6 @@ public class InventoryLang : MonoBehaviour, ILangConsumer
         items.text = Locale.Texts[TextGroup.Inventory][5].Text;
         documents.text = Locale.Texts[TextGroup.Inventory][6].Text;
         notes.text = Locale.Texts[TextGroup.Inventory][7].Text;
-        map.text = Locale.Texts[TextGroup.Inventory][8].Text;
         switch (selected)
         {
             case (Selected.ITEMS):
@@ -30,9 +28,6 @@ public class InventoryLang : MonoBehaviour, ILangConsumer
                 break;
             case (Selected.NOTES):
                 notes.text = "> " + Locale.Texts[TextGroup.Inventory][7].Text;
-                break;
-            case (Selected.MAP):
-                map.text = "> " + Locale.Texts[TextGroup.Inventory][8].Text;
                 break;
         }
     }
@@ -54,6 +49,5 @@ public class InventoryLang : MonoBehaviour, ILangConsumer
         ITEMS,
         DOCUMENTS,
         NOTES,
-        MAP,
     }
 }

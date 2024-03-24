@@ -74,10 +74,6 @@ public class Notes : MonoBehaviour
                                 Documents.instance.OpenDocuments(true);
                                 OpenNotes(false);
                                 break;
-                            case "Map":
-                                Map.instance.OpenMap(true);
-                                OpenNotes(false);
-                                break;
                         }
                     }
                 }
