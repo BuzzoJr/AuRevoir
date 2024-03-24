@@ -1,6 +1,7 @@
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,16 +41,26 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
         if (items.Count > 0)
         {
-            if (items[currentItem].itemMousePrefab != null)
+            for (int i = 0; i < items.Count; i++)
+            {
+                itemNavigation[i].GetComponentInChildren<TMP_Text>().text = Locale.Item[items[i].itemID].Name;
+            }
+
+            Item item = items[currentItem];
+            ItemData itemData = Locale.Item[item.itemID];
+
+            ItemName.text = itemData.Name;
+
+            if (item.itemMousePrefab != null)
             {
                 useText.SetActive(true);
                 interactItem.text = Locale.Texts[TextGroup.Inventory][1].Text;
             }
-            else if (items[currentItem].itemDetails != null)
+            else if (itemData.Details != null)
             {
                 useText.SetActive(true);
                 interactItem.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                ItemDetails.text = items[currentItem].itemDetails;
+                ItemDetails.text = itemData.Details;
             }
             else
             {
@@ -129,13 +140,14 @@ public class Inventory : MonoBehaviour, ILangConsumer
                         switch (result.gameObject.name)
                         {
                             case "UseItem":
-                                if (items[currentItem].itemMousePrefab != null)
+                                Item item = items[currentItem];
+                                if (item.itemMousePrefab != null)
                                 {
-                                    Instantiate(items[currentItem].itemMousePrefab, Vector3.zero, Quaternion.identity);
+                                    Instantiate(item.itemMousePrefab, Vector3.zero, Quaternion.identity);
                                     inventoryUI.SetActive(false);
                                     GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
                                 }
-                                else if (items[currentItem].itemDetails != null)
+                                else if (Locale.Item[item.itemID].Details != null)
                                 {
                                     ItemDetailsParent.SetActive(true);
                                 }
@@ -203,7 +215,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
         }
         if (items.Count != 0)
         {
-            ItemName.text = items[currentItem].itemName;
+            ItemName.text = Locale.Item[items[currentItem].itemID].Name;
             itemNavigationText = itemNavigation[currentItem].GetComponentInChildren<TMP_Text>();
             itemNavigationText.color = Color.white;
             UpdateLangTexts();
@@ -212,7 +224,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
     public void AddItem(Item item)
     {
-        if (items.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
+        if (items.Any(existingItem => existingItem.itemID == item.itemID))
             return;
 
         items.Add(item);
@@ -220,7 +232,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
         GameObject newItem = Instantiate(itemNavigationPrefab, itemNavigationParent.transform);
         itemNavigation.Add(newItem);
         itemNavigationText = itemNavigation[index].GetComponentInChildren<TMP_Text>();
-        itemNavigationText.text = item.itemName;
+        itemNavigationText.text = Locale.Item[item.itemID].Name;
         OpenInventory(true, index);
     }
 

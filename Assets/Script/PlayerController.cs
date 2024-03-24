@@ -1,4 +1,5 @@
 using Assets.Script.Interaction;
+using Assets.Script.Locale;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        // LANG TEST
+        if (Input.GetKeyDown(KeyCode.Space))
+            Locale.LoadLang((Locale.Lang == Lang.enUS) ? Lang.ptBR : Lang.enUS);
+        //
+
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
             if (EventSystem.current.IsPointerOverGameObject())

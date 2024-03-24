@@ -763,98 +763,59 @@ namespace Assets.Script.Locale
             },
         };
 
-        public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()
+        public static readonly Dictionary<ItemGroup, ItemData> Item = new()
         {
             {
                 ItemGroup.Coke,
-                new List<ItemData>()
-                {
-                    new ItemData(1, "Coca-Cola", "Lata de refrigerante"),
-                }
+                new ItemData(1, "Coca-Cola", "Lata de refrigerante")
             },
             {
                 ItemGroup.Julie_Drawing,
-                new List<ItemData>()
-                {
-                    new ItemData(2, "Desenho de Julie", "Um desenho feito pela Julie"),
-                }
+                new ItemData(2, "Desenho de Julie", "Um desenho feito pela Julie")
             },
             {
                 ItemGroup.TV_Manual,
-                new List<ItemData>()
-                {
-                    new ItemData(3, "Manual da TV", "Manual da televisão nova"),
-                }
+                new ItemData(3, "Manual da TV", "Manual da televisão nova")
             },
             {
                 ItemGroup.Keys,
-                new List<ItemData>()
-                {
-                    new ItemData(4, "Chaves", "Chaves de casa"),
-                }
+                new ItemData(4, "Chaves", "Chaves de casa")
             },
             {
                 ItemGroup.Pink_Sock,
-                new List<ItemData>()
-                {
-                    new ItemData(99, "Meia Rosa", "Uma única meia rosa"),
-                }
+                new ItemData(99, "Meia Rosa", "Uma única meia rosa")
             },
             {
                 ItemGroup.Finger,
-                new List<ItemData>()
-                {
-                    new ItemData(5, "Dedo Cortado", ""),
-                }
+                new ItemData(5, "Dedo Cortado", "")
             },
             {
                 ItemGroup.KeyCard,
-                new List<ItemData>()
-                {
-                    new ItemData(6, "Cartão de Acesso", "Cartão de Acesso do Laboratório Au-Revoir"),
-                }
+                new ItemData(6, "Cartão de Acesso", "Cartão de Acesso do Laboratório Au-Revoir")
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
-                new List<ItemData>()
-                {
-                    new ItemData(7, "Recibo de Equipamentos Au Revoir", "Recibo de recebimento de equipamentos de laboratório", "Recibo de recebimento de equipamentos de laboratório da Au Revoir."),
-                }
+                new ItemData(7, "Recibo de Equipamentos Au Revoir", "Recibo de recebimento de equipamentos de laboratório", "Recibo de recebimento de equipamentos de laboratório da Au Revoir.")
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
-                new List<ItemData>()
-                {
-                    new ItemData(8, "Visitantes da Balada", "Visitantes frequentes da balada Snake Pit", "Lista de Visitantes frequentes da balada Snake Pit"),
-                }
+                new ItemData(8, "Visitantes da Balada", "Visitantes frequentes da balada Snake Pit", "Lista de Visitantes frequentes da balada Snake Pit")
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
-                new List<ItemData>()
-                {
-                    new ItemData(9, "Lista de Viciados Devedores", "Lista de dependentes químicos que devem para a máfia", "Documento com a lista de dependentes químicos que devem para a máfia."),
-                }
+                new ItemData(9, "Lista de Viciados Devedores", "Lista de dependentes químicos que devem para a máfia", "Documento com a lista de dependentes químicos que devem para a máfia.")
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
-                new List<ItemData>()
-                {
-                    new ItemData(10, "Cobaias da Máfia", "Lista de alvos para testes biológicos", "Lista de alvos para testes biológicos."),
-                }
+                new ItemData(10, "Cobaias da Máfia", "Lista de alvos para testes biológicos", "Lista de alvos para testes biológicos.")
             },
             {
                 ItemGroup.Mafia_Doc_NewSleeve,
-                new List<ItemData>()
-                {
-                    new ItemData(11, "Relatório de Nova Capa", "Relatório de conclusão de preparo da nova capa", "Relatório de conclusão de preparo da nova capa do chefe da máfia."),
-                }
+                new ItemData(11, "Relatório de Nova Capa", "Relatório de conclusão de preparo da nova capa", "Relatório de conclusão de preparo da nova capa do chefe da máfia.")
             },
             {
                 ItemGroup.Chips,
-                new List<ItemData>()
-                {
-                    new ItemData(12, "Chips Au Revoir", "Chips do CEO e Revolucionário"),
-                }
+                new ItemData(12, "Chips Au Revoir", "Chips do CEO e Revolucionário")
             },
         };
     }

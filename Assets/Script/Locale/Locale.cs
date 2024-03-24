@@ -10,7 +10,7 @@ namespace Assets.Script.Locale
             { Lang.enUS, Locale_enUS.Texts },
             { Lang.ptBR, Locale_ptBR.Texts },
         };
-        public static Dictionary<Lang, Dictionary<ItemGroup, List<ItemData>>> ItemOptions => new()
+        public static Dictionary<Lang, Dictionary<ItemGroup, ItemData>> ItemOptions => new()
         {
             { Lang.enUS, Locale_enUS.Item },
             { Lang.ptBR, Locale_ptBR.Item },
@@ -18,7 +18,7 @@ namespace Assets.Script.Locale
 
         public static Lang Lang { get; set; }
         public static Dictionary<TextGroup, List<TextData>> Texts { get; set; }
-        public static Dictionary<ItemGroup, List<ItemData>> Item { get; set; }
+        public static Dictionary<ItemGroup, ItemData> Item { get; set; }
 
         private static List<ILangConsumer> consumers = new();
 

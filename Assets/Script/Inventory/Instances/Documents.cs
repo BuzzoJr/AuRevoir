@@ -1,6 +1,7 @@
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -38,16 +39,26 @@ public class Documents : MonoBehaviour, ILangConsumer
 
         if (documents.Count > 0)
         {
-            if (documents[currentDocument].itemMousePrefab != null)
+            for (int i = 0; i < documents.Count; i++)
+            {
+                documentNavigation[i].GetComponentInChildren<TMP_Text>().text = Locale.Item[documents[i].itemID].Name;
+            }
+
+            Item document = documents[currentDocument];
+            ItemData documentData = Locale.Item[document.itemID];
+
+            DocumentName.text = documentData.Name;
+
+            if (document.itemMousePrefab != null)
             {
                 useText.SetActive(true);
                 interactDocument.text = Locale.Texts[TextGroup.Inventory][1].Text;
             }
-            else if (documents[currentDocument].itemDetails != null)
+            else if (documentData.Details != null)
             {
                 useText.SetActive(true);
                 interactDocument.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                DocumentDetails.text = documents[currentDocument].itemDetails;
+                DocumentDetails.text = documentData.Details;
             }
             else
             {
@@ -119,13 +130,14 @@ public class Documents : MonoBehaviour, ILangConsumer
                         switch (result.gameObject.name)
                         {
                             case "UseItem":
-                                if (documents[currentDocument].itemMousePrefab != null)
+                                Item document = documents[currentDocument];
+                                if (document.itemMousePrefab != null)
                                 {
                                     Instantiate(documents[currentDocument].itemMousePrefab, Vector3.zero, Quaternion.identity);
                                     documentsUI.SetActive(false);
                                     GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
                                 }
-                                else if (documents[currentDocument].itemDetails != null)
+                                else if (Locale.Item[documents[currentDocument].itemID].Details != null)
                                 {
                                     DocumentDetailsParent.SetActive(true);
                                 }
@@ -185,26 +197,24 @@ public class Documents : MonoBehaviour, ILangConsumer
         }
         if (documents.Count != 0)
         {
-            DocumentName.text = documents[currentDocument].itemName;
-            Debug.Log(documents[currentDocument]);
-            Debug.Log(DocumentName.text);
+            DocumentName.text = Locale.Item[documents[currentDocument].itemID].Name;
             documentNavigationText = documentNavigation[currentDocument].GetComponentInChildren<TMP_Text>();
             documentNavigationText.color = Color.white;
             UpdateLangTexts();
         }
     }
 
-    public void AddDocument(Item item)
+    public void AddDocument(Item document)
     {
-        if (documents.FindIndex(existingItem => existingItem.itemID == item.itemID) != -1)
+        if (documents.Any(existingItem => existingItem.itemID == document.itemID))
             return;
 
-        documents.Add(item);
+        documents.Add(document);
         int index = documents.Count - 1;
         GameObject newItem = Instantiate(documentNavigationPrefab, documentNavigationParent.transform);
         documentNavigation.Add(newItem);
         documentNavigationText = documentNavigation[index].GetComponentInChildren<TMP_Text>();
-        documentNavigationText.text = item.itemName;
+        documentNavigationText.text = Locale.Item[document.itemID].Name;
         OpenDocuments(true, index);
     }
 

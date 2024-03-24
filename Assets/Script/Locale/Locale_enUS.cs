@@ -762,98 +762,59 @@ namespace Assets.Script.Locale
             },
         };
 
-        public static readonly Dictionary<ItemGroup, List<ItemData>> Item = new()
+        public static readonly Dictionary<ItemGroup, ItemData> Item = new()
         {
             {
                 ItemGroup.Coke,
-                new List<ItemData>()
-                {
-                    new ItemData(1,  "Coke", "Can of soda"),
-                }
+                new ItemData(1, "Coke", "Can of soda")
             },
             {
                 ItemGroup.Julie_Drawing,
-                new List<ItemData>()
-                {
-                    new ItemData(2,  "Julie's Drawing", "A drawing made by Julie"),
-                }
+                new ItemData(2, "Julie's Drawing", "A drawing made by Julie")
             },
             {
                 ItemGroup.TV_Manual,
-                new List<ItemData>()
-                {
-                    new ItemData(3,  "TV Manual", "Manual for the new television"),
-                }
+                new ItemData(3, "TV Manual", "Manual for the new television")
             },
             {
                 ItemGroup.Keys,
-                new List<ItemData>()
-                {
-                    new ItemData(4,  "Keys", "House keys"),
-                }
+                new ItemData(4, "Keys", "House keys")
             },
             {
                 ItemGroup.Pink_Sock,
-                new List<ItemData>()
-                {
-                    new ItemData(99,  "Pink Sock", "A single pink sock"),
-                }
+                new ItemData(99, "Pink Sock", "A single pink sock")
             },
             {
                 ItemGroup.Finger,
-                new List<ItemData>()
-                {
-                    new ItemData(5,  "Severed Finger", ""),
-                }
+                new ItemData(5, "Severed Finger", "")
             },
             {
                 ItemGroup.KeyCard,
-                new List<ItemData>()
-                {
-                    new ItemData(6,  "Keycard", "Au-Revoir laboratory keycard"),
-                }
+                new ItemData(6, "Keycard", "Au-Revoir laboratory keycard")
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
-                new List<ItemData>()
-                {
-                    new ItemData(7,  "Au Revoir Lab Equipment Receipt", "Laboratory Equipment Collection Receipt.", "Laboratory Equipment Collection Receipt."),
-                }
+                new ItemData(7, "Au Revoir Lab Equipment Receipt", "Laboratory Equipment Collection Receipt.", "Laboratory Equipment Collection Receipt.")
             },
             {
                 ItemGroup.Mafia_Doc_Visitors,
-                new List<ItemData>()
-                {
-                    new ItemData(8,  "Club Visitors", "Frequent visitors to the Snake Pit", "Frequent visitors to the Snake Pit"),
-                }
+                new ItemData(8, "Club Visitors", "Frequent visitors to the Snake Pit", "Frequent visitors to the Snake Pit")
             },
             {
                 ItemGroup.Mafia_Doc_Addicts,
-                new List<ItemData>()
-                {
-                    new ItemData(9, "Mafia Addicts Debtors", "List of drug addicts who owe to the mafia.", "Document with the list of drug addicts who owe to the mafia."),
-                }
+                new ItemData(9, "Mafia Addicts Debtors", "List of drug addicts who owe to the mafia.", "Document with the list of drug addicts who owe to the mafia.")
             },
             {
                 ItemGroup.Mafia_Doc_TestSubjects,
-                new List<ItemData>()
-                {
-                    new ItemData(10, "Mafia Test Subjects", "Target List for Biological Tests.", "Target List for Biological Tests."),
-                }
+                new ItemData(10, "Mafia Test Subjects", "Target List for Biological Tests.", "Target List for Biological Tests.")
             },
             {
                 ItemGroup.Mafia_Doc_NewSleeve,
-                new List<ItemData>()
-                {
-                    new ItemData(11, "New sleeve Report", "Report for the mafia boss's new sleeve", "Preparation completion report for the mafia boss's new sleeve."),
-                }
+                new ItemData(11, "New sleeve Report", "Report for the mafia boss's new sleeve", "Preparation completion report for the mafia boss's new sleeve.")
             },
             {
                 ItemGroup.Chips,
-                new List<ItemData>()
-                {
-                    new ItemData(12, "Chips Au Revoir", "CEO's and Revolutionary's Chips"),
-                }
+                new ItemData(12, "Chips Au Revoir", "CEO's and Revolutionary's Chips")
             },
         };
     }

@@ -10,10 +10,6 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 {
     [Tooltip("Item or Document")]
     public ItemType itemType = ItemType.Item;
-    private string ItemName;
-    private string ItemDescription;
-    private string ItemDetails = null;
-    private int ItemID;
     public ItemGroup itemGroup = ItemGroup.Default;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject ItemMousePrefab;
@@ -45,17 +41,12 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     {
         if (dialogBox)
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-
-        ItemName = Locale.Item[itemGroup][0].Name;
-        ItemDescription = Locale.Item[itemGroup][0].Description;
-        ItemDetails = Locale.Item[itemGroup][0].Details;
-        ItemID = Locale.Item[itemGroup][0].ID;
     }
 
     void Start()
     {
         if (itemType == ItemType.Item)
-            if (Inventory.instance.items.Any(item => item.itemID == ItemID) || Documents.instance.documents.Any(item => item.itemID == ItemID))
+            if (Inventory.instance.items.Any(item => item.itemID == itemGroup) || Documents.instance.documents.Any(item => item.itemID == itemGroup))
                 runSpecial();
     }
 
@@ -101,9 +92,9 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (itemType == ItemType.Item)
-            Inventory.instance.AddItem(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+            Inventory.instance.AddItem(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
         else
-            Documents.instance.AddDocument(new Item(ItemID, ItemName, ItemDescription, ItemPrefab, ItemMousePrefab, ItemDetails));
+            Documents.instance.AddDocument(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
 
         Inventory.instance.PickUpAudio(pickupAudio);
         runSpecial();
