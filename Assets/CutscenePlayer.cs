@@ -12,11 +12,18 @@ public class CutscenePlayer : MonoBehaviour, ILook
     public VideoPlayer videoPlayerPTBR;
     public PlayerData playerData;
     public MafiaOfficeLocked door;
+    public AudioClip TvOn;
+    public AudioClip TvOff;
 
+    private AudioSource audioSource;
     private GameObject videocanvas;
     private VideoPlayer videoPlayer;
     private Animator animator;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void Look(GameObject who)
     {
         if (Locale.Lang == Lang.ptBR)
@@ -47,7 +54,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
         {
             yield return null;
         }
-
+        audioSource.PlayOneShot(TvOn);
         videoPlayer.Play();
 
         while (videoPlayer.isPlaying)
@@ -55,6 +62,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
             yield return null;
         }
         animator.SetBool("Exit", true);
+        audioSource.PlayOneShot(TvOff);
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSecondsRealtime(animationLength);
         videocanvas.SetActive(false);
