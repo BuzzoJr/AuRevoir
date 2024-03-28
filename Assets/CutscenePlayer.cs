@@ -15,6 +15,7 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
     private GameObject videocanvas;
     private VideoPlayer videoPlayer;
+    private Animator animator;
 
     public void Look(GameObject who)
     {
@@ -29,12 +30,12 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
     private IEnumerator PlayVideo()
     {
+        animator = videoPlayer.gameObject.GetComponent<Animator>();
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
         if (shouldWalk)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), null);
-
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), transform);
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
         }
@@ -53,11 +54,18 @@ public class CutscenePlayer : MonoBehaviour, ILook
         {
             yield return null;
         }
-
+        animator.SetBool("Exit", true);
+        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSecondsRealtime(animationLength);
         videocanvas.SetActive(false);
 
         door.Unlock();
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+    }
+
+    public void StopCutscene()
+    {
+        videoPlayer.Stop();
     }
 }
