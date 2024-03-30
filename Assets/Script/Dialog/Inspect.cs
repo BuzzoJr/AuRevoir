@@ -11,6 +11,7 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    [SerializeField] private bool HasText = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
     private int currentIndex = -1;
@@ -58,30 +59,43 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
         }
         yield return null;
 
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-        {
-            currentIndex = i;
-            UpdateLangTexts();
-
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-            float elapsedTime = 0;
-
-            while (elapsedTime < delayTime && !clicked)
+        if(HasText) {
+            dialogBox.SetActive(true);
+            Locale.RegisterConsumer(this);
+            for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
             {
-                if (Input.GetMouseButtonDown(0))
+                currentIndex = i;
+                UpdateLangTexts();
+
+                TextData data = Locale.Texts[textGroup][currentIndex];
+                bool clicked = false;
+                float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
+                float elapsedTime = 0;
+
+                while (elapsedTime < delayTime && !clicked)
                 {
-                    clicked = true;
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        clicked = true;
+                    }
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
                 }
-                elapsedTime += Time.deltaTime;
-                yield return null;
             }
+            Locale.UnregisterConsumer(this);
+            dialogBox.SetActive(false);
         }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
+
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        runSpecial();
+    }
+
+    private void runSpecial()
+    {
+        var special = GetComponent<ISpecial>();
+        if (special != null)
+            special.Special(gameObject);
+        else
+            Destroy(gameObject);
     }
 }
