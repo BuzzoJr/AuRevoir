@@ -13,7 +13,7 @@ public class NewMenuController : MonoBehaviour
     public TMP_Text checkFulls;
     public AudioSource menuSong;
     public Color c1, c2;
-    public GameObject panelTxt, loadingObj, mainCanvas;
+    public GameObject panelTxt, loadingObj, mainCanvas, panelButton, starBtn, continueBtn, moveTxt;
     public GameObject[] allCircles;
     public Slider volumeScreen, volumeOpt, musicScreen, musicOpt;
     public float timeFade;
@@ -59,6 +59,14 @@ public class NewMenuController : MonoBehaviour
     {
         Destroy(GameObject.Find("MusicEnd"));
         playerData.visitedScenes.Clear();
+
+    }
+
+    void Update() {
+        if (moveTxt.transform.position.y >= 1.335911f && !continueBtn.activeSelf && panelButton.activeSelf) {
+            starBtn.SetActive(false);
+            continueBtn.SetActive(true);
+        }
     }
 
     public void ToPtBr()
@@ -206,6 +214,7 @@ public class NewMenuController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         panelTxt.SetActive(true);
+        panelButton.SetActive(true);
         loadingObj.SetActive(false);
     }
 }

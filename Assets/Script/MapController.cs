@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MapController : MonoBehaviour {
+    public Animator mapAnim;
     public GameObject[] selectLabel;
     public List<int> sceneBuildIndexList; //ALTERAR FUTURAMENTE PARA TER AS ID'S CORRETAS!!
-    private int finalDestiny;
+    private int finalDestiny, startDestiny;
 
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
@@ -21,6 +22,8 @@ public class MapController : MonoBehaviour {
         {
             SelectDestiny(PlayerPrefs.GetInt("LastMapSelect"));
         }
+
+        startDestiny = finalDestiny;
     }
 
     public void SelectDestiny(int point) { //Habilita seleção visual de cada ponto do mapa, da SET na variável que determina o destino
@@ -34,6 +37,20 @@ public class MapController : MonoBehaviour {
     }
 
     public void GoToDestiny() { //Vai p/ o destino selecionado
-        SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
+        StartCoroutine(DelayExitMap());
+    }
+
+    void OnEnable() { //Garante que nao de LoadScene se clicar no msm lugar
+        startDestiny = finalDestiny;
+    }
+
+    IEnumerator DelayExitMap()
+    {
+        mapAnim.SetTrigger("Exit");
+        yield return new WaitForSeconds(0.3f);
+        this.gameObject.SetActive(false);
+
+        if(startDestiny != finalDestiny)
+            SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
     }
 }
