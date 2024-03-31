@@ -20,6 +20,10 @@ public class DialogInteraction : MonoBehaviour, ITalk
         dialog.DialogBox = dialogBox;
         dialog.TextGroup = textGroup;
         dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
+
+        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
+        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
     public void Talk(GameObject who)

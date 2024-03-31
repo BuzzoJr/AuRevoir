@@ -19,6 +19,8 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    private TMP_Text DialogSpeaker { get; set; }
+
 
     private int currentIndex = -1;
 
@@ -27,8 +29,10 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         if (currentIndex >= 0)
         {
             TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            //dialogText.color = TextColorManager.textTypeColors[data.Type];
+            dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+            DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+            DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
         }
     }
 
@@ -40,7 +44,11 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     private void Awake()
     {
         if (dialogBox)
+        {
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+            Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
+            DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        }
     }
 
     void Start()
@@ -102,9 +110,9 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 
     private void runSpecial()
     {
-        var special = GetComponent<ISpecial>();
+        var special = GetComponent<IUseSpecial>();
         if (special != null)
-            special.Special(gameObject);
+            special.UseSpecial(gameObject);
         else
             Destroy(gameObject);
     }

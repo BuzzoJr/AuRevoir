@@ -11,6 +11,7 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
+    private TMP_Text DialogSpeaker { get; set; }
     [SerializeField] private bool HasText = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
@@ -21,8 +22,10 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
         if (currentIndex >= 0)
         {
             TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            //dialogText.color = TextColorManager.textTypeColors[data.Type];
+            dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+            DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+            DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
         }
     }
 
@@ -34,6 +37,8 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     void Awake()
     {
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
+        DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
     void Start()
@@ -92,10 +97,8 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
 
     private void runSpecial()
     {
-        var special = GetComponent<ISpecial>();
+        var special = GetComponent<ILookSpecial>();
         if (special != null)
-            special.Special(gameObject);
-        else
-            Destroy(gameObject);
+            special.LookSpecial(gameObject);
     }
 }

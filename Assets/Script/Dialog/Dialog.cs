@@ -12,6 +12,7 @@ namespace Assets.Script.Dialog
     {
         public GameObject DialogBox { get; set; }
         public TMP_Text DialogText { get; set; }
+        public TMP_Text DialogSpeaker { get; set; }
         public TextGroup TextGroup { get; set; }
 
         int? selectedKey = null;
@@ -23,8 +24,12 @@ namespace Assets.Script.Dialog
             if (currentIndex >= 0)
             {
                 TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
-                DialogText.color = TextColorManager.textTypeColors[data.Type];
-                DialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+                //DialogText.color = TextColorManager.textTypeColors[data.Type];
+                DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+                DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
+                Debug.Log(data.Type);
+                Debug.Log(TextColorManager.TextSpeaker(data.Type, ""));
             }
         }
 

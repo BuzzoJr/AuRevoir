@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3468108874663680382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.4, z: 2}
+  m_LocalScale: {x: 3, y: 0.6000005, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,6 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b636a37b63fbe0743b0b302a07e8fb94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Julie drawing
-  ItemDescription: Julie drawing
-  ItemPrefab: {fileID: 0}
+  itemType: 0
+  itemGroup: 1
+  ItemPrefab: {fileID: 7995920814188705616, guid: db14a988b887cc94dbaefd6bbc378768,
+    type: 3}
+  ItemMousePrefab: {fileID: 0}
+  pickupAudio: {fileID: 8300000, guid: e266b27e4bfbc814ab1c85e2909b6268, type: 3}
+  HasText: 1
+  textGroup: 5
+  dialogBox: {fileID: 0}

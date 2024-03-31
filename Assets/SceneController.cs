@@ -87,7 +87,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
                     if (dialogInteraction != null)
                         Destroy(dialogInteraction);
                     if (audio != null)
-                        Destroy(audio);
+                        audio.clip = null;
                 }
             }
         }

@@ -27,4 +27,12 @@ namespace Assets.Script.Interaction
     {
         void UseItem(GameObject who);
     }
+    public interface IUseSpecial
+    {
+        void UseSpecial(GameObject who);
+    }
+    public interface ILookSpecial
+    {
+        void LookSpecial(GameObject who);
+    }
 }
