@@ -3,79 +3,111 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class SyncButton : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+[System.Serializable]
+public class TypeList
+{
+    public enum types
+    {
+        FRQ = 0,
+        AMP = 1,
+        SPD = 2
+    }
+
+    public static readonly string[] typesStrings = {"Frequency", "Amplitude", "Speed"};
+};
+
+public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public SyncWave syncEditLine;
-    public float valorMinimo = 0f;
-    public float valorMaximo = 1f;
-    public float valorAtual = 0.5f; // Valor inicial
-    public float suavizacao = 50f; // Fator de suavização
-
-    private float anguloInicial;
-    private float valorIntervalo;
-    private Quaternion rotacaoInicial;
-
-    private bool arrastando = false;
+    public SyncWave mainLine;
+    public TypeList.types selectedType;
+    public GameObject sucessoLabel, blockLabel;
+    public TMP_Text valueFrq, valueAmp, valueSpd;
+    public Material finalLine;
+    public Animator mapAnim;
+    public float rotationSpeed = 10f;
+    public float minValue = 1f;
+    public float maxValue = 10f;
+    private float currentRotation = 0f;
+    private float valorAtual;
+    private bool isPressed = false;
+    private string selected;
 
     private void Start()
     {
-        // Armazena a rotação inicial do botão e calcula o intervalo de valores
-        rotacaoInicial = transform.rotation;
-        anguloInicial = AnguloNormalizado(rotacaoInicial);
-        valorIntervalo = valorMaximo - valorMinimo;
+        selected = TypeList.typesStrings[(int)selectedType];
     }
 
     private void Update()
     {
-        if (arrastando)
+        if (isPressed)
         {
-            // Atualiza a rotação do botão enquanto está sendo arrastado
-            AtualizarRotacao(Input.mousePosition);
+            // Captura o movimento do mouse
+            float mouseX = Input.GetAxis("Mouse X");
+
+            // Calcula o ângulo de rotação baseado no movimento do mouse
+            float rotationAmount = mouseX * rotationSpeed; // Inverter a direção da rotação
+
+            // Atualiza o ângulo de rotação
+            currentRotation += rotationAmount;
+
+            // Limita a rotação entre 0 e 360 graus
+            currentRotation = Mathf.Clamp(currentRotation, 0f, 360f);
+
+            // Aplica a rotação ao botão
+            transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
+
+            valorAtual = GetValueBasedOnAngle(currentRotation);
+
+            if (selected == "Frequency") {
+                syncEditLine.frequency = valorAtual;
+                valueFrq.text = syncEditLine.frequency.ToString("F2");
+            }
+            else if (selected == "Amplitude") {
+                syncEditLine.amplitude = valorAtual;
+                valueAmp.text = syncEditLine.amplitude.ToString("F2");
+            }
+            else if (selected == "Speed") {
+                syncEditLine.speed = valorAtual;
+                valueSpd.text = syncEditLine.speed.ToString("F2");
+            }
         }
+
+        if((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
+           (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
+           (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f)) {
+
+            sucessoLabel.SetActive(true);
+            blockLabel.SetActive(true);
+            isPressed = false;
+            syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
+            mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
+            StartCoroutine(ExitCoroutine());
+        }
+    }
+
+    private float GetValueBasedOnAngle(float angle)
+    {
+        // Calcula o valor adicional com base no ângulo atual
+        float t = Mathf.Abs(angle / 360f);
+        return Mathf.Lerp(minValue, maxValue, t);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        arrastando = true;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
+        isPressed = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        arrastando = false;
+        isPressed = false;
     }
 
-    private void AtualizarRotacao(Vector3 posicaoMouse)
+    IEnumerator ExitCoroutine()
     {
-        // Converte a posição do mouse em coordenadas locais do botão
-        Vector3 posicaoLocal = transform.InverseTransformPoint(posicaoMouse);
-
-        // Calcula o ângulo atual do botão em relação à sua posição inicial
-        float angulo = Mathf.Atan2(posicaoLocal.y, posicaoLocal.x) * Mathf.Rad2Deg;
-
-        // Aplica a suavização do movimento
-        angulo = Mathf.Lerp(AnguloNormalizado(transform.rotation), angulo + anguloInicial, Time.deltaTime * suavizacao);
-
-        // Aplica a rotação
-        transform.rotation = Quaternion.Euler(0, 0, angulo);
-
-        // Calcula o valor atual com base no ângulo
-        float percentual = (angulo + 180f) / 360f;
-        valorAtual = Mathf.Clamp(valorMinimo + percentual * valorIntervalo, valorMinimo, valorMaximo);
-        syncEditLine.frequency = valorAtual;
-    }
-
-    // Função auxiliar para normalizar o ângulo para o intervalo [-180, 180]
-    private float AnguloNormalizado(Quaternion rotacao)
-    {
-        float angulo = rotacao.eulerAngles.z;
-        if (angulo > 180f)
-            angulo -= 360f;
-
-        return angulo;
+        yield return new WaitForSeconds(3f);
+        mapAnim.SetTrigger("Exit");
     }
 }
