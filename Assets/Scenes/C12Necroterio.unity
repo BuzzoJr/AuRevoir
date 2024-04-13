@@ -2920,6 +2920,104 @@ CapsuleCollider:
   m_Height: 0.0057654716
   m_Direction: 1
   m_Center: {x: -0.0003327414, y: 0.002882749, z: 1.0101964e-10}
+--- !u!1 &189133715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189133719}
+  - component: {fileID: 189133718}
+  - component: {fileID: 189133717}
+  - component: {fileID: 189133716}
+  m_Layer: 0
+  m_Name: Plane_1
+  m_TagString: Floor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!64 &189133716
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189133715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &189133717
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189133715}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: aea808d3069a98841a3c9fe1bf0da667, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &189133718
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189133715}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &189133719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189133715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.5, y: 0, z: 95.42}
+  m_LocalScale: {x: 2.983387, y: 1, z: 2.9380143}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &191369202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3784,6 +3882,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &259200173
 GameObject:
@@ -6180,6 +6279,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &480796907
 PrefabInstance:
@@ -7415,7 +7515,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -8381,7 +8481,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -8491,7 +8591,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0.34906584
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -11994,8 +12094,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571893068}
   m_LocalRotation: {x: -0, y: -0.7095726, z: -0, w: 0.7046323}
-  m_LocalPosition: {x: -27.56, y: -0.76, z: 55.49}
-  m_LocalScale: {x: 0.8773538, y: 0.52586466, z: 1.5991117}
+  m_LocalPosition: {x: -27.56, y: -0.76, z: 57.35}
+  m_LocalScale: {x: 1.060657, y: 0.5630433, z: 1.152164}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 669104404}
@@ -13884,6 +13984,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &667425235
 PrefabInstance:
@@ -14802,7 +14903,7 @@ PrefabInstance:
     - target: {fileID: 2242876248808109889, guid: ddfc1292959bce64f8c5c758157712f1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.26
+      value: 11.416
       objectReference: {fileID: 0}
     - target: {fileID: 2242876248808109889, guid: ddfc1292959bce64f8c5c758157712f1,
         type: 3}
@@ -17549,6 +17650,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &885487710
 GameObject:
@@ -26238,7 +26340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2078518119080562284, guid: 4cdd44998702e5c4393f5b3b2de0a88e, type: 3}
+  - {fileID: 2100000, guid: a3ff0445dedd0fb46b94844950c905f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26406,7 +26508,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5029256900872302569, guid: 4cdd44998702e5c4393f5b3b2de0a88e, type: 3}
+  - {fileID: 2100000, guid: aea808d3069a98841a3c9fe1bf0da667, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26444,8 +26546,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465169081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.8, y: 0, z: 120.6}
-  m_LocalScale: {x: 19.365252, y: 1, z: 41.1987}
+  m_LocalPosition: {x: -36.5, y: 0, z: 66.1}
+  m_LocalScale: {x: 2.983387, y: 1, z: 2.9380143}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -26543,6 +26645,7 @@ MonoBehaviour:
   shouldWalk: 1
   textGroup: 40
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1498876243
 PrefabInstance:
@@ -27597,6 +27700,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1542513299
 GameObject:
@@ -27820,6 +27924,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1566656593
 PrefabInstance:
@@ -30290,7 +30395,7 @@ Transform:
   m_GameObject: {fileID: 1799975305}
   m_LocalRotation: {x: -0, y: -0.7095726, z: -0, w: 0.7046323}
   m_LocalPosition: {x: -27.56, y: -0.76, z: 64.9}
-  m_LocalScale: {x: 0.8773538, y: 0.52586466, z: 1.5991117}
+  m_LocalScale: {x: 1.060657, y: 0.5630433, z: 1.152164}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 669104404}
@@ -30504,7 +30609,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -31470,7 +31575,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -31580,7 +31685,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0.34906584
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -36955,6 +37060,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.2008
       objectReference: {fileID: 0}
+    - target: {fileID: 8393249075710901543, guid: ddfc1292959bce64f8c5c758157712f1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.922
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddfc1292959bce64f8c5c758157712f1, type: 3}
 --- !u!4 &1884604901 stripped
@@ -39327,9 +39437,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
-  m_Range: 10
+  m_Color: {r: 1, g: 0.8390704, b: 0.13679248, a: 1}
+  m_Intensity: 6.15
+  m_Range: 1.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -39370,7 +39480,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -39950,6 +40060,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 38
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!144 &2095585137
 CharacterJoint:
@@ -40048,6 +40159,7 @@ MonoBehaviour:
   shouldWalk: 0
   textGroup: 37
   dialogBox: {fileID: 948344735}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &2106567427
 GameObject:
