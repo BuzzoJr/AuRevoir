@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
