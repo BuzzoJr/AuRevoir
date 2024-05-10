@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 7917775359963199366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.75, y: 1.92, z: 1.248814}
-  m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.70000005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 543450653718125299}
@@ -156,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   destination: {fileID: 0}
-  lookAtTarget: {fileID: 0}
+  moveByWaypoint: 0
+  waypoints: []
 --- !u!82 &7917775359963199374
 AudioSource:
   m_ObjectHideFlags: 0
