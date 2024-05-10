@@ -1,4 +1,5 @@
-using Assets.Script.Interaction;
+﻿using Assets.Script.Interaction;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,17 +23,23 @@ public class PlayerController : MonoBehaviour
     private Button talkChild;
     private GameManager.GameState currentState = GameManager.GameState.Playing;
 
-    public Transform lookAtTarget;
+    [System.NonSerialized] public Transform lookAtTarget;
+
+    [Header("Movement by Waypoint")]
+    public bool moveByWaypoint = false;
+    private int currentWaypointIndex = 0; // Index of the current waypoint
+    public List<Transform> waypoints; // List of waypoints for the path, nothing will happen if = 0
+
     private float rotationSpeed = 500f;
 
     private void Awake()
     {
-        Cursor.visible = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         GameManager.OnGameStateChange += GameManagerOnGameStateChange;
     }
+
     void OnDestroy()
     {
         GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
@@ -51,12 +58,19 @@ public class PlayerController : MonoBehaviour
             else Debug.LogWarning("WheelInteraction not found!");
         }
         else Debug.LogWarning("Canvas not found!");
+
+        // Set the initial destination to the first waypoint if available
+        if (waypoints != null && waypoints.Count > 0 && moveByWaypoint)
+        {
+            GoToNextWaypoint();
+        }
     }
 
     private void GameManagerOnGameStateChange(GameManager.GameState state)
     {
         currentState = state;
     }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
@@ -117,9 +131,24 @@ public class PlayerController : MonoBehaviour
                 {
                     lookAtTarget = null;
                 }
+            }
 
+            // Check if we reached the current waypoint and go to the next
+            if (waypoints != null && waypoints.Count > 0 && moveByWaypoint)
+            {
+                GoToNextWaypoint();
             }
         }
+    }
+
+    private void GoToNextWaypoint()
+    {
+        if (waypoints == null || waypoints.Count == 0)
+            return;
+
+        // Loop back to the first waypoint if all are reached
+        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
+        GoTo(waypoints[currentWaypointIndex].position);
     }
 
     public void GoTo(Vector3 dest, Transform LookAtTarget = null)
@@ -175,12 +204,18 @@ public class PlayerController : MonoBehaviour
         look.Look(gameObject);
         CloseInteractionWheel();
     }
+
     void UseEvent()
     {
         use.Use(gameObject);
         CloseInteractionWheel();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(moveByWaypoint)
+            GoToNextWaypoint();
+    }
     void CloseInteractionWheel()
     {
         if (interactionWheel.activeSelf)
