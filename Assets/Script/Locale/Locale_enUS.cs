@@ -20,22 +20,22 @@ namespace Assets.Script.Locale
                 TextGroup.LockedDoor,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Locked"),
+                    new TextData(TextType.TristanThinking, "Locked"),
                 }
             },
             {
                 TextGroup.LockedDoorLab,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Locked, I need some Keycard"),
+                    new TextData(TextType.TristanThinking, "Locked, I need some Keycard"),
                 }
             },
             {
                 TextGroup.LockedDoorLaundry,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Fingerprint lock"),
-                    new TextData(TextType.PlayerThinking, "Unfortunately my finger is not the default password"),
+                    new TextData(TextType.TristanThinking, "Fingerprint lock"),
+                    new TextData(TextType.TristanThinking, "Unfortunately my finger is not the default password"),
                 }
             },
             {
@@ -57,9 +57,101 @@ namespace Assets.Script.Locale
                 TextGroup.Intro,
                 new List<TextData>()
                 {
-                    new TextData("In the year 2068, Au Revoir Ltd unleashed its expansion by introducing to the world the greatest technological innovation ever seen. The novelty was a revolutionary chip capable of storing a person's complete consciousness. This advancement allowed one's consciousness to persist even after the body's death, waiting for the opportunity to inhabit a new 'sleeve.' The Au Revoir brand quickly ascended, expanding its operations into other domains and becoming the largest corporation on the planet."),
-                    new TextData("With the great innovation, the powerful began to live forever, switching their sleeves whenever their bodies died. To ensure the continued existence of these individuals, a new profession emerged. The so-called Sentinels are responsible for the safe retrieval of the chips of all those assured of eternal life by Au Revoir Ltd, guaranteeing the continuity of digital existence."),
-                    new TextData("While Au Revoir's research advances have successfully improved the generation of artificial organs, ensuring safety and precision, the creation of 'sleeves' remains an unsolved challenge. The use of chips in third parties is strictly prohibited, leaving a society marked and limited by ethical boundaries and the fear of the emergence of a body replacement market. The balance between the pursuit of digital immortality and technological limitations continues to shape the world today."),
+                    new TextData("Year 2071:"),
+                    new TextData("Three years ago, Au Revoir Ltd. introduced to the world the greatest technological innovation ever seen: the synthetic brain capable of fully preserving human consciousness."),
+                    new TextData("With this discovery, death ceased to be the end for one’s consciousness. The wealthy gained access to immortality, each one waiting for the chance to inhabit a new body."),
+                    new TextData("To ensure the continuous existence of these individuals, a new profession emerged. The Sentinels are field scientists responsible for rescuing the minds of those assured of eternal life by Au Revoir Ltd."),
+                    new TextData("Uploading consciousness into third-party bodies is strictly prohibited, except in cases of body donation."),
+                    // First Demo:
+                    //new TextData("In the year 2068, Au Revoir Ltd unleashed its expansion by introducing to the world the greatest technological innovation ever seen. The novelty was a revolutionary chip capable of storing a person's complete consciousness. This advancement allowed one's consciousness to persist even after the body's death, waiting for the opportunity to inhabit a new 'sleeve.' The Au Revoir brand quickly ascended, expanding its operations into other domains and becoming the largest corporation on the planet."),
+                    //new TextData("With the great innovation, the powerful began to live forever, switching their sleeves whenever their bodies died. To ensure the continued existence of these individuals, a new profession emerged. The so-called Sentinels are responsible for the safe retrieval of the chips of all those assured of eternal life by Au Revoir Ltd, guaranteeing the continuity of digital existence."),
+                    //new TextData("While Au Revoir's research advances have successfully improved the generation of artificial organs, ensuring safety and precision, the creation of 'sleeves' remains an unsolved challenge. The use of chips in third parties is strictly prohibited, leaving a society marked and limited by ethical boundaries and the fear of the emergence of a body replacement market. The balance between the pursuit of digital immortality and technological limitations continues to shape the world today."),
+                }
+            },
+            // Chapter 1 - Scene A
+            {
+                TextGroup.IntroTVCommercial,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TVCommercial, "You will never lose your mind!"),
+                }
+            },
+            // Chapter 1 - Scene B
+            {
+                TextGroup.ChatWithHank,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Tristan, "Thanks, Hank. What's with the kimono? Did you become a sensei or are you just diversifying the business?"),
+                    new TextData(TextType.Hank, "It's the new vibe of the place. Now I sell oriental dreams in bowls. Better this than strutting around all buttoned up."),
+                    new TextData(TextType.Tristan, "I’m a scientist, comedian. And nowadays, being a corporate pawn is almost a necessity."),
+                    new TextData(TextType.Hank, "And how's Frankenstein's lab going?"),
+                    new TextData(TextType.Tristan, "Tough. The rich are leaving the city. So we're short on synthetic brains to save."),
+                    new TextData(TextType.Hank, "Ramen is still a hit here. If you want, I have an extra kimono for you."),
+                    new TextData(TextType.Tristan, "Thanks. I'm good, just... having some trouble sleeping, some weird dreams."),
+                    new TextData(TextType.Hank, "About the episode in the lab?"),
+                    new TextData(TextType.Tristan, "No, being demoted to Sentinel is already behind me. I don't know."),
+                    new TextData(TextType.Tristan, "Maybe my brain is malfunctioning with so much uploading and downloading."),
+                    new TextData(TextType.Hank, "Man… I've heard all sorts of things about those plastic brains."),
+                    new TextData(TextType.Hank, "Memory loss, cloning, and even becoming a 6G router."),
+                    new TextData(TextType.Tristan, "You know it wasn't an option. The brain comes with the job. At least I don't have to worry about dying young."),
+                    new TextData(TextType.Hank, "Or retiring, apparently."),
+                    new TextData(TextType.Tristan, "Yeah, maybe I’ll clone myself so I don't have to work anymore."),
+                    // Insert the boss's call special here
+                    new TextData(TextType.Tristan, "Pack for me Hank, I got a job."),
+                }
+            },
+            {
+                TextGroup.CarCrashJob,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Boss, "Tristan, we have a situation near you."),
+                    new TextData(TextType.Tristan, "Okay, a retrieval?"),
+                    new TextData(TextType.Boss, "Yes, a car accident. On Howie Avenue, in front of CryptoTrust."),
+                    new TextData(TextType.Tristan, "I'm very close. Do I need to know anything else?"),
+                    new TextData(TextType.Boss, "Just download the client and bring it to the office."),
+                    new TextData(TextType.Tristan, "Understood. See you soon."),
+                }
+            },
+            // Chapter 1 - Scene C
+            {
+                TextGroup.CarCrashCop,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PoliceOfficer, "Hey citizen, this area is restricted!"),
+                    new TextData(TextType.Tristan, "Good evening, officer. I'm the Sentinel in charge of the retrieval operation at this accident."),
+                    new TextData(TextType.PoliceOfficer, "Corporate, huh. Do you have identification?"),
+                    new TextData(TextType.Tristan, "Here it is..."),
+                    new TextData(TextType.PoliceOfficer, "Alright, carry on with your duties, but the individual's mind will be requested for interrogation later."),
+                    new TextData(TextType.Tristan, "To schedule the interrogation, a formal request to Au Revoir's legal department will be necessary."),
+                    new TextData(TextType.PoliceOfficer, "Okay. Go ahead."),
+                }
+            },
+            {
+                TextGroup.CarCrashClient,
+                new List<TextData>()
+                {
+                    new TextData(TextType.CarCrashClient, "Ah… thank you, man, you saved my life. I shouldn't have drunk so much. Is Angelica ok? The blondie."),
+                    new TextData(TextType.Tristan, "No sir, she doesn't have a synthetic brain."),
+                    new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know, shit shit shit."),
+                    new TextData(TextType.TristanThinking, "Tristan can feel the client's sadness."),
+                    new TextData(TextType.Tristan, "I kindly ask you to remain calm and not speak too much."),
+                    new TextData(TextType.Tristan, "To make the process smoother, I can reduce energy consumption."),
+                    new TextData(TextType.Tristan, "Do you authorize the procedure?"),
+                    new TextData(TextType.CarCrashClient, "Alright, alright… I authorize. I just want this to be over."),
+                    new TextData(TextType.Tristan, "Perfect, from this moment on, we'll lose communication and you may feel drowsiness."),
+                }
+            },
+            // Chapter 1 - Scene 3
+            {
+                TextGroup.CarCrashDelivery,
+                new List<TextData>()
+                {
+                    new TextData(TextType.Tristan, "Boss. Brought the client. He was with a girl, but she wasn't our client."),
+                    new TextData(TextType.Boss, "Not our problem. Let's proceed with the upload."),
+                    new TextData(TextType.Tristan, "Hmm... Beatrice, I think there's an issue with my brain."),
+                    new TextData(TextType.Boss, "What do you mean?"),
+                    new TextData(TextType.Tristan, "It's possible that residues of clients' memories are accumulating."),
+                    new TextData(TextType.Boss, "I'll report it to support, and if we find something, we'll schedule a memory cleanse."),
                 }
             },
             // Scene 1
@@ -68,15 +160,15 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Boss, "Awake, Sentinel?"),
-                    new TextData(TextType.Player, "Yes, I am. Did something happen?"),
+                    new TextData(TextType.Tristan, "Yes, I am. Did something happen?"),
                     new TextData(TextType.Boss, "I need you for another job. Come to the office as soon as possible."),
-                    new TextData(TextType.Player, "Sure, boss."),
-                    new TextData(TextType.Player, "Sure, boss. I just need to get ready, and I'll be there in a few minutes."),
+                    new TextData(TextType.Tristan, "Sure, boss."),
+                    new TextData(TextType.Tristan, "Sure, boss. I just need to get ready, and I'll be there in a few minutes."),
                     new TextData(TextType.Boss, "Okay, don't be late again."),
-                    new TextData(TextType.Player, "I'm always ready."),
-                    new TextData(TextType.Player, "I'm always ready. You can count on me!"),
+                    new TextData(TextType.Tristan, "I'm always ready."),
+                    new TextData(TextType.Tristan, "I'm always ready. You can count on me!"),
                     new TextData(TextType.Boss, "Don't try to be cute with me. The job pays well, don't be late again. I'm waiting for you."),
-                    new TextData(TextType.PlayerThinking, "I better not be late. Where are my keys?"),
+                    new TextData(TextType.TristanThinking, "I better not be late. Where are my keys?"),
                 }
             },
             {
@@ -86,14 +178,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.ExWife, "Hey Tristan, what happened at your work? I went to get Julie's medications, and they were denied!"),
                     new TextData(TextType.ExWife, "This Au Revoir always embarrasses me!"),
                     new TextData(TextType.ExWife, "I don't know why I married you... you can't even ensure your own daughter's health."),
-                    new TextData(TextType.PlayerThinking, "She thinks my job is easy..."),
+                    new TextData(TextType.TristanThinking, "She thinks my job is easy..."),
                 }
             },
             {
                 TextGroup.RememberingDaughter,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I miss my little Julie. I hope Vivian is taking good care of her."),
+                    new TextData(TextType.TristanThinking, "I miss my little Julie. I hope Vivian is taking good care of her."),
                 }
             },
             // Scene 2
@@ -101,22 +193,22 @@ namespace Assets.Script.Locale
                 TextGroup.TVManualInspect,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I need to change the default TV password."),
+                    new TextData(TextType.TristanThinking, "I need to change the default TV password."),
                 }
             },
             {
                 TextGroup.TVManualGrab,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I'll take this; I have nothing to read on the way."),
-                    new TextData(TextType.PlayerThinking, "Wow, my keys were right here."),
+                    new TextData(TextType.TristanThinking, "I'll take this; I have nothing to read on the way."),
+                    new TextData(TextType.TristanThinking, "Wow, my keys were right here."),
                 }
             },
             {
                 TextGroup.HouseKeys,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "There you are!"),
+                    new TextData(TextType.TristanThinking, "There you are!"),
                 }
             },
             {
@@ -142,36 +234,36 @@ namespace Assets.Script.Locale
                 TextGroup.EmployeeOfTheMonth,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "'Allen, Barry - Sentinel of the Month'"),
-                    new TextData(TextType.PlayerThinking, "Damn Barry, won again. Just because he gets the job done quickly..."),
+                    new TextData(TextType.TristanThinking, "'Allen, Barry - Sentinel of the Month'"),
+                    new TextData(TextType.TristanThinking, "Damn Barry, won again. Just because he gets the job done quickly..."),
                 }
             },
             {
                 TextGroup.BossPlaque,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "'Béatrice Durand - Supervisor'"),
+                    new TextData(TextType.TristanThinking, "'Béatrice Durand - Supervisor'"),
                 }
             },
             {
                 TextGroup.BossOfferMisson,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "I'm here boss!"),
+                    new TextData(TextType.Tristan, "I'm here boss!"),
                     new TextData(TextType.Boss, "Look who's here! Right on time this time."),
                     new TextData(TextType.Boss, "As you may already suspect, another rich boy has fucked up, and we need to retrieve his chip."),
                     new TextData(TextType.Boss, "The problem is, it happened within the Disconnected District, and we don't have free access to that place."),
                     new TextData(TextType.Boss, "And we can't wait two weeks for authorization."),
                     new TextData(TextType.Boss, "Directives from higher up."),
                     new TextData(TextType.Boss, "So, you'll have to find a way to get in."),
-                    new TextData(TextType.Player, "No problem."),
-                    new TextData(TextType.Player, "No problem, I'll find a way to get in."),
-                    new TextData(TextType.Player, "I don't want to go in there!"),
-                    new TextData(TextType.Player, "I don't want to go in there! That place is too dangerous."),
+                    new TextData(TextType.Tristan, "No problem."),
+                    new TextData(TextType.Tristan, "No problem, I'll find a way to get in."),
+                    new TextData(TextType.Tristan, "I don't want to go in there!"),
+                    new TextData(TextType.Tristan, "I don't want to go in there! That place is too dangerous."),
                     new TextData(TextType.Boss, "That's why we can't wait two weeks. By then, the chip will be long gone."),
                     new TextData(TextType.Boss, "That's why I need you to go now. You owe me one!"),
                     new TextData(TextType.Boss, "I thought about calling Barry, but I know you need the cash."),
-                    new TextData(TextType.Player, "We had another issue with Julie's medicine. I really need it."),
+                    new TextData(TextType.Tristan, "We had another issue with Julie's medicine. I really need it."),
                     new TextData(TextType.Boss, "So, you know what to do."),
                     new TextData(TextType.Boss, "Try to convince a guard or something."),
                     new TextData(TextType.Boss, "Once you're in, look for a laundry. The chip should be there."),
@@ -184,19 +276,19 @@ namespace Assets.Script.Locale
                 TextGroup.BossMoreInfo,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "No files? Name or photo?"),
+                    new TextData(TextType.Tristan, "No files? Name or photo?"),
                     new TextData(TextType.Boss, "Confidential, must be someone important."),
-                    new TextData(TextType.PlayerThinking, "Important? In the Disconnected District?"),
-                    new TextData(TextType.Player, "And how do I get there?"),
+                    new TextData(TextType.TristanThinking, "Important? In the Disconnected District?"),
+                    new TextData(TextType.Tristan, "And how do I get there?"),
                     new TextData(TextType.Boss, "The company car will drop you off at the nearest entrance. The rest is up to you!"),
-                    new TextData(TextType.Player, "Alright! I'll be back shortly."),
+                    new TextData(TextType.Tristan, "Alright! I'll be back shortly."),
                 }
             },
             {
                 TextGroup.LockedDoorOffice,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I should talk to the boss first."),
+                    new TextData(TextType.TristanThinking, "I should talk to the boss first."),
                 }
             },
             // Scene 4
@@ -205,11 +297,11 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Guard, "Step away, citizen! This area is isolated, and no one enters or exits."),
-                    new TextData(TextType.Player, "I have permission (bluff)"),
+                    new TextData(TextType.Tristan, "I have permission (bluff)"),
                     new TextData(TextType.Guard, "Funny, I'm notified when the State grants permission."),
-                    new TextData(TextType.Player, "Is it very dangerous in there?"),
+                    new TextData(TextType.Tristan, "Is it very dangerous in there?"),
                     new TextData(TextType.Guard, "The police don't patrol in there, so it's a no man's land."),
-                    new TextData(TextType.Player, "What's that elevator behind you for?"),
+                    new TextData(TextType.Tristan, "What's that elevator behind you for?"),
                     new TextData(TextType.Guard, "It goes to the Disconnected District. Down there where the streets used to be."),
                 }
             },
@@ -218,21 +310,21 @@ namespace Assets.Script.Locale
                 TextGroup.SewersDoorInspect,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Sewer service door. Is this the way?"),
+                    new TextData(TextType.TristanThinking, "Sewer service door. Is this the way?"),
                 }
             },
             {
                 TextGroup.SewersDoorLocked,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "The door is locked. What could the password be?"),
+                    new TextData(TextType.TristanThinking, "The door is locked. What could the password be?"),
                 }
             },
             {
                 TextGroup.SewersDoorPanel,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "They haven't changed the default password either."),
+                    new TextData(TextType.TristanThinking, "They haven't changed the default password either."),
                 }
             },
             // Scene 6
@@ -240,30 +332,30 @@ namespace Assets.Script.Locale
                 TextGroup.Sewers,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "What a smelly place!"),
+                    new TextData(TextType.TristanThinking, "What a smelly place!"),
                 }
             },
             {
                 TextGroup.StuffedBear,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "My little Julie... I hope I can get the money for her medications."),
+                    new TextData(TextType.TristanThinking, "My little Julie... I hope I can get the money for her medications."),
                 }
             },
             {
                 TextGroup.SewersRobot,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "Hey, robot!"),
+                    new TextData(TextType.Tristan, "Hey, robot!"),
                     new TextData(TextType.Robot, "I, robot?"),
-                    new TextData(TextType.Player, "Yes! What are you doing here?"),
+                    new TextData(TextType.Tristan, "Yes! What are you doing here?"),
                     new TextData(TextType.Robot, "I'm just a cleaning robot."),
-                    new TextData(TextType.Player, "Do you know the way out of this place?"),
+                    new TextData(TextType.Tristan, "Do you know the way out of this place?"),
                     new TextData(TextType.Robot, "I don't know, they don't let me leave here."),
                     new TextData(TextType.Robot, "Do you know how to get out of here?"),
-                    new TextData(TextType.Player, "Do you know where is the laundry?"),
+                    new TextData(TextType.Tristan, "Do you know where is the laundry?"),
                     new TextData(TextType.Robot, "What is a laundry?"),
-                    new TextData(TextType.Player, "Never mind..."),
+                    new TextData(TextType.Tristan, "Never mind..."),
                 }
             },
             // Scene 7
@@ -279,19 +371,19 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.RevolutionaryHidden, "I've never seen you around here... Are you here to stir up more trouble?"),
-                    new TextData(TextType.Player, "No, I'm looking for a Laundry."),
+                    new TextData(TextType.Tristan, "No, I'm looking for a Laundry."),
                     new TextData(TextType.RevolutionaryHidden, "You're right next to it."),
                     new TextData(TextType.RevolutionaryHidden, "I just don't think you'll want to wash your clothes there."),
-                    new TextData(TextType.Player, "Thank you."),
+                    new TextData(TextType.Tristan, "Thank you."),
                 }
             },
             {
                 TextGroup.DirectionsToMorgue,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "Have you seen anyone carrying a body around here?"),
+                    new TextData(TextType.Tristan, "Have you seen anyone carrying a body around here?"),
                     new TextData(TextType.RevolutionaryHidden, "A body? Have you thought about checking the morgue?"),
-                    new TextData(TextType.Player, "Good idea! Thank you."),
+                    new TextData(TextType.Tristan, "Good idea! Thank you."),
                     new TextData(TextType.RevolutionaryHidden, "Follow this street, and you'll find what you're looking for."),
                 }
             },
@@ -300,7 +392,7 @@ namespace Assets.Script.Locale
                 TextGroup.LaundryStreet,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "A laundromat... this must be the place."),
+                    new TextData(TextType.TristanThinking, "A laundromat... this must be the place."),
                 }
             },
             {
@@ -314,9 +406,9 @@ namespace Assets.Script.Locale
                 TextGroup.BloodMarks,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "It looks like there was a physical altercation here."),
-                    new TextData(TextType.PlayerThinking, "Even with the rain, you can still see traces of blood."),
-                    new TextData(TextType.PlayerThinking, "Looks like the body was moved... it's going to be one of those days."),
+                    new TextData(TextType.TristanThinking, "It looks like there was a physical altercation here."),
+                    new TextData(TextType.TristanThinking, "Even with the rain, you can still see traces of blood."),
+                    new TextData(TextType.TristanThinking, "Looks like the body was moved... it's going to be one of those days."),
                 }
             },
             // Scene 9
@@ -324,45 +416,45 @@ namespace Assets.Script.Locale
                 TextGroup.Laundry,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "This area is very strange. Why would someone die in a laundry?"),
+                    new TextData(TextType.TristanThinking, "This area is very strange. Why would someone die in a laundry?"),
                 }
             },
             {
                 TextGroup.LaundryBody,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "This isn't the one I'm looking for. It doesn't have a chip."),
-                    new TextData(TextType.PlayerThinking, "Another one without a chip. Makes me wonder how someone with access to a chip died here."),
-                    new TextData(TextType.PlayerThinking, "Could be this one, since it's the last one. This one only has a weapon; looks like they were a criminal or something."),
+                    new TextData(TextType.TristanThinking, "This isn't the one I'm looking for. It doesn't have a chip."),
+                    new TextData(TextType.TristanThinking, "Another one without a chip. Makes me wonder how someone with access to a chip died here."),
+                    new TextData(TextType.TristanThinking, "Could be this one, since it's the last one. This one only has a weapon; looks like they were a criminal or something."),
                 }
             },
             {
                 TextGroup.LaundryMachine,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "This machine is empty."),
+                    new TextData(TextType.TristanThinking, "This machine is empty."),
                 }
             },
             {
                 TextGroup.LaundryMachine13,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I think someone left clothes in this machine."),
+                    new TextData(TextType.TristanThinking, "I think someone left clothes in this machine."),
                 }
             },
             {
                 TextGroup.LaundryMachine16Inspect,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "This one seems locked. And it has a biometric device. Strange..."),
+                    new TextData(TextType.TristanThinking, "This one seems locked. And it has a biometric device. Strange..."),
                 }
             },
             {
                 TextGroup.LaundryMachine16UseFail,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "It doesn't hurt to try with my finger..."),
-                    new TextData(TextType.PlayerThinking, "Nothing. Who can open this?"),
+                    new TextData(TextType.TristanThinking, "It doesn't hurt to try with my finger..."),
+                    new TextData(TextType.TristanThinking, "Nothing. Who can open this?"),
                 }
             },
             // Scene 10
@@ -370,28 +462,28 @@ namespace Assets.Script.Locale
                 TextGroup.ClosedBuildings,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Everything is closed around here. Does anyone live inside?"),
+                    new TextData(TextType.TristanThinking, "Everything is closed around here. Does anyone live inside?"),
                 }
             },
             {
                 TextGroup.Homeless,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "Hey, you!"),
+                    new TextData(TextType.Tristan, "Hey, you!"),
                     new TextData(TextType.Beggar, "What do you want? I don't want your money."),
-                    new TextData(TextType.Player, "Where's the laundry?"),
-                    new TextData(TextType.Player, "Can you tell me where the laundry is?"),
+                    new TextData(TextType.Tristan, "Where's the laundry?"),
+                    new TextData(TextType.Tristan, "Can you tell me where the laundry is?"),
                     new TextData(TextType.Beggar, "Oh, you're just another crazy one. Or are you blind? You came from there."),
-                    new TextData(TextType.Player, "Where do they take the bodies of the deceased?"),
-                    new TextData(TextType.Player, "What happens to those who die around here? Do they take the body somewhere?"),
+                    new TextData(TextType.Tristan, "Where do they take the bodies of the deceased?"),
+                    new TextData(TextType.Tristan, "What happens to those who die around here? Do they take the body somewhere?"),
                     new TextData(TextType.Beggar, "Most of them end up staying where they died, until someone gets bothered."),
                     new TextData(TextType.Beggar, "But when they're on the street, they sometimes take them to the morgue down the street."),
-                    new TextData(TextType.Player, "Where can I go to have some fun?"),
-                    new TextData(TextType.Player, "I'm looking to have some fun. Is there a nice place to hang out around here?"),
+                    new TextData(TextType.Tristan, "Where can I go to have some fun?"),
+                    new TextData(TextType.Tristan, "I'm looking to have some fun. Is there a nice place to hang out around here?"),
                     new TextData(TextType.Beggar, "I only know that those who know the Mafia have a good time at the club at the end of the street."),
                     new TextData(TextType.Beggar, "But I don't recommend it. A friend of mine went in there once and I never saw him again."),
                     new TextData(TextType.Beggar, "Or maybe it was him who said he was going on a trip... anyway, the risk is yours."),
-                    new TextData(TextType.Player, "Thank you."),
+                    new TextData(TextType.Tristan, "Thank you."),
                 }
             },
             // Scene 11
@@ -400,7 +492,7 @@ namespace Assets.Script.Locale
                 TextGroup.Morgue,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "There's no one here. It seems to be a self-service system. Didn't expect that in a morgue."),
+                    new TextData(TextType.TristanThinking, "There's no one here. It seems to be a self-service system. Didn't expect that in a morgue."),
                 }
             },
             {
@@ -460,29 +552,29 @@ namespace Assets.Script.Locale
                 TextGroup.MorgueButtonCorrect,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "The data from this body matches the given information."),
+                    new TextData(TextType.TristanThinking, "The data from this body matches the given information."),
                 }
             },
             {
                 TextGroup.MorgueButtonWrong,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "I think this doesn't make sense..."),
+                    new TextData(TextType.TristanThinking, "I think this doesn't make sense..."),
                 }
             },
             {
                 TextGroup.MorgueFinger,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "The victim's finger suddenly fell off, this could come in handy."),
+                    new TextData(TextType.TristanThinking, "The victim's finger suddenly fell off, this could come in handy."),
                 }
             },
             {
                 TextGroup.MorgueCorpseVincent,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "That's strange, the chip isn't here."),
-                    new TextData(TextType.PlayerThinking, "I need to investigate further."),
+                    new TextData(TextType.TristanThinking, "That's strange, the chip isn't here."),
+                    new TextData(TextType.TristanThinking, "I need to investigate further."),
                 }
             },
             // Scene 13
@@ -490,77 +582,77 @@ namespace Assets.Script.Locale
                 TextGroup.MafiaOffice,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Why such a hidden place in a laundry? Are they laundering money?"),
+                    new TextData(TextType.TristanThinking, "Why such a hidden place in a laundry? Are they laundering money?"),
                 }
             },
             {
                 TextGroup.MafiaVoicemail,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Mr. Revoir, some crazy person is trying to break into the lab. It would be a good idea to send reinforcements."),
+                    new TextData(TextType.TristanThinking, "Mr. Revoir, some crazy person is trying to break into the lab. It would be a good idea to send reinforcements."),
                 }
             },
             {
                 TextGroup.MafiaDocument1,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Equipment purchase documents for the lab"), // TODO
+                    new TextData(TextType.TristanThinking, "Equipment purchase documents for the lab"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument2,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Book with names of clubgoers"), // TODO
+                    new TextData(TextType.TristanThinking, "Book with names of clubgoers"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument3,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Debt-ridden addicts"), // TODO
+                    new TextData(TextType.TristanThinking, "Debt-ridden addicts"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument4,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Document on managing chip lab"), // TODO
+                    new TextData(TextType.TristanThinking, "Document on managing chip lab"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument5,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "List of targets for experiments"), // TODO
+                    new TextData(TextType.TristanThinking, "List of targets for experiments"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument6,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Psychological effects of frequent sleeve changes"), // TODO
+                    new TextData(TextType.TristanThinking, "Psychological effects of frequent sleeve changes"), // TODO
                 }
             },
             {
                 TextGroup.MafiaDocument7,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Collection of Chief Noir's new sleeve 3 months before the game date"), // TODO
+                    new TextData(TextType.TristanThinking, "Collection of Chief Noir's new sleeve 3 months before the game date"), // TODO
                 }
             },
             {
                 TextGroup.MafiaAccessCard,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "This access card could be important for getting into a certain place."),
+                    new TextData(TextType.TristanThinking, "This access card could be important for getting into a certain place."),
                 }
             },
             {
                 TextGroup.CutsceneNotWatched,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "A better look at that computer before leaving might be a good idea."),
+                    new TextData(TextType.TristanThinking, "A better look at that computer before leaving might be a good idea."),
                 }
             },
             {
@@ -584,16 +676,16 @@ namespace Assets.Script.Locale
                 TextGroup.AlmostAtTheLab,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "The club is right there."),
+                    new TextData(TextType.TristanThinking, "The club is right there."),
                 }
             },
             {
                 TextGroup.CleaningRobot,
                 new List<TextData>()
                 {
-                    new TextData(TextType.Player, "Hey, robot!"),
+                    new TextData(TextType.Tristan, "Hey, robot!"),
                     new TextData(TextType.Robot, "Not a robot, my name is Dobby the Domestic Robot."),
-                    new TextData(TextType.Player, "Where's the club?"),
+                    new TextData(TextType.Tristan, "Where's the club?"),
                     new TextData(TextType.Robot, "I don't know where the club is, that's a free robot thing."),
                 }
             },
@@ -610,21 +702,21 @@ namespace Assets.Script.Locale
                 TextGroup.ClubDoor,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "The club is closed, but the music is still playing loud?"),
+                    new TextData(TextType.TristanThinking, "The club is closed, but the music is still playing loud?"),
                 }
             },
             {
                 TextGroup.ClubDoorUseAccessCard,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "There's no card reader on this door."),
+                    new TextData(TextType.TristanThinking, "There's no card reader on this door."),
                 }
             },
             {
                 TextGroup.ClubDoorUseFinger,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "There's no fingerprint reader here."),
+                    new TextData(TextType.TristanThinking, "There's no fingerprint reader here."),
                 }
             },
             // Scene 16
@@ -667,50 +759,50 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Revolutionary, "Hey! You there."),
-                    new TextData(TextType.Player, "What are you doing in there?"),
-                    new TextData(TextType.Player, "Are you some kind of guinea pig for science experiments?"),
+                    new TextData(TextType.Tristan, "What are you doing in there?"),
+                    new TextData(TextType.Tristan, "Are you some kind of guinea pig for science experiments?"),
                     new TextData(TextType.Revolutionary, "It seems that you don't remember me."),
                     new TextData(TextType.Revolutionary, "Before my answer, I need you to answer my question."),
                     new TextData(TextType.Revolutionary, "Are you looking for some kind of chip? Maybe like this one in my hand?"),
-                    new TextData(TextType.Player, "What? Why did you... ?"),
+                    new TextData(TextType.Tristan, "What? Why did you... ?"),
                     // Special - Closes the door
                     new TextData(TextType.Revolutionary, "Gotcha Sentinel!"),
-                    new TextData(TextType.Player, "Give the chip and let me out! NOW!"),
+                    new TextData(TextType.Tristan, "Give the chip and let me out! NOW!"),
                     new TextData(TextType.Revolutionary, "I'm sorry friend, but I won't let you go now."),
                     new TextData(TextType.Revolutionary, "And don't think about getting me out of here, because this experiment pod is strong."),
                     new TextData(TextType.Revolutionary, "Usually it is used to avoid people from getting out."),
-                    new TextData(TextType.Player, "What do you want from me?"),
+                    new TextData(TextType.Tristan, "What do you want from me?"),
                     new TextData(TextType.Revolutionary, "Just to tell you a little bit more. Curious?"),
-                    new TextData(TextType.Player, "Why should I be curious? I'm just doing my job."),
-                    new TextData(TextType.Player, "I just need to get out of here. With the chip."),
+                    new TextData(TextType.Tristan, "Why should I be curious? I'm just doing my job."),
+                    new TextData(TextType.Tristan, "I just need to get out of here. With the chip."),
                     new TextData(TextType.Revolutionary, "So you don't know whose consciousness is within this chip!"),
-                    new TextData(TextType.Player, "I was told not to question and I cannot afford a failure at thie job. Not today."),
+                    new TextData(TextType.Tristan, "I was told not to question and I cannot afford a failure at thie job. Not today."),
                     new TextData(TextType.Revolutionary, "You are in a much bigger problem than failing your simple job, Sentinel!"),
                     new TextData(TextType.Revolutionary, "This little chip contains the great mind of a terrorist!"),
                     new TextData(TextType.Revolutionary, "A terrorist who took my brother's body and used as a mere \"sleeve\"."),
                     new TextData(TextType.Revolutionary, "Have you ever heard of the name René Revoir?"),
-                    new TextData(TextType.Player, "The only René Revoir I know exists is the CEO of Au Revoir, but nothing related to this place."),
+                    new TextData(TextType.Tristan, "The only René Revoir I know exists is the CEO of Au Revoir, but nothing related to this place."),
                     new TextData(TextType.Revolutionary, "You are both correct and incorrect my friend."),
                     new TextData(TextType.Revolutionary, "We are talking about the CEO of Au Revoir, but you are wrong about his relations."),
                     new TextData(TextType.Revolutionary, "Look at the equipments around you and count how manyu Au Revoir logos there are."),
-                    new TextData(TextType.Player, "Why would this great man come here? Are these his experiments?"),
+                    new TextData(TextType.Tristan, "Why would this great man come here? Are these his experiments?"),
                     new TextData(TextType.Revolutionary, "Here the lab where new tecnology is conceived. Using humans without remorse."),
                     new TextData(TextType.Revolutionary, "Here is where my brother died after being kidnapped."),
                     new TextData(TextType.Revolutionary, "They disappear after having some fun in the club behind these walls."),
                     new TextData(TextType.Revolutionary, "But they did much worst with my brother. They made him look like a terrorist."),
                     new TextData(TextType.Revolutionary, "René Revoir used my brother's corpse as his own personal \"sleeve\"."),
                     new TextData(TextType.Revolutionary, "Everyone thought Vincent Noir joined the mafia, but only I knew the truth."),
-                    new TextData(TextType.Player, "That name... I saw his body on the morgue."),
+                    new TextData(TextType.Tristan, "That name... I saw his body on the morgue."),
                     new TextData(TextType.Revolutionary, "That was the only way. I had to do it."),
-                    new TextData(TextType.Player, "You killed your own brother?"),
+                    new TextData(TextType.Tristan, "You killed your own brother?"),
                     new TextData(TextType.Revolutionary, "I killed René Revoir!"),
                     new TextData(TextType.Revolutionary, "Now I must rely the fate of my family and so many others in your hands."),
-                    new TextData(TextType.Player, "What do you mean?"),
+                    new TextData(TextType.Tristan, "What do you mean?"),
                     new TextData(TextType.Revolutionary, "I was waiting for you to come here and discover by your self what transpired."),
                     new TextData(TextType.Revolutionary, "If I have told you at the moment you jumped out of the sewers you wouldn't belive me."),
-                    new TextData(TextType.Player, "So... you were the beggar! Have you being spying on me?"),
+                    new TextData(TextType.Tristan, "So... you were the beggar! Have you being spying on me?"),
                     new TextData(TextType.Revolutionary, "It was the only way. And now I must trust that you with my life."),
-                    new TextData(TextType.Player, "I have nothing to do with you and your life."),
+                    new TextData(TextType.Tristan, "I have nothing to do with you and your life."),
                     new TextData(TextType.Revolutionary, "You will be able to leave soon, don't worry. But first, you must use this brain machine."),
                     new TextData(TextType.Revolutionary, "That machine is able to extract my consciousness and store it on a chip."),
                     new TextData(TextType.Revolutionary, "After that, this pod will open with my mindless body and you will be able to take a chip."),
@@ -724,7 +816,7 @@ namespace Assets.Script.Locale
                 TextGroup.LabPickUpChips,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PlayerThinking, "Finally! Here are the chips. One contains the CEO and the other for this crazy revolutionary."),
+                    new TextData(TextType.TristanThinking, "Finally! Here are the chips. One contains the CEO and the other for this crazy revolutionary."),
                 }
             },
             {
@@ -739,9 +831,9 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.Boss, "Look who's back, everything worked out?"),
-                    new TextData(TextType.Player, "Yes boss, here it is."),
-                    new TextData(TextType.Player, "CEO's CHIP"),
-                    new TextData(TextType.Player, "Revolutionary's CHIP"),
+                    new TextData(TextType.Tristan, "Yes boss, here it is."),
+                    new TextData(TextType.Tristan, "CEO's CHIP"),
+                    new TextData(TextType.Tristan, "Revolutionary's CHIP"),
                 }
             },
             {

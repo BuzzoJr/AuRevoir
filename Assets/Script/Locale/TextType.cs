@@ -3,8 +3,8 @@
     public enum TextType
     {
         System = 0,
-        Player,
-        PlayerThinking,
+        Tristan,
+        TristanThinking,
         Daughter,
         ExWife,
         Boss,
@@ -18,5 +18,9 @@
         LabWorker1,
         LabWorker2,
         RevolutionaryHidden,
+        TVCommercial,
+        Hank,
+        PoliceOfficer,
+        CarCrashClient,
     }
 }

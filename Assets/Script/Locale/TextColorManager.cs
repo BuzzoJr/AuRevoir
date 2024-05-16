@@ -7,8 +7,8 @@ public static class TextColorManager
     public static Dictionary<TextType, Color> textTypeColors = new Dictionary<TextType, Color>
     {
         { TextType.System, Color.white },
-        { TextType.Player, new Color(0.6f, 0.6f, 0.6f, 1f) },
-        { TextType.PlayerThinking, new Color(0.6f, 0.6f, 0.6f, 1f) },
+        { TextType.Tristan, new Color(0.6f, 0.6f, 0.6f, 1f) },
+        { TextType.TristanThinking, new Color(0.6f, 0.6f, 0.6f, 1f) },
         { TextType.Daughter,  new Color(0.7f, 0f, 0.7f, 1f) },
         { TextType.ExWife, new Color(0.7f, 0.4f, 0.15f, 1f) },
         { TextType.Boss, new Color(0.78f, 0.08f, 0.08f, 1f) },
@@ -22,13 +22,18 @@ public static class TextColorManager
         { TextType.LabWorker2, new Color(1f, 0.32f, 0.84f, 1f) },
         { TextType.LabWorker1, new Color(0.532f, 0.977f, 1f, 1f) },
         { TextType.RevolutionaryHidden, new Color(0.404f, 0.624f, 0.631f, 1f) },
+        // TODO - Definir as cores de fala dos novos tipos
+        { TextType.TVCommercial, new Color(0.71f, 0.49f, 0.255f, 1f) },
+        { TextType.Hank, new Color(0.71f, 0.49f, 0.255f, 1f) },
+        { TextType.PoliceOfficer, new Color(0.71f, 0.49f, 0.255f, 1f) },
+        { TextType.CarCrashClient, new Color(0.71f, 0.49f, 0.255f, 1f) },
     };
 
     public static string TextSpeaker(TextType type, string text)
     {
         switch (type)
         {
-            case TextType.PlayerThinking:
+            case TextType.TristanThinking:
                 return "* " + text + " *";
 
             case TextType.Daughter:
@@ -64,8 +69,20 @@ public static class TextColorManager
             case TextType.RevolutionaryHidden:
                 return (Locale.Lang == Lang.enUS ? "Beggar" : "Mendigo") + ": " + text;
 
+            case TextType.TVCommercial:
+                return "TV: " + text;
+
+            case TextType.Hank:
+                return "Hank: " + text;
+
+            case TextType.PoliceOfficer:
+                return (Locale.Lang == Lang.enUS ? "Police Officer" : "Policial") + ": " + text;
+
+            case TextType.CarCrashClient:
+                return (Locale.Lang == Lang.enUS ? "Client" : "Cliente") + ": " + text;
+
             case TextType.System:
-            case TextType.Player:
+            case TextType.Tristan:
             default:
                 return text;
         }
