@@ -57,7 +57,7 @@ namespace Assets.Script.Locale
                 TextGroup.Intro,
                 new List<TextData>()
                 {
-                    new TextData("Year 2071:"),
+                    new TextData("Year 2071"),
                     new TextData("Three years ago, Au Revoir Ltd. introduced to the world the greatest technological innovation ever seen: the synthetic brain capable of fully preserving human consciousness."),
                     new TextData("With this discovery, death ceased to be the end for one’s consciousness. The wealthy gained access to immortality, each one waiting for the chance to inhabit a new body."),
                     new TextData("To ensure the continuous existence of these individuals, a new profession emerged. The Sentinels are field scientists responsible for rescuing the minds of those assured of eternal life by Au Revoir Ltd."),
