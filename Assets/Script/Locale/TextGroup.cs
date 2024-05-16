@@ -8,7 +8,7 @@
         IntroTVCommercial,
         ChatWithHank,
         CarCrashJob,
-        CarCrashCop,
+        CarCrashPoliceOfficer,
         CarCrashClient,
         CarCrashDelivery,
         DialogWakeUpCall,

@@ -114,7 +114,7 @@ namespace Assets.Script.Locale
             },
             // Chapter 1 - Scene C
             {
-                TextGroup.CarCrashCop,
+                TextGroup.CarCrashPoliceOfficer,
                 new List<TextData>()
                 {
                     new TextData(TextType.PoliceOfficer, "Ei cidadão, a área está restrita!"),

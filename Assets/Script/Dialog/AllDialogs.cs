@@ -10,6 +10,41 @@ namespace Assets.Script.Dialog
         public static Dictionary<TextGroup, List<object>> Sequence = new()
         {
             {
+                TextGroup.ChatWithHank,
+                new List<object>()
+                {
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, DialogAction.Special, 15,
+                }
+            },
+            {
+                TextGroup.CarCrashJob,
+                new List<object>()
+                {
+                    0, 1, 2, 3, 4, 5,
+                }
+            },
+            {
+                TextGroup.CarCrashPoliceOfficer,
+                new List<object>()
+                {
+                    0, 1, 2, 3, 4, 5, 6,
+                }
+            },
+            {
+                TextGroup.CarCrashClient,
+                new List<object>()
+                {
+                    0, 1, 2, 3, 4, 5, 6, 7, 8,
+                }
+            },
+            {
+                TextGroup.CarCrashDelivery,
+                new List<object>()
+                {
+                    0, 1, 2, 3, 4, 5,
+                }
+            },
+            {
                 TextGroup.DialogWakeUpCall,
                 new List<object>()
                 {
