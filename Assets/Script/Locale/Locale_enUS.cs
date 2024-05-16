@@ -96,20 +96,17 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "You know it wasn't an option. The brain comes with the job. At least I don't have to worry about dying young."),
                     new TextData(TextType.Hank, "Or retiring, apparently."),
                     new TextData(TextType.Tristan, "Yeah, maybe I’ll clone myself so I don't have to work anymore."),
-                    // Insert the boss's call special here
-                    new TextData(TextType.Tristan, "Pack for me Hank, I got a job."),
-                }
-            },
-            {
-                TextGroup.CarCrashJob,
-                new List<TextData>()
-                {
+                    // Insert Special to ring the phone
+                    new TextData(TextType.CellPhone, "Phone ringing..."),
+                    // Insert Special to end phone ring and change animation to using phone
                     new TextData(TextType.Boss, "Tristan, we have a situation near you."),
                     new TextData(TextType.Tristan, "Okay, a retrieval?"),
                     new TextData(TextType.Boss, "Yes, a car accident. On Howie Avenue, in front of CryptoTrust."),
                     new TextData(TextType.Tristan, "I'm very close. Do I need to know anything else?"),
                     new TextData(TextType.Boss, "Just download the client and bring it to the office."),
                     new TextData(TextType.Tristan, "Understood. See you soon."),
+                    // Insert Special to end phone animation
+                    new TextData(TextType.Tristan, "Pack for me Hank, I got a job."),
                 }
             },
             // Chapter 1 - Scene C

@@ -25,6 +25,7 @@ public static class TextColorManager
         // TODO - Definir as cores de fala dos novos tipos
         { TextType.TVCommercial, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.Hank, new Color(0.71f, 0.49f, 0.255f, 1f) },
+        { TextType.CellPhone, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.PoliceOfficer, new Color(0.71f, 0.49f, 0.255f, 1f) },
         { TextType.CarCrashClient, new Color(0.71f, 0.49f, 0.255f, 1f) },
     };

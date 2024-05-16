@@ -96,20 +96,17 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Você sabe que não foi uma opção. O cérebro vem com o trabalho. Pelo menos não preciso me preocupar em morrer jovem."),
                     new TextData(TextType.Hank, "Ou em se aposentar, pelo jeito."),
                     new TextData(TextType.Tristan, "É, talvez eu me clone para não ter que trabalhar mais."),
-                    // Inserir o especial da ligação da chefe aqui
-                    new TextData(TextType.Tristan, "Embrulha pra viagem, Hank, tenho um trabalho."),
-                }
-            },
-            {
-                TextGroup.CarCrashJob,
-                new List<TextData>()
-                {
+                    // Inserir Special pra tocar o celular
+                    new TextData(TextType.CellPhone, "Phone ringing..."),
+                    // Inserir Special pra parar de tocar e animar o Tristan como se estivesse atendendo o celular
                     new TextData(TextType.Boss, "Tristan, temos uma situação perto de você."),
                     new TextData(TextType.Tristan, "Certo, uma coleta?"),
                     new TextData(TextType.Boss, "Sim, um acidente de carro. Na Avenida Howie, em frente ao CryptoTrust."),
                     new TextData(TextType.Tristan, "Estou bem próximo. Preciso saber de mais alguma coisa?"),
                     new TextData(TextType.Boss, "Apenas faça o download do cliente e traga para o escritório."),
                     new TextData(TextType.Tristan, "Entendido. Até daqui a pouco."),
+                    // Inserir Special pra acabar com a animação de telefone
+                    new TextData(TextType.Tristan, "Embrulha pra viagem, Hank, tenho um trabalho."),
                 }
             },
             // Chapter 1 - Scene C

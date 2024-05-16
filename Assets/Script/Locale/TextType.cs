@@ -20,6 +20,7 @@
         RevolutionaryHidden,
         TVCommercial,
         Hank,
+        CellPhone,
         PoliceOfficer,
         CarCrashClient,
     }
