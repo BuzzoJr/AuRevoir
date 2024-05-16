@@ -20,7 +20,9 @@ public class MenuController : MonoBehaviour, ILangConsumer
     {
         textIntro.text = "\t" + Locale.Texts[TextGroup.Intro][0].Text +
                          "\n\n\t" + Locale.Texts[TextGroup.Intro][1].Text +
-                         "\n\n\t" + Locale.Texts[TextGroup.Intro][2].Text;
+                         "\n\n\t" + Locale.Texts[TextGroup.Intro][2].Text +
+                         "\n\n\t" + Locale.Texts[TextGroup.Intro][3].Text +
+                         "\n\n\t" + Locale.Texts[TextGroup.Intro][4].Text;
 
         textPlay.text = Locale.Texts[TextGroup.Menu][0].Text;
         textQuit.text = Locale.Texts[TextGroup.Menu][1].Text;
