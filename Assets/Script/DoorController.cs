@@ -36,6 +36,11 @@ public class DoorController : MonoBehaviour, ILangConsumer
 
     public enum SceneRef
     {
+        C0Bar,
+        C0Rua,
+        C0HallOffice,
+        C0OfficeGarage,
+        C0UploadRoom,
         C1Bedroom,
         C2Livingroom,
         C3Office,

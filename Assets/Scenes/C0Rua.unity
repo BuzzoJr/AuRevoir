@@ -220,7 +220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &2302679
 PrefabInstance:
@@ -637,6 +637,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 91
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1031008859, guid: abc00000000017699335333830665754, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000017699335333830665754, type: 3}
@@ -725,9 +733,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pavement_A_A_5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -873,15 +885,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.3243885
+      value: -8.326
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0019500256
+      value: 0.060060024
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.49953
+      value: 17.502003
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -982,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 1612404042697151142, guid: 53aa8f57447cd8a4fbce9439150949f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1612404042697151142, guid: 53aa8f57447cd8a4fbce9439150949f4,
         type: 3}
@@ -1796,6 +1808,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: police_van
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1f0236f14c9f8b2498947cc2d6d15460, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1f0236f14c9f8b2498947cc2d6d15460, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f0236f14c9f8b2498947cc2d6d15460, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2191,7 +2211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18783003
+      value: 0.08334994
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2259,15 +2279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7613878
+      value: -0.76
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.003720045
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.73753
+      value: 10.74
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2464,15 +2484,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.68172073
+      value: 0.6813135
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07815996
+      value: -0.1573199
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.1636772
+      value: 2.1638794
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2544,15 +2564,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8569698
+      value: 1.857
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020500422
+      value: -0.227
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2855682
+      value: 1.286
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2607,12 +2627,13 @@ GameObject:
   - component: {fileID: 316186989}
   - component: {fileID: 316186988}
   - component: {fileID: 316186987}
+  - component: {fileID: 316186990}
   m_Layer: 0
   m_Name: PoliceLine_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &316186986
 Transform:
@@ -2693,6 +2714,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316186985}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &316186990
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316186985}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 5.48, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &321725323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2722,15 +2759,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.575388
+      value: -7.5769997
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020100474
+      value: 0.060000002
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.18953
+      value: 17.192001
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2935,7 +2972,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: -0.982, y: -8.245, z: 0.023}
 --- !u!1 &352746704
 GameObject:
@@ -2968,7 +3005,7 @@ Transform:
   - {fileID: 523944413}
   - {fileID: 998431147}
   m_Father: {fileID: 0}
-  m_RootOrder: 48
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &356021781
 PrefabInstance:
@@ -3087,7 +3124,7 @@ Transform:
   - {fileID: 501090309}
   - {fileID: 103128551}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
@@ -3182,7 +3219,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 80.419, y: -26.297, z: -24.743}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -3315,7 +3352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18448007
+      value: 0.07999998
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3367,7 +3404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3961,6 +3998,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b291a5e9ccd797044bec8d40d28b95c1, type: 2}
+    - target: {fileID: 8513859187771203891, guid: 8402f7072dc84384983aeb7d67b63030,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 8402f7072dc84384983aeb7d67b63030,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8402f7072dc84384983aeb7d67b63030, type: 3}
 --- !u!4 &524728964 stripped
@@ -4066,15 +4113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.330388
+      value: -8.332
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.001840055
+      value: 0.060169995
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.190529
+      value: 16.193
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4134,15 +4181,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1596117
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0036400557
+      value: -0.245
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.6685295
+      value: 8.669
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4270,15 +4317,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0723267
+      value: 2.072
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.117170095
+      value: -0.267
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5622711
+      value: 1.562
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4465,7 +4512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 52685ed25fdcb1b488b7047664232501, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 52685ed25fdcb1b488b7047664232501, type: 3}
       propertyPath: m_LocalScale.x
@@ -4608,15 +4655,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8584347
+      value: -0.8586893
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.001850009
+      value: -0.20798999
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.920498
+      value: 2.9202995
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4682,7 +4729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_LocalScale.x
@@ -4759,15 +4806,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9989624
+      value: 0.9985552
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19815996
+      value: -0.2773199
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.68330765
+      value: 0.6835098
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4953,7 +5000,7 @@ Transform:
   - {fileID: 1689688470}
   - {fileID: 1298917360}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738244441
 GameObject:
@@ -5216,7 +5263,7 @@ PrefabInstance:
     - target: {fileID: 4868346592753307008, guid: eb9515b802b3c4443955531d7eecef07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4868346592753307008, guid: eb9515b802b3c4443955531d7eecef07,
         type: 3}
@@ -5285,7 +5332,7 @@ PrefabInstance:
     - target: {fileID: 8472596254057192598, guid: ebfe5f345e3e7f84e95672f5234479bd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8472596254057192598, guid: ebfe5f345e3e7f84e95672f5234479bd,
         type: 3}
@@ -5355,9 +5402,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadBlock_B (5)_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
       propertyPath: m_LocalScale.x
@@ -5750,7 +5805,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &855508061
 PrefabInstance:
@@ -5887,6 +5942,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 859413092}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &860401618 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1202555150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &862502380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5984,15 +6045,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.4983883
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020100474
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.267529
+      value: 16.27
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6052,15 +6113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.50759315
+      value: -0.508
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.001840055
+      value: -0.108
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.6167984
+      value: 1.617
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6182,9 +6243,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadBlock_B (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68168b1d080f7ff4da5ac899be391c39, type: 3}
       propertyPath: m_LocalScale.x
@@ -6262,8 +6331,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &890559576
 Transform:
@@ -6487,7 +6556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031005662, guid: abc00000000003566876531687733172, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1031005662, guid: abc00000000003566876531687733172, type: 3}
       propertyPath: m_LocalScale.x
@@ -6535,6 +6604,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000003566876531687733172, type: 3}
+--- !u!1001 &926158615
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7675589525231906485, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: moveRef
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -52.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.39882
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.47204
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610319, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675589526354610419, guid: 589f7a25544ca77498f13976f731478a,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 589f7a25544ca77498f13976f731478a, type: 3}
 --- !u!1001 &928556539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6769,15 +6912,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6688633
+      value: 0.668
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0018600225
+      value: -0.228
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5706406
+      value: 3.571
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6986,15 +7129,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8450241
+      value: 0.8446169
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0013099909
+      value: -0.077849954
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7936554
+      value: 0.7938576
       objectReference: {fileID: 0}
     - target: {fileID: 1031009517, guid: abc00000000017155497350049309638, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7249,15 +7392,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08673096
+      value: -0.08674145
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020100474
+      value: -0.22995001
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.89497375
+      value: 0.8950653
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7311,9 +7454,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pavement_A_A_4
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7423,6 +7570,14 @@ PrefabInstance:
     - target: {fileID: 1031008859, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 91
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1031008859, guid: abc00000000017699335333830665754, type: 3}
@@ -7769,15 +7924,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7750225
+      value: 1.7746964
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11715007
+      value: -0.26697996
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.618042
+      value: 1.6177711
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7917,15 +8072,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7166958
+      value: 0.71628857
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.106159955
+      value: -0.1853199
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3538132
+      value: 1.3540154
       objectReference: {fileID: 0}
     - target: {fileID: 1031009823, guid: abc00000000017491953636167018418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8171,11 +8326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.232
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8464,15 +8619,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7039776
+      value: 0.702
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.116159976
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9976158
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8796,15 +8951,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2856369
+      value: -0.28586483
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020600557
+      value: -0.13793004
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0567894
+      value: 0.05696106
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8912,7 +9067,7 @@ PrefabInstance:
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
@@ -8932,22 +9087,22 @@ PrefabInstance:
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.67
+      value: -49.56
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 33.28
+      value: 33.52
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8519921
+      value: 0.6915923
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
@@ -8957,7 +9112,7 @@ PrefabInstance:
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5235546
+      value: 0.72228813
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
@@ -8972,7 +9127,7 @@ PrefabInstance:
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 63.142
+      value: 92.487
       objectReference: {fileID: 0}
     - target: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
         type: 3}
@@ -9004,7 +9159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9244,6 +9399,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 726360248}
     m_Modifications:
+    - target: {fileID: 948110683600328669, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948110683600328669, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365838388049906390, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365838388049906390, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053591180602574235, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053591180602574235, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493583034458306041, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493583034458306041, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938461566058740771, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938461566058740771, guid: 042c1164c08093146bd59861476460e2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6130192363570784099, guid: 042c1164c08093146bd59861476460e2,
         type: 3}
       propertyPath: m_Name
@@ -9356,15 +9561,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009257, guid: abc00000000007290974265424979328, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.428389
+      value: -8.43
       objectReference: {fileID: 0}
     - target: {fileID: 1031009257, guid: abc00000000007290974265424979328, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0019500256
+      value: 0.060060024
       objectReference: {fileID: 0}
     - target: {fileID: 1031009257, guid: abc00000000007290974265424979328, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.69653
+      value: 17.699001
       objectReference: {fileID: 0}
     - target: {fileID: 1031009257, guid: abc00000000007290974265424979328, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9503,15 +9708,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.3153877
+      value: -6.3169994
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0012500286
+      value: 0.06076002
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.374531
+      value: 13.377003
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9571,15 +9776,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6293869
+      value: -0.6297941
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07646006
+      value: -0.10671991
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7905273
+      value: 3.7907295
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9604,6 +9809,10 @@ PrefabInstance:
     - target: {fileID: 1031042775, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031042789, guid: abc00000000011744375032706466528, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.025
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1031042775, guid: abc00000000011744375032706466528, type: 3}
@@ -9635,7 +9844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030984123, guid: abc00000000003066686481310851240, type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 1030984123, guid: abc00000000003066686481310851240, type: 3}
       propertyPath: m_LocalScale.x
@@ -9691,6 +9900,100 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000003066686481310851240, type: 3}
+--- !u!1001 &1202555150
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7495377685509261944}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.291912
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.133399
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.646978
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.21132505
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.97741586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 155.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_Name
+      value: PoliceMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 6c9b1de9d4cd8034da62164b8df8674c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6eb3056188a7505428a2c38fe0d2d060, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c9b1de9d4cd8034da62164b8df8674c, type: 3}
 --- !u!1 &1203702372
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,7 +10061,7 @@ Transform:
   - {fileID: 1203702387}
   - {fileID: 1203702391}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 87.971, z: 0}
 --- !u!1 &1203702384
 GameObject:
@@ -10272,7 +10575,7 @@ Transform:
   - {fileID: 1351084622}
   - {fileID: 1050937449}
   m_Father: {fileID: 0}
-  m_RootOrder: 44
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218770205
 GameObject:
@@ -10542,7 +10845,7 @@ Transform:
   - {fileID: 1241103062}
   - {fileID: 1657857454}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1241103062
 Transform:
@@ -10606,15 +10909,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.439898
+      value: -11.974
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18448007
+      value: 0.042
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.66347504
+      value: -0.156
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10862,7 +11165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283481740}
   m_LocalRotation: {x: 0.012122812, y: 0.7388844, z: 0.013304187, w: -0.67359185}
-  m_LocalPosition: {x: 7.33, y: 10.46, z: 33.44}
+  m_LocalPosition: {x: 2.32, y: 8.05, z: 32.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10901,7 +11204,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8353394, b: 0, a: 1}
-  m_Intensity: 8.02
+  m_Intensity: 6.91
   m_Range: 47.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11149,7 +11452,7 @@ Transform:
   m_Children:
   - {fileID: 1284948559}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1284948559
 Transform:
@@ -11358,9 +11661,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pavement_A_A_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11919,15 +12226,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9137878
+      value: -3.912
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.017090023
+      value: 0.067
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.875523
+      value: 12.876
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12193,15 +12500,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5697279
+      value: -0.5701351
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.116159976
+      value: -0.19531992
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8516121
+      value: 1.8518143
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17054,7 +17361,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: -86.128, y: -39.493, z: 30.191}
 --- !u!1001 &1382748421
 PrefabInstance:
@@ -17089,7 +17396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13400006
+      value: 0.069
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17396,7 +17703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_LocalScale.x
@@ -17454,6 +17761,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: b3bfdc11c7193c04d93f651feb81749f, type: 3}
       propertyPath: m_Name
       value: Powerpole_B_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b3bfdc11c7193c04d93f651feb81749f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b3bfdc11c7193c04d93f651feb81749f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3bfdc11c7193c04d93f651feb81749f, type: 3}
       propertyPath: m_RootOrder
@@ -17615,7 +17930,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466101599
 PrefabInstance:
@@ -17718,15 +18033,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.650388
+      value: -6.6519995
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.06201005
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.968529
+      value: 15.971001
       objectReference: {fileID: 0}
     - target: {fileID: 1031010063, guid: abc00000000014881441792753498617, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17839,7 +18154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalScale.x
@@ -17985,7 +18300,7 @@ Transform:
   - {fileID: 1332988493}
   - {fileID: 1804868703}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: -78.3, y: 0.598, z: 2.134}
 --- !u!1 &1536436271
 GameObject:
@@ -18044,15 +18359,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.79937935
+      value: -0.79978657
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0018200278
+      value: -0.185
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4785233
+      value: 3.4787254
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18328,7 +18643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031005662, guid: abc00000000003566876531687733172, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1031005662, guid: abc00000000003566876531687733172, type: 3}
       propertyPath: m_LocalScale.x
@@ -18479,7 +18794,7 @@ PrefabInstance:
     - target: {fileID: 2551061071712425616, guid: d272345659fe49442a5bba473e60bff3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 2551061071712425616, guid: d272345659fe49442a5bba473e60bff3,
         type: 3}
@@ -18572,15 +18887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.932588
+      value: -15.45
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8659701
+      value: 0.648
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.1165237
+      value: 2.09
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18606,6 +18921,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031008860, guid: abc00000000017699335333830665754, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 91
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1031008859, guid: abc00000000017699335333830665754, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000017699335333830665754, type: 3}
@@ -18626,9 +18949,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pavement_A_A_2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18848,7 +19175,7 @@ PrefabInstance:
     - target: {fileID: 2775108654930125566, guid: bb2c99536cf56414380b6f1fa198212b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2775108654930125566, guid: bb2c99536cf56414380b6f1fa198212b,
         type: 3}
@@ -19000,15 +19327,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5953884
+      value: -6.597
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020700097
+      value: 0.05994004
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.135529
+      value: 14.1380005
       objectReference: {fileID: 0}
     - target: {fileID: 1031042773, guid: abc00000000011744375032706466528, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19151,15 +19478,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4083891
+      value: -0.4087963
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.20606005
+      value: -0.28522
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.4395294
+      value: 5.4397316
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19635,15 +19962,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.686388
+      value: -5.6879997
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0036000013
+      value: 0.05841005
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.457527
+      value: 14.459999
       objectReference: {fileID: 0}
     - target: {fileID: 1031009863, guid: abc00000000011982151676365727209, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19707,7 +20034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18448007
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19792,7 +20119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1031008857, guid: abc00000000017699335333830665754, type: 3}
       propertyPath: m_LocalScale.x
@@ -19932,15 +20259,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5917454
+      value: -0.592
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0018600225
+      value: -0.208
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.8901978
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20067,12 +20394,13 @@ GameObject:
   - component: {fileID: 1756088305}
   - component: {fileID: 1756088304}
   - component: {fileID: 1756088303}
+  - component: {fileID: 1756088306}
   m_Layer: 0
   m_Name: PoliceLine_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1756088302
 Transform:
@@ -20153,6 +20481,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756088301}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1756088306
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756088301}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 4.025, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1756881846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20186,7 +20530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18475008
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1031009963, guid: abc00000000011185345554248473713, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20337,15 +20681,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.520389
+      value: -9.522
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0018600225
+      value: 0.060150027
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.651527
+      value: 16.654
       objectReference: {fileID: 0}
     - target: {fileID: 1031009697, guid: abc00000000013387606818833290573, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20388,12 +20732,13 @@ GameObject:
   - component: {fileID: 1803990508}
   - component: {fileID: 1803990507}
   - component: {fileID: 1803990506}
+  - component: {fileID: 1803990509}
   m_Layer: 0
   m_Name: PoliceLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1803990505
 Transform:
@@ -20474,6 +20819,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803990504}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1803990509
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803990504}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 4.94, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1804868702
 GameObject:
   m_ObjectHideFlags: 0
@@ -20661,6 +21022,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a4b850a489ee1614aa7f010870b70f75, type: 2}
+    - target: {fileID: -7029948723529949830, guid: 0d781111be7a0614e9c5a18458c64dd4,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: 0d781111be7a0614e9c5a18458c64dd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 882129737928793925, guid: 0d781111be7a0614e9c5a18458c64dd4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -20742,6 +21113,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000009031943084995209627, type: 3}
+--- !u!1 &1833970302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8402f7072dc84384983aeb7d67b63030,
+    type: 3}
+  m_PrefabInstance: {fileID: 524728963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1833970303
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833970302}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.78, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.92, y: 2.04, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1837172830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21421,7 +21814,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1905876249
 PrefabInstance:
@@ -21452,15 +21845,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.36022758
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0021300316
+      value: -0.196
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7621727
+      value: -0.762
       objectReference: {fileID: 0}
     - target: {fileID: 1031009657, guid: abc00000000009829557933561986340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21532,15 +21925,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.41901016
+      value: 0.419
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020600557
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.34391022
+      value: 0.344
       objectReference: {fileID: 0}
     - target: {fileID: 1031045733, guid: abc00000000003257501887657458338, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21684,7 +22077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009217, guid: abc00000000009234100966779658434, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20984006
+      value: 0.146
       objectReference: {fileID: 0}
     - target: {fileID: 1031009217, guid: abc00000000009234100966779658434, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22381,15 +22774,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.8223886
+      value: -6.8240004
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0020600557
+      value: 0.059949994
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.733528
+      value: 15.736
       objectReference: {fileID: 0}
     - target: {fileID: 1031009637, guid: abc00000000011987918144939145446, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22593,7 +22986,7 @@ Transform:
   m_Children:
   - {fileID: 738244442}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2044762469
 Animator:
@@ -22755,7 +23148,7 @@ Transform:
   m_Children:
   - {fileID: 1284789858}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: -80.59, z: -90}
 --- !u!1001 &2092664541
 PrefabInstance:
@@ -22778,7 +23171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1030984285, guid: abc00000000002500169914309510974, type: 3}
       propertyPath: m_LocalScale.x
@@ -22996,7 +23389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a03d40a2119b00e4ea30a894ecfc5e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23368,8 +23761,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &107505105511965437
 GameObject:
@@ -23384,8 +23777,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_ChestEndEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &117268145945731562
 GameObject:
@@ -23400,8 +23793,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &117271038073702633
 Transform:
@@ -23481,8 +23874,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperarm_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &220097963465578252
 Transform:
@@ -23513,8 +23906,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:spine_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &280660917532789093
 Transform:
@@ -23698,7 +24091,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &414325139248617846
 Transform:
@@ -23728,8 +24121,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &426618975935688458
 GameObject:
@@ -23744,8 +24137,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandMiddleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &441444313402456718
 Transform:
@@ -23791,8 +24184,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &520267617653517390
 GameObject:
@@ -23807,8 +24200,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:foot_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &534658946612284493
 Transform:
@@ -23843,7 +24236,7 @@ Transform:
   - {fileID: 5465940245574260142}
   - {fileID: 4915633028041001655}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -108.13, z: 0}
 --- !u!4 &543450653425371176
 Transform:
@@ -23891,8 +24284,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &637169766446333920
 Transform:
@@ -23925,8 +24318,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &639420935296213939
 Transform:
@@ -23957,8 +24350,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperleg_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &697263573566345717
 GameObject:
@@ -23973,8 +24366,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftFootEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &707436891575389670
 GameObject:
@@ -23989,8 +24382,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &752764770046963537
 GameObject:
@@ -24006,8 +24399,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:renderpeople_janna_rigged_geo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &754167654166023564
 GameObject:
@@ -24022,8 +24415,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &758277344414231866
 GameObject:
@@ -24038,8 +24431,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &766848124588657102
 Transform:
@@ -24086,8 +24479,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftShoulderEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &797857518032682870
 Transform:
@@ -24201,8 +24594,8 @@ GameObject:
   m_Name: woman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &946448988254822168
 Transform:
@@ -24233,8 +24626,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &949519354048937556
 Transform:
@@ -24328,8 +24721,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:foot_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1184880445835159498
 GameObject:
@@ -24344,8 +24737,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_03_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1202371031417811669
 Transform:
@@ -24392,8 +24785,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandThumbEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1330755670560495933
 Transform:
@@ -24441,8 +24834,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandIndexEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1367695430559093591
 Transform:
@@ -24472,8 +24865,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1393819547584294885
 Transform:
@@ -24504,8 +24897,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightWristEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1419285679534479827
 Transform:
@@ -24567,8 +24960,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1499867722149085302
 Transform:
@@ -24748,8 +25141,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1752033129770030143
 GameObject:
@@ -24764,8 +25157,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1802310630833887392
 Transform:
@@ -24874,8 +25267,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &1914836344497763968
 MeshFilter:
@@ -24942,8 +25335,8 @@ GameObject:
   m_Name: sedan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1914836344501155488
 Transform:
@@ -24959,7 +25352,7 @@ Transform:
   m_Children:
   - {fileID: 543450653425371176}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 55.585}
 --- !u!1 &2003095490359135475
 GameObject:
@@ -24974,8 +25367,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:eye_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2010250534146433833
 GameObject:
@@ -24990,8 +25383,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerarm_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2018527048878102725
 Transform:
@@ -25057,8 +25450,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperarm_twist_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2094137864607076837
 GameObject:
@@ -25073,8 +25466,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerleg_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2120782064365022158
 GameObject:
@@ -25089,8 +25482,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2165079829589952853
 GameObject:
@@ -25105,8 +25498,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerleg_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2220974900509935477
 Transform:
@@ -25184,8 +25577,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperleg_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2296198653145586792
 GameObject:
@@ -25200,8 +25593,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2308966763823933711
 Transform:
@@ -25231,8 +25624,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2337227247136557702
 Transform:
@@ -25294,8 +25687,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!137 &2374810119546409408
 SkinnedMeshRenderer:
@@ -25409,8 +25802,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2420202490788942373
 Transform:
@@ -25441,8 +25834,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2460876138099808269
 GameObject:
@@ -25457,8 +25850,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2468526894996819362
 GameObject:
@@ -25473,8 +25866,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandRingEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2512760375145667357
 GameObject:
@@ -25489,8 +25882,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2537751341423741781
 Transform:
@@ -25553,8 +25946,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2574497259217981420
 GameObject:
@@ -25569,8 +25962,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightAnkleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2608053924439672305
 GameObject:
@@ -25585,8 +25978,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ball_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2618096483412918274
 Transform:
@@ -25616,8 +26009,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2715566403119890384
 GameObject:
@@ -25664,8 +26057,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2817023081234271056
 GameObject:
@@ -30508,8 +30901,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftKneeEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2875056704271219362
 GameObject:
@@ -30524,8 +30917,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2884999538305164844
 GameObject:
@@ -30540,8 +30933,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2889189676152864621
 Transform:
@@ -30718,8 +31111,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2958062060332691957
 Transform:
@@ -30813,8 +31206,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerarm_twist_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3088582507492644173
 Transform:
@@ -30845,8 +31238,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_03_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3135921508112931068
 GameObject:
@@ -30911,8 +31304,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3245029541261899707
 Transform:
@@ -31004,8 +31397,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3404545369277641289
 Transform:
@@ -31036,8 +31429,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3443912053146831014
 Transform:
@@ -31067,8 +31460,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightElbowEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3472041496136770630
 Transform:
@@ -31114,8 +31507,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3506498479693131762
 Transform:
@@ -31145,8 +31538,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3529131345616667309
 Transform:
@@ -31176,8 +31569,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:eye_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3574258412580953373
 Transform:
@@ -31255,8 +31648,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_03_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3741548452532062396
 Transform:
@@ -31302,8 +31695,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftAnkleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3796963764591266209
 GameObject:
@@ -31318,8 +31711,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3807056988673900679
 GameObject:
@@ -31334,8 +31727,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:hand_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3807877914142568168
 GameObject:
@@ -31350,8 +31743,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3860834816469488396
 Transform:
@@ -31397,8 +31790,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:spine_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3948933246629332890
 GameObject:
@@ -31429,8 +31822,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3974016662145788365
 GameObject:
@@ -31494,8 +31887,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4042427858476066729
 Transform:
@@ -31541,8 +31934,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightShoulderEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4114344261857339295
 Transform:
@@ -31573,8 +31966,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4167355707143425890
 GameObject:
@@ -31589,8 +31982,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4217867215659668047
 GameObject:
@@ -31636,8 +32029,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4262025920408695874
 GameObject:
@@ -31652,8 +32045,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandRingEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4270655627263548207
 Transform:
@@ -31684,8 +32077,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4297190169254260608
 Transform:
@@ -31731,8 +32124,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4325015263059760710
 Transform:
@@ -31786,7 +32179,7 @@ PrefabInstance:
     - target: {fileID: 4357632719592448451, guid: 17868ca8f286bc54b81104eb68ba8cc3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4357632719592448451, guid: 17868ca8f286bc54b81104eb68ba8cc3,
         type: 3}
@@ -31939,8 +32332,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_HeadEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4441848307132899452
 GameObject:
@@ -32034,8 +32427,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4549111883444505868
 GameObject:
@@ -32098,8 +32491,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4575138929008234583
 GameObject:
@@ -32114,8 +32507,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4589941334729307084
 Transform:
@@ -32145,8 +32538,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4673154290387012478
 GameObject:
@@ -32161,8 +32554,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:foot_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4856502658897285896
 GameObject:
@@ -32177,8 +32570,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandThumbEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4880549054385917730
 Transform:
@@ -32225,8 +32618,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_03_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4915633028041001655
 Transform:
@@ -32271,8 +32664,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4924607602557796117
 GameObject:
@@ -32287,8 +32680,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4939013427925832679
 GameObject:
@@ -32303,8 +32696,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightFootEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4943735073024882565
 GameObject:
@@ -32319,8 +32712,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandPinkyEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4961632077034741597
 GameObject:
@@ -32335,8 +32728,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:renderpeople_janna_rigged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4990497349623987529
 Transform:
@@ -32387,8 +32780,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_03_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5026111468283579908
 Transform:
@@ -32451,8 +32844,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperarm_twist_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &5121845256790732307
 GameObject:
@@ -32467,8 +32860,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5191080806269116527
 Transform:
@@ -32514,8 +32907,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ball_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &5246270959951467551
 GameObject:
@@ -32530,8 +32923,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperleg_twist_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5317793637374151720
 Transform:
@@ -32578,8 +32971,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:spine_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &5345561897184413775
 GameObject:
@@ -32594,8 +32987,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5357891029870599782
 Transform:
@@ -32675,8 +33068,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5416254966939855800
 Transform:
@@ -32707,8 +33100,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandIndexEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5436652068380882468
 Transform:
@@ -32856,8 +33249,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:jaw_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5716888130164230991
 Transform:
@@ -32887,8 +33280,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &5721075534586879430
 GameObject:
@@ -32903,8 +33296,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandMiddleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5742672706654791229
 Transform:
@@ -32966,8 +33359,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5849455047961367003
 Transform:
@@ -32998,8 +33391,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &5898524604035948416
 GameObject:
@@ -33014,8 +33407,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5901452234029033401
 Transform:
@@ -33046,8 +33439,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftWristEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6000407480720805332
 Transform:
@@ -33078,8 +33471,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!137 &6076218331686253841
 SkinnedMeshRenderer:
@@ -33227,8 +33620,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6130457288592316442
 Transform:
@@ -33306,8 +33699,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6197849586254700233
 Transform:
@@ -33338,8 +33731,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_03_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6238165514302188578
 GameObject:
@@ -33354,8 +33747,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_HipsEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6272610933239325446
 GameObject:
@@ -33370,8 +33763,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6274588294042304384
 GameObject:
@@ -33386,8 +33779,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6291240073131085054
 Transform:
@@ -33433,8 +33826,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6379457287338208419
 GameObject:
@@ -33449,8 +33842,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6384476831218651686
 Transform:
@@ -33497,8 +33890,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6426257485885116974
 Transform:
@@ -33544,8 +33937,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftElbowEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6461798314385653126
 Transform:
@@ -33639,8 +34032,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHipEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6619891386620722914
 GameObject:
@@ -33687,8 +34080,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_03_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6819838345868420601
 Transform:
@@ -33793,8 +34186,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6836688437015854945
 GameObject:
@@ -33809,8 +34202,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6896134558758650088
 GameObject:
@@ -33825,8 +34218,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6906749415689751079
 GameObject:
@@ -33841,8 +34234,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperleg_twist_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6919839238300148248
 Transform:
@@ -33888,8 +34281,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7017917180541037694
 Transform:
@@ -33934,8 +34327,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7045212111009885045
 Transform:
@@ -33981,8 +34374,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:eye_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7088681079547126538
 GameObject:
@@ -33997,8 +34390,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7125560313334564629
 Transform:
@@ -34044,8 +34437,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7138560357724329573
 GameObject:
@@ -34092,8 +34485,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7220499899513795118
 GameObject:
@@ -34108,8 +34501,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightKneeEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7225708335620058392
 GameObject:
@@ -34124,8 +34517,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7238900538193574991
 Transform:
@@ -34171,8 +34564,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7263747082156666340
 GameObject:
@@ -34187,8 +34580,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7273655790047430173
 GameObject:
@@ -34203,8 +34596,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7296331293558888000
 GameObject:
@@ -34219,8 +34612,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:shoulder_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &7342891309702114598
 MeshRenderer:
@@ -34352,7 +34745,7 @@ PrefabInstance:
     - target: {fileID: 7383347092936862947, guid: 062867a14e093864197201172c795fcc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7383347092936862947, guid: 062867a14e093864197201172c795fcc,
         type: 3}
@@ -34424,8 +34817,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7392758000418247401
 GameObject:
@@ -34440,8 +34833,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7394021760528643687
 GameObject:
@@ -34456,8 +34849,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerleg_twist_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7404451762652796255
 GameObject:
@@ -34472,8 +34865,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7410462540064762920
 Transform:
@@ -34518,9 +34911,10 @@ Transform:
   m_LocalPosition: {x: -8.367292, y: 7.4663515, z: 31.86769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 860401618}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7518503687790386729
 Transform:
@@ -34587,8 +34981,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_03_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7577641039309468843
 Transform:
@@ -34651,8 +35045,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerarm_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7666680084967751321
 Transform:
@@ -34714,8 +35108,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7717373267379622354
 Transform:
@@ -34779,8 +35173,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7794115439372304179
 GameObject:
@@ -34795,8 +35189,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7806220163964900185
 Transform:
@@ -34811,7 +35205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 45
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7809534156253615774
 Transform:
@@ -34842,8 +35236,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7820624177975867720
 Transform:
@@ -34873,8 +35267,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7858454437458477380
 GameObject:
@@ -34889,8 +35283,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_ChestOriginEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7914967748238317558
 Transform:
@@ -34936,8 +35330,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerleg_twist_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &7952275538233196683
 GameObject:
@@ -34952,8 +35346,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_end_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7971811924271439707
 Transform:
@@ -34983,8 +35377,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8022515958867525618
 GameObject:
@@ -35056,7 +35450,7 @@ Transform:
   - {fileID: 8037954711434619401}
   - {fileID: 722602337}
   m_Father: {fileID: 0}
-  m_RootOrder: 49
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8037954711434619401
 Transform:
@@ -35169,8 +35563,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8084780715654010745
 GameObject:
@@ -35185,8 +35579,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:index_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8087278656617132558
 Transform:
@@ -35247,8 +35641,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:foot_end_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8153021304997794935
 Transform:
@@ -35295,8 +35689,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:eye_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8221335305074057484
 GameObject:
@@ -35311,8 +35705,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8239022995365067448
 GameObject:
@@ -35327,8 +35721,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8340308430830408476
 Transform:
@@ -35360,8 +35754,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:ring_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8383946138927878042
 GameObject:
@@ -35376,8 +35770,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8424970068472380209
 Transform:
@@ -35408,8 +35802,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:upperarm_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8471895808988158530
 GameObject:
@@ -35456,8 +35850,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHipEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8512606010037915744
 Transform:
@@ -35503,8 +35897,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:shoulder_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8564247700265527718
 Transform:
@@ -35534,8 +35928,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8646210916687316452
 Transform:
@@ -35581,8 +35975,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8670540287730253822
 GameObject:
@@ -35677,8 +36071,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:lowerarm_twist_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8743202456930871041
 GameObject:
@@ -35693,8 +36087,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8751430988857047562
 GameObject:
@@ -35709,8 +36103,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_LeftHandPinkyEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8817898887294281554
 GameObject:
@@ -35741,8 +36135,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8883219581476434834
 GameObject:
@@ -35757,8 +36151,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:thumb_03_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &8932621592591494446
 GameObject:
@@ -35789,8 +36183,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:pinky_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9004082969760357023
 Transform:
@@ -35837,8 +36231,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:hand_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &9073875047978692064
 GameObject:
@@ -35853,8 +36247,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &9170193263891443796
 GameObject:
@@ -35869,8 +36263,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:rp_janna_rigged_Ctrl_RightHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &9174501999252390104
 GameObject:
@@ -35885,8 +36279,8 @@ GameObject:
   m_Name: rp_janna_rigged_HIK_arnold:middle_03_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9192683983431722592
 Transform:
