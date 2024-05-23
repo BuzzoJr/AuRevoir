@@ -13,6 +13,7 @@ namespace Assets.Script.Dialog
         public GameObject DialogBox { get; set; }
         public TMP_Text DialogText { get; set; }
         public TMP_Text DialogSpeaker { get; set; }
+        public Image Portrait { get; set; }
         public TextGroup TextGroup { get; set; }
 
         int? selectedKey = null;
@@ -84,6 +85,8 @@ namespace Assets.Script.Dialog
                     UpdateLangTexts();
 
                     TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
+                    Debug.Log(data.Type);
+                    Portrait.sprite = PortraitManager.GetPortrait("C0Bar", "Tristan");
                     bool clicked = false;
                     float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
                     float elapsedTime = 0;

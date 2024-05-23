@@ -4,6 +4,7 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogInteraction : MonoBehaviour, ITalk
 {
@@ -21,6 +22,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
         dialog.TextGroup = textGroup;
         dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
 
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
         dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
