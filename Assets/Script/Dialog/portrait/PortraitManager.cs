@@ -14,10 +14,12 @@ public static class PortraitManager
     {
         if (portraitDictionary == null)
         {
-            Debug.Log("Initializing PortraitManager");
             portraitDictionary = new Dictionary<string, Dictionary<string, Sprite>>();
 
-            CharacterPortraits[] allCharacterPortraits = Resources.LoadAll<CharacterPortraits>("");
+            //---------------DA LOAD EM TODOS NA PASTA RESOURCES
+            CharacterPortraits[] allCharacterPortraits = Resources.LoadAll<CharacterPortraits>(""); 
+
+            //Debug.Log($"Loaded {allCharacterPortraits.Length} CharacterPortraits from Resources");
 
             foreach (var characterPortraits in allCharacterPortraits)
             {
@@ -29,7 +31,7 @@ public static class PortraitManager
                 foreach (var scenePortrait in characterPortraits.scenePortraits)
                 {
                     portraitDictionary[characterPortraits.characterName][scenePortrait.sceneName] = scenePortrait.portrait;
-                    Debug.Log($"Added portrait for character: {characterPortraits.characterName}, scene: {scenePortrait.sceneName}");
+                    //Debug.Log($"Added portrait for character: {characterPortraits.characterName}, scene: {scenePortrait.sceneName}");
                 }
             }
         }
@@ -39,7 +41,6 @@ public static class PortraitManager
     {
         if (portraitDictionary == null)
         {
-            Debug.LogError("PortraitManager is not initialized. This should not happen.");
             return null;
         }
 
@@ -49,7 +50,7 @@ public static class PortraitManager
         }
         else
         {
-            Debug.LogWarning($"Portrait not found for character: {character} in scene: {scene}");
+            //Debug.LogWarning($"Portrait not found for character: {character} in scene: {scene}");
             return null;
         }
     }

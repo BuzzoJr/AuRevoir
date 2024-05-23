@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Script.Dialog
 {
@@ -28,9 +29,7 @@ namespace Assets.Script.Dialog
                 //DialogText.color = TextColorManager.textTypeColors[data.Type];
                 DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
                 DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
-                Debug.Log(data.Type);
-                Debug.Log(TextColorManager.TextSpeaker(data.Type, ""));
+                DialogSpeaker.text = data.Type.ToString();
             }
         }
 
@@ -57,7 +56,7 @@ namespace Assets.Script.Dialog
         public IEnumerator Execute(GameObject who, List<object> seq, System.Action<DialogAction> callback)
         {
             DialogAction result = DialogAction.None;
-
+            string currentSceneName = SceneManager.GetActiveScene().name;
             int pos = 0;
             while (pos < seq.Count)
             {
@@ -85,8 +84,8 @@ namespace Assets.Script.Dialog
                     UpdateLangTexts();
 
                     TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
-                    Debug.Log(data.Type);
-                    Portrait.sprite = PortraitManager.GetPortrait("C0Bar", "Tristan");
+
+                    Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, data.Type.ToString());
                     bool clicked = false;
                     float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
                     float elapsedTime = 0;
