@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class NewMenuController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class NewMenuController : MonoBehaviour
     public Image brBtn, enBtn;
     public TMP_Text checkFulls;
     public AudioSource menuSong;
+    public AudioMixer audioMixer;
     public Color c1, c2;
     public GameObject panelTxt, loadingObj, mainCanvas, panelButton, starBtn, continueBtn, moveTxt;
     public GameObject[] allCircles;
@@ -60,6 +62,22 @@ public class NewMenuController : MonoBehaviour
         Destroy(GameObject.Find("MusicEnd"));
         playerData.visitedScenes.Clear();
 
+        if (!PlayerPrefs.HasKey("Music"))
+        {
+            ChangeMusic();
+        }
+        else
+        {
+            float volume = (PlayerPrefs.GetFloat("Music") - 1) * -1;
+            musicScreen.value = volume;
+            musicOpt.value = volume;
+            float dB = Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20;
+
+            if(dB < -60.00f)
+                dB = -60.00f;
+
+            audioMixer.SetFloat("Music", dB);
+        }
     }
 
     void Update() {
@@ -178,14 +196,19 @@ public class NewMenuController : MonoBehaviour
     {
         volumeScreen.value = volumeOpt.value;
         AudioListener.volume = 1f - volumeOpt.value;
-
         PlayerPrefs.SetFloat("Volume", 1f - volumeOpt.value);
     }
 
     public void ChangeMusic()
     {
         musicScreen.value = musicOpt.value;
-        //music.volume = musicSlider.value;
+        float dB = Mathf.Log10(1f - musicOpt.value) * 20;
+        PlayerPrefs.SetFloat("Music", 1f - musicOpt.value);
+
+        if(dB < -60.00f)
+            dB = -60.00f;
+
+        audioMixer.SetFloat("Music", dB);
     }
 
     IEnumerator WaitStartGame()
@@ -207,7 +230,7 @@ public class NewMenuController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(timeFade);
-        SceneManager.LoadScene("C1Bedroom");
+        SceneManager.LoadScene("C1Bedroom"); //C0Rua
     }
 
     IEnumerator AnimPcPlay()

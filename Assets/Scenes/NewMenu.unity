@@ -5667,7 +5667,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2137330993}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.999
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -11006,10 +11006,11 @@ AudioSource:
   m_GameObject: {fileID: 1465283684}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8437062809497783533, guid: 968b9fdaf05aeb4428154e747085e3e3,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: bb10b0eae558e65459352e0dc7f00a73, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12138,7 +12139,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14053,7 +14054,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 326338771}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.999
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -16014,6 +16015,7 @@ MonoBehaviour:
   enBtn: {fileID: 1235161362}
   checkFulls: {fileID: 231548073}
   menuSong: {fileID: 1465283685}
+  audioMixer: {fileID: 24100000, guid: 968b9fdaf05aeb4428154e747085e3e3, type: 2}
   c1: {r: 1, g: 1, b: 1, a: 0.7058824}
   c2: {r: 1, g: 1, b: 1, a: 0.11764706}
   panelTxt: {fileID: 716899717}
