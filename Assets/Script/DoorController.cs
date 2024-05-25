@@ -41,6 +41,7 @@ public class DoorController : MonoBehaviour, ILangConsumer
         C0HallOffice,
         C0OfficeGarage,
         C0UploadRoom,
+        C0Livingroom,
         C1Bedroom,
         C2Livingroom,
         C3Office,
