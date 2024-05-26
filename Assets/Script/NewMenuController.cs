@@ -230,7 +230,7 @@ public class NewMenuController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(timeFade);
-        SceneManager.LoadScene("C1Bedroom"); //C0Rua
+        SceneManager.LoadScene("C0BarBathroom"); //C0Rua
     }
 
     IEnumerator AnimPcPlay()
