@@ -2,9 +2,9 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class NewMenuController : MonoBehaviour
 {
@@ -24,6 +24,21 @@ public class NewMenuController : MonoBehaviour
 
     void Awake()
     {
+        if (PlayerPrefs.HasKey("Language"))
+        {
+            switch (PlayerPrefs.GetString("Language"))
+            {
+                case "PTBR":
+                    Locale.LoadLang(Lang.ptBR);
+                    break;
+
+                case "ENG":
+                default:
+                    Locale.LoadLang(Lang.enUS);
+                    break;
+            }
+        }
+
         if (!PlayerPrefs.HasKey("FullS"))
         {
             PlayerPrefs.SetInt("FullS", 1);
@@ -73,15 +88,17 @@ public class NewMenuController : MonoBehaviour
             musicOpt.value = volume;
             float dB = Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20;
 
-            if(dB < -60.00f)
+            if (dB < -60.00f)
                 dB = -60.00f;
 
             audioMixer.SetFloat("Music", dB);
         }
     }
 
-    void Update() {
-        if (moveTxt.transform.position.y >= 1.335911f && !continueBtn.activeSelf && panelButton.activeSelf) {
+    void Update()
+    {
+        if (moveTxt.transform.position.y >= 1.335911f && !continueBtn.activeSelf && panelButton.activeSelf)
+        {
             starBtn.SetActive(false);
             continueBtn.SetActive(true);
         }
@@ -205,7 +222,7 @@ public class NewMenuController : MonoBehaviour
         float dB = Mathf.Log10(1f - musicOpt.value) * 20;
         PlayerPrefs.SetFloat("Music", 1f - musicOpt.value);
 
-        if(dB < -60.00f)
+        if (dB < -60.00f)
             dB = -60.00f;
 
         audioMixer.SetFloat("Music", dB);
