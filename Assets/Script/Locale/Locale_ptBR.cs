@@ -17,6 +17,19 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.NewMenu,
+                new List<TextData>()
+                {
+                    new TextData(">Novo Jogo\n\n>Opções\n\n>Sair"),
+                    new TextData("Tela cheia"),
+                    new TextData("Resolução:"),
+                    new TextData("Idioma:"),
+                    new TextData("Volume:"),
+                    new TextData("Música:"),
+                    new TextData("Voltar\n--->"),
+                }
+            },
+            {
                 TextGroup.LockedDoor,
                 new List<TextData>()
                 {
@@ -57,11 +70,8 @@ namespace Assets.Script.Locale
                 TextGroup.Intro,
                 new List<TextData>()
                 {
-                    new TextData("Ano 2071"),
-                    new TextData("Há três anos, a Au Revoir Ltd. introduziu ao mundo a maior inovação tecnológica já vista:o cérebro sintético capaz de preservar integralmente a consciência humana."),
-                    new TextData("Com esta descoberta, a morte deixou de ser o fim. Os abastados ganharam acesso à imortalidade, cada um aguardando a chance de renascer em novos corpos."),
-                    new TextData("Para garantir a existência contínua desses indivíduos, surgiu uma nova profissão. Os Sentinelas são cientistas de campo responsáveis pelo resgate da mente dos assegurados pela vida eterna da Au Revoir Ltd."),
-                    new TextData("O upload de consciências em corpos de terceiros é estritamente proibido, exceto em casos de doação de corpo."),
+                    new TextData("Ano 2071\n\nHá três anos, a Au Revoir Ltd. introduziu ao mundo a maior inovação tecnológica já vista:o cérebro sintético capaz de preservar integralmente a consciência humana.\n\nCom esta descoberta, a morte deixou de ser o fim. Os abastados ganharam acesso à imortalidade, cada um aguardando a chance de renascer em novos corpos.\n\nPara garantir a existência contínua desses indivíduos, surgiu uma nova profissão. Os Sentinelas são cientistas de campo responsáveis pelo resgate da mente dos assegurados pela vida eterna da Au Revoir Ltd.\n\nO upload de consciências em corpos de terceiros é estritamente proibido, exceto em casos de doação de corpo."),
+                    new TextData("> Continuar"),
                     // Primeira Demo:
                     //new TextData("No ano de 2068, a Au Revoir Ltda desencadeou sua expansão ao apresentar a maior inovação tecnológica que o mundo já viu. A novidade foi um chip revolucionário, capaz de armazenar a consciência completa de uma pessoa. Esse avanço permitiu que, mesmo após a morte do corpo, a consciência pudesse persistir, aguardando a oportunidade de habitar uma nova \"capa\". A marca Au Revoir rapidamente ascendeu, expandindo suas operações para outros ramos, e se tornou a maior corporação de todo o planeta."),
                     //new TextData("A partir da grande inovação, os poderosos passaram a viver eternamente, alternando suas capas sempre que o seus corpos faleciam. E para garantir a continuidade da existência destes, uma nova profissão surgiu. Os chamados Sentinelas são os responsáveis pelo resgate seguro dos chips de todos os assegurados de vida eterna pela Au Revoir Ltda, garantindo a continuidade da existência de forma digital."),

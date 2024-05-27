@@ -4,6 +4,7 @@
     {
         Default = 0,
         Menu,
+        NewMenu,
         Intro,
         IntroTVCommercial,
         ChatWithHank,

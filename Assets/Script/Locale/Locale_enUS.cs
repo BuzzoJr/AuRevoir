@@ -17,6 +17,19 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.NewMenu,
+                new List<TextData>()
+                {
+                    new TextData(">New Game\n\n>Options\n\n>Exit"),
+                    new TextData("Fullscreen"),
+                    new TextData("Resolution:"),
+                    new TextData("Language:"),
+                    new TextData("Volume:"),
+                    new TextData("Music:"),
+                    new TextData("Return\n--->"),
+                }
+            },
+            {
                 TextGroup.LockedDoor,
                 new List<TextData>()
                 {
@@ -57,11 +70,8 @@ namespace Assets.Script.Locale
                 TextGroup.Intro,
                 new List<TextData>()
                 {
-                    new TextData("Year 2071"),
-                    new TextData("Three years ago, Au Revoir Ltd. introduced to the world the greatest technological innovation ever seen: the synthetic brain capable of fully preserving human consciousness."),
-                    new TextData("With this discovery, death ceased to be the end for one’s consciousness. The wealthy gained access to immortality, each one waiting for the chance to inhabit a new body."),
-                    new TextData("To ensure the continuous existence of these individuals, a new profession emerged. The Sentinels are field scientists responsible for rescuing the minds of those assured of eternal life by Au Revoir Ltd."),
-                    new TextData("Uploading consciousness into third-party bodies is strictly prohibited, except in cases of body donation."),
+                    new TextData("Year 2071\n\nThree years ago, Au Revoir Ltd. introduced to the world the greatest technological innovation ever seen: the synthetic brain capable of fully preserving human consciousness.\n\nWith this discovery, death ceased to be the end for one’s consciousness. The wealthy gained access to immortality, each one waiting for the chance to inhabit a new body.\n\nTo ensure the continuous existence of these individuals, a new profession emerged. The Sentinels are field scientists responsible for rescuing the minds of those assured of eternal life by Au Revoir Ltd.\n\nUploading consciousness into third-party bodies is strictly prohibited, except in cases of body donation."),
+                    new TextData("> Continue"),
                     // First Demo:
                     //new TextData("In the year 2068, Au Revoir Ltd unleashed its expansion by introducing to the world the greatest technological innovation ever seen. The novelty was a revolutionary chip capable of storing a person's complete consciousness. This advancement allowed one's consciousness to persist even after the body's death, waiting for the opportunity to inhabit a new 'sleeve.' The Au Revoir brand quickly ascended, expanding its operations into other domains and becoming the largest corporation on the planet."),
                     //new TextData("With the great innovation, the powerful began to live forever, switching their sleeves whenever their bodies died. To ensure the continued existence of these individuals, a new profession emerged. The so-called Sentinels are responsible for the safe retrieval of the chips of all those assured of eternal life by Au Revoir Ltd, guaranteeing the continuity of digital existence."),
