@@ -38,21 +38,26 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // Cheatcode go to scene - hold shift and input the scene number (index in build)
+        // Cheatcodes
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
+            // go to scene - hold shift and input the scene number (index in build)
             for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
             {
                 if (Input.GetKeyDown(k))
                     goToScene += k.ToString().Replace("Alpha", "");
             }
+
+            // reload scene - hold shift + R
+            if (Input.GetKeyDown(KeyCode.R))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (goToScene.Length > 0)
         {
-            Debug.Log($"Cheatcode - go to scene: {goToScene}");
+            Debug.Log($"Cheatcode - go to scene: {goToScene} / {SceneManager.sceneCountInBuildSettings}");
 
-            if (int.TryParse(goToScene, out int scene))
-                SceneManager.LoadScene(scene);
+            if (int.TryParse(goToScene, out int scene) && scene > 0 && scene < SceneManager.sceneCountInBuildSettings)
+                SceneManager.LoadScene(scene - 1);
 
             goToScene = "";
         }
