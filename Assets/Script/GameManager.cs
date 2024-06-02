@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
             {
                 if (Input.GetKeyDown(k))
-                    goToScene += k.ToString().Replace("Alpha", "");
+                    goToScene += k - KeyCode.Alpha0;
             }
 
             // reload scene - hold shift + R
