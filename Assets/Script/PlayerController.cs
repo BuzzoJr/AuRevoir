@@ -1,6 +1,7 @@
 ﻿using Assets.Script.Interaction;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
     private Button lookChild;
     private Button talkChild;
     private GameManager.GameState currentState = GameManager.GameState.Playing;
+
+    private float lastClickTime = 0f;
+    private float doubleClickThreshold = 0.25f;
+    public float originalWalkPitch = 1.08f;
+    public float originalRunningPitch = 1.25f;
+    private bool running = false;
 
     [System.NonSerialized] public Transform lookAtTarget;
 
@@ -85,19 +92,20 @@ public class PlayerController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(viewportPos);
             if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
             {
+                bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
                 //Debug.Log(hitPoint.transform.gameObject.name);
                 switch (hitPoint.transform.tag)
                 {
                     case "Floor":
-                        GoTo(hitPoint.point);
-                        CloseInteractionWheel();
-                        break;
-
                     case "Door":
-                        GoTo(hitPoint.transform.GetChild(0).transform.position);
+                        lastClickTime = Time.time;
+                        if (isDoubleClick)
+                            running = true;
+                        else
+                            running = false;
+                        GoTo(hitPoint.transform.tag == "Door" ? hitPoint.transform.GetChild(0).position : hitPoint.point);
                         CloseInteractionWheel();
                         break;
-
                     case "Character":
                     case "Interactable":
                     case "Object":
@@ -113,12 +121,34 @@ public class PlayerController : MonoBehaviour
         if ((int)navMeshAgent.destination.x != (int)transform.position.x || (int)navMeshAgent.destination.z != (int)transform.position.z)
         {
             audioSource.enabled = true;
-            anim.SetBool("Walk", true);
+            if (!running)
+            {
+                navMeshAgent.speed = 5;
+                audioSource.pitch = originalWalkPitch;
+                anim.SetBool("Walk", true);
+                anim.SetBool("Run", false);
+            }
+            else
+            {
+                audioSource.pitch = originalRunningPitch;
+                navMeshAgent.speed = Mathf.Lerp(navMeshAgent.speed, 10f, Time.deltaTime * 8f);
+                anim.SetBool("Run", true);
+            }
+            if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
+            {
+                Vector3 direction = navMeshAgent.velocity.normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                lookRotation.x = 0;
+                lookRotation.z = 0;
+                navMeshAgent.transform.rotation = Quaternion.Lerp(navMeshAgent.transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
         }
         else
         {
             audioSource.enabled = false;
             anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
+            navMeshAgent.speed = 5;
 
             if (lookAtTarget)
             {
