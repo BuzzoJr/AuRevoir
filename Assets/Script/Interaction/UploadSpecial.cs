@@ -6,9 +6,12 @@ using UnityEngine.Rendering.Universal;
 using URPGlitch.Runtime.AnalogGlitch;
 using URPGlitch.Runtime.DigitalGlitch;
 using Assets.Script.Interaction;
+using UnityEngine.UI;
 
 public class UploadSpecial : MonoBehaviour, IUseSpecial
 {
+    public Image btnImg;
+    public Sprite newImgBtn;
     public GameObject allCanvasUpload, blackScreen;
     public Volume analogGlitchVolume;  // Referência ao Volume que possui os efeitos de glitch analógico
     public Volume digitalGlitchVolume; // Referência ao Volume que possui os efeitos de glitch digital
@@ -96,5 +99,9 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
     public void LoadingFunc()
     {
         StartCoroutine(DelayLoading());
+    }
+
+    public void SelectSubject() {
+        btnImg.sprite = newImgBtn;
     }
 }
