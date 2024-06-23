@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private Button useChild;
     private Button lookChild;
     private Button talkChild;
+    private Transform lastTarget;
+
     private GameManager.GameState currentState = GameManager.GameState.Playing;
 
     private float lastClickTime = 0f;
@@ -91,25 +93,14 @@ public class PlayerController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(viewportPos);
             if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
             {
-                // Limitar interação
-                bool limit = false;
-                foreach (ILimit limiter in hitPoint.transform.GetComponentsInChildren<ILimit>())
+                lastTarget = hitPoint.transform;
+                //Debug.Log(lastTarget.gameObject.name);
+                switch (lastTarget.tag)
                 {
-                    if (limiter.ShouldLimit(gameObject))
-                    {
-                        limit = true;
-                        limiter.Limited(gameObject);
-                        break;
-                    }
-                }
-
-                if (!limit)
-                {
-                    //Debug.Log(hitPoint.transform.gameObject.name);
-                    switch (hitPoint.transform.tag)
-                    {
-                        case "Floor":
-                        case "Door":
+                    case "Floor":
+                    case "Door":
+                        if (!CheckInteractionLimit(lastTarget))
+                        {
                             bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
                             lastClickTime = Time.time;
 
@@ -118,18 +109,18 @@ public class PlayerController : MonoBehaviour
                             else
                                 running = false;
 
-                            GoTo(hitPoint.transform.tag == "Door" ? hitPoint.transform.GetChild(0).position : hitPoint.point);
+                            GoTo(lastTarget.tag == "Door" ? lastTarget.GetChild(0).position : hitPoint.point);
                             CloseInteractionWheel();
-                            break;
-                        case "Character":
-                        case "Interactable":
-                        case "Object":
-                            if (!interactionWheel.activeSelf)
-                                OpenInteractionWheel(hitPoint.transform.gameObject);
-                            else
-                                CloseInteractionWheel();
-                            break;
-                    }
+                        }
+                        break;
+                    case "Character":
+                    case "Interactable":
+                    case "Object":
+                        if (!interactionWheel.activeSelf)
+                            OpenInteractionWheel(lastTarget.gameObject);
+                        else
+                            CloseInteractionWheel();
+                        break;
                 }
             }
         }
@@ -191,6 +182,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool CheckInteractionLimit(Transform target)
+    {
+        // Limitar interação
+        foreach (ILimit limiter in target.GetComponentsInChildren<ILimit>())
+        {
+            if (limiter.ShouldLimit(gameObject))
+            {
+                limiter.Limited(gameObject);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void GoToNextWaypoint()
     {
         if (waypoints == null || waypoints.Count == 0)
@@ -245,19 +251,25 @@ public class PlayerController : MonoBehaviour
 
     void TalkEvent()
     {
-        talk.Talk(gameObject);
+        if (lastTarget && !CheckInteractionLimit(lastTarget))
+            talk.Talk(gameObject);
+
         CloseInteractionWheel();
     }
 
     void LookEvent()
     {
-        look.Look(gameObject);
+        if (lastTarget && !CheckInteractionLimit(lastTarget))
+            look.Look(gameObject);
+
         CloseInteractionWheel();
     }
 
     void UseEvent()
     {
-        use.Use(gameObject);
+        if (lastTarget && !CheckInteractionLimit(lastTarget))
+            use.Use(gameObject);
+
         CloseInteractionWheel();
     }
 
@@ -275,5 +287,6 @@ public class PlayerController : MonoBehaviour
             talkChild.interactable = false;
             interactionWheel.SetActive(false);
         }
+        lastTarget = null;
     }
 }
