@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Script;
 using Assets.Script.Interaction;
 using UnityEngine;
 
 public class HankSpecial : MonoBehaviour, ISpecial
 {
+    public PlayerData playerData;
     public AudioSource audioSource;
     public AudioClip pickup;
 
@@ -17,6 +17,7 @@ public class HankSpecial : MonoBehaviour, ISpecial
             audioSource.loop = false;
             audioSource.Stop();
             audioSource.PlayOneShot(pickup);
+            playerData.steps.Add(GameSteps.GetFirstMission);
         }
     }
 }
