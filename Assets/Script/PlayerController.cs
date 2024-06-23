@@ -139,7 +139,6 @@ public class PlayerController : MonoBehaviour
             audioSource.enabled = true;
             if (!running)
             {
-                Debug.Log("SOCORRO");
                 navMeshAgent.speed = 5;
                 audioSource.pitch = originalWalkPitch;
                 anim.SetBool("Walk", true);

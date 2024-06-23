@@ -11,6 +11,7 @@ public class LimitByStep : MonoBehaviour, ILimit
 {
     public PlayerData playerData;
     public GameSteps step;
+    public bool inverted = false;
 
     public bool shouldWalk = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
@@ -35,8 +36,8 @@ public class LimitByStep : MonoBehaviour, ILimit
 
     public bool ShouldLimit(GameObject who)
     {
-        // Se n�o tiver passado pelo step, n�o permite que o player realize uma intera��o
-        return !playerData.steps.Contains(step);
+        // Se não tiver passado pelo step, não permite que o player realize uma interação
+        return (!playerData.steps.Contains(step) ^ inverted);
     }
 
     public void Limited(GameObject who)
