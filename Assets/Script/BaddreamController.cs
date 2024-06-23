@@ -21,7 +21,7 @@ public class BaddreamController : MonoBehaviour
         }
 
         // Inicia a transição
-        StartCoroutine(ChangeVignette(10f));
+        StartCoroutine(ChangeVignette(9.6f));
     }
 
     private IEnumerator ChangeVignette(float duration)
