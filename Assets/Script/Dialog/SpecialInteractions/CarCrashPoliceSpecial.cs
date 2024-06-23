@@ -8,6 +8,8 @@ public class CarCrashPoliceSpecial : MonoBehaviour, ISpecial
 
     public void Special(GameObject who)
     {
-        playerData.steps.Add(GameSteps.CarCrashPoliceTalk);
+
+        if (!playerData.steps.Contains(GameSteps.CarCrashPoliceTalk))
+            playerData.steps.Add(GameSteps.CarCrashPoliceTalk);
     }
 }

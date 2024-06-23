@@ -17,7 +17,9 @@ public class HankSpecial : MonoBehaviour, ISpecial
             audioSource.loop = false;
             audioSource.Stop();
             audioSource.PlayOneShot(pickup);
-            playerData.steps.Add(GameSteps.GetFirstMission);
+
+            if (!playerData.steps.Contains(GameSteps.GetFirstMission))
+                playerData.steps.Add(GameSteps.GetFirstMission);
         }
     }
 }
