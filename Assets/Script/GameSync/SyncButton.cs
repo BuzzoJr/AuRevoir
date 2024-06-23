@@ -109,5 +109,6 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         yield return new WaitForSeconds(3f);
         mapAnim.SetTrigger("Exit");
+        //Add Step
     }
 }
