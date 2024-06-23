@@ -249,6 +249,13 @@ namespace Assets.Script.Dialog
                     },
                 }
             },
+            {
+                TextGroup.ShouldNotDoThisYet,
+                new List<object>()
+                {
+                    0
+                }
+            },
         };
     }
 }

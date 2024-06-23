@@ -82,6 +82,7 @@
         CutsceneNotWatched,
         LaundrySign,
         FinalDecision,
+        ShouldNotDoThisYet,
     }
 
     public enum ItemGroup

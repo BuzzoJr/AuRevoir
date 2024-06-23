@@ -30,6 +30,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.ShouldNotDoThisYet,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Tem algo que eu tenho que fazer antes disso"),
+                }
+            },
+            {
                 TextGroup.LockedDoor,
                 new List<TextData>()
                 {

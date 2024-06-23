@@ -1,7 +1,6 @@
 ﻿using Assets.Script.Interaction;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -92,28 +91,43 @@ public class PlayerController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(viewportPos);
             if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
             {
-                bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
-                //Debug.Log(hitPoint.transform.gameObject.name);
-                switch (hitPoint.transform.tag)
+                // Limitar interação
+                bool limit = false;
+                foreach (ILimit limiter in hitPoint.transform.GetComponentsInChildren<ILimit>())
                 {
-                    case "Floor":
-                    case "Door":
-                        lastClickTime = Time.time;
-                        if (isDoubleClick)
-                            running = true;
-                        else
-                            running = false;
-                        GoTo(hitPoint.transform.tag == "Door" ? hitPoint.transform.GetChild(0).position : hitPoint.point);
-                        CloseInteractionWheel();
+                    if (limiter.ShouldLimit(gameObject))
+                    {
+                        limit = true;
+                        limiter.Limited(gameObject);
                         break;
-                    case "Character":
-                    case "Interactable":
-                    case "Object":
-                        if (!interactionWheel.activeSelf)
-                            OpenInteractionWheel(hitPoint.transform.gameObject);
-                        else
+                    }
+                }
+
+                if (!limit)
+                {
+                    //Debug.Log(hitPoint.transform.gameObject.name);
+                    switch (hitPoint.transform.tag)
+                    {
+                        case "Floor":
+                        case "Door":
+                            bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
+                            lastClickTime = Time.time;
+                            if (isDoubleClick)
+                                running = true;
+                            else
+                                running = false;
+                            GoTo(hitPoint.transform.tag == "Door" ? hitPoint.transform.GetChild(0).position : hitPoint.point);
                             CloseInteractionWheel();
-                        break;
+                            break;
+                        case "Character":
+                        case "Interactable":
+                        case "Object":
+                            if (!interactionWheel.activeSelf)
+                                OpenInteractionWheel(hitPoint.transform.gameObject);
+                            else
+                                CloseInteractionWheel();
+                            break;
+                    }
                 }
             }
         }
@@ -244,7 +258,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(moveByWaypoint)
+        if (moveByWaypoint)
             GoToNextWaypoint();
     }
     void CloseInteractionWheel()

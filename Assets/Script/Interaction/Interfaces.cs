@@ -23,6 +23,12 @@ namespace Assets.Script.Interaction
         void Special(GameObject who);
     }
 
+    public interface ILimit
+    {
+        bool ShouldLimit(GameObject who);
+        void Limited(GameObject who);
+    }
+
     public interface IUseItem
     {
         void UseItem(GameObject who);
