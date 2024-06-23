@@ -37,7 +37,7 @@ public class DoorInteraction : MonoBehaviour, IUseItem
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), targetTransform);
             yield return null;
-            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
         }
 
         m_AudioSource.Play();

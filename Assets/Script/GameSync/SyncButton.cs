@@ -20,13 +20,13 @@ public class TypeList
 
 public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public SyncController controller;
     public SyncWave syncEditLine;
     public SyncWave mainLine;
     public TypeList.types selectedType;
     public GameObject sucessoLabel, blockLabel;
     public TMP_Text valueFrq, valueAmp, valueSpd;
     public Material finalLine;
-    public Animator mapAnim;
     public float rotationSpeed = 10f;
     public float minValue = 1f;
     public float maxValue = 10f;
@@ -73,18 +73,18 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 syncEditLine.speed = valorAtual;
                 valueSpd.text = syncEditLine.speed.ToString("F2");
             }
-        }
 
-        if((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
-           (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
-           (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f)) {
+            if((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
+            (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
+            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f)) {
 
-            sucessoLabel.SetActive(true);
-            blockLabel.SetActive(true);
-            isPressed = false;
-            syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
-            mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
-            StartCoroutine(ExitCoroutine());
+                blockLabel.SetActive(true);
+                sucessoLabel.SetActive(true);
+                isPressed = false;
+                syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
+                mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
+                controller.EndSync();
+            }
         }
     }
 
@@ -103,12 +103,5 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isPressed = false;
-    }
-
-    IEnumerator ExitCoroutine()
-    {
-        yield return new WaitForSeconds(3f);
-        mapAnim.SetTrigger("Exit");
-        //Add Step
     }
 }

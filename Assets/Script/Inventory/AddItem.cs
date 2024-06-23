@@ -69,7 +69,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(transform.position, transform);
 
         yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
 
         if (HasText && dialogBox)
         {

@@ -35,7 +35,7 @@ public class LimitByStep : MonoBehaviour, ILimit
 
     public bool ShouldLimit(GameObject who)
     {
-        // Se não tiver passado pelo step, não permite que o player realize uma interação
+        // Se nï¿½o tiver passado pelo step, nï¿½o permite que o player realize uma interaï¿½ï¿½o
         return !playerData.steps.Contains(step);
     }
 
@@ -55,7 +55,7 @@ public class LimitByStep : MonoBehaviour, ILimit
             Vector3 dest = CompareTag("Door") ? transform.GetChild(0).position : transform.position;
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(dest.x + CustomWalkOffset.x, dest.y + CustomWalkOffset.y, dest.z + CustomWalkOffset.z), this.transform);
             yield return null;
-            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
         }
 
         DialogAction result = DialogAction.None;

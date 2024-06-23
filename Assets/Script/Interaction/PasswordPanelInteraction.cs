@@ -23,7 +23,7 @@ public class PasswordPanelInteraction : MonoBehaviour, IUse
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x, transform.position.y, transform.position.z), null);
 
         yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk"));
+        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
         password.text = "#----";
         canvas.SetActive(true);
     }

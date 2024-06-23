@@ -112,10 +112,12 @@ public class PlayerController : MonoBehaviour
                         case "Door":
                             bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
                             lastClickTime = Time.time;
+
                             if (isDoubleClick)
                                 running = true;
                             else
                                 running = false;
+
                             GoTo(hitPoint.transform.tag == "Door" ? hitPoint.transform.GetChild(0).position : hitPoint.point);
                             CloseInteractionWheel();
                             break;
@@ -137,6 +139,7 @@ public class PlayerController : MonoBehaviour
             audioSource.enabled = true;
             if (!running)
             {
+                Debug.Log("SOCORRO");
                 navMeshAgent.speed = 5;
                 audioSource.pitch = originalWalkPitch;
                 anim.SetBool("Walk", true);
@@ -147,7 +150,9 @@ public class PlayerController : MonoBehaviour
                 audioSource.pitch = originalRunningPitch;
                 navMeshAgent.speed = Mathf.Lerp(navMeshAgent.speed, 10f, Time.deltaTime * 8f);
                 anim.SetBool("Run", true);
+                anim.SetBool("Walk", false);
             }
+
             if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
             {
                 Vector3 direction = navMeshAgent.velocity.normalized;
@@ -163,6 +168,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
             navMeshAgent.speed = 5;
+            running = false;
 
             if (lookAtTarget)
             {
