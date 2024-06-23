@@ -46,6 +46,10 @@ public class TVInspect : MonoBehaviour, ILook, ILangConsumer
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
 
+        // Action cancelled
+        if (GameManager.Instance.State != GameManager.GameState.Interacting)
+            yield break;
+
         transform.GetChild(0).gameObject.SetActive(true);
         dialogBox.SetActive(true);
         Locale.RegisterConsumer(this);

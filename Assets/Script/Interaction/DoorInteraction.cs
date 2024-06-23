@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Assets.Script.Interaction;
-using Assets.Script.Dialog;
-using Assets.Script.Locale;
-using UnityEditor.Rendering;
+using System.Collections;
+using UnityEngine;
 
 public class DoorInteraction : MonoBehaviour, IUseItem
 {
@@ -38,12 +34,16 @@ public class DoorInteraction : MonoBehaviour, IUseItem
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), targetTransform);
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+
+            // Action cancelled
+            if (GameManager.Instance.State != GameManager.GameState.Interacting)
+                yield break;
         }
 
         m_AudioSource.Play();
         door.locked = false;
 
-        if(animator != null)
+        if (animator != null)
             animator.SetBool("OpenDoor", true);
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);

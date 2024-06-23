@@ -83,46 +83,58 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (GameManager.Instance.State == GameManager.GameState.Interacting)
             {
-                //Previne o bug the fechar o intereaction sheen mesmo quando clica no bot�o, pq o raycast registra colis�o antes com outra coisa
-                return;
+                // Cancel interaction
+                GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+                GoTo(transform.position);
+                anim.SetBool("Walk", false);
+                anim.SetBool("Run", false);
             }
-            var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
-
-            Ray ray = cam.ScreenPointToRay(viewportPos);
-            if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
+            else
             {
-                lastTarget = hitPoint.transform;
-                //Debug.Log(lastTarget.gameObject.name);
-                switch (lastTarget.tag)
+                if (EventSystem.current.IsPointerOverGameObject())
                 {
-                    case "Floor":
-                    case "Door":
-                        if (!CheckInteractionLimit(lastTarget))
-                        {
-                            bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
-                            lastClickTime = Time.time;
+                    //Previne o bug the fechar o intereaction sheen mesmo quando clica no bot�o, pq o raycast registra colis�o antes com outra coisa
+                    return;
+                }
+                var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
-                            if (isDoubleClick)
-                                running = true;
+                Ray ray = cam.ScreenPointToRay(viewportPos);
+                if (currentState == GameManager.GameState.Playing && Physics.Raycast(ray, out RaycastHit hitPoint))
+                {
+                    lastTarget = hitPoint.transform;
+                    //Debug.Log(lastTarget.gameObject.name);
+                    switch (lastTarget.tag)
+                    {
+                        case "Floor":
+                        case "Door":
+                            if (!CheckInteractionLimit(lastTarget))
+                            {
+                                bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
+                                lastClickTime = Time.time;
+
+                                if (isDoubleClick)
+                                    running = true;
+                                else
+                                    running = false;
+
+                                GoTo(lastTarget.tag == "Door" ? lastTarget.GetChild(0).position : hitPoint.point);
+                                CloseInteractionWheel();
+                            }
+                            break;
+                        case "Character":
+                        case "Interactable":
+                        case "Object":
+                            if (!interactionWheel.activeSelf)
+                                OpenInteractionWheel(lastTarget.gameObject);
                             else
-                                running = false;
-
-                            GoTo(lastTarget.tag == "Door" ? lastTarget.GetChild(0).position : hitPoint.point);
-                            CloseInteractionWheel();
-                        }
-                        break;
-                    case "Character":
-                    case "Interactable":
-                    case "Object":
-                        if (!interactionWheel.activeSelf)
-                            OpenInteractionWheel(lastTarget.gameObject);
-                        else
-                            CloseInteractionWheel();
-                        break;
+                                CloseInteractionWheel();
+                            break;
+                    }
                 }
             }
+
         }
 
         if ((int)navMeshAgent.destination.x != (int)transform.position.x || (int)navMeshAgent.destination.z != (int)transform.position.z)

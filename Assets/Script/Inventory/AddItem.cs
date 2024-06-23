@@ -71,6 +71,10 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
 
+        // Action cancelled
+        if (GameManager.Instance.State != GameManager.GameState.Interacting)
+            yield break;
+
         if (HasText && dialogBox)
         {
             dialogBox.SetActive(true);

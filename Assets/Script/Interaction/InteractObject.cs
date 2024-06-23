@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Script.Dialog;
 using Assets.Script.Interaction;
-using Assets.Script.Locale;
+using System.Collections;
 using UnityEngine;
 
 public class InteractObject : MonoBehaviour, IUse
@@ -22,7 +19,11 @@ public class InteractObject : MonoBehaviour, IUse
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAt);
         yield return null;
         yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
-        Debug.Log("StoppedWalking");
+
+        // Action cancelled
+        if (GameManager.Instance.State != GameManager.GameState.Interacting)
+            yield break;
+
         if (shouldSit)
         {
             PlayerController.anim.SetBool("Sit", true);

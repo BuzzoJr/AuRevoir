@@ -61,10 +61,15 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
 
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+
+            // Action cancelled
+            if (GameManager.Instance.State != GameManager.GameState.Interacting)
+                yield break;
         }
         yield return null;
 
-        if(HasText) {
+        if (HasText)
+        {
             dialogBox.SetActive(true);
             Locale.RegisterConsumer(this);
             for (int i = 0; i < Locale.Texts[textGroup].Count; i++)

@@ -37,7 +37,6 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
     private IEnumerator PlayVideo()
     {
-        animator = videoPlayer.gameObject.GetComponent<Animator>();
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
         if (shouldWalk)
@@ -45,6 +44,10 @@ public class CutscenePlayer : MonoBehaviour, ILook
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), transform);
             yield return null;
             yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+
+            // Action cancelled
+            if (GameManager.Instance.State != GameManager.GameState.Interacting)
+                yield break;
         }
 
         videocanvas.SetActive(true);
@@ -61,6 +64,8 @@ public class CutscenePlayer : MonoBehaviour, ILook
         {
             yield return null;
         }
+
+        animator = videoPlayer.gameObject.GetComponent<Animator>();
         animator.SetBool("Exit", true);
         audioSource.PlayOneShot(TvOff);
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
