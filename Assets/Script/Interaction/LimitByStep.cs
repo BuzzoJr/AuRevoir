@@ -37,7 +37,7 @@ public class LimitByStep : MonoBehaviour, ILimit
     public bool ShouldLimit(GameObject who)
     {
         // Se não tiver passado pelo step, não permite que o player realize uma interação
-        return (playerData.steps.Contains(step) ^ inverted);
+        return (!playerData.steps.Contains(step) ^ inverted);
     }
 
     public void Limited(GameObject who)
