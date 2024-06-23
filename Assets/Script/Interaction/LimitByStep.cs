@@ -54,9 +54,8 @@ public class LimitByStep : MonoBehaviour, ILimit
         if (shouldWalk)
         {
             Vector3 dest = CompareTag("Door") ? transform.GetChild(0).position : transform.position;
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(dest.x + CustomWalkOffset.x, dest.y + CustomWalkOffset.y, dest.z + CustomWalkOffset.z), this.transform);
-            yield return null;
-            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+            var g = new GoTo();
+            yield return StartCoroutine(g.GoToRoutine(new Vector3(dest.x + CustomWalkOffset.x, dest.y + CustomWalkOffset.y, dest.z + CustomWalkOffset.z), this.transform));
 
             // Action cancelled
             if (GameManager.Instance.State != GameManager.GameState.Interacting)

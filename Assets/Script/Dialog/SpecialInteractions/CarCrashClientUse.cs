@@ -17,9 +17,9 @@ public class CarCrashClientUse : MonoBehaviour, IUse
     IEnumerator Execute(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), this.transform);
-        yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+
+        var g = new GoTo();
+        yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), this.transform));
 
         // Action cancelled
         if (GameManager.Instance.State != GameManager.GameState.Interacting)

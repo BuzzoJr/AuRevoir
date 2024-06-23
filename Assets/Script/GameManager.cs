@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         Menu,
         Interacting,
         Playing,
+        Walking,
     }
 
     public void ResetData()

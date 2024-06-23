@@ -66,10 +66,9 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     IEnumerator GettingItem()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(transform.position, transform);
 
-        yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+        var g = new GoTo();
+        yield return StartCoroutine(g.GoToRoutine(transform.position, transform));
 
         // Action cancelled
         if (GameManager.Instance.State != GameManager.GameState.Interacting)

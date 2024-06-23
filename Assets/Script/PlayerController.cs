@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
-            if (GameManager.Instance.State == GameManager.GameState.Interacting && (anim.GetBool("Walk") || anim.GetBool("Run")))
+            if (GameManager.Instance.State == GameManager.GameState.Walking)
             {
                 // Cancel walking to interaction
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);

@@ -41,9 +41,8 @@ public class CutscenePlayer : MonoBehaviour, ILook
 
         if (shouldWalk)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), transform);
-            yield return null;
-            yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+            var g = new GoTo();
+            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), transform));
 
             // Action cancelled
             if (GameManager.Instance.State != GameManager.GameState.Interacting)

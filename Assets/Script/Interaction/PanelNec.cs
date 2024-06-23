@@ -14,10 +14,9 @@ public class PanelNec : MonoBehaviour, IUse
     IEnumerator UsePanel()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().GoTo(new Vector3(transform.position.x, transform.position.y, transform.position.z), null);
 
-        yield return null;
-        yield return new WaitUntil(() => !PlayerController.anim.GetBool("Walk") && !PlayerController.anim.GetBool("Run"));
+        var g = new GoTo();
+        yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x, transform.position.y, transform.position.z), null));
 
         // Action cancelled
         if (GameManager.Instance.State != GameManager.GameState.Interacting)
