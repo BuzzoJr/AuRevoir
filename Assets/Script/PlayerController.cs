@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
-            if (GameManager.Instance.State == GameManager.GameState.Interacting)
+            if (GameManager.Instance.State == GameManager.GameState.Interacting && (anim.GetBool("Walk") || anim.GetBool("Run")))
             {
-                // Cancel interaction
+                // Cancel walking to interaction
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
                 GoTo(transform.position);
                 anim.SetBool("Walk", false);
