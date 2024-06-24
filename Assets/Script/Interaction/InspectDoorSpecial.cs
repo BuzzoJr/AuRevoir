@@ -6,9 +6,8 @@ using UnityEngine;
 public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
 {
     public GameObject magicEye;
-    public Animator animator;
-    public Animator animator2;
-    public BaddreamController baddreamController;
+    public GameObject defaultVolume;
+    public GameObject horrorVolume;
     public float transitionDuration = 2f;
 
     public void LookSpecial(GameObject who)
@@ -32,9 +31,8 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
 
         // Disable the MagicEye object
         magicEye.SetActive(false);
-        animator.enabled = true;
-        animator2.enabled = true;
-        baddreamController.enabled = true;
+        defaultVolume.SetActive(false);
+        horrorVolume.SetActive(true);
 
         // Update game state to Playing
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
