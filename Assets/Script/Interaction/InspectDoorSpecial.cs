@@ -8,6 +8,7 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
     public GameObject magicEye;
     public GameObject defaultVolume;
     public GameObject horrorVolume;
+    public GameObject animRoom;
     public float transitionDuration = 2f;
 
     public void LookSpecial(GameObject who)
@@ -33,8 +34,9 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
         magicEye.SetActive(false);
         defaultVolume.SetActive(false);
         horrorVolume.SetActive(true);
+        animRoom.GetComponent<Animator>().enabled = true;
 
         // Update game state to Playing
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        //GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 }
