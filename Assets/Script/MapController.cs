@@ -16,7 +16,9 @@ public class MapController : MonoBehaviour
     public List<GameSteps> elementsSteps;
     public List<GameObject> elementsCanvas;
     public List<GameObject> elements3D;
-    private int finalDestiny, startDestiny;
+
+    private int finalDestiny;
+    private GameObject mainCam;
 
     void Awake()
     {
@@ -34,13 +36,12 @@ public class MapController : MonoBehaviour
         {
             SelectDestiny(PlayerPrefs.GetInt("LastMapSelect"));
         }
-
-        startDestiny = finalDestiny;
     }
 
     void OnEnable()
     { //Garante que nao de LoadScene se clicar no msm lugar
-        startDestiny = finalDestiny;
+        mainCam = GameObject.FindWithTag("MainCamera");
+        labelsCanvas.SetActive(true);
 
         for (int i = 0; i < Mathf.Min(elementsSteps.Count, elementsCanvas.Count, elements3D.Count); i++)
         {
@@ -66,24 +67,31 @@ public class MapController : MonoBehaviour
 
     public void GoToDestiny()
     {
-        PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
-        StartCoroutine(DelayExitMap());
+        StartCoroutine(DelayExitMap(false));
     }
 
-    IEnumerator DelayExitMap()
+    IEnumerator DelayExitMap(bool exit)
     {
         labelsCanvas.SetActive(false);
         mapAnim.SetTrigger("Exit");
         yield return new WaitForSeconds(0.3f);
 
-        if (startDestiny != finalDestiny)
+        int curScene = SceneManager.GetActiveScene().buildIndex;
+
+        if (!exit && curScene != sceneBuildIndexList[finalDestiny]) {
+            PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
             SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
+        }
+        else {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+            mainCam.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 
     public void ExitMap()
     {
-        finalDestiny = startDestiny;
-        StartCoroutine(DelayExitMap());
+        StartCoroutine(DelayExitMap(true));
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
