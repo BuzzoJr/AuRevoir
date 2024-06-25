@@ -1,11 +1,11 @@
 using Assets.Script.Interaction;
 using UnityEngine;
 
-public class CarSpecial : MonoBehaviour, ILookSpecial
+public class CarSpecial : MonoBehaviour, IUseSpecial
 {
     public GameObject allMap, directLight, mainCamera;
 
-    public void LookSpecial(GameObject who)
+    public void UseSpecial(GameObject who)
     {
         allMap.SetActive(true);
 
