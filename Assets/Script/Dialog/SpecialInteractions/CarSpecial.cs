@@ -8,7 +8,10 @@ public class CarSpecial : MonoBehaviour, ILookSpecial
     public void LookSpecial(GameObject who)
     {
         allMap.SetActive(true);
-        directLight.SetActive(false);
+
+        if(directLight != null)
+            directLight.SetActive(false);
+
         mainCamera.SetActive(false);
     }
 }

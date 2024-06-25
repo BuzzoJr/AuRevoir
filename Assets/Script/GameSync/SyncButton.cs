@@ -81,6 +81,9 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 blockLabel.SetActive(true);
                 sucessoLabel.SetActive(true);
                 isPressed = false;
+                syncEditLine.frequency = mainLine.frequency;
+                syncEditLine.amplitude = mainLine.amplitude;
+                syncEditLine.speed = mainLine.speed;
                 syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
                 mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
                 controller.EndSync();

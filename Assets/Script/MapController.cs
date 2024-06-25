@@ -21,6 +21,7 @@ public class MapController : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
@@ -39,8 +40,6 @@ public class MapController : MonoBehaviour
 
     void OnEnable()
     { //Garante que nao de LoadScene se clicar no msm lugar
-        Debug.Log("TESTE NO OnEnable");
-
         startDestiny = finalDestiny;
 
         for (int i = 0; i < Mathf.Min(elementsSteps.Count, elementsCanvas.Count, elements3D.Count); i++)
@@ -79,14 +78,17 @@ public class MapController : MonoBehaviour
 
         if (startDestiny != finalDestiny)
             SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
-
-        labelsCanvas.SetActive(true);
-        gameObject.SetActive(false);
     }
 
     public void ExitMap()
     {
         finalDestiny = startDestiny;
         StartCoroutine(DelayExitMap());
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        labelsCanvas.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
