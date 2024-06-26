@@ -25,12 +25,21 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().CloseInteractionWheel();
+        }
+    }
+
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             MainCamera.transform.position = initialPosition;
             MainCamera.transform.rotation = initialRotation;
+            collision.gameObject.GetComponent<PlayerController>().CloseInteractionWheel();
         }
     }
 }

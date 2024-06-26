@@ -51,6 +51,5 @@ public class SyncController : MonoBehaviour
         yield return StartCoroutine(dialog.Execute(playerObj, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-
     }
 }
