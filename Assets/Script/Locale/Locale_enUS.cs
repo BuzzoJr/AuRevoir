@@ -126,6 +126,13 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Pack for me Hank, I got a job."),
                 }
             },
+            {
+                TextGroup.AlreadyDoneChatWithHank,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Better focus on my job now."),
+                }
+            },
             // Chapter 1 - Scene C
             {
                 TextGroup.CarCrashPoliceOfficer,
@@ -141,6 +148,22 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.AlreadyDoneTalkToPolice,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PoliceOfficer, "Need anything?"),
+                    new TextData(TextType.Tristan, "No."),
+                    new TextData(TextType.PoliceOfficer, "Go on then, and finish your job."),
+                }
+            },
+            {
+                TextGroup.CannotDownloadClientsFriend,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "This person is dead and is not downloadable."),
+                }
+            },
+            {
                 TextGroup.CarCrashClient,
                 new List<TextData>()
                 {
@@ -153,6 +176,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Do you authorize the procedure?"),
                     new TextData(TextType.CarCrashClient, "Alright, alright… I authorize. I just want this to be over."),
                     new TextData(TextType.Tristan, "Perfect, from this moment on, we'll lose communication and you may feel drowsiness."),
+                }
+            },
+            {
+                TextGroup.AlreadyDoneDownloadClient,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "There is nothing more to do with this mindless body."),
+                    new TextData(TextType.TristanThinking, "I must take my car and head to the office to make the delivery."),
                 }
             },
             // Chapter 1 - Scene 3

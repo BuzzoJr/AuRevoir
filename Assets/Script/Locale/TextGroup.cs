@@ -83,6 +83,10 @@
         LaundrySign,
         FinalDecision,
         ShouldNotDoThisYet,
+        AlreadyDoneChatWithHank,
+        AlreadyDoneDownloadClient,
+        CannotDownloadClientsFriend,
+        AlreadyDoneTalkToPolice,
     }
 
     public enum ItemGroup

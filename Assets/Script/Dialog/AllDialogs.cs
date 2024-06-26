@@ -249,6 +249,13 @@ namespace Assets.Script.Dialog
                     },
                 }
             },
+            {
+                TextGroup.AlreadyDoneTalkToPolice,
+                new List<object>()
+                {
+                    0, 1, 2,
+                }
+            }
         };
     }
 }

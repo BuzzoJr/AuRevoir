@@ -126,6 +126,13 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Embrulha pra viagem, Hank, tenho um trabalho."),
                 }
             },
+            {
+                TextGroup.AlreadyDoneChatWithHank,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Melhor focar no meu trabalho agora."),
+                }
+            },
             // Chapter 1 - Scene C
             {
                 TextGroup.CarCrashPoliceOfficer,
@@ -141,6 +148,22 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.AlreadyDoneTalkToPolice,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PoliceOfficer, "Precisa de alguma coisa?"),
+                    new TextData(TextType.Tristan, "Não."),
+                    new TextData(TextType.PoliceOfficer, "Então vi logo, termina seu trabalho."),
+                }
+            },
+            {
+                TextGroup.CannotDownloadClientsFriend,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Essa pessoa está morta e não é possível fazer download."),
+                }
+            },
+            {
                 TextGroup.CarCrashClient,
                 new List<TextData>()
                 {
@@ -153,6 +176,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Você autoriza o procedimento?"),
                     new TextData(TextType.CarCrashClient, "Certo, certo… Autorizo. Só quero que isso acabe logo."),
                     new TextData(TextType.Tristan, "Perfeito, a partir desse momento perderemos nossa comunicação e você poderá sentir sonolência."),
+                }
+            },
+            {
+                TextGroup.AlreadyDoneDownloadClient,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Não há nada mais a ser feito com este corpo sem mente."),
+                    new TextData(TextType.TristanThinking, "Eu preciso pegar meu carro e ir para o escritório para fazer a entrega."),
                 }
             },
             // Chapter 1 - Scene 3
