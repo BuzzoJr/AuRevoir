@@ -5,7 +5,7 @@ using UnityEngine;
 public class TristanWakingUp : MonoBehaviour
 {
     public GameObject playableTristan; // Assign this in the Inspector
-    public bool wakeUpScare;
+    public bool wakeUpScare = false;
     private Animator animator;
 
     void Start()
