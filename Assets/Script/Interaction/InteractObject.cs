@@ -37,8 +37,6 @@ public class InteractObject : MonoBehaviour, IUse
     {
         var special = GetComponent<IUseSpecial>();
 
-        Debug.Log(special);
-
         if (special != null)
             special.UseSpecial(gameObject);
         else
