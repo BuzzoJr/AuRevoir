@@ -2002,6 +2002,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &435067360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7917775359963199366, guid: bc9bced4e3614974fafe95364625d487,
+    type: 3}
+  m_PrefabInstance: {fileID: 1116087098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &464589144
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,7 +6725,7 @@ GameObject:
   - component: {fileID: 1296988104}
   - component: {fileID: 1296988103}
   m_Layer: 0
-  m_Name: Spot Light_1
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12061,6 +12067,8 @@ MonoBehaviour:
   defaultVolume: {fileID: 429019245}
   horrorVolume: {fileID: 832575517}
   animRoom: {fileID: 2013288748}
+  player: {fileID: 435067360}
+  target: {fileID: 2090797350}
   transitionDuration: 2
 --- !u!65 &919132148673210254
 BoxCollider:
@@ -12628,7 +12636,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1612404044252034412}
   - component: {fileID: 1612404044252034415}
-  - component: {fileID: 1612404044252034414}
   - component: {fileID: 1612404044252034413}
   m_Layer: 0
   m_Name: Camera
@@ -12685,14 +12692,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1612404044252034414
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612404044252034401}
-  m_Enabled: 1
 --- !u!20 &1612404044252034415
 Camera:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Script.Interaction;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
 {
@@ -9,6 +10,8 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
     public GameObject defaultVolume;
     public GameObject horrorVolume;
     public GameObject animRoom;
+    public GameObject player;
+    public Transform target;
     public float transitionDuration = 2f;
 
     public void LookSpecial(GameObject who)
@@ -35,8 +38,10 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
         defaultVolume.SetActive(false);
         horrorVolume.SetActive(true);
         animRoom.GetComponent<Animator>().enabled = true;
+        player.transform.LookAt(target);
+        player.GetComponent<PlayerController>().enabled = false;
 
-        // Update game state to Playing
-        //GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("C1Bedroom");
     }
 }

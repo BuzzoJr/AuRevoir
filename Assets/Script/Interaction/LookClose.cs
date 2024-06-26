@@ -21,6 +21,7 @@ public class LookClose : MonoBehaviour, ILook
         originalCamPos = mainCamera.position;
         originalCamRot = mainCamera.rotation;
     }
+
     public void Look(GameObject who)
     {
         StartCoroutine(CloseUp());
@@ -33,6 +34,7 @@ public class LookClose : MonoBehaviour, ILook
             StartCoroutine(OpenUp());
         }
     }
+
     IEnumerator CloseUp()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
@@ -90,11 +92,11 @@ public class LookClose : MonoBehaviour, ILook
         // Reset the game state to default or whatever is appropriate
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
+
     private void runSpecial()
     {
         var special = GetComponent<ILookSpecial>();
         if (special != null)
             special.LookSpecial(gameObject);
     }
-
 }
