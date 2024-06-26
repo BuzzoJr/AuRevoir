@@ -11,6 +11,9 @@ public class PlayerData : ScriptableObject
 
     public List<GameSteps> steps = new();
 
+    [Header("Scenes Player Can't Run")]
+    public List<string> IndoorScenes = new();
+
     public void ResetData()
     {
         visitedScenes.Clear();
