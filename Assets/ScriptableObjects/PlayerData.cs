@@ -9,7 +9,8 @@ public class PlayerData : ScriptableObject
 
     public List<string> visitedScenes = new();
 
-    public List<GameSteps> steps = new();
+    [SerializeField]
+    private List<GameSteps> steps = new();
 
     [Header("Scenes Player Can't Run")]
     public List<string> IndoorScenes = new();
@@ -18,5 +19,24 @@ public class PlayerData : ScriptableObject
     {
         visitedScenes.Clear();
         steps.Clear();
+    }
+
+    public void AddStep(GameSteps step)
+    {
+        if (step == GameSteps.None)
+            return;
+
+        if (steps.Contains(step))
+            return;
+
+        steps.Add(step);
+    }
+
+    public bool HasStep(GameSteps step)
+    {
+        if (step == GameSteps.None)
+            return true;
+
+        return steps.Contains(step);
     }
 }

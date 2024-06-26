@@ -46,7 +46,7 @@ public class MapController : MonoBehaviour
         for (int i = 0; i < Mathf.Min(elementsSteps.Count, elementsCanvas.Count, elements3D.Count); i++)
         {
             bool active = true;
-            if (elementsSteps[i] != GameSteps.None && !playerData.steps.Contains(elementsSteps[i]))
+            if (elementsSteps[i] != GameSteps.None && !playerData.HasStep(elementsSteps[i]))
                 active = false;
 
             elementsCanvas[i].SetActive(active);
@@ -78,11 +78,13 @@ public class MapController : MonoBehaviour
 
         int curScene = SceneManager.GetActiveScene().buildIndex;
 
-        if (!exit && curScene != sceneBuildIndexList[finalDestiny]) {
+        if (!exit && curScene != sceneBuildIndexList[finalDestiny])
+        {
             PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
             SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
         }
-        else {
+        else
+        {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
             mainCam.SetActive(true);
             gameObject.SetActive(false);

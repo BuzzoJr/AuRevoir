@@ -10,7 +10,7 @@ public class BedroomPhone : MonoBehaviour
 
     void Start()
     {
-        if (playerData.steps.Contains(GameSteps.PhoneAnswered))
+        if (playerData.HasStep(GameSteps.PhoneAnswered))
         {
             voicemailScript.enabled = true;
             lightRinging.enabled = false;
@@ -26,8 +26,7 @@ public class BedroomPhone : MonoBehaviour
 
     public void PhoneAnswered()
     {
-        if (!playerData.steps.Contains(GameSteps.PhoneAnswered))
-            playerData.steps.Add(GameSteps.PhoneAnswered);
+        playerData.AddStep(GameSteps.PhoneAnswered);
 
         voicemailScript.enabled = true;
         lightRinging.enabled = false;

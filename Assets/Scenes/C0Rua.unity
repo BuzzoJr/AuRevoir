@@ -11876,6 +11876,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+--- !u!114 &1202555155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202555151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa4cd9e7721d4c46bd9e1cc9e328b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  step: 1
+  limitWhenHasStep: 1
+  shouldWalk: 1
+  CustomWalkOffset: {x: 1, y: 0, z: -3}
+  textGroup: 80
+  dialogBox: {fileID: 1516802924}
 --- !u!1 &1203702372
 GameObject:
   m_ObjectHideFlags: 0
@@ -24505,7 +24524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
   step: 2
-  inverted: 1
+  limitWhenHasStep: 1
   shouldWalk: 1
   CustomWalkOffset: {x: 2, y: 0, z: 0}
   textGroup: 80

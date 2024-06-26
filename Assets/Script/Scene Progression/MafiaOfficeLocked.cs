@@ -7,13 +7,12 @@ public class MafiaOfficeLocked : MonoBehaviour
 
     void Start()
     {
-        GetComponent<DoorController>().SetLock(!playerData.steps.Contains(GameSteps.CutsceneWatched));
+        GetComponent<DoorController>().SetLock(!playerData.HasStep(GameSteps.CutsceneWatched));
     }
 
     public void Unlock()
     {
-        if (!playerData.steps.Contains(GameSteps.CutsceneWatched))
-            playerData.steps.Add(GameSteps.CutsceneWatched);
+        playerData.AddStep(GameSteps.CutsceneWatched);
 
         GetComponent<DoorController>().SetLock(false);
     }

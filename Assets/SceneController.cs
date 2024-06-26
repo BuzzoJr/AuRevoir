@@ -58,8 +58,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
         }
         playerData.previousScene = SceneManager.GetActiveScene().name;
 
-        if (playerData.previousScene == "C9InteriorLavanderia" && !playerData.steps.Contains(GameSteps.LaundryVisited))
-            playerData.steps.Add(GameSteps.LaundryVisited);
+        if (playerData.previousScene == "C9InteriorLavanderia")
+            playerData.AddStep(GameSteps.LaundryVisited);
     }
 
     private void Start()
@@ -77,7 +77,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         }
         else
         {
-            if (gameObject.scene.name == "C1Bedroom" && playerData.steps.Contains(GameSteps.PhoneAnswered))
+            if (gameObject.scene.name == "C1Bedroom" && playerData.HasStep(GameSteps.PhoneAnswered))
             {
                 GameObject phone = GameObject.Find("answering-machine");
                 if (phone != null)

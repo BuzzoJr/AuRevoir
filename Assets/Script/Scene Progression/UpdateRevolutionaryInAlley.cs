@@ -1,3 +1,4 @@
+using Assets.Script;
 using Assets.Script.Locale;
 using UnityEngine;
 
@@ -8,9 +9,9 @@ public class UpdateRevolutionaryInAlley : MonoBehaviour
 
     void Awake()
     {
-        if (playerData.steps.Contains(Assets.Script.GameSteps.CutsceneWatched))
+        if (playerData.HasStep(GameSteps.CutsceneWatched))
             revolutionary.SetActive(false);
-        else if (playerData.steps.Contains(Assets.Script.GameSteps.LaundryVisited))
+        else if (playerData.HasStep(GameSteps.LaundryVisited))
             revolutionary.GetComponent<DialogInteraction>().textGroup = TextGroup.DirectionsToMorgue;
     }
 }

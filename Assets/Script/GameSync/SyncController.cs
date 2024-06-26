@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Assets.Script;
 using Assets.Script.Dialog;
-using Assets.Script.Interaction;
 using Assets.Script.Locale;
+using System.Collections;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SyncController : MonoBehaviour
@@ -34,7 +32,8 @@ public class SyncController : MonoBehaviour
         dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
-    public void EndSync() {
+    public void EndSync()
+    {
         StartCoroutine(ExitCoroutine());
     }
 
@@ -46,8 +45,7 @@ public class SyncController : MonoBehaviour
         childObj.SetActive(false);
         mainCamera.SetActive(true);
 
-        if (!playerData.steps.Contains(GameSteps.CarCrashClientDownload))
-            playerData.steps.Add(GameSteps.CarCrashClientDownload);
+        playerData.AddStep(GameSteps.CarCrashClientDownload);
 
         DialogAction result = DialogAction.None;
         yield return StartCoroutine(dialog.Execute(playerObj, (value) => result = value));

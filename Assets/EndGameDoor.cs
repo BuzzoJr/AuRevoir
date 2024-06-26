@@ -8,7 +8,7 @@ public class EndGameDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerData.steps.Contains(GameSteps.EndGame))
+        if (playerData.HasStep(GameSteps.EndGame))
         {
             door = GetComponent<DoorController>();
             door.moveRef = DoorController.SceneRef.EndScene;
