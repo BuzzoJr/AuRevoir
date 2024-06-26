@@ -27652,7 +27652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653425371176}
   - component: {fileID: 919132149438730900}
-  - component: {fileID: 919132149438730899}
+  - component: {fileID: 919132149438730901}
   m_Layer: 0
   m_Name: woman
   m_TagString: Interactable
@@ -27660,23 +27660,6 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!114 &919132149438730899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149438730898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94275162c66d14249ab13cf39c684164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldWalk: 1
-  shouldSit: 0
-  textGroup: 80
-  dialogBox: {fileID: 1516802924}
-  CustomWalkOffset: {x: 1.5, y: 0, z: 4}
 --- !u!65 &919132149438730900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27690,6 +27673,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.58608574, y: 1.9610733, z: 0.50514984}
   m_Center: {x: -0.10015695, y: 0.96619374, z: 0.24742426}
+--- !u!114 &919132149438730901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149438730898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 80
+  dialogBox: {fileID: 1516802924}
+  HasText: 1
+  CustomWalkOffset: {x: 1.5, y: 0, z: 4}
 --- !u!4 &946448988254822168
 Transform:
   m_ObjectHideFlags: 0

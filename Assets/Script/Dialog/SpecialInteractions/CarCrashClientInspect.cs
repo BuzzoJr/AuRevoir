@@ -2,13 +2,13 @@ using Assets.Script.Interaction;
 using System.Collections;
 using UnityEngine;
 
-public class CarCrashClientUse : MonoBehaviour, IUse
+public class CarCrashClientInspect : MonoBehaviour, ILook
 {
     public GameObject mainCamera;
     public GameObject allSyncWave;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
-    public void Use(GameObject who)
+    public void Look(GameObject who)
     {
         // Abrir mini game de sync
         StartCoroutine(Execute(who));
