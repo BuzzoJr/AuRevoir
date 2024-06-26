@@ -165,8 +165,8 @@ GameObject:
   - component: {fileID: 10002895}
   - component: {fileID: 10002899}
   - component: {fileID: 10002898}
-  - component: {fileID: 10002897}
   - component: {fileID: 10002896}
+  - component: {fileID: 10002900}
   m_Layer: 0
   m_Name: BossDemo
   m_TagString: Character
@@ -208,22 +208,6 @@ MonoBehaviour:
   textGroup: 8
   dialogBox: {fileID: 4357632719355704092}
   CustomWalkOffset: {x: 0, y: 0, z: -6}
---- !u!114 &10002897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10002894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a53889d3b0ffc349b169e95415b6d39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
-  door: {fileID: 2028226955}
-  rainObject: {fileID: 3149062769446426174}
-  duration: 20
 --- !u!95 &10002898
 Animator:
   serializedVersion: 5
@@ -258,6 +242,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5980468, y: 1.499239, z: 0.680916}
   m_Center: {x: -0.007159925, y: 0.60967976, z: 0.1595421}
+--- !u!114 &10002900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10002894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134a516ada4e06f4eabcd673e40cfa21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
 --- !u!1 &11252808
 GameObject:
   m_ObjectHideFlags: 0

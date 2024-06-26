@@ -88,6 +88,7 @@
         CannotDownloadClientsFriend,
         AlreadyDoneTalkToPolice,
         MustTalkToPolice,
+        TalkToBossBeforeUpload,
     }
 
     public enum ItemGroup

@@ -195,6 +195,13 @@ namespace Assets.Script.Locale
             },
             // Chapter 1 - Scene 3
             {
+                TextGroup.TalkToBossBeforeUpload,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "O protocolo correto é pedir permissão para minha chefe antes da entrega."),
+                }
+            },
+            {
                 TextGroup.CarCrashDelivery,
                 new List<TextData>()
                 {

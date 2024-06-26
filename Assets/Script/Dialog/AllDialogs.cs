@@ -34,7 +34,7 @@ namespace Assets.Script.Dialog
                 TextGroup.CarCrashDelivery,
                 new List<object>()
                 {
-                    0, 1, 2, 3, 4, 5,
+                    0, 1, 2, 3, 4, 5, DialogAction.Special,
                 }
             },
             {

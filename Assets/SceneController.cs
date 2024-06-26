@@ -90,6 +90,13 @@ public class SceneController : MonoBehaviour, ILangConsumer
                         audio.clip = null;
                 }
             }
+
+            if (gameObject.scene.name == "C0HallOffice" && playerData.HasStep(GameSteps.BossFirstMission))
+            {
+                GameObject doorToUpload = GameObject.Find("Door Right");
+                if (doorToUpload != null)
+                    doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
+            }
         }
         stopRun(gameObject.scene.name);
     }
