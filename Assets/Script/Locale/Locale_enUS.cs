@@ -135,6 +135,13 @@ namespace Assets.Script.Locale
             },
             // Chapter 1 - Scene C
             {
+                TextGroup.MustTalkToPolice,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PoliceOfficer, "Stop right there! This area is for police members only."),
+                }
+            },
+            {
                 TextGroup.CarCrashPoliceOfficer,
                 new List<TextData>()
                 {

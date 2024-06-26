@@ -1,20 +1,19 @@
 using Assets.Script;
 using Assets.Script.Dialog;
-using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class LimitByStep : MonoBehaviour, ILimit, ILangConsumer
+public class AreaLimitByStep : MonoBehaviour, ILangConsumer
 {
     public PlayerData playerData;
     public GameSteps step;
     public bool limitWhenHasStep = false;
 
-    public bool shouldWalk = true;
-    [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+    public Transform outOfLimit;
 
+    public bool HasText = false;
     public TextGroup textGroup;
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
@@ -44,7 +43,7 @@ public class LimitByStep : MonoBehaviour, ILimit, ILangConsumer
         DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
-    public bool ShouldLimit(GameObject who)
+    public bool ShouldLimit()
     {
         // Limit interactions when the player:
         //  limitWhenHasStep == true -> have the step in playerData
@@ -52,26 +51,22 @@ public class LimitByStep : MonoBehaviour, ILimit, ILangConsumer
         return (!playerData.HasStep(step) ^ limitWhenHasStep);
     }
 
-    public void Limited(GameObject who)
+    private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(Execute(who));
+        PlayerController player;
+        if (!other.TryGetComponent(out player))
+            return;
+
+        if (!ShouldLimit())
+            return;
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+        player.GoTo(outOfLimit.position);
+        StartCoroutine(Execute());
     }
 
-    IEnumerator Execute(GameObject who)
+    IEnumerator Execute()
     {
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-
-        if (shouldWalk)
-        {
-            Vector3 dest = CompareTag("Door") ? transform.GetChild(0).position : transform.position;
-            var g = new GoTo();
-            yield return StartCoroutine(g.GoToRoutine(new Vector3(dest.x + CustomWalkOffset.x, dest.y + CustomWalkOffset.y, dest.z + CustomWalkOffset.z), this.transform));
-
-            // Action cancelled
-            if (GameManager.Instance.State != GameManager.GameState.Interacting)
-                yield break;
-        }
-
         dialogBox.SetActive(true);
         Locale.RegisterConsumer(this);
         for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
