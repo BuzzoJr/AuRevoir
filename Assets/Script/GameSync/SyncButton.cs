@@ -28,8 +28,8 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public TMP_Text valueFrq, valueAmp, valueSpd;
     public Material finalLine;
     public float rotationSpeed = 10f;
-    public float minValue = 1f;
-    public float maxValue = 10f;
+    public float minValue;
+    public float maxValue;
     private float currentRotation = 0f;
     private float valorAtual;
     private bool isPressed = false;
@@ -60,18 +60,19 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
 
             valorAtual = GetValueBasedOnAngle(currentRotation);
+            float normalizedValue = NormalizeToRange(valorAtual, minValue, maxValue, 0f, 100f);
 
             if (selected == "Frequency") {
                 syncEditLine.frequency = valorAtual;
-                valueFrq.text = syncEditLine.frequency.ToString("F2");
+                valueFrq.text = normalizedValue.ToString("F2");
             }
             else if (selected == "Amplitude") {
                 syncEditLine.amplitude = valorAtual;
-                valueAmp.text = syncEditLine.amplitude.ToString("F2");
+                valueAmp.text = normalizedValue.ToString("F2");
             }
             else if (selected == "Speed") {
                 syncEditLine.speed = valorAtual;
-                valueSpd.text = syncEditLine.speed.ToString("F2");
+                valueSpd.text = normalizedValue.ToString("F2");
             }
 
             if((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
@@ -106,5 +107,10 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isPressed = false;
+    }
+
+    private float NormalizeToRange(float value, float min, float max, float newMin, float newMax)
+    {
+        return (value - min) / (max - min) * (newMax - newMin) + newMin;
     }
 }

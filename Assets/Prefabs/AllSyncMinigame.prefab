@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 932388669512072281}
   - component: {fileID: 932388669512072280}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: CamSync
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0193d0cd7e8021f43b2a2b3a1952362c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 1581912980}
   syncEditLine: {fileID: 932388669451323329}
   mainLine: {fileID: 932388670886426032}
   selectedType: 1
@@ -2047,7 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0193d0cd7e8021f43b2a2b3a1952362c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 1581912980}
   syncEditLine: {fileID: 932388669451323329}
   mainLine: {fileID: 932388670886426032}
   selectedType: 2
@@ -2126,7 +2126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.10
+  m_text: 0.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f23b76c900784444fb9456a786fa40b4, type: 2}
   m_sharedMaterial: {fileID: 6253142162943309610, guid: f23b76c900784444fb9456a786fa40b4,
@@ -2262,7 +2262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3.00
+  m_text: 0.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f23b76c900784444fb9456a786fa40b4, type: 2}
   m_sharedMaterial: {fileID: 6253142162943309610, guid: f23b76c900784444fb9456a786fa40b4,
@@ -2658,6 +2658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 932388670592995000}
+  - component: {fileID: 1581912980}
   m_Layer: 0
   m_Name: AllSyncMinigame
   m_TagString: Untagged
@@ -2681,6 +2682,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1581912980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932388670592995003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b145de5e8ea8648883071675557789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textGroup: 7
+  dialogBox: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  mapAnim: {fileID: 932388670013145545}
+  playerObj: {fileID: 0}
+  mainCamera: {fileID: 0}
+  childObj: {fileID: 5108411036777420385}
 --- !u!1 &932388670633603575
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,7 +4331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1.00
+  m_text: 0.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f23b76c900784444fb9456a786fa40b4, type: 2}
   m_sharedMaterial: {fileID: 6253142162943309610, guid: f23b76c900784444fb9456a786fa40b4,
@@ -4680,7 +4700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0193d0cd7e8021f43b2a2b3a1952362c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 1581912980}
   syncEditLine: {fileID: 932388669451323329}
   mainLine: {fileID: 932388670886426032}
   selectedType: 0
