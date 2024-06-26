@@ -5,12 +5,16 @@ using UnityEngine;
 public class TristanWakingUp : MonoBehaviour
 {
     public GameObject playableTristan; // Assign this in the Inspector
+    public bool wakeUpScare;
     private Animator animator;
 
     void Start()
     {
         // Get the Animator component attached to the same GameObject
         animator = GetComponent<Animator>();
+
+        if(wakeUpScare)
+            StartCoroutine(ChangeSpeedTemporarily());
     }
 
     void Update()
@@ -28,5 +32,17 @@ public class TristanWakingUp : MonoBehaviour
         playableTristan.SetActive(true);
         // Destroy this GameObject
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator ChangeSpeedTemporarily()
+    {
+        float originalSpeed = animator.speed;
+        animator.speed = 3f;
+        yield return new WaitForSeconds(0.8f);
+        animator.speed = 0.05f;
+        yield return new WaitForSeconds(1f);
+        animator.speed = 0.5f;
+        yield return new WaitForSeconds(3f);
+        animator.speed = originalSpeed;
     }
 }
