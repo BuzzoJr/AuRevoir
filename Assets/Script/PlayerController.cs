@@ -291,7 +291,8 @@ public class PlayerController : MonoBehaviour
         if (moveByWaypoint)
             GoToNextWaypoint();
     }
-    void CloseInteractionWheel()
+
+    public void CloseInteractionWheel()
     {
         if (interactionWheel.activeSelf)
         {
