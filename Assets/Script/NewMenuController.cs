@@ -97,7 +97,8 @@ public class NewMenuController : MonoBehaviour
 
     void Update()
     {
-        if (moveTxt.transform.position.y >= 1.335911f && !continueBtn.activeSelf && panelButton.activeSelf)
+        // Ativa o botão de continuar quando terminou a animação do rollup
+        if (panelTxt.activeSelf && animTextIntro.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !continueBtn.activeSelf && panelButton.activeSelf)
         {
             starBtn.SetActive(false);
             continueBtn.SetActive(true);
