@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public float originalRunningPitch = 1.25f;
     private bool running = false;
 
+    [System.NonSerialized] public bool canRun = true;
     [System.NonSerialized] public Transform lookAtTarget;
 
     [Header("Movement by Waypoint")]
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
                                 bool isDoubleClick = Time.time - lastClickTime < doubleClickThreshold;
                                 lastClickTime = Time.time;
 
-                                if (isDoubleClick)
+                                if (isDoubleClick && canRun)
                                     running = true;
                                 else
                                     running = false;

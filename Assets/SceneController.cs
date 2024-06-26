@@ -91,6 +91,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
                 }
             }
         }
+        stopRun(gameObject.scene.name);
     }
 
     private bool IsFirstTimeInScene(string sceneName)
@@ -104,6 +105,15 @@ public class SceneController : MonoBehaviour, ILangConsumer
             playerData.visitedScenes.Add(sceneName);
             return true;
         }
+    }
+    private void stopRun(string sceneName)
+    {
+        if (playerData.IndoorScenes.Contains(sceneName))
+        {
+            PlayerController playerController = playerPos.GetComponent<PlayerController>();
+            playerController.canRun = false;
+        }
+
     }
 
     IEnumerator DoFirstTimeAction()
