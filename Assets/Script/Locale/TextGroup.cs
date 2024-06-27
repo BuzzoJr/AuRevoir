@@ -90,6 +90,7 @@
         MustTalkToPolice,
         TalkToBossBeforeUpload,
         ShouldOpenDoorInNightmareLivingroom,
+        AlreadyDoneTalkToBossCarCrash,
     }
 
     public enum ItemGroup

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.004881498, g: 0.004562834, b: 0.0025725714, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 10002898}
   - component: {fileID: 10002896}
   - component: {fileID: 10002900}
+  - component: {fileID: 10002901}
   m_Layer: 0
   m_Name: BossDemo
   m_TagString: Character
@@ -255,6 +256,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+--- !u!114 &10002901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10002894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa4cd9e7721d4c46bd9e1cc9e328b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  step: 3
+  limitWhenHasStep: 1
+  shouldWalk: 1
+  CustomWalkOffset: {x: 0, y: 0, z: -6}
+  textGroup: 88
+  dialogBox: {fileID: 4357632719355704092}
 --- !u!1 &11252808
 GameObject:
   m_ObjectHideFlags: 0
