@@ -1,6 +1,7 @@
-using System.Collections;
+using Assets.Script.Locale;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class StartWalk : MonoBehaviour
 {
@@ -12,18 +13,27 @@ public class StartWalk : MonoBehaviour
     public AudioSource Piss;
     public float timeToWaitRestroom = 5f;
     public AudioSource RestroomAudio;
+
+    public VideoPlayer screenVideoPlayer;
+    public AudioSource screenAudio;
+    public List<AudioClip> screenAudioClips;
+
     void Start()
     {
+        screenAudio.clip = screenAudioClips[(int)Locale.Lang];
+        screenVideoPlayer.Play();
+        screenAudio.Play();
+
         Invoke("setPosition", timeToWait);
         Invoke("piss", timeToWaitPiss);
         Invoke("restroom", timeToWaitRestroom);
     }
 
-
     public void setPosition()
     {
         controller.GoTo(destination.position, null);
     }
+
     public void piss()
     {
         Piss.enabled = true;
