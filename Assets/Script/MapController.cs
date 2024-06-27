@@ -31,6 +31,7 @@ public class MapController : MonoBehaviour
         if (!PlayerPrefs.HasKey("LastMapSelect"))
         {
             PlayerPrefs.SetInt("LastMapSelect", 0);
+            SelectDestiny(0);
         }
         else
         {

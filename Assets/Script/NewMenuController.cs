@@ -131,6 +131,7 @@ public class NewMenuController : MonoBehaviour
     public void StartGame()
     {
         playerData.ResetData();
+        PlayerPrefs.DeleteKey("LastMapSelect");
         StartCoroutine(WaitStartGame());
     }
 
