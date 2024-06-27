@@ -6154,6 +6154,58 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &899713712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899713714}
+  - component: {fileID: 899713713}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899713713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899713712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f6e28d3fdef24fb63dd571b65be90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  playerPos: {fileID: 1116087099}
+  spawnPosition: []
+  HasText: 0
+  textGroup: 9
+  dialogBox: {fileID: 0}
+  audioSource: {fileID: 0}
+  backgroundMusic: {fileID: 0}
+--- !u!4 &899713714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899713712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901076538
 GameObject:
   m_ObjectHideFlags: 0
@@ -7155,6 +7207,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc9bced4e3614974fafe95364625d487, type: 3}
+--- !u!4 &1116087099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7917775359963199373, guid: bc9bced4e3614974fafe95364625d487,
+    type: 3}
+  m_PrefabInstance: {fileID: 1116087098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1136104644
 GameObject:
   m_ObjectHideFlags: 0
