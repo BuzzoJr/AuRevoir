@@ -74,6 +74,17 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.Map,
+                new List<TextData>()
+                {
+                    new TextData("Travel"),
+                    new TextData("Commercial\nZone"),
+                    new TextData("Au Revoir\nOffice"),
+                    new TextData("Apartment"),
+                    new TextData("Disconnected\nDistrict"),
+                }
+            },
+            {
                 TextGroup.Intro,
                 new List<TextData>()
                 {

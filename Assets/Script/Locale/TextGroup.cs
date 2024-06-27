@@ -91,6 +91,7 @@
         TalkToBossBeforeUpload,
         ShouldOpenDoorInNightmareLivingroom,
         AlreadyDoneTalkToBossCarCrash,
+        Map,
     }
 
     public enum ItemGroup
