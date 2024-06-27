@@ -77,6 +77,7 @@ public class MapController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         int curScene = SceneManager.GetActiveScene().buildIndex;
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
         if (!exit && curScene != sceneBuildIndexList[finalDestiny])
         {
@@ -85,7 +86,6 @@ public class MapController : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
             mainCam.SetActive(true);
             gameObject.SetActive(false);
         }

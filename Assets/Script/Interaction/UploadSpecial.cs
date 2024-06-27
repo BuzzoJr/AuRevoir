@@ -21,7 +21,6 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
 
     private void Start()
     {
-        // Obtendo as referências dos parâmetros do Volume
         analogGlitchVolume.profile.TryGet(out analogGlitch);
         digitalGlitchVolume.profile.TryGet(out digitalGlitch);
     }
@@ -93,6 +92,7 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
         //Aqui parar som de glitch
         blackScreen.SetActive(true);
         yield return new WaitForSeconds(3f);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         SceneManager.LoadScene("C0Bedroom");
     }
 
