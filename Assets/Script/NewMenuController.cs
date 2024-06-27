@@ -29,12 +29,12 @@ public class NewMenuController : MonoBehaviour
             switch (PlayerPrefs.GetString("Language"))
             {
                 case "PTBR":
-                    Locale.LoadLang(Lang.ptBR);
+                    ToPtBr();
                     break;
 
                 case "ENG":
                 default:
-                    Locale.LoadLang(Lang.enUS);
+                    ToEnUs();
                     break;
             }
         }
