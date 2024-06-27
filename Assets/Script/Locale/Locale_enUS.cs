@@ -213,6 +213,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "I'll report it to support, and if we find something, we'll schedule a memory cleanse."),
                 }
             },
+            // Chapter 1 - Scene C2
+            {
+                TextGroup.ShouldOpenDoorInNightmareLivingroom,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Better open the door and check who is knocking."),
+                }
+            },
             // Scene 1
             {
                 TextGroup.DialogWakeUpCall,

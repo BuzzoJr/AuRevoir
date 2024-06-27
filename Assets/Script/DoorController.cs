@@ -59,6 +59,7 @@ public class DoorController : MonoBehaviour, ILangConsumer
         C16Laboratory,
         SampleScene,
         EndScene,
+        C0Bedroom,
     }
 
     void Start()

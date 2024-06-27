@@ -89,6 +89,7 @@
         AlreadyDoneTalkToPolice,
         MustTalkToPolice,
         TalkToBossBeforeUpload,
+        ShouldOpenDoorInNightmareLivingroom,
     }
 
     public enum ItemGroup
