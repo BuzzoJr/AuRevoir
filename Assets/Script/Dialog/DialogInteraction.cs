@@ -12,6 +12,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     public bool shouldSit = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject thinkingBox;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
     private Dialog dialog;
@@ -24,6 +25,10 @@ public class DialogInteraction : MonoBehaviour, ITalk
         dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+        dialog.ThinkingBox = thinkingBox;
+        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
 
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
         dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();

@@ -17,19 +17,35 @@ namespace Assets.Script.Dialog
         public Image Portrait { get; set; }
         public TextGroup TextGroup { get; set; }
 
+        public GameObject ThinkingBox { get; set; }
+        public TMP_Text ThinkingText { get; set; }
+        public TMP_Text ThinkingSpeaker { get; set; }
+
         int? selectedKey = null;
 
         private int currentIndex = -1;
 
         public void UpdateLangTexts()
         {
+
             if (currentIndex >= 0)
             {
                 TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
-                //DialogText.color = TextColorManager.textTypeColors[data.Type];
-                DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
-                DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = data.Type.ToString();
+                if (TextType.TristanThinking == data.Type)
+                {
+                    DialogBox.SetActive(false);
+                    ThinkingBox.SetActive(true);
+                    ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                }
+                else
+                {
+                    ThinkingBox.SetActive(false);
+                    DialogBox.SetActive(true);
+                    //DialogText.color = TextColorManager.textTypeColors[data.Type];
+                    DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+                    DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                    DialogSpeaker.text = data.Type.ToString();
+                }
             }
         }
 
@@ -48,6 +64,7 @@ namespace Assets.Script.Dialog
             yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
 
             Locale.Locale.UnregisterConsumer(this);
+            ThinkingBox.SetActive(false);
             DialogBox.SetActive(false);
 
             callback(result);
@@ -130,6 +147,8 @@ namespace Assets.Script.Dialog
                         buttonText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
                         interaction += 1;
                     }
+                    Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, TextType.Tristan.ToString());
+                    DialogSpeaker.text = TextType.Tristan.ToString();
 
                     yield return new WaitUntil(() => selectedKey.HasValue);
                     int selected = (int)selectedKey; // Colocar a opção selecionada

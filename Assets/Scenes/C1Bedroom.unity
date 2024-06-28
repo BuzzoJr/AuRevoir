@@ -775,6 +775,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &292126387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550048338694955956, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4357632719355704091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &326302040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4396486415561464757, guid: ce60e78433b2eee4a9398d02febaf614,
@@ -1082,8 +1088,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 4
+  textGroup: 9
   dialogBox: {fileID: 1396857534}
+  ThinkingBox: {fileID: 292126387}
   HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: -2}
 --- !u!1 &557600952 stripped
@@ -5391,8 +5398,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
-  textGroup: 8
+  textGroup: 9
   dialogBox: {fileID: 1396857534}
+  thinkingBox: {fileID: 292126387}
   CustomWalkOffset: {x: 0, y: 0, z: -2}
 --- !u!114 &919132148601458312
 MonoBehaviour:
@@ -6172,6 +6180,11 @@ PrefabInstance:
     - target: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829456554348956018, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4357632719592448451, guid: 17868ca8f286bc54b81104eb68ba8cc3,
         type: 3}
@@ -7284,6 +7297,7 @@ MonoBehaviour:
   HasText: 0
   textGroup: 0
   dialogBox: {fileID: 1396857534}
+  ThinkingBox: {fileID: 292126387}
 --- !u!65 &9183352156071347176
 BoxCollider:
   m_ObjectHideFlags: 0

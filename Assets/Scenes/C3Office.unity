@@ -206,8 +206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
-  textGroup: 8
+  textGroup: 18
   dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 516371316}
   CustomWalkOffset: {x: 0, y: 0, z: -6}
 --- !u!95 &10002898
 Animator:
@@ -274,7 +275,7 @@ MonoBehaviour:
   shouldWalk: 1
   CustomWalkOffset: {x: 0, y: 0, z: -6}
   textGroup: 88
-  dialogBox: {fileID: 4357632719355704092}
+  dialogBox: {fileID: 516371316}
 --- !u!1 &11252808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,6 +3019,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &516371316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550048338694955956, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4357632719355704091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518814176
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,6 +5644,7 @@ MonoBehaviour:
   shouldWalk: 1
   textGroup: 16
   dialogBox: {fileID: 4357632719355704092}
+  ThinkingBox: {fileID: 516371316}
   HasText: 1
   CustomWalkOffset: {x: 3.3, y: -3, z: 0}
 --- !u!64 &861952274
@@ -7426,8 +7434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
-  textGroup: 12
+  textGroup: 18
   dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 516371316}
   CustomWalkOffset: {x: 0, y: 0, z: -6}
 --- !u!65 &1151234176
 BoxCollider:

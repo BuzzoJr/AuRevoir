@@ -18,9 +18,11 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     [SerializeField] private bool HasText = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject ThinkingBox;
     private TMP_Text dialogText;
     private TMP_Text DialogSpeaker { get; set; }
 
+    private TMP_Text ThinkingText;
 
     private int currentIndex = -1;
 
@@ -29,10 +31,21 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         if (currentIndex >= 0)
         {
             TextData data = Locale.Texts[textGroup][currentIndex];
-            //dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
-            DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-            DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
+            if (TextType.TristanThinking == data.Type)
+            {
+                dialogBox.SetActive(false);
+                ThinkingBox.SetActive(true);
+                ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+            }
+            else
+            {
+                dialogBox.SetActive(true);
+                ThinkingBox.SetActive(false);
+                //dialogText.color = TextColorManager.textTypeColors[data.Type];
+                dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+                DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
+            }
         }
     }
 
@@ -100,6 +113,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
             }
             Locale.UnregisterConsumer(this);
             dialogBox.SetActive(false);
+            ThinkingBox.SetActive(false);
         }
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (itemType == ItemType.Item)

@@ -18,6 +18,7 @@ public class LimitByStepWithDialog : MonoBehaviour, ILimit
 
     public TextGroup textGroup;
     [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject thinkingBox;
 
     private Dialog dialog;
 
@@ -29,6 +30,11 @@ public class LimitByStepWithDialog : MonoBehaviour, ILimit
         dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+
+        dialog.ThinkingBox = thinkingBox;
+        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
 
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
         dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
