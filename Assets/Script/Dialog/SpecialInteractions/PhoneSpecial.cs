@@ -34,7 +34,10 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
         audioSource.PlayOneShot(pickupPhone);
 
         if(DEMO) {  //FIM DA DEMO
-            StartCoroutine(EndDemo());
+            allCanvas.SetActive(true);
+            //Desabilitar inventory items
+            //Link/QR Code para wishlist
+            //Add sons/musica
         }
         else {
             GameManager.Instance.UpdateSong(IntroductionSong);
@@ -44,14 +47,5 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
 
     public void GoToMenu() {
         SceneManager.LoadScene(0);
-    }
-
-    IEnumerator EndDemo()
-    {
-        yield return new WaitForSeconds(1f);
-        allCanvas.SetActive(true);
-        //Desabilitar inventory items
-        //Link/QR Code para wishlist
-        //Add sons/musica
     }
 }

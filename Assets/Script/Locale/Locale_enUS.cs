@@ -959,6 +959,15 @@ namespace Assets.Script.Locale
                     new TextData("Made by \r\n\r\nEric Gama Müller\r\nLeonardo Pedroso\r\nOsny Buzzo Junior"),
                 }
             },
+            {
+                TextGroup.EndDemo,
+                new List<TextData>()
+                {
+                    new TextData("Thank you for playing the demo!"),
+                    new TextData("Official launch still in 2024"),
+                    new TextData("Go back to menu"),
+                }
+            },
         };
 
         public static readonly Dictionary<ItemGroup, ItemData> Item = new()

@@ -94,6 +94,7 @@
         Map,
         SyncWave,
         UploadRoom,
+        EndDemo,
     }
 
     public enum ItemGroup
