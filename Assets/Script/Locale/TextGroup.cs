@@ -92,6 +92,8 @@
         ShouldOpenDoorInNightmareLivingroom,
         AlreadyDoneTalkToBossCarCrash,
         Map,
+        SyncWave,
+        UploadRoom,
     }
 
     public enum ItemGroup

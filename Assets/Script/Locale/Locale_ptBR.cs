@@ -78,10 +78,32 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Viajar"),
-                    new TextData("Zona\nComercial"),
+                    new TextData("Bar"),
                     new TextData("Escritório\nAu Revoir"),
                     new TextData("Apartamento"),
                     new TextData("Distrito\nDesconectado"),
+                    new TextData("Mapa"),
+                    new TextData("Selecione um destino"),
+                }
+            },
+            {
+                TextGroup.SyncWave,
+                new List<TextData>()
+                {
+                    new TextData("Frequência"),
+                    new TextData("Velocidade"),
+                    new TextData("Sincronize as ondas"),
+                    new TextData("Sincronização finalizada"),
+                }
+            },
+            {
+                TextGroup.UploadRoom,
+                new List<TextData>()
+                {
+                    new TextData("SALA DE UPLOAD"),
+                    new TextData("SELECIONE\nUMA COBAIA"),
+                    new TextData("Subject: 31s9x0\nRank: Platinum\nMemory size: 1.3 PB\nDeath: Car accident"),
+                    new TextData("CHOSE A CLIENT\nbefore start"),
                 }
             },
             {

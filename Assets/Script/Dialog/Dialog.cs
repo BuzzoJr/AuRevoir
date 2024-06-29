@@ -34,12 +34,17 @@ namespace Assets.Script.Dialog
                 if (TextType.TristanThinking == data.Type)
                 {
                     DialogBox.SetActive(false);
-                    ThinkingBox.SetActive(true);
+
+                    if(ThinkingBox != null)
+                        ThinkingBox.SetActive(true);
+
                     ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
                 }
                 else
                 {
-                    ThinkingBox.SetActive(false);
+                    if(ThinkingBox != null)
+                        ThinkingBox.SetActive(false);
+
                     DialogBox.SetActive(true);
                     //DialogText.color = TextColorManager.textTypeColors[data.Type];
                     DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
@@ -64,7 +69,10 @@ namespace Assets.Script.Dialog
             yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
 
             Locale.Locale.UnregisterConsumer(this);
-            ThinkingBox.SetActive(false);
+
+            if(ThinkingBox != null)
+                ThinkingBox.SetActive(false);
+
             DialogBox.SetActive(false);
 
             callback(result);
