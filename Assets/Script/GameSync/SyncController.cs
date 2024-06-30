@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class SyncController : MonoBehaviour
 {
     public TextGroup textGroup = TextGroup.CarCrashClient;
-    [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject dialogBox, thinkingBox;
 
     private Dialog dialog;
 
@@ -17,7 +17,7 @@ public class SyncController : MonoBehaviour
     public Animator mapAnim;
     public GameObject playerObj;
     public GameObject mainCamera;
-    public GameObject childObj;
+    public GameObject childObj, canvasAll, canvasText, canvasBtn, maskObj;
 
     void Awake()
     {
@@ -27,6 +27,10 @@ public class SyncController : MonoBehaviour
         dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
         dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+        dialog.ThinkingBox = thinkingBox;
+        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
 
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
         dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
@@ -39,17 +43,23 @@ public class SyncController : MonoBehaviour
 
     IEnumerator ExitCoroutine()
     {
+        canvasText.SetActive(false);
+        canvasBtn.SetActive(false);
+        canvasAll.GetComponent<Canvas>().sortingOrder = -5;
         yield return new WaitForSeconds(3f);
-        mapAnim.SetTrigger("Exit");
-        yield return new WaitForSeconds(0.5f);
-        childObj.SetActive(false);
-        mainCamera.SetActive(true);
+        maskObj.SetActive(true);
 
         playerData.AddStep(GameSteps.CarCrashClientDownload);
 
         DialogAction result = DialogAction.None;
         yield return StartCoroutine(dialog.Execute(playerObj, (value) => result = value));
 
+        canvasAll.GetComponent<Canvas>().sortingOrder = 0;
+        mapAnim.SetTrigger("Exit");
+        yield return new WaitForSeconds(1f);
+
+        childObj.SetActive(false);
+        mainCamera.SetActive(true);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 }

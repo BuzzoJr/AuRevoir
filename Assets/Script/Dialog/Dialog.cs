@@ -35,10 +35,10 @@ namespace Assets.Script.Dialog
                 {
                     DialogBox.SetActive(false);
 
-                    if(ThinkingBox != null)
+                    if(ThinkingBox != null) {
                         ThinkingBox.SetActive(true);
-
-                    ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                    }
                 }
                 else
                 {
