@@ -17,7 +17,7 @@ public class SyncController : MonoBehaviour
     public Animator mapAnim;
     public GameObject playerObj;
     public GameObject mainCamera;
-    public GameObject childObj, canvasAll, canvasText, canvasBtn, maskObj;
+    public GameObject childObj, canvasAll, canvasText, canvasBtn, maskObj, manHolog;
 
     void Awake()
     {
@@ -48,6 +48,8 @@ public class SyncController : MonoBehaviour
         canvasAll.GetComponent<Canvas>().sortingOrder = -5;
         yield return new WaitForSeconds(3f);
         maskObj.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        manHolog.GetComponent<Animator>().enabled = true;
 
         playerData.AddStep(GameSteps.CarCrashClientDownload);
 
