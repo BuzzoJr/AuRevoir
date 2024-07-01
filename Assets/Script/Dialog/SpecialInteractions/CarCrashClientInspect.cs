@@ -25,6 +25,10 @@ public class CarCrashClientInspect : MonoBehaviour, ILook
         if (GameManager.Instance.State != GameManager.GameState.Interacting)
             yield break;
 
+        who.GetComponent<Animator>().SetBool("Crouch", true);
+
+        yield return new WaitForSeconds(4f);
+
         allSyncWave.SetActive(true);
         mainCamera.SetActive(false);
     }
