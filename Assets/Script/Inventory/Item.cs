@@ -15,3 +15,9 @@ public class Item
         itemMousePrefab = _itemMousePrefab ?? null;
     }
 }
+
+public enum ItemType
+{
+    Item,
+    Document,
+}

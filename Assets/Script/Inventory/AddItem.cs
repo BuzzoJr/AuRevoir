@@ -133,10 +133,4 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         else
             Destroy(gameObject);
     }
-
-    public enum ItemType
-    {
-        Item,
-        Document,
-    }
 }
