@@ -17,6 +17,13 @@ namespace Assets.Script.Dialog
                 }
             },
             {
+                TextGroup.MustTalkToPolice,
+                new List<object>()
+                {
+                    0,
+                }
+            },
+            {
                 TextGroup.CarCrashPoliceOfficer,
                 new List<object>()
                 {
