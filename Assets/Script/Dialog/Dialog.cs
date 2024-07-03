@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.Rendering.PostProcessing;
+using UnityEditor.Rendering;
 
 namespace Assets.Script.Dialog
 {
@@ -25,38 +27,25 @@ namespace Assets.Script.Dialog
 
         private int currentIndex = -1;
 
-        public void UpdateLangTexts()
+        private AudioSource typingSound;
+        private bool isTyping = false;
+        private bool skip = false;
+
+        void Start()
         {
-
-            if (currentIndex >= 0)
-            {
-                TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
-                if (TextType.TristanThinking == data.Type)
-                {
-                    DialogBox.SetActive(false);
-
-                    if(ThinkingBox != null) {
-                        ThinkingBox.SetActive(true);
-                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
-                    }
-                }
-                else
-                {
-                    if(ThinkingBox != null)
-                        ThinkingBox.SetActive(false);
-
-                    DialogBox.SetActive(true);
-                    //DialogText.color = TextColorManager.textTypeColors[data.Type];
-                    DialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
-                    DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                    DialogSpeaker.text = data.Type.ToString();
-                }
-            }
+            typingSound = DialogBox.GetComponent<AudioSource>();
         }
-
         void OnDestroy()
         {
             Locale.Locale.UnregisterConsumer(this);
+        }
+
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                skip = true;
+            }
         }
 
         public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
@@ -106,7 +95,6 @@ namespace Assets.Script.Dialog
                 if (seq[pos] is int i)
                 {
                     currentIndex = i;
-                    UpdateLangTexts();
 
                     TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
 
@@ -114,7 +102,26 @@ namespace Assets.Script.Dialog
                     bool clicked = false;
                     float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
                     float elapsedTime = 0;
+                    if (TextType.TristanThinking == data.Type)
+                    {
+                        DialogBox.SetActive(false);
 
+                        if (ThinkingBox != null)
+                        {
+                            ThinkingBox.SetActive(true);
+                            ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                        }
+                    }
+                    else
+                    {
+                        if (ThinkingBox != null)
+                            ThinkingBox.SetActive(false);
+
+                        DialogBox.SetActive(true);
+                        DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                        DialogSpeaker.text = data.Type.ToString();
+                        yield return StartCoroutine(DisplayLine(data.Text));
+                    }
                     while (elapsedTime < delayTime && !clicked)
                     {
                         if (Input.GetMouseButtonDown(0))
@@ -190,6 +197,41 @@ namespace Assets.Script.Dialog
         private void SelectKey(int key)
         {
             selectedKey = key;
+        }
+
+        private IEnumerator DisplayLine(string line)
+        {
+            typingSound.Play();
+            isTyping = true;
+            DialogText.text = "";
+            skip = false;
+
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    skip = true;
+                }
+
+                if (skip)
+                {
+                    DialogText.text = line;
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                }
+                else
+                {
+                    DialogText.text += line[i];
+                    yield return new WaitForSeconds(0.05f); // adjust this value to control typing speed
+                }
+            }
+            typingSound.Stop();
+            isTyping = false;
+        }
+
+        public void UpdateLangTexts()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
