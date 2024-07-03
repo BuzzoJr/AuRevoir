@@ -131,10 +131,11 @@ namespace Assets.Script.Locale
                 TextGroup.ChatWithHank,
                 new List<TextData>()
                 {
+                    new TextData(TextType.Hank, "Aqui ta seu rango."),
                     new TextData(TextType.Tristan, "Valeu, Hank. E esse kimono aí? Virou sensei ou tá só diversificando os negócios?"),
                     new TextData(TextType.Hank, "É a nova vibe do lugar. Agora eu vendo sonhos orientais em tigelas. Melhor isso do que ficar desfilando todo engomadinho."),
-                    new TextData(TextType.Tristan, "Sou um cientista, engraçadão. E nos dias de hoje, ser peão corporativo é quase uma necessidade."),
-                    new TextData(TextType.Hank, "E como anda o laboratório de Frankenstein?"),
+                    new TextData(TextType.Tristan, "Hoje em dia para fazer ciência tem que ser assim."),
+                    new TextData(TextType.Hank, "E como tá a rotina de coveiro?"),
                     new TextData(TextType.Tristan, "Complicado. Os ricos estão vazando da cidade. Então tá faltando cérebro sintético pra gente salvar."),
                     new TextData(TextType.Hank, "O ramen ainda é sucesso por aqui. Se quiser, ainda tenho um kimono extra pra você."),
                     new TextData(TextType.Tristan, "Valeu. Eu tô bem, só... tendo alguns problemas para dormir, uns sonhos esquisitos."),
@@ -156,7 +157,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "Apenas faça o download do cliente e traga para o escritório."),
                     new TextData(TextType.Tristan, "Entendido. Até daqui a pouco."),
                     // Inserir Special pra acabar com a animação de telefone
-                    new TextData(TextType.Tristan, "Embrulha pra viagem, Hank, tenho um trabalho."),
+                    new TextData(TextType.Tristan, "Embrulha pra viagem Hank, tenho um trabalho."),
                 }
             },
             {
@@ -178,11 +179,11 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashPoliceOfficer,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PoliceOfficer, "Ei cidadão, a área está restrita!"),
+                    new TextData(TextType.PoliceOfficer, "Tu não sabe oq a faixa amarela significa não? Não ultrapasse!"),
                     new TextData(TextType.Tristan, "Boa noite, oficial. Sou o Sentinela responsável pela operação de coleta nesse acidente."),
                     new TextData(TextType.PoliceOfficer, "Corporativo, huh. Tem identificação?"),
                     new TextData(TextType.Tristan, "Aqui está..."),
-                    new TextData(TextType.PoliceOfficer, "Tudo bem, faça o que deve, mas a mente do indivíduo será requisitada para interrogatório posteriormente."),
+                    new TextData(TextType.PoliceOfficer, "Tudo bem, faça o que deve, mas se ele tá vivo vai ter que passar pelo interrogatório."),
                     new TextData(TextType.Tristan, "Para agendar o interrogatório, será necessário um requerimento formal ao departamento legal da Au Revoir."),
                     new TextData(TextType.PoliceOfficer, "Certo. Vá em frente."),
                 }
@@ -207,15 +208,32 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashClient,
                 new List<TextData>()
                 {
-                    new TextData(TextType.CarCrashClient, "Ah... obrigado cara, você salvou minha vida. Não deveria ter bebido tanto. A Angélica está bem? A loirinha."),
+                    new TextData(TextType.CarCrashClient, "huh… O que está acontecendo?"),
+                    new TextData(TextType.Tristan, "Boa noite Sr. Kyle, sinto muito em informar mas o seu corpo não é mais um portador viável para o cérebro sintético."),
+                    new TextData(TextType.Tristan, "Portanto estou aqui para realizar a recuperação."),
+                    new TextData(TextType.CarCrashClient, "Como assim, o que isso significa."),
+                    new TextData(TextType.Tristan, "O senhor sofreu um acidente de carro, e seu corpo não está mais funcional."),
+                    new TextData(TextType.Tristan, "Mas não se preocupe, o cérebro parece intacto."),
+                    new TextData(TextType.CarCrashClient, "Ah... cara. Não deveria ter bebido tanto. A Angélica está bem? A loirinha."),
                     new TextData(TextType.Tristan, "Não senhor, ela não tem um cérebro sintético."),
                     new TextData(TextType.CarCrashClient, "Ah, droga... eu sei, eu sei, merda merda merda."),
                     new TextData(TextType.TristanThinking, "Tristan pode sentir a tristeza do cliente."),
-                    new TextData(TextType.Tristan, "Peço educadamente que mantenha a calma e não fale muito."),
-                    new TextData(TextType.Tristan, "Para o processo ser mais tranquilo posso reduzir o consumo de energia."),
-                    new TextData(TextType.Tristan, "Você autoriza o procedimento?"),
-                    new TextData(TextType.CarCrashClient, "Certo, certo… Autorizo. Só quero que isso acabe logo."),
-                    new TextData(TextType.Tristan, "Perfeito, a partir desse momento perderemos nossa comunicação e você poderá sentir sonolência."),
+                    new TextData(TextType.Tristan, "Peço educadamente que mantenha a calma e para o processo ser mais tranquilo."),
+                    new TextData(TextType.Tristan, "Vou realizar algumas perguntas para averiguar a integridade do download."),
+                    new TextData(TextType.Tristan, "Qual seu nome?"),
+                    new TextData(TextType.Tristan, "Que dia é hoje?"),
+                    new TextData(TextType.Tristan, "Você estava acompanhado no momento do acidente?"),
+                    new TextData(TextType.Tristan, "Primeira morte?"),
+                    new TextData(TextType.Tristan, "Onde você trabalha?"),
+                    new TextData(TextType.Tristan, "Qual sua data de nascimento?"),
+                    new TextData(TextType.Tristan, "Qual seu endereço?"),
+                    new TextData(TextType.Tristan, "Qual o nome do seu primeiro pet?"),
+                    new TextData(TextType.Tristan, "Você costuma ter pesadelos?"),
+                    new TextData(TextType.Tristan, "Perfeito, tudo certo com o download, obrigado pelas respostas."),
+                    new TextData(TextType.Tristan, "Agora irei me deslocar aos escritórios Au Revoir para entregar sua consciência."),
+                    new TextData(TextType.Tristan, "A partir desse momento, irei reduzir o consumo de energia e perderemos nossa comunicação."),
+                    new TextData(TextType.CarCrashClient, "Certo, certo… Só quero que isso acabe logo.")
+
                 }
             },
             {

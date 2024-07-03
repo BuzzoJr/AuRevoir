@@ -131,10 +131,11 @@ namespace Assets.Script.Locale
                 TextGroup.ChatWithHank,
                 new List<TextData>()
                 {
+                    new TextData(TextType.Hank, "Here’s your meal."),
                     new TextData(TextType.Tristan, "Thanks, Hank. What's with the kimono? Did you become a sensei or are you just diversifying the business?"),
                     new TextData(TextType.Hank, "It's the new vibe of the place. Now I sell oriental dreams in bowls. Better this than strutting around all buttoned up."),
-                    new TextData(TextType.Tristan, "I’m a scientist, comedian. And nowadays, being a corporate pawn is almost a necessity."),
-                    new TextData(TextType.Hank, "And how's Frankenstein's lab going?"),
+                    new TextData(TextType.Tristan, "These days, being a scientist requires looking the part."),
+                    new TextData(TextType.Hank, "And how’s the graveyard shift treating you?"),
                     new TextData(TextType.Tristan, "Tough. The rich are leaving the city. So we're short on synthetic brains to save."),
                     new TextData(TextType.Hank, "Ramen is still a hit here. If you want, I have an extra kimono for you."),
                     new TextData(TextType.Tristan, "Thanks. I'm good, just... having some trouble sleeping, some weird dreams."),
@@ -178,11 +179,11 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashPoliceOfficer,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PoliceOfficer, "Hey citizen, this area is restricted!"),
+                    new TextData(TextType.PoliceOfficer, "Don't you know what the yellow tape means? Do not cross!"),
                     new TextData(TextType.Tristan, "Good evening, officer. I'm the Sentinel in charge of the retrieval operation at this accident."),
                     new TextData(TextType.PoliceOfficer, "Corporate, huh. Do you have identification?"),
                     new TextData(TextType.Tristan, "Here it is..."),
-                    new TextData(TextType.PoliceOfficer, "Alright, carry on with your duties, but the individual's mind will be requested for interrogation later."),
+                    new TextData(TextType.PoliceOfficer, "Alright, do what you have to, but if he's alive, he'll be requested for interrogation."),
                     new TextData(TextType.Tristan, "To schedule the interrogation, a formal request to Au Revoir's legal department will be necessary."),
                     new TextData(TextType.PoliceOfficer, "Okay. Go ahead."),
                 }
@@ -207,15 +208,32 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashClient,
                 new List<TextData>()
                 {
-                    new TextData(TextType.CarCrashClient, "Ah… thank you, man, you saved my life. I shouldn't have drunk so much. Is Angelica ok? The blondie."),
-                    new TextData(TextType.Tristan, "No sir, she doesn't have a synthetic brain."),
-                    new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know, shit shit shit."),
+                    new TextData(TextType.CarCrashClient, "huh… What’s going on?"),
+                    new TextData(TextType.Tristan, "Good evening Mr. Kyle, I am sorry to inform you that your body is no longer a viable carrier for the synthetic brain."),
+                    new TextData(TextType.Tristan, "Therefore, I am here to carry out the recovery"),
+                    new TextData(TextType.CarCrashClient, "What do you mean, what does that mean."),
+                    new TextData(TextType.Tristan, "You were involved in a car accident, and your body is no longer functional."),
+                    new TextData(TextType.Tristan, "But do not worry, the brain appears intact."),
+                    new TextData(TextType.CarCrashClient, "Ah... man. I shouldn’t have drunk so much. Is Angelica okay? The blonde."),
+                    new TextData(TextType.Tristan, "No sir, she does not have a synthetic brain."),
+                    new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know, damn damn damn."),
                     new TextData(TextType.TristanThinking, "Tristan can feel the client's sadness."),
-                    new TextData(TextType.Tristan, "I kindly ask you to remain calm and not speak too much."),
-                    new TextData(TextType.Tristan, "To make the process smoother, I can reduce energy consumption."),
-                    new TextData(TextType.Tristan, "Do you authorize the procedure?"),
-                    new TextData(TextType.CarCrashClient, "Alright, alright… I authorize. I just want this to be over."),
-                    new TextData(TextType.Tristan, "Perfect, from this moment on, we'll lose communication and you may feel drowsiness."),
+                    new TextData(TextType.Tristan, "I kindly ask you to stay calm and to make the process smoother."),
+                    new TextData(TextType.Tristan, "I am going to ask some questions to verify the integrity of the download."),
+                    new TextData(TextType.Tristan, "What is your name?"),
+                    new TextData(TextType.Tristan, "What day is it today?"),
+                    new TextData(TextType.Tristan, "Were you accompanied at the time of the accident?"),
+                    new TextData(TextType.Tristan, "First death?"),
+                    new TextData(TextType.Tristan, "Where do you work?"),
+                    new TextData(TextType.Tristan, "What is your date of birth?"),
+                    new TextData(TextType.Tristan, "What is your address?"),
+                    new TextData(TextType.Tristan, "What was the name of your first pet?"),
+                    new TextData(TextType.Tristan, "Do you often have nightmares?"),
+                    new TextData(TextType.Tristan, "Perfect, everything is fine with the download, thank you for your responses."),
+                    new TextData(TextType.Tristan, "I will now proceed to the Au Revoir offices to deliver your consciousness."),
+                    new TextData(TextType.Tristan, "From this moment on, I will reduce energy consumption and we will lose our communication."),
+                    new TextData(TextType.CarCrashClient, "Right, right… I just want this to be over soon.")
+
                 }
             },
             {
