@@ -48,8 +48,10 @@ public class SyncController : MonoBehaviour
         canvasAll.GetComponent<Canvas>().sortingOrder = -5;
         yield return new WaitForSeconds(3f);
         maskObj.SetActive(true);
-        yield return new WaitForSeconds(4f);
         manHolog.GetComponent<Animator>().enabled = true;
+        yield return new WaitForSeconds(4f);
+
+        StartCoroutine(StutterAnimation(manHolog.GetComponent<Animator>()));
 
         playerData.AddStep(GameSteps.CarCrashClientDownload);
 
@@ -67,5 +69,20 @@ public class SyncController : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+    }
+
+    IEnumerator StutterAnimation(Animator animator)
+    {
+        while (childObj.activeSelf)
+        {
+            yield return new WaitForSeconds(Random.Range(3f, 10f));
+            manHolog.GetComponent<Animator>().speed = 0;
+            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
+            manHolog.GetComponent<Animator>().speed = 1;
+            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
+            manHolog.GetComponent<Animator>().speed = 0;
+            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
+            manHolog.GetComponent<Animator>().speed = 1;
+        }
     }
 }
