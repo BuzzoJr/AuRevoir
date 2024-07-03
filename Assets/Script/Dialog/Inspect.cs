@@ -12,6 +12,7 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     [SerializeField] private GameObject dialogBox;
     private TMP_Text dialogText;
     public GameObject ThinkingBox;
+    public Transform lookAtObj;
     private TMP_Text DialogSpeaker { get; set; }
     [SerializeField] private bool HasText = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
@@ -73,7 +74,7 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
         if (shouldWalk)
         {
             var g = new GoTo();
-            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), null));
+            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAtObj));
 
             // Action cancelled
             if (GameManager.Instance.State != GameManager.GameState.Interacting)
