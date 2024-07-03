@@ -34,9 +34,83 @@ namespace Assets.Script.Dialog
                 TextGroup.CarCrashClient,
                 new List<object>()
                 {
-                    0, 1, 2, 3, 4, 5, 6, 7, 8
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11,
+                    new Dictionary<int, List<object>>()
+                    {
+                        {
+                            12,
+                            new List<object>()
+                            {
+                                13,
+                            }
+                        },
+                        {
+                            14,
+                            new List<object>()
+                            {
+                                15,
+                            }
+                        },
+                        {
+                            16,
+                            new List<object>()
+                            {
+                                17,
+                            }
+                        },
+                    },
+                    new Dictionary<int, List<object>>()
+                    {
+                        {
+                            18,
+                            new List<object>()
+                            {
+                                19,
+                            }
+                        },
+                        {
+                            20,
+                            new List<object>()
+                            {
+                                21,
+                            }
+                        },
+                        {
+                            22,
+                            new List<object>()
+                            {
+                                23,
+                            }
+                        },
+                    },
+                    new Dictionary<int, List<object>>()
+                    {
+                        {
+                            24,
+                            new List<object>()
+                            {
+                                25,
+                            }
+                        },
+                        {
+                            26,
+                            new List<object>()
+                            {
+                                27,
+                            }
+                        },
+                        {
+                            28,
+                            new List<object>()
+                            {
+                                29,
+                            }
+                        },
+                    },
+                    30, 31, 32, 33,
                 }
             },
+
             {
                 TextGroup.CarCrashDelivery,
                 new List<object>()

@@ -208,34 +208,74 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashClient,
                 new List<TextData>()
                 {
-                    new TextData(TextType.CarCrashClient, "huh… What’s going on?"),
-                    new TextData(TextType.Tristan, "Good evening Mr. Kyle, I am sorry to inform you that your body is no longer a viable carrier for the synthetic brain."),
-                    new TextData(TextType.Tristan, "Therefore, I am here to carry out the recovery"),
-                    new TextData(TextType.CarCrashClient, "What do you mean, what does that mean."),
-                    new TextData(TextType.Tristan, "You were involved in a car accident, and your body is no longer functional."),
-                    new TextData(TextType.Tristan, "But do not worry, the brain appears intact."),
-                    new TextData(TextType.CarCrashClient, "Ah... man. I shouldn’t have drunk so much. Is Angelica okay? The blonde."),
-                    new TextData(TextType.Tristan, "No sir, she does not have a synthetic brain."),
-                    new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know, damn damn damn."),
-                    new TextData(TextType.TristanThinking, "Tristan can feel the client's sadness."),
-                    new TextData(TextType.Tristan, "I kindly ask you to stay calm and to make the process smoother."),
-                    new TextData(TextType.Tristan, "I am going to ask some questions to verify the integrity of the download."),
-                    new TextData(TextType.Tristan, "What is your name?"),
-                    new TextData(TextType.Tristan, "What day is it today?"),
-                    new TextData(TextType.Tristan, "Were you accompanied at the time of the accident?"),
-                    new TextData(TextType.Tristan, "First death?"),
-                    new TextData(TextType.Tristan, "Where do you work?"),
-                    new TextData(TextType.Tristan, "What is your date of birth?"),
-                    new TextData(TextType.Tristan, "What is your address?"),
-                    new TextData(TextType.Tristan, "What was the name of your first pet?"),
-                    new TextData(TextType.Tristan, "Do you often have nightmares?"),
-                    new TextData(TextType.Tristan, "Perfect, everything is fine with the download, thank you for your responses."),
-                    new TextData(TextType.Tristan, "I will now proceed to the Au Revoir offices to deliver your consciousness."),
-                    new TextData(TextType.Tristan, "From this moment on, I will reduce energy consumption and we will lose our communication."),
-                    new TextData(TextType.CarCrashClient, "Right, right… I just want this to be over soon.")
+                    new TextData(TextType.CarCrashClient, "huh… What’s going on?"), //index 0
+                    new TextData(TextType.Tristan, "Good evening Mr. Kyle, I am sorry to inform that your body is no longer a viable carrier for the synthetic brain."), //index 1
+                    new TextData(TextType.Tristan, "Therefore, I am here to carry out the recovery"), //index 2
+                    new TextData(TextType.CarCrashClient, "What do you mean? What does that mean?"), //index 3
+                    new TextData(TextType.Tristan, "You were involved in a car accident, and your body is no longer functional."), //index 4
+                    new TextData(TextType.Tristan, "But do not worry, the brain appears to be intact."), //index 5
+                    new TextData(TextType.CarCrashClient, "Ah... man. I shouldn't have drunk so much. Is Angelica okay? The blondie."), //index 6
+                    new TextData(TextType.Tristan, "No sir, she does not have a synthetic brain."), //index 7
+                    new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know. Damn, damn, damn."), //index 8
+                    new TextData(TextType.TristanThinking, "Tristan can feel the client's sadness."), //index 9
+                    new TextData(TextType.Tristan, "I kindly ask you to stay calm and to make the process smoother."), //index 10
+                    new TextData(TextType.Tristan, "I am going to ask some questions to verify the integrity of the download."), //index 11
 
+                    // Option 1
+                    new TextData(TextType.Tristan, "What is your name?"), //index 12
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "Christopher Kyle."), //index 13
+
+                    // Option 2
+                    new TextData(TextType.Tristan, "What day is it today?"), //index 14
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "Ah... I don't know. Maybe it's still Tuesday? I think it's July 7th."), //index 15
+
+                    // Option 3
+                    new TextData(TextType.Tristan, "Were you accompanied at the time of the accident?"), //index 16
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "Yes, yes... Angelica."), //index 17
+
+                    // Continue
+                    // Option 1
+                    new TextData(TextType.Tristan, "Is this your first death?"), //index 18
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "Ehhh, yes, I think so."), //index 19
+
+                    // Option 2
+                    new TextData(TextType.Tristan, "Where do you work?"), //index 20
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "I work at my father's company, GraphTech."), //index 21
+
+                    // Option 3
+                    new TextData(TextType.Tristan, "What is your date of birth?"), //index 22
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "March 25, 2044."), //index 23
+
+                    // Continue
+                    // Option 1
+                    new TextData(TextType.Tristan, "What is your address?"), //index 24
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "4528 Virtual Plaza, apartment 310, New City."), //index 25
+
+                    // Option 2
+                    new TextData(TextType.Tristan, "What was the name of your first pet?"), //index 26
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "Sparky. My dog's name was Sparky."), //index 27
+
+                    // Option 3
+                    new TextData(TextType.Tristan, "Do you often have nightmares?"), //index 28
+                    // Answer
+                    new TextData(TextType.CarCrashClient, "I think so. I don't remember any in particular."), //index 29
+
+                    // Continue
+                    new TextData(TextType.Tristan, "Perfect. Everything is fine with the download. Thank you for your responses."), //index 30
+                    new TextData(TextType.Tristan, "I will now proceed to the Au Revoir offices to deliver your consciousness."), //index 31
+                    new TextData(TextType.Tristan, "From this moment on, I will reduce energy consumption, and we will lose communication."), //index 32
+                    new TextData(TextType.CarCrashClient, "Right, right… I just want this to be over soon.") //index 33
                 }
             },
+
             {
                 TextGroup.AlreadyDoneDownloadClient,
                 new List<TextData>()

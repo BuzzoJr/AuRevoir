@@ -220,15 +220,34 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Tristan pode sentir a tristeza do cliente."),
                     new TextData(TextType.Tristan, "Peço educadamente que mantenha a calma e para o processo ser mais tranquilo."),
                     new TextData(TextType.Tristan, "Vou realizar algumas perguntas para averiguar a integridade do download."),
+
                     new TextData(TextType.Tristan, "Qual seu nome?"),
+                    new TextData(TextType.CarCrashClient, "Christopher Kyle."),
+
                     new TextData(TextType.Tristan, "Que dia é hoje?"),
+                    new TextData(TextType.CarCrashClient, "Ah... não sei. Talvez ainda seja terça-feira? Acho que dia 7 de julho."),
+
                     new TextData(TextType.Tristan, "Você estava acompanhado no momento do acidente?"),
+                    new TextData(TextType.CarCrashClient, "Sim, sim... Angelica."),
+
                     new TextData(TextType.Tristan, "Primeira morte?"),
+                    new TextData(TextType.CarCrashClient, "Ehhh, sim, eu acho que sim."),
+
                     new TextData(TextType.Tristan, "Onde você trabalha?"),
+                    new TextData(TextType.CarCrashClient, "Eu trabalho na empresa do meu pai, GraphTech."),
+
                     new TextData(TextType.Tristan, "Qual sua data de nascimento?"),
+                    new TextData(TextType.CarCrashClient, "Vinte e cinco de março de 2044."),
+
                     new TextData(TextType.Tristan, "Qual seu endereço?"),
+                    new TextData(TextType.CarCrashClient, "4528 Virtual Plaza, apartamento 310, Cidade Nova."),
+
                     new TextData(TextType.Tristan, "Qual o nome do seu primeiro pet?"),
+                    new TextData(TextType.CarCrashClient, "Sparky, meu cachorrinho era Sparky."),
+
                     new TextData(TextType.Tristan, "Você costuma ter pesadelos?"),
+                    new TextData(TextType.CarCrashClient, "Acho que sim, não lembro de nenhum em particular."),
+
                     new TextData(TextType.Tristan, "Perfeito, tudo certo com o download, obrigado pelas respostas."),
                     new TextData(TextType.Tristan, "Agora irei me deslocar aos escritórios Au Revoir para entregar sua consciência."),
                     new TextData(TextType.Tristan, "A partir desse momento, irei reduzir o consumo de energia e perderemos nossa comunicação."),
