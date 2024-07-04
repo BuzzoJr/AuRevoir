@@ -1026,6 +1026,14 @@ namespace Assets.Script.Locale
                     new TextData("Go back to menu"),
                 }
             },
+            {
+                TextGroup.BadDream,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "TESTE"),
+                    new TextData(TextType.TristanThinking, "TESTE 2"),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

@@ -95,6 +95,7 @@
         SyncWave,
         UploadRoom,
         EndDemo,
+        BadDream,
     }
 
     public enum ItemGroup
