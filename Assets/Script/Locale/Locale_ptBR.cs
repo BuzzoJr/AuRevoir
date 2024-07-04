@@ -1008,6 +1008,31 @@ namespace Assets.Script.Locale
             },
         };
 
+        public static readonly Dictionary<TextType, string> Titles = new()
+        {
+            { TextType.Beggar, "Mendigo" },
+            { TextType.Boss, "Béatrice" },
+            { TextType.CarCrashClient, "Cliente" },
+            { TextType.CellPhone, "Celular" },
+            { TextType.CEO, "René Revoir" },
+            { TextType.Daughter, "Julie" },
+            { TextType.ExWife, "Vivan" },
+            { TextType.Guard, "Guarda" },
+            { TextType.Hank, "Hank" },
+            { TextType.LabWorker1, "Cientista" },
+            { TextType.LabWorker2, "Cientista" },
+            { TextType.NewsAnchor, "Ancora do Jornal" },
+            { TextType.PoliceOfficer, "Policial" },
+            { TextType.Revolutionary, "Philippe" },
+            { TextType.RevolutionaryBrother, "Vincent" },
+            { TextType.RevolutionaryHidden, "Mendigo" },
+            { TextType.Robot, "Robô" },
+            { TextType.System, "" },
+            { TextType.Tristan, "Tristan" },
+            { TextType.TristanThinking, "Pensamento de Tristan" },
+            { TextType.TVCommercial, "Comercial de TV" },
+        };
+
         public static readonly Dictionary<ItemGroup, ItemData> Item = new()
         {
             {

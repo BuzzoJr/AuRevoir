@@ -10,6 +10,11 @@ namespace Assets.Script.Locale
             { Lang.enUS, Locale_enUS.Texts },
             { Lang.ptBR, Locale_ptBR.Texts },
         };
+        public static Dictionary<Lang, Dictionary<TextType, string>> TitleOptions => new()
+        {
+            { Lang.enUS, Locale_enUS.Titles },
+            { Lang.ptBR, Locale_ptBR.Titles },
+        };
         public static Dictionary<Lang, Dictionary<ItemGroup, ItemData>> ItemOptions => new()
         {
             { Lang.enUS, Locale_enUS.Item },
@@ -18,6 +23,7 @@ namespace Assets.Script.Locale
 
         public static Lang Lang { get; set; }
         public static Dictionary<TextGroup, List<TextData>> Texts { get; set; }
+        public static Dictionary<TextType, string> Titles { get; set; }
         public static Dictionary<ItemGroup, ItemData> Item { get; set; }
 
         private static List<ILangConsumer> consumers = new();
@@ -26,6 +32,7 @@ namespace Assets.Script.Locale
         {
             Lang = Lang.enUS;
             Texts = Locale_enUS.Texts;
+            Titles = Locale_enUS.Titles;
             Item = Locale_enUS.Item;
         }
 
@@ -35,6 +42,7 @@ namespace Assets.Script.Locale
             Lang = newLang;
             Texts = Options[newLang];
             Item = ItemOptions[newLang];
+            Titles = TitleOptions[newLang];
 
             consumers.RemoveAll(item => item == null);
 
