@@ -1030,8 +1030,9 @@ namespace Assets.Script.Locale
                 TextGroup.BadDream,
                 new List<TextData>()
                 {
-                    new TextData(TextType.TristanThinking, "TESTE"),
-                    new TextData(TextType.TristanThinking, "TESTE 2"),
+                    new TextData(TextType.TristanThinking, "Huh?"),
+                    new TextData(TextType.TristanThinking, "How did I end up home?"),
+                    new TextData(TextType.TristanThinking, "Who's knocking on the door at this time?"),
                 }
             },
         };
