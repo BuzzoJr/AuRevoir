@@ -47,7 +47,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         {
             foreach (GameObject spawnPos in spawnPosition)
             {
-                if (spawnPos.name == playerData.previousScene)
+                if (spawnPos.name == playerData.previousScene || spawnPos.name == "Else")
                 {
                     playerPos.position = new Vector3(spawnPos.transform.position.x, playerPos.position.y, spawnPos.transform.position.z);
                     playerPos.rotation = Quaternion.Euler(0f, spawnPos.transform.rotation.eulerAngles.y, 0f);
