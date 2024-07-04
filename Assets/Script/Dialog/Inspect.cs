@@ -30,16 +30,16 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
             {
                 dialogBox.SetActive(false);
                 ThinkingBox.SetActive(true);
-                ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                ThinkingText.text = "* " + data.Text + " *";
             }
             else
             {
                 dialogBox.SetActive(true);
                 ThinkingBox.SetActive(false);
                 //dialogText.color = TextColorManager.textTypeColors[data.Type];
-                dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
+                dialogText.text = data.Text;
                 DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
+                DialogSpeaker.text = "";
             }
         }
     }

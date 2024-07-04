@@ -25,7 +25,7 @@ public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
         {
             TextData data = Locale.Texts[textGroup][currentIndex];
             dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+            dialogText.text = data.Text;
         }
     }
 

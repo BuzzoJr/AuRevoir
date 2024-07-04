@@ -17,7 +17,7 @@ public class InspectSequenced : MonoBehaviour, ILook, ILangConsumer
     {
         TextData data = Locale.Texts[textGroup][StaticSequences.laundryCorpses];
         dialogText.color = TextColorManager.textTypeColors[data.Type];
-        dialogText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+        dialogText.text = data.Text;
     }
 
     void OnDestroy()

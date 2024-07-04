@@ -2,7 +2,6 @@
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -111,7 +110,7 @@ namespace Assets.Script.Dialog
                         if (ThinkingBox != null)
                         {
                             ThinkingBox.SetActive(true);
-                            ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                            ThinkingText.text = "* " + data.Text + " *";
                         }
                     }
                     else
@@ -121,7 +120,7 @@ namespace Assets.Script.Dialog
 
                         DialogBox.SetActive(true);
                         DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                        DialogSpeaker.text = data.Type.ToString();
+                        DialogSpeaker.text = Locale.Locale.Titles[data.Type];
                         yield return StartCoroutine(DisplayLine(data.Text));
                     }
                     while (elapsedTime < delayTime && !clicked)
@@ -153,6 +152,7 @@ namespace Assets.Script.Dialog
                     int interaction = 0;
                     currentIndex = -1;
                     DialogText.text = "";
+                    TextType type = TextType.Tristan;
                     foreach (int key in options.Keys)
                     {
                         optionButtons[interaction].interactable = true;
@@ -160,13 +160,14 @@ namespace Assets.Script.Dialog
                         optionButtons[interaction].onClick.AddListener(() => SelectKey(key));
 
                         TextData data = Locale.Locale.Texts[TextGroup][key];
-                        buttonText.color = new Color(1f, 1f, 1f); // TextColorManager.textTypeColors[data.Type];
-                        buttonText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
+                        type = data.Type;
+                        buttonText.color = TextColorManager.textTypeColors[TextType.System];
+                        buttonText.text = data.Text;
                         interaction += 1;
                     }
                     Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, TextType.Tristan.ToString());
-                    DialogSpeaker.color = TextColorManager.textTypeColors[Locale.Locale.Texts[TextGroup][options.Keys.First()].Type];
-                    DialogSpeaker.text = TextType.Tristan.ToString();
+                    DialogSpeaker.color = TextColorManager.textTypeColors[type];
+                    DialogSpeaker.text = Locale.Locale.Titles[type];
 
                     yield return new WaitUntil(() => selectedKey.HasValue);
                     int selected = (int)selectedKey; // Colocar a opção selecionada
@@ -247,7 +248,7 @@ namespace Assets.Script.Dialog
                     if (ThinkingBox != null)
                     {
                         ThinkingBox.SetActive(true);
-                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                        ThinkingText.text = "* " + data.Text + " *";
                     }
                 }
                 else
@@ -257,7 +258,7 @@ namespace Assets.Script.Dialog
 
                     DialogBox.SetActive(true);
                     DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                    DialogSpeaker.text = data.Type.ToString();
+                    DialogSpeaker.text = Locale.Locale.Titles[data.Type];
                     DialogText.text = data.Text;
                 }
             }
@@ -284,7 +285,7 @@ namespace Assets.Script.Dialog
                     if (ThinkingBox != null)
                     {
                         ThinkingBox.SetActive(true);
-                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                        ThinkingText.text = "* " + data.Text + " *";
                     }
                 }
                 else
@@ -294,7 +295,7 @@ namespace Assets.Script.Dialog
 
                     DialogBox.SetActive(true);
                     DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                    DialogSpeaker.text = data.Type.ToString();
+                    DialogSpeaker.text = Locale.Locale.Titles[data.Type];
                     yield return StartCoroutine(DisplayLine(data.Text));
                 }
 
