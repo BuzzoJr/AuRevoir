@@ -43,6 +43,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (dialogBox)
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
 
+        playerPos.gameObject.SetActive(false);
+
         if (playerData.previousScene != null)
         {
             foreach (GameObject spawnPos in spawnPosition)
@@ -56,6 +58,9 @@ public class SceneController : MonoBehaviour, ILangConsumer
                 }
             }
         }
+
+        playerPos.gameObject.SetActive(true);
+
         playerData.previousScene = SceneManager.GetActiveScene().name;
 
         if (playerData.previousScene == "C9InteriorLavanderia")
@@ -98,6 +103,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
                     doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
             }
         }
+
         stopRun(gameObject.scene.name);
     }
 

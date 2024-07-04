@@ -91,6 +91,7 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
         yield return new WaitForSeconds(1f);
         //Aqui parar som de glitch
         blackScreen.SetActive(true);
+        allCanvasUpload.SetActive(false);
         yield return new WaitForSeconds(3f);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         SceneManager.LoadScene("C0Bedroom");

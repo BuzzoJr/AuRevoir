@@ -181,6 +181,11 @@ public class Inventory : MonoBehaviour, ILangConsumer
     public void OpenInventory(bool open = true, int index = 0)
     {
         inventoryUI.SetActive(open);
+        GameObject ply = GameObject.FindWithTag("Player");
+
+        if(open)
+            ply.GetComponent<PlayerController>().CloseInteractionWheel();
+
         if (inventoryUI.activeSelf)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
