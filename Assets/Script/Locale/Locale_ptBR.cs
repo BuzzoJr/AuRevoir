@@ -79,7 +79,7 @@ namespace Assets.Script.Locale
                 {
                     new TextData("Viajar"),
                     new TextData("Bar"),
-                    new TextData("Escritório\nAu Revoir"),
+                    new TextData("Escritorio\nAu Revoir"),
                     new TextData("Apartamento"),
                     new TextData("Distrito\nDesconectado"),
                     new TextData("Mapa"),
