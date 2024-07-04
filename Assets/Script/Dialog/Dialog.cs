@@ -2,12 +2,11 @@
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.Rendering.PostProcessing;
-using UnityEditor.Rendering;
+using UnityEngine.UI;
 
 namespace Assets.Script.Dialog
 {
@@ -48,18 +47,21 @@ namespace Assets.Script.Dialog
             }
         }
 
-        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
+        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback, bool isDialog = true)
         {
             DialogAction result = DialogAction.None;
 
             DialogBox.SetActive(true);
             Locale.Locale.RegisterConsumer(this);
 
-            yield return StartCoroutine(Execute(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
+            if (isDialog)
+                yield return StartCoroutine(ExecuteDialog(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
+            else
+                yield return StartCoroutine(ExecuteText());
 
             Locale.Locale.UnregisterConsumer(this);
 
-            if(ThinkingBox != null)
+            if (ThinkingBox != null)
                 ThinkingBox.SetActive(false);
 
             DialogBox.SetActive(false);
@@ -67,7 +69,7 @@ namespace Assets.Script.Dialog
             callback(result);
         }
 
-        public IEnumerator Execute(GameObject who, List<object> seq, System.Action<DialogAction> callback)
+        public IEnumerator ExecuteDialog(GameObject who, List<object> seq, System.Action<DialogAction> callback)
         {
             DialogAction result = DialogAction.None;
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -158,11 +160,12 @@ namespace Assets.Script.Dialog
                         optionButtons[interaction].onClick.AddListener(() => SelectKey(key));
 
                         TextData data = Locale.Locale.Texts[TextGroup][key];
-                        buttonText.color = TextColorManager.textTypeColors[data.Type];
+                        buttonText.color = new Color(1f, 1f, 1f); // TextColorManager.textTypeColors[data.Type];
                         buttonText.text = TextColorManager.TextSpeaker(data.Type, data.Text);
                         interaction += 1;
                     }
                     Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, TextType.Tristan.ToString());
+                    DialogSpeaker.color = TextColorManager.textTypeColors[Locale.Locale.Texts[TextGroup][options.Keys.First()].Type];
                     DialogSpeaker.text = TextType.Tristan.ToString();
 
                     yield return new WaitUntil(() => selectedKey.HasValue);
@@ -177,7 +180,7 @@ namespace Assets.Script.Dialog
                     if (seta != null)
                         seta.SetActive(true);
 
-                    yield return StartCoroutine(Execute(who, options[selected], (value) => result = value));
+                    yield return StartCoroutine(ExecuteDialog(who, options[selected], (value) => result = value));
 
                     // Ações de controle
                     if (result == DialogAction.End)
@@ -231,7 +234,80 @@ namespace Assets.Script.Dialog
 
         public void UpdateLangTexts()
         {
-            throw new System.NotImplementedException();
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            if (currentIndex >= 0)
+            {
+                TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
+
+                Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, data.Type.ToString());
+                if (TextType.TristanThinking == data.Type)
+                {
+                    DialogBox.SetActive(false);
+
+                    if (ThinkingBox != null)
+                    {
+                        ThinkingBox.SetActive(true);
+                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                    }
+                }
+                else
+                {
+                    if (ThinkingBox != null)
+                        ThinkingBox.SetActive(false);
+
+                    DialogBox.SetActive(true);
+                    DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                    DialogSpeaker.text = data.Type.ToString();
+                    DialogText.text = data.Text;
+                }
+            }
+        }
+
+        IEnumerator ExecuteText()
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+
+            for (int i = 0; i < Locale.Locale.Texts[TextGroup].Count; i++)
+            {
+                currentIndex = i;
+                TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
+
+                Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, data.Type.ToString());
+                bool clicked = false;
+                float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
+                float elapsedTime = 0;
+
+                if (TextType.TristanThinking == data.Type)
+                {
+                    DialogBox.SetActive(false);
+
+                    if (ThinkingBox != null)
+                    {
+                        ThinkingBox.SetActive(true);
+                        ThinkingText.text = "* " + TextColorManager.TextSpeaker(TextType.System, data.Text) + " *";
+                    }
+                }
+                else
+                {
+                    if (ThinkingBox != null)
+                        ThinkingBox.SetActive(false);
+
+                    DialogBox.SetActive(true);
+                    DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
+                    DialogSpeaker.text = data.Type.ToString();
+                    yield return StartCoroutine(DisplayLine(data.Text));
+                }
+
+                while (elapsedTime < delayTime && !clicked)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        clicked = true;
+                    }
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+            }
         }
     }
 }

@@ -4,8 +4,9 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class AreaLimitByStep : MonoBehaviour, ILangConsumer
+public class AreaLimitByStep : MonoBehaviour
 {
     public PlayerData playerData;
     public GameSteps step;
@@ -14,33 +15,29 @@ public class AreaLimitByStep : MonoBehaviour, ILangConsumer
     public Transform outOfLimit;
 
     public bool HasText = false;
+
     public TextGroup textGroup;
     [SerializeField] private GameObject dialogBox;
-    private TMP_Text dialogText;
-    private TMP_Text DialogSpeaker { get; set; }
-    private int currentIndex = -1;
+    [SerializeField] private GameObject thinkingBox;
 
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.text = TextColorManager.TextSpeaker(TextType.System, data.Text);
-            DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-            DialogSpeaker.text = TextColorManager.TextSpeaker(data.Type, "");
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    public bool isDialog = true;
+    private Dialog dialog;
 
     void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog = gameObject.AddComponent<Dialog>();
+        dialog.DialogBox = dialogBox;
+        dialog.TextGroup = textGroup;
+        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+        dialog.ThinkingBox = thinkingBox;
+        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
+
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
     public bool ShouldLimit()
@@ -62,36 +59,20 @@ public class AreaLimitByStep : MonoBehaviour, ILangConsumer
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
         player.GoTo(outOfLimit.position);
-        StartCoroutine(Execute());
+
+        dialog.TextGroup = textGroup;
+        StartCoroutine(Execute(player.gameObject));
     }
 
-    IEnumerator Execute()
+    IEnumerator Execute(GameObject who)
     {
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-        {
-            currentIndex = i;
-            UpdateLangTexts();
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-            float elapsedTime = 0;
-
-            while (elapsedTime < delayTime && !clicked)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    clicked = true;
-                }
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-        }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
+        DialogAction result = DialogAction.None;
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        if (result == DialogAction.RemoveDialog)
+            Destroy(this);
     }
 }

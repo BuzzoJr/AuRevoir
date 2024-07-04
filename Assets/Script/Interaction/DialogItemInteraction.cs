@@ -14,6 +14,7 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
     public string targetItem;
     public TextGroup textGroupSuccess = TextGroup.DialogWakeUpCall;
     public TextGroup textGroupFail = TextGroup.DialogWakeUpCall;
+    public bool isDialog = true;
 
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private GameObject thinkingBox;
@@ -67,7 +68,7 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
         }
 
         DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         PlayerController.anim.SetBool("Sit", false);

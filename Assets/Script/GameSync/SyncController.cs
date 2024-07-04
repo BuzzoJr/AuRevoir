@@ -66,7 +66,7 @@ public class SyncController : MonoBehaviour
         mainCamera.SetActive(true);
 
         playerObj.GetComponent<Animator>().SetBool("Crouch", false);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }

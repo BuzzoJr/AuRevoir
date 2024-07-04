@@ -11,6 +11,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
     public bool shouldWalk = true;
     public bool shouldSit = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    public bool isDialog = true;
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private GameObject thinkingBox;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
@@ -60,7 +61,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
         }
 
         DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         PlayerController.anim.SetBool("Sit", false);

@@ -17,13 +17,6 @@ namespace Assets.Script.Dialog
                 }
             },
             {
-                TextGroup.MustTalkToPolice,
-                new List<object>()
-                {
-                    0,
-                }
-            },
-            {
                 TextGroup.CarCrashPoliceOfficer,
                 new List<object>()
                 {
@@ -330,13 +323,6 @@ namespace Assets.Script.Dialog
                     },
                 }
             },
-            {
-                TextGroup.AlreadyDoneTalkToPolice,
-                new List<object>()
-                {
-                    0, 1, 2,
-                }
-            }
         };
     }
 }
