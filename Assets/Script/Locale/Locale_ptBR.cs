@@ -179,7 +179,7 @@ namespace Assets.Script.Locale
                 TextGroup.CarCrashPoliceOfficer,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PoliceOfficer, "Tu não sabe oq a faixa amarela significa não? Não ultrapasse!"),
+                    new TextData(TextType.PoliceOfficer, "Tu não sabe o que a faixa amarela significa não? Não ultrapasse!"),
                     new TextData(TextType.Tristan, "Boa noite, oficial. Sou o Sentinela responsável pela operação de coleta nesse acidente."),
                     new TextData(TextType.PoliceOfficer, "Corporativo, huh. Tem identificação?"),
                     new TextData(TextType.Tristan, "Aqui está..."),

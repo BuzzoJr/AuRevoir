@@ -75,7 +75,7 @@ public class CheatController : MonoBehaviour
         {
             case 1:
 
-                if (int.TryParse(details, out int scene) && scene > 0 && scene < EditorBuildSettings.scenes.Length)
+                if (int.TryParse(details, out int scene) && scene > 0 && scene < SceneManager.sceneCountInBuildSettings)
                 {
                     PopUp($"Loading scene:\n" +
                         $"  - {details}.",
@@ -127,7 +127,7 @@ public class CheatController : MonoBehaviour
             menu = 1;
             PopUp("To load a scene, press the numbers that form the scene id and release Shift.\n" +
                 "List of scenes:" + GetSceneList(),
-                new Vector2(470, 75 + (30 * EditorBuildSettings.scenes.Length)),
+                new Vector2(470, 75 + (30 * SceneManager.sceneCountInBuildSettings)),
                 5f);
             details = "";
         }
@@ -145,10 +145,10 @@ public class CheatController : MonoBehaviour
     private string GetSceneList()
     {
         string list = "";
-        int digits = EditorBuildSettings.scenes.Length.ToString().Length;
-        for (int i = 0; i < EditorBuildSettings.scenes.Length; i++)
+        int digits = SceneManager.sceneCountInBuildSettings.ToString().Length;
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            list += string.Format($"\n  {{0,{digits}}} - {{1}}", i + 1, System.IO.Path.GetFileNameWithoutExtension(EditorBuildSettings.scenes[i].path));
+            list += string.Format($"\n  {{0,{digits}}} - {{1}}", i + 1, System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
         }
         return list;
     }
