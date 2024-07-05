@@ -13,7 +13,7 @@ namespace Assets.Script.Dialog
                 TextGroup.ChatWithHank,
                 new List<object>()
                 {
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, DialogAction.Special, 16, DialogAction.Special, 17, 18, 19, 20, 21, 22, DialogAction.Special, 23, DialogAction.Special
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, DialogAction.Special, 16, DialogAction.Special, 17, 18, 19, 20, 21, 22, DialogAction.Special, 23, 24, DialogAction.Special
                 }
             },
             {
