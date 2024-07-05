@@ -31,6 +31,14 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isPressed = false;
     private string selected;
 
+    public float sensibilityFreq = 0.2f;
+    public float sensibilityAmp = 0.05f;
+    public float sensibilityPos = 0.05f;
+    public AudioSource audiosourceFreq;
+    public AudioSource audiosourceAmp;
+    public AudioSource audiosourcePos;
+
+
     private void Start()
     {
         selected = TypeList.typesStrings[(int)selectedType];
@@ -56,21 +64,24 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 syncEditLine.frequency = valorAtual;
                 valueFrq.text = normalizedValue.ToString("F2");
+                audiosourceFreq.pitch = normalizedValue / 100 + 0.5f;
             }
             else if (selected == "Amplitude")
             {
                 syncEditLine.amplitude = valorAtual;
                 valueAmp.text = normalizedValue.ToString("F2");
+                audiosourceAmp.pitch = normalizedValue / 100 + 0.5f;
             }
             else if (selected == "Position")
             {
                 syncEditLine.position = valorAtual;
                 valuePos.text = normalizedValue.ToString("F2");
+                audiosourcePos.pitch = normalizedValue / 100 + 0.5f;
             }
 
-            if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < 0.05f &&
-                Mathf.Abs(syncEditLine.amplitude - mainLine.amplitude) < 0.003f &&
-                Mathf.Abs(syncEditLine.position - mainLine.position) < 0.003f)
+            if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < sensibilityFreq &&
+                Mathf.Abs(syncEditLine.amplitude - mainLine.amplitude) < sensibilityAmp &&
+                Mathf.Abs(syncEditLine.position - mainLine.position) < sensibilityPos)
             {
                 blockLabel.SetActive(true);
                 sucessoLabel.SetActive(true);

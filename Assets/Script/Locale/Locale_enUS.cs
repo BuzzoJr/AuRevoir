@@ -174,7 +174,7 @@ namespace Assets.Script.Locale
                 TextGroup.MustTalkToPolice,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PoliceOfficer, "Stop right there! This area is for police members only."),
+                    new TextData(TextType.PoliceOfficer, "This is a restricted area, authorized members only."),
                 }
             },
             {

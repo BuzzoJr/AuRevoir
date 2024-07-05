@@ -226,7 +226,7 @@ namespace Assets.Script.Dialog
                 else
                 {
                     DialogText.text += line[i];
-                    yield return new WaitForSeconds(0.05f); // adjust this value to control typing speed
+                    yield return new WaitForSeconds(0.035f); // adjust this value to control typing speed
                 }
             }
             typingSound.Stop();
