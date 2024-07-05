@@ -40,10 +40,13 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     private void Awake()
     {
+        bool needToActivate = playerPos.gameObject.activeSelf;
+
         if (dialogBox)
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
 
-        playerPos.gameObject.SetActive(false);
+        if(needToActivate)
+            playerPos.gameObject.SetActive(false);
 
         if (playerData.previousScene != null)
         {
@@ -59,7 +62,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
             }
         }
 
-        playerPos.gameObject.SetActive(true);
+        if(needToActivate)
+            playerPos.gameObject.SetActive(true);
 
         playerData.previousScene = SceneManager.GetActiveScene().name;
 
