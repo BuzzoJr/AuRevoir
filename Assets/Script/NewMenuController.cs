@@ -93,6 +93,14 @@ public class NewMenuController : MonoBehaviour
 
             audioMixer.SetFloat("Music", dB);
         }
+
+        // Remover inventário
+        if (Inventory.instance != null)
+            Destroy(Inventory.instance.gameObject);
+        if (Documents.instance != null)
+            Destroy(Documents.instance.gameObject);
+        if (Notes.instance != null)
+            Destroy(Notes.instance.gameObject);
     }
 
     void Update()

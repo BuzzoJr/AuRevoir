@@ -2,7 +2,6 @@ using Assets.Script;
 using System;
 using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,7 +74,7 @@ public class CheatController : MonoBehaviour
         {
             case 1:
 
-                if (int.TryParse(details, out int scene) && scene > 0 && scene < SceneManager.sceneCountInBuildSettings)
+                if (int.TryParse(details, out int scene) && scene > 0 && scene <= SceneManager.sceneCountInBuildSettings)
                 {
                     PopUp($"Loading scene:\n" +
                         $"  - {details}.",
