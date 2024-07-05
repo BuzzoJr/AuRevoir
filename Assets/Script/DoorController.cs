@@ -90,7 +90,9 @@ public class DoorController : MonoBehaviour, ILangConsumer
 
     IEnumerator DelayTransition()
     {
-        globalObj.SetActive(false);
+        if(globalObj != null)
+            globalObj.SetActive(false);
+
         transObj.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Scenes/" + moveRef.ToString());

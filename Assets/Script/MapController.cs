@@ -85,6 +85,7 @@ public class MapController : MonoBehaviour
         {
             PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
 
+            //Provavelmente vai ter q add o esquema do almas para carregar corretamente o video antes de dar play, para n aparecer o video anterior
             if(finalDestiny == 1) {
                 videoTransition1.SetActive(true);
                 yield return new WaitForSeconds(4f);
