@@ -1027,6 +1027,9 @@ namespace Assets.Script.Locale
                     new TextData("Official launch still in 2024"),
                     new TextData("Go back to menu"),
                     new TextData("Scan the QR code to add to your wish list:"),
+                    new TextData("Developed by:"),
+                    new TextData("Eric Gama Muller\nLeonardo André Pedroso\nOsny Buzzo Junior\n\n\nLucas Ryan Guszak Stanczyk Brito... 3D Characters\nMariana Pereira Santos... 2D Art\nSamuel Santos Ferraz... 3D Scenarios\nPedro Henrique Liebl Araujo... Music and SFX"),
+                    new TextData("In colaboration with:"),
                 }
             },
             {

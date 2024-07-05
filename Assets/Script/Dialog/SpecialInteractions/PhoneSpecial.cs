@@ -35,9 +35,7 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
 
         if(DEMO) {  //FIM DA DEMO
             allCanvas.SetActive(true);
-            //Desabilitar inventory items
-            //Link/QR Code para wishlist
-            //Add sons/musica
+            
         }
         else {
             GameManager.Instance.UpdateSong(IntroductionSong);
