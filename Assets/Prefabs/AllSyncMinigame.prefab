@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1128419044}
   - component: {fileID: 1128419043}
   - component: {fileID: 1128419046}
+  - component: {fileID: 1581912982}
   m_Layer: 0
   m_Name: MaskMale
   m_TagString: Untagged
@@ -119,6 +120,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1581912982
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128419041}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d25d2347bec888046b436af3e2a2e94d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.05
+  m_Pitch: 0.8
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &191436527230097877
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +912,7 @@ MonoBehaviour:
   xLimits: {x: 0, y: 1}
   frequency: 1
   amplitude: 0.1
-  speed: 3
+  position: 0
   points: 75
 --- !u!1 &932388669512072282
 GameObject:
@@ -1025,7 +1122,7 @@ GameObject:
   - component: {fileID: 932388669611638686}
   - component: {fileID: 2799904785285396469}
   m_Layer: 5
-  m_Name: SpeedTitle
+  m_Name: PositionTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,7 +1177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed
+  m_text: Position
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb33317a85a98a54ca0f60929021243b, type: 2}
   m_sharedMaterial: {fileID: -9221519486757664960, guid: eb33317a85a98a54ca0f60929021243b,
@@ -1163,7 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textGroup: 90
-  index: 1
+  index: 2
 --- !u!1 &932388669622259693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,9 +1729,8 @@ MonoBehaviour:
   blockLabel: {fileID: 932388671037680517}
   valueFrq: {fileID: 932388671312261536}
   valueAmp: {fileID: 932388670166691352}
-  valueSpd: {fileID: 0}
+  valuePos: {fileID: 0}
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  rotationSpeed: -65
   minValue: 0.1
   maxValue: 0.35
 --- !u!1 &932388669866494264
@@ -1789,7 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textGroup: 90
-  index: 2
+  index: 3
 --- !u!1 &932388669911582144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2418,7 @@ GameObject:
   - component: {fileID: 932388670164996303}
   - component: {fileID: 932388670164996302}
   m_Layer: 5
-  m_Name: SpeedBtn
+  m_Name: PositionBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2407,11 +2503,10 @@ MonoBehaviour:
   blockLabel: {fileID: 932388671037680517}
   valueFrq: {fileID: 0}
   valueAmp: {fileID: 0}
-  valueSpd: {fileID: 932388670323114328}
+  valuePos: {fileID: 932388670323114328}
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  rotationSpeed: -65
-  minValue: 3
-  maxValue: 4
+  minValue: 0
+  maxValue: 0.3
 --- !u!1 &932388670166691354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2655,7 @@ GameObject:
   - component: {fileID: 932388670323114329}
   - component: {fileID: 932388670323114328}
   m_Layer: 5
-  m_Name: SpdValue
+  m_Name: PositionValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3556,6 +3651,7 @@ GameObject:
   - component: {fileID: 932388670880804702}
   - component: {fileID: 932388670880804700}
   - component: {fileID: 932388670880804703}
+  - component: {fileID: 7237973444848229668}
   m_Layer: 5
   m_Name: AmpTitle
   m_TagString: Untagged
@@ -3682,6 +3778,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7237973444848229668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932388670880804697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cca5352b80d3a4ab978998c0c4437c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textGroup: 90
+  index: 1
 --- !u!1 &932388670886426045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,7 +4013,7 @@ MonoBehaviour:
   xLimits: {x: 0, y: 1}
   frequency: 3
   amplitude: 0.25
-  speed: 3.5
+  position: 0.15
   points: 75
 --- !u!1 &932388670963456504
 GameObject:
@@ -4055,7 +4165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textGroup: 90
-  index: 3
+  index: 4
 --- !u!1 &932388671037680517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,9 +4914,8 @@ MonoBehaviour:
   blockLabel: {fileID: 932388671037680517}
   valueFrq: {fileID: 932388671312261536}
   valueAmp: {fileID: 932388670166691352}
-  valueSpd: {fileID: 0}
+  valuePos: {fileID: 0}
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  rotationSpeed: -65
   minValue: 1
   maxValue: 5
 --- !u!1 &932388671384900941
