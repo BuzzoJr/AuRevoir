@@ -102,8 +102,9 @@ namespace Assets.Script.Locale
                 {
                     new TextData("UPLOAD ROOM"),
                     new TextData("SELECT A\nSUBJECT"),
-                    new TextData("Cobaia: 31s9x0\nRanque: Platina\nMemória: 1.3 PB\nMorte: Acidente de carro"),
-                    new TextData("ESCOLHA UM CLIENTE\nantes de começar"),
+                    new TextData("Subject: 31s9x0\nRank: Platinum\nMemory size: 1.3 PB\nDeath: Car accident"),
+                    new TextData("CHOSE A CLIENT\nbefore start"),
+                    new TextData("INITIATE\nUPLOAD"),
                 }
             },
             {
