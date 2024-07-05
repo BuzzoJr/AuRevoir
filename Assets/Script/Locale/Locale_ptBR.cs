@@ -90,10 +90,11 @@ namespace Assets.Script.Locale
                 TextGroup.SyncWave,
                 new List<TextData>()
                 {
-                    new TextData("Frequência"),
-                    new TextData("Posição"),
+                    new TextData("Frequencia"),
+                    new TextData("Amplitude"),
+                    new TextData("Posicao"),
                     new TextData("Sincronize as ondas"),
-                    new TextData("Sincronização finalizada"),
+                    new TextData("Sincronizacao finalizada"),
                 }
             },
             {
