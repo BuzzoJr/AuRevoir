@@ -18,6 +18,7 @@ public class SyncController : MonoBehaviour
     public GameObject playerObj;
     public GameObject mainCamera;
     public GameObject childObj, canvasAll, canvasText, canvasBtn, maskObj, manHolog;
+    public AudioSource audioOff;
 
     void Awake()
     {
@@ -60,6 +61,7 @@ public class SyncController : MonoBehaviour
 
         canvasAll.GetComponent<Canvas>().sortingOrder = 0;
         mapAnim.SetTrigger("Exit");
+        audioOff.Play();
         yield return new WaitForSeconds(1f);
 
         childObj.SetActive(false);

@@ -11,6 +11,7 @@ public class MapController : MonoBehaviour
     public GameObject videoTransition1, videoTransition0;
     public GameObject[] selectLabel;
     public List<int> sceneBuildIndexList; //ALTERAR FUTURAMENTE PARA TER AS ID'S CORRETAS!!
+    public AudioSource audioOn, audioOff;
 
     [Header("Hide/Show elements")]
     public PlayerData playerData;
@@ -44,6 +45,7 @@ public class MapController : MonoBehaviour
     { //Garante que nao de LoadScene se clicar no msm lugar
         mainCam = GameObject.FindWithTag("MainCamera");
         labelsCanvas.SetActive(true);
+        audioOn.Play();
 
         for (int i = 0; i < Mathf.Min(elementsSteps.Count, elementsCanvas.Count, elements3D.Count); i++)
         {
@@ -76,6 +78,7 @@ public class MapController : MonoBehaviour
     {
         labelsCanvas.SetActive(false);
         mapAnim.SetTrigger("Exit");
+        audioOff.Play();
         yield return new WaitForSeconds(0.3f);
 
         int curScene = SceneManager.GetActiveScene().buildIndex;
