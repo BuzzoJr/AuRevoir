@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee92690fa03c5db4e8f492f5b464feba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 25
 --- !u!1001 &19374168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9616,7 +9617,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 2
-  LavanderiaClip: {fileID: 0}
 --- !u!4 &1539274403
 Transform:
   m_ObjectHideFlags: 0
@@ -11510,6 +11510,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 65
   dialogBox: {fileID: 2003920503}
+  ThinkingBox: {fileID: 0}
 --- !u!1 &1729669423
 GameObject:
   m_ObjectHideFlags: 0
@@ -19022,9 +19023,10 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 5657988275621963507}
   HasText: 1
-  textGroup: 62
+  textGroup: 68
   dialogBox: {fileID: 2003920503}
   audioSource: {fileID: 0}
+  backgroundMusic: {fileID: 0}
 --- !u!114 &5657988275288791358
 MonoBehaviour:
   m_ObjectHideFlags: 0
