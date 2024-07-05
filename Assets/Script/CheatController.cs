@@ -77,7 +77,7 @@ public class CheatController : MonoBehaviour
                 if (int.TryParse(details, out int scene) && scene > 0 && scene <= SceneManager.sceneCountInBuildSettings)
                 {
                     PopUp($"Loading scene:\n" +
-                        $"  - {details}.",
+                        $"  - {scene}: {System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(scene - 1))}",
                         new Vector2(250, 75),
                         2f);
 
@@ -96,7 +96,7 @@ public class CheatController : MonoBehaviour
                 if (int.TryParse(details, out int step) && Enum.IsDefined(typeof(GameSteps), step))
                 {
                     PopUp($"Adding step:\n" +
-                        $"  - {details}.",
+                        $"  - {step}: {(GameSteps)step}",
                         new Vector2(250, 75),
                         2f);
 
@@ -147,7 +147,7 @@ public class CheatController : MonoBehaviour
         int digits = SceneManager.sceneCountInBuildSettings.ToString().Length;
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            list += string.Format($"\n  {{0,{digits}}} - {{1}}", i + 1, System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
+            list += string.Format($"\n  {{0,{digits}}} - {{1}}", i + 1, System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
         }
         return list;
     }
