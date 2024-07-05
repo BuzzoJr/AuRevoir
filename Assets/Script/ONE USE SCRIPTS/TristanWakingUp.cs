@@ -15,6 +15,7 @@ public class TristanWakingUp : MonoBehaviour
     [SerializeField] private GameObject thinkingBox;
 
     public GameObject playableTristan; // Assign this in the Inspector
+    public bool pesadelo = true;
     private Animator animator;
     private Dialog dialog;
 
@@ -45,14 +46,17 @@ public class TristanWakingUp : MonoBehaviour
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
-        yield return new WaitForSeconds(6.3f); //Wake + Idle 0.3f
-
-        DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(gameObject, (value) => result = value, isDialog));
+        if(pesadelo) {
+            yield return new WaitForSeconds(6.3f); //Wake + Idle 0.3f
+            DialogAction result = DialogAction.None;
+            yield return StartCoroutine(dialog.Execute(gameObject, (value) => result = value, isDialog));
+        }
+        else {
+            yield return new WaitForSeconds(10f); //Scare + Layingdown
+        }
 
         playableTristan.SetActive(true);
-        Destroy(this.gameObject);
-
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Destroy(this.gameObject);
     }
 }
