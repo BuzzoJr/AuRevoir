@@ -71,7 +71,7 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if ((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
             (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
-            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f))
+            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.025f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.025f))
             {
 
                 blockLabel.SetActive(true);

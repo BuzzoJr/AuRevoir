@@ -1004,6 +1004,7 @@ namespace Assets.Script.Locale
                     new TextData("Obrigado por jogar a demo!"),
                     new TextData("Lançamento oficial ainda em 2024"),
                     new TextData("Volte para o menu"),
+                    new TextData("Leia o QR code para adicionar na sua lista de desejos:"),
                 }
             },
             {
