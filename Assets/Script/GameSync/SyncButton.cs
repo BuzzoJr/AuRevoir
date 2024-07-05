@@ -9,10 +9,10 @@ public class TypeList
     {
         FRQ = 0,
         AMP = 1,
-        SPD = 2
+        POS = 2,
     }
 
-    public static readonly string[] typesStrings = { "Frequency", "Amplitude", "Speed" };
+    public static readonly string[] typesStrings = { "Frequency", "Amplitude", "Position" };
 };
 
 public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -22,9 +22,8 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public SyncWave mainLine;
     public TypeList.types selectedType;
     public GameObject sucessoLabel, blockLabel;
-    public TMP_Text valueFrq, valueAmp, valueSpd;
+    public TMP_Text valueFrq, valueAmp, valuePos;
     public Material finalLine;
-    public float rotationSpeed = 10f;
     public float minValue;
     public float maxValue;
     private float currentRotation = 0f;
@@ -63,23 +62,22 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 syncEditLine.amplitude = valorAtual;
                 valueAmp.text = normalizedValue.ToString("F2");
             }
-            else if (selected == "Speed")
+            else if (selected == "Position")
             {
-                syncEditLine.speed = valorAtual;
-                valueSpd.text = normalizedValue.ToString("F2");
+                syncEditLine.position = valorAtual;
+                valuePos.text = normalizedValue.ToString("F2");
             }
 
-            if ((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
-            (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
-            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.025f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.025f))
+            if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < 0.05f &&
+                Mathf.Abs(syncEditLine.amplitude - mainLine.amplitude) < 0.003f &&
+                Mathf.Abs(syncEditLine.position - mainLine.position) < 0.003f)
             {
-
                 blockLabel.SetActive(true);
                 sucessoLabel.SetActive(true);
                 isPressed = false;
                 syncEditLine.frequency = mainLine.frequency;
                 syncEditLine.amplitude = mainLine.amplitude;
-                syncEditLine.speed = mainLine.speed;
+                syncEditLine.position = mainLine.position;
                 syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
                 mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
                 controller.EndSync();

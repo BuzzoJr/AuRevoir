@@ -91,7 +91,7 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("Frequency"),
-                    new TextData("Speed"),
+                    new TextData("Position"),
                     new TextData("Sync the waves"),
                     new TextData("Syncronization Finished"),
                 }
