@@ -40,6 +40,7 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
         animRoom.GetComponent<Animator>().enabled = true;
         player.transform.LookAt(target);
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Animator>().SetBool("Pain", true);
 
         yield return new WaitForSeconds(10f);
         SceneManager.LoadScene("C1Bedroom");
