@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class TypeList
@@ -15,7 +12,7 @@ public class TypeList
         SPD = 2
     }
 
-    public static readonly string[] typesStrings = {"Frequency", "Amplitude", "Speed"};
+    public static readonly string[] typesStrings = { "Frequency", "Amplitude", "Speed" };
 };
 
 public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -44,17 +41,11 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isPressed)
         {
-            // Captura o movimento do mouse
-            float mouseX = Input.GetAxis("Mouse X");
-
-            // Calcula o ângulo de rotação baseado no movimento do mouse
-            float rotationAmount = mouseX * rotationSpeed; // Inverter a direção da rotação
-
-            // Atualiza o ângulo de rotação
-            currentRotation += rotationAmount;
+            // Encontra o angulo entre o knob e o mouse
+            int angle = Mathf.FloorToInt(180f + Vector2.SignedAngle(Vector2.up, new Vector2(Input.mousePosition.x, Input.mousePosition.y) - new Vector2(transform.position.x, transform.position.y)));
 
             // Limita a rotação entre 0 e 360 graus
-            currentRotation = Mathf.Clamp(currentRotation, 0f, 360f);
+            currentRotation = Mathf.Clamp(angle, 0f, 360f);
 
             // Aplica a rotação ao botão
             transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
@@ -62,22 +53,26 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             valorAtual = GetValueBasedOnAngle(currentRotation);
             float normalizedValue = NormalizeToRange(valorAtual, minValue, maxValue, 0f, 100f);
 
-            if (selected == "Frequency") {
+            if (selected == "Frequency")
+            {
                 syncEditLine.frequency = valorAtual;
                 valueFrq.text = normalizedValue.ToString("F2");
             }
-            else if (selected == "Amplitude") {
+            else if (selected == "Amplitude")
+            {
                 syncEditLine.amplitude = valorAtual;
                 valueAmp.text = normalizedValue.ToString("F2");
             }
-            else if (selected == "Speed") {
+            else if (selected == "Speed")
+            {
                 syncEditLine.speed = valorAtual;
                 valueSpd.text = normalizedValue.ToString("F2");
             }
 
-            if((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
+            if ((Mathf.Round(syncEditLine.frequency * 100f) / 100f >= mainLine.frequency - 0.025f && Mathf.Round(syncEditLine.frequency * 100f) / 100f <= mainLine.frequency + 0.025f) &&
             (Mathf.Round(syncEditLine.amplitude * 100f) / 100f == mainLine.amplitude) &&
-            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f)) {
+            (Mathf.Round(syncEditLine.speed * 100f) / 100f >= mainLine.speed - 0.01f && Mathf.Round(syncEditLine.speed * 100f) / 100f <= mainLine.speed + 0.01f))
+            {
 
                 blockLabel.SetActive(true);
                 sucessoLabel.SetActive(true);
