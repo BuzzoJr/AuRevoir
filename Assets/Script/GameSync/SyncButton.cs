@@ -65,18 +65,22 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 syncEditLine.frequency = valorAtual;
                 valueFrq.text = normalizedValue.ToString("F2");
                 audiosourceFreq.pitch = normalizedValue / 100 + 0.5f;
+                //50
             }
             else if (selected == "Amplitude")
             {
                 syncEditLine.amplitude = valorAtual;
                 valueAmp.text = normalizedValue.ToString("F2");
-                audiosourceAmp.pitch = normalizedValue / 100 + 0.5f;
+                audiosourceAmp.pitch = (normalizedValue - 10) / 100 + 0.5f;
+                //60
             }
             else if (selected == "Position")
             {
                 syncEditLine.position = valorAtual;
                 valuePos.text = normalizedValue.ToString("F2");
                 audiosourcePos.pitch = normalizedValue / 100 + 0.5f;
+                //50
+
             }
 
             if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < sensibilityFreq &&
