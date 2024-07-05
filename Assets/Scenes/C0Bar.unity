@@ -5077,6 +5077,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 40
+--- !u!224 &562357327 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5829503704952912893, guid: b93df8a5a74d1174aa1522312c89d798,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746619695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &568828085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7106,6 +7112,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 760133592}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &761618058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761618059}
+  - component: {fileID: 761618061}
+  - component: {fileID: 761618060}
+  m_Layer: 5
+  m_Name: CameraImage_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &761618059
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761618058}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840544947}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1820, y: 980}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &761618060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761618058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: e4598a7a56d797e419402a139e0e2e5f, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &761618061
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761618058}
+  m_CullTransparentMesh: 1
 --- !u!1001 &764041954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17655,6 +17734,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5829503705237518940, guid: b93df8a5a74d1174aa1522312c89d798,
+        type: 3}
+      propertyPath: videoTransition0
+      value: 
+      objectReference: {fileID: 1840544946}
+    - target: {fileID: 5829503705237518940, guid: b93df8a5a74d1174aa1522312c89d798,
+        type: 3}
+      propertyPath: videoTransition1
+      value: 
+      objectReference: {fileID: 1825931214}
     - target: {fileID: 5829503705237518941, guid: b93df8a5a74d1174aa1522312c89d798,
         type: 3}
       propertyPath: m_RootOrder
@@ -17714,11 +17803,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AllMaps
-      objectReference: {fileID: 0}
-    - target: {fileID: 5829503705237518942, guid: b93df8a5a74d1174aa1522312c89d798,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93df8a5a74d1174aa1522312c89d798, type: 3}
@@ -18532,6 +18616,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1822487627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1825931214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1825931214, guid: b93df8a5a74d1174aa1522312c89d798,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746619695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834534699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18725,6 +18815,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1837172830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1840544946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840544947}
+  - component: {fileID: 1840544948}
+  m_Layer: 5
+  m_Name: Transicao Car_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1840544947
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840544946}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 761618059}
+  m_Father: {fileID: 562357327}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!328 &1840544948
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840544946}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 0ba4276decbc65346a93316d74fd2d1a, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: e4598a7a56d797e419402a139e0e2e5f, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!4 &1843330494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9cb634f2747534b47870511b7daedee7,

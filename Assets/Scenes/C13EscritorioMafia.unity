@@ -952,6 +952,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 43
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
 --- !u!1001 &323515925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2199,6 +2200,7 @@ MonoBehaviour:
   HasText: 0
   textGroup: 3
   dialogBox: {fileID: 0}
+  ThinkingBox: {fileID: 0}
 --- !u!65 &925943774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3451,6 +3453,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 45
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
 --- !u!65 &1221137621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3710,6 +3713,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 44
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
 --- !u!65 &1271905429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3988,6 +3992,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 46
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
 --- !u!65 &1375939226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4056,6 +4061,7 @@ MonoBehaviour:
   HasText: 1
   textGroup: 47
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
 --- !u!65 &1401331698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5959,6 +5965,9 @@ MonoBehaviour:
   shouldWalk: 1
   textGroup: 42
   dialogBox: {fileID: 1248431562}
+  ThinkingBox: {fileID: 0}
+  lookAtObj: {fileID: 0}
+  HasText: 1
   CustomWalkOffset: {x: -3, y: 0, z: 0}
 --- !u!65 &2143996938
 BoxCollider:
@@ -9770,6 +9779,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1167324654, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281749925, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373809753878706107, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4357632719592448451, guid: 17868ca8f286bc54b81104eb68ba8cc3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9904,6 +9926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402297950286472061, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}

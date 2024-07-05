@@ -8,6 +8,7 @@ public class MapController : MonoBehaviour
 {
     public Animator mapAnim;
     public GameObject labelsCanvas;
+    public GameObject videoTransition1, videoTransition0;
     public GameObject[] selectLabel;
     public List<int> sceneBuildIndexList; //ALTERAR FUTURAMENTE PARA TER AS ID'S CORRETAS!!
 
@@ -83,6 +84,16 @@ public class MapController : MonoBehaviour
         if (!exit && curScene != sceneBuildIndexList[finalDestiny])
         {
             PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
+
+            if(finalDestiny == 1) {
+                videoTransition1.SetActive(true);
+                yield return new WaitForSeconds(4f);
+            }
+            else {
+                videoTransition0.SetActive(true);
+                yield return new WaitForSeconds(4f);
+            }
+
             SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
         }
         else
@@ -99,6 +110,8 @@ public class MapController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        videoTransition1.SetActive(false);
+        videoTransition0.SetActive(false);
         labelsCanvas.SetActive(true);
         gameObject.SetActive(false);
     }
