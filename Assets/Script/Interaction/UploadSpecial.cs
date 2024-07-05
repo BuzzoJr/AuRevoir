@@ -19,6 +19,8 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
     public AnalogGlitchVolume analogGlitch;
     public DigitalGlitchVolume digitalGlitch;
 
+    public AudioSource somLoading;
+
     private void Start()
     {
         analogGlitchVolume.profile.TryGet(out analogGlitch);
@@ -91,7 +93,7 @@ public class UploadSpecial : MonoBehaviour, IUseSpecial
         yield return new WaitForSeconds(1f);
         //Aqui parar som de glitch
         blackScreen.SetActive(true);
-        allCanvasUpload.SetActive(false);
+        somLoading.Stop();
         yield return new WaitForSeconds(3f);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         SceneManager.LoadScene("C0Bedroom");
