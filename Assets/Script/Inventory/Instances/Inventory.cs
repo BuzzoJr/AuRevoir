@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour, ILangConsumer
 {
@@ -168,7 +169,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
                 }
             }
         }
-        if (currentState == GameManager.GameState.Playing)
+        if (currentState == GameManager.GameState.Playing && SceneManager.GetActiveScene().name != "C0Bedroom" && SceneManager.GetActiveScene().name != "C0Livingroom")
         {
             inventoryBag.SetActive(true);
         }
@@ -180,6 +181,9 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
     public void OpenInventory(bool open = true, int index = 0)
     {
+        if (SceneManager.GetActiveScene().name == "C0Bedroom" || SceneManager.GetActiveScene().name == "C0Livingroom")
+            return;
+
         inventoryUI.SetActive(open);
         GameObject ply = GameObject.FindWithTag("Player");
 
