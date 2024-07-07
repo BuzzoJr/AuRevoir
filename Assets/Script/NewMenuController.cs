@@ -94,7 +94,7 @@ public class NewMenuController : MonoBehaviour
             audioMixer.SetFloat("Music", dB);
         }
 
-        // Remover inventário
+        // Remover inventï¿½rio
         if (Inventory.instance != null)
             Destroy(Inventory.instance.gameObject);
         if (Documents.instance != null)
@@ -105,7 +105,7 @@ public class NewMenuController : MonoBehaviour
 
     void Update()
     {
-        // Ativa o botão de continuar quando terminou a animação do rollup
+        // Ativa o botï¿½o de continuar quando terminou a animaï¿½ï¿½o do rollup
         if (panelTxt.activeSelf && animTextIntro.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !continueBtn.activeSelf && panelButton.activeSelf)
         {
             starBtn.SetActive(false);
@@ -140,6 +140,7 @@ public class NewMenuController : MonoBehaviour
     {
         playerData.ResetData();
         PlayerPrefs.DeleteKey("LastMapSelect");
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         StartCoroutine(WaitStartGame());
     }
 

@@ -44,6 +44,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         if (dialogBox)
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        GameManager.Instance.showingDialog = false;
 
         if(needToActivate)
             playerPos.gameObject.SetActive(false);
