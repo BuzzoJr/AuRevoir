@@ -53,10 +53,17 @@ namespace Assets.Script.Dialog
             DialogBox.SetActive(true);
             Locale.Locale.RegisterConsumer(this);
 
-            if (isDialog)
-                yield return StartCoroutine(ExecuteDialog(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
-            else
-                yield return StartCoroutine(ExecuteText());
+            if (!GameManager.Instance.showingDialog)
+            {
+                GameManager.Instance.showingDialog = true;
+                
+                if (isDialog)
+                    yield return StartCoroutine(ExecuteDialog(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
+                else
+                    yield return StartCoroutine(ExecuteText());
+
+                GameManager.Instance.showingDialog = false;
+            }
 
             Locale.Locale.UnregisterConsumer(this);
 

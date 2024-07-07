@@ -175,7 +175,7 @@ namespace Assets.Script.Locale
                 TextGroup.MustTalkToPolice,
                 new List<TextData>()
                 {
-                    new TextData(TextType.PoliceOfficer, "Área restrita, pessoal autorizado apenas."),
+                    new TextData(TextType.PoliceOfficer, "Área restrita, pessoal credenciado apenas."),
                 }
             },
             {
@@ -197,7 +197,7 @@ namespace Assets.Script.Locale
                 {
                     new TextData(TextType.PoliceOfficer, "Precisa de alguma coisa?"),
                     new TextData(TextType.Tristan, "Não."),
-                    new TextData(TextType.PoliceOfficer, "Então vi logo, termina seu trabalho."),
+                    new TextData(TextType.PoliceOfficer, "Então vai logo, termina seu trabalho."),
                 }
             },
             {
@@ -214,7 +214,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.CarCrashClient, "huh… O que está acontecendo?"),
                     new TextData(TextType.Tristan, "Boa noite Sr. Kyle, sinto muito em informar mas o seu corpo não é mais um portador viável para o cérebro sintético."),
                     new TextData(TextType.Tristan, "Portanto estou aqui para realizar a recuperação."),
-                    new TextData(TextType.CarCrashClient, "Como assim, o que isso significa."),
+                    new TextData(TextType.CarCrashClient, "Como assim? O que isso significa?"),
                     new TextData(TextType.Tristan, "O senhor sofreu um acidente de carro, e seu corpo não está mais funcional."),
                     new TextData(TextType.Tristan, "Mas não se preocupe, o cérebro parece intacto."),
                     new TextData(TextType.CarCrashClient, "Ah... cara. Não deveria ter bebido tanto. A Angélica está bem? A loirinha."),

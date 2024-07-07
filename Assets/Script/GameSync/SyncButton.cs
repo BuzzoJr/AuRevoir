@@ -32,8 +32,8 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private string selected;
 
     public float sensibilityFreq = 0.2f;
-    public float sensibilityAmp = 0.05f;
-    public float sensibilityPos = 0.05f;
+    public float sensibilityAmp = 0.015f;
+    public float sensibilityPos = 0.013f;
     public AudioSource audiosourceFreq;
     public AudioSource audiosourceAmp;
     public AudioSource audiosourcePos;
@@ -82,6 +82,8 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 //50
 
             }
+
+            Debug.Log(Mathf.Abs(syncEditLine.position - mainLine.position));
 
             if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < sensibilityFreq &&
                 Mathf.Abs(syncEditLine.amplitude - mainLine.amplitude) < sensibilityAmp &&

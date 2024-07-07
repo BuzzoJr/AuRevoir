@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameState State;
+    public bool showingDialog = false;
 
     public static event System.Action<GameState> OnGameStateChange;
 

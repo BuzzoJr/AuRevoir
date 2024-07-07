@@ -1362,7 +1362,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4086330183980144675}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &932388669451323334
 LineRenderer:
@@ -2374,9 +2374,9 @@ MonoBehaviour:
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
   minValue: 0.1
   maxValue: 0.35
-  sensibilityFreq: 0.1
-  sensibilityAmp: 0.01
-  sensibilityPos: 0.01
+  sensibilityFreq: 0.2
+  sensibilityAmp: 0.015
+  sensibilityPos: 0.013
   audiosourceFreq: {fileID: 727816092}
   audiosourceAmp: {fileID: 727816092}
   audiosourcePos: {fileID: 727816092}
@@ -3251,9 +3251,9 @@ MonoBehaviour:
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
   minValue: 0
   maxValue: 0.3
-  sensibilityFreq: 0.1
-  sensibilityAmp: 0.01
-  sensibilityPos: 0.01
+  sensibilityFreq: 0.2
+  sensibilityAmp: 0.015
+  sensibilityPos: 0.013
   audiosourceFreq: {fileID: 727816092}
   audiosourceAmp: {fileID: 727816092}
   audiosourcePos: {fileID: 727816092}
@@ -4671,7 +4671,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4086330183980144675}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &932388670886426034
 LineRenderer:
@@ -4798,7 +4798,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.14605522
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5771,9 +5771,9 @@ MonoBehaviour:
   finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
   minValue: 1
   maxValue: 5
-  sensibilityFreq: 0.1
-  sensibilityAmp: 0.01
-  sensibilityPos: 0.01
+  sensibilityFreq: 0.2
+  sensibilityAmp: 0.015
+  sensibilityPos: 0.013
   audiosourceFreq: {fileID: 727816092}
   audiosourceAmp: {fileID: 727816092}
   audiosourcePos: {fileID: 727816092}
@@ -8081,8 +8081,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 932388670886426035}
   - {fileID: 932388669451323328}
+  - {fileID: 932388670886426035}
   - {fileID: 932388669512072287}
   - {fileID: 932388670843948824}
   - {fileID: 932388669699802878}
