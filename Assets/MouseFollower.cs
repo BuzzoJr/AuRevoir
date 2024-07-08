@@ -20,15 +20,21 @@ public class MouseFollower : MonoBehaviour
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
         transform.position = worldPosition;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+        var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
 
-            Ray ray = mainCamera.ScreenPointToRay(viewportPos);
-            if (Physics.Raycast(ray, out RaycastHit hitPoint))
+        Ray ray = mainCamera.ScreenPointToRay(viewportPos);
+        if (Physics.Raycast(ray, out RaycastHit hitPoint))
+        {
+            useItem = hitPoint.transform.GetComponentInChildren<IUseItem>();
+
+            if (useItem is not null)
+                transform.localScale = Vector3.one / 2;
+            else
+                transform.localScale = Vector3.one;
+
+            if (Input.GetMouseButtonDown(0))
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-                useItem = hitPoint.transform.GetComponentInChildren<IUseItem>();
                 if (useItem is not null)
                 {
                     useItem.UseItem(gameObject);
