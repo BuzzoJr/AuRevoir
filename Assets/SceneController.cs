@@ -74,6 +74,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     private void Start()
     {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (IsFirstTimeInScene(gameObject.scene.name))
         {
             if (audioSource != null)

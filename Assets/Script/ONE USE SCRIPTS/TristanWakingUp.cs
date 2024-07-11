@@ -45,14 +45,14 @@ public class TristanWakingUp : MonoBehaviour
     IEnumerator Execute()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-
+        CursorController.inCutscene = true;
         if(pesadelo) {
             yield return new WaitForSeconds(6.3f); //Wake + Idle 0.3f
             DialogAction result = DialogAction.None;
             yield return StartCoroutine(dialog.Execute(gameObject, (value) => result = value, isDialog));
         }
         else {
-            yield return new WaitForSeconds(10f); //Scare + Layingdown
+            yield return new WaitForSeconds(9f); //Scare + Layingdown
         }
 
         playableTristan.SetActive(true);

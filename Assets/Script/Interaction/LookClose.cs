@@ -8,6 +8,7 @@ public class LookClose : MonoBehaviour, ILook
     public bool shouldWalk = false;
     public Transform mainCamera;
     public Transform destinationCamera;
+    public bool goBackToPlaying = true;
 
     public float transitionDuration = 2f;
 
@@ -90,7 +91,8 @@ public class LookClose : MonoBehaviour, ILook
         mainCamera.rotation = originalCamRot;
 
         // Reset the game state to default or whatever is appropriate
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        if(goBackToPlaying)
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     private void runSpecial()

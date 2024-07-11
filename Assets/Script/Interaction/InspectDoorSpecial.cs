@@ -44,7 +44,6 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
         player.GetComponent<Animator>().SetBool("Pain", true);
 
         yield return new WaitForSeconds(badDreamDuration);
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         SceneManager.LoadScene("C1Bedroom");
     }
 }
