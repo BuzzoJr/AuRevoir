@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 [System.Serializable]
 public class TypeList
@@ -83,23 +84,46 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             }
 
-            Debug.Log(Mathf.Abs(syncEditLine.position - mainLine.position));
-
             if (Mathf.Abs(syncEditLine.frequency - mainLine.frequency) < sensibilityFreq &&
                 Mathf.Abs(syncEditLine.amplitude - mainLine.amplitude) < sensibilityAmp &&
                 Mathf.Abs(syncEditLine.position - mainLine.position) < sensibilityPos)
             {
-                blockLabel.SetActive(true);
-                sucessoLabel.SetActive(true);
-                isPressed = false;
-                syncEditLine.frequency = mainLine.frequency;
-                syncEditLine.amplitude = mainLine.amplitude;
-                syncEditLine.position = mainLine.position;
+                //Acertou a resposta
                 syncEditLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
                 mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
-                controller.EndSync();
+                isPressed = false;
+                blockLabel.SetActive(true);
+                sucessoLabel.SetActive(true);
+                StartCoroutine(TransitionToMainLineValues());
             }
         }
+    }
+
+    private IEnumerator TransitionToMainLineValues()
+    {
+        float timer = 0f;
+        float initialFreq = syncEditLine.frequency;
+        float initialAmp = syncEditLine.amplitude;
+        float initialPos = syncEditLine.position;
+
+        while (timer < 3f)
+        {
+            timer += Time.deltaTime;
+
+            float t = timer / 3f;
+
+            syncEditLine.frequency = Mathf.Lerp(initialFreq, mainLine.frequency, t);
+            syncEditLine.amplitude = Mathf.Lerp(initialAmp, mainLine.amplitude, t);
+            syncEditLine.position = Mathf.Lerp(initialPos, mainLine.position, t);
+
+            yield return null;
+        }
+
+        syncEditLine.frequency = mainLine.frequency;
+        syncEditLine.amplitude = mainLine.amplitude;
+        syncEditLine.position = mainLine.position;
+
+        controller.EndSync();
     }
 
     private float GetValueBasedOnAngle(float angle)
