@@ -13,6 +13,7 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
     public GameObject player;
     public Transform target;
     public float transitionDuration = 2f;
+    public float badDreamDuration = 7f;
 
     public void LookSpecial(GameObject who)
     {
@@ -26,7 +27,7 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
 
         // Update game state to Interacting
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-
+        CursorController.inCutscene = true;
         // Wait for 1 second
         yield return new WaitForSeconds(transitionDuration);
 
@@ -42,7 +43,8 @@ public class InspectDoorSpecial : MonoBehaviour, ILookSpecial
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Animator>().SetBool("Pain", true);
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(badDreamDuration);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         SceneManager.LoadScene("C1Bedroom");
     }
 }

@@ -13,13 +13,15 @@ public class StartWalk : MonoBehaviour
     public AudioSource Piss;
     public float timeToWaitRestroom = 5f;
     public AudioSource RestroomAudio;
-
+    public bool isCutscene = true;
     public VideoPlayer screenVideoPlayer;
     public AudioSource screenAudio;
     public List<AudioClip> screenAudioClips;
 
     void Start()
     {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+        CursorController.inCutscene = isCutscene;
         screenAudio.clip = screenAudioClips[(int)Locale.Lang];
         screenVideoPlayer.Play();
         screenAudio.Play();
@@ -32,6 +34,7 @@ public class StartWalk : MonoBehaviour
     public void setPosition()
     {
         controller.GoTo(destination.position, null);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     public void piss()

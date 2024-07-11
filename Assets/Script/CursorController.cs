@@ -1,15 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
     //Controla qual icone de cursor está sendo utilizado
+    public static bool inCutscene = false;
     public static CursorController instance;
     [SerializeField] private Texture2D doorCursor;
     [SerializeField] private Texture2D clickCursor;
     public Camera cam;
     public bool inButton = false;
     private string currentCursor = "null";
-    private GameManager.GameState currentState;
+    //private GameManager.GameState currentState;
 
     private void Awake()
     {
@@ -17,28 +19,37 @@ public class CursorController : MonoBehaviour
         {
             instance = this;
         }
-        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
+        //GameManager.OnGameStateChange += GameManagerOnGameStateChange;
     }
 
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
-    }
+    //void OnDestroy()
+    //{
+    //    GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
+    //}
 
-    private void GameManagerOnGameStateChange(GameManager.GameState state)
-    {
-        currentState = state;
-    }
+    //private void GameManagerOnGameStateChange(GameManager.GameState state)
+    //{
+    //    currentState = state;
+    //}
 
     void Start()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        currentState = GameManager.Instance.State;
     }
 
     void FixedUpdate()
     {
-        if (currentState == GameManager.GameState.Playing && cam.gameObject.activeSelf)
+        if (inCutscene && GameManager.Instance.State == GameManager.GameState.Interacting)
+        {
+            Cursor.visible = false;
+            return;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+
+        if (GameManager.Instance.State == GameManager.GameState.Playing && cam.gameObject.activeSelf)
         {
             if (inButton)
             {

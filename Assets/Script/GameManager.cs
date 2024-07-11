@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     {
         State = newState;
 
+        if(newState == GameState.Playing)
+            CursorController.inCutscene = false;
+
         OnGameStateChange?.Invoke(newState);
     }
 
