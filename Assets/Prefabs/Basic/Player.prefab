@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7917775359963199367}
   - component: {fileID: 7917775359963199374}
   - component: {fileID: 1137218885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -156,6 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   destination: {fileID: 0}
+  originalWalkPitch: 1.08
+  originalRunningPitch: 1.25
   moveByWaypoint: 0
   waypoints: []
 --- !u!82 &7917775359963199374
