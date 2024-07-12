@@ -96,6 +96,7 @@
         UploadRoom,
         EndDemo,
         BadDream,
+        BadDreamCapsule,
     }
 
     public enum ItemGroup
