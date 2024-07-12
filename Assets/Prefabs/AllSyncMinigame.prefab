@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4745098, g: 0.09803922, b: 0.50980395, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -525,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &604701945
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4745098, g: 0.09803922, b: 0.50980395, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -753,7 +753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &995634016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 1156068582}
   - component: {fileID: 1156068583}
   m_Layer: 5
-  m_Name: RadialSliderUI
+  m_Name: RadialSliderUI_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1182,8 +1182,8 @@ RectTransform:
   m_GameObject: {fileID: 1156068581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -795.8}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.8, y: 0.73, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493043080}
   - {fileID: 1566314886}
@@ -1193,8 +1193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -314}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -307.26}
+  m_SizeDelta: {x: 0, y: 13.480011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156068583
 MonoBehaviour:
@@ -1211,25 +1211,11 @@ MonoBehaviour:
   fillImage: {fileID: 1566314887}
   copyFillImage: {fileID: 4570761340960048410}
   handle: {fileID: 779500302}
+  copyhandle: {fileID: 4570761341809833586}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 1581912980}
-  syncEditLine: {fileID: 932388669451323329}
-  mainLine: {fileID: 932388670886426032}
-  sucessoLabel: {fileID: 932388669653842710}
-  blockLabel: {fileID: 932388671037680517}
-  valueFrq: {fileID: 932388671312261536}
-  valueAmp: {fileID: 932388670166691352}
-  valuePos: {fileID: 932388670323114328}
-  finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  audiosourceFreq: {fileID: 1462854898}
-  audiosourceAmp: {fileID: 1462854898}
-  audiosourcePos: {fileID: 1462854898}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: Amp
+  finish: 0
 --- !u!1 &1183100429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1227,7 @@ GameObject:
   - component: {fileID: 1183100430}
   - component: {fileID: 1183100431}
   m_Layer: 5
-  m_Name: RadialSliderUI_2
+  m_Name: RadialSliderUI_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1256,8 +1242,8 @@ RectTransform:
   m_GameObject: {fileID: 1183100429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -795.8}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.76, y: 0.7, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 377341277}
   - {fileID: 1254436380}
@@ -1267,8 +1253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 504, y: -314}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 501.7, y: -301.66492}
+  m_SizeDelta: {x: 4.6000366, y: 24.66983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183100431
 MonoBehaviour:
@@ -1285,25 +1271,11 @@ MonoBehaviour:
   fillImage: {fileID: 1254436381}
   copyFillImage: {fileID: 1704969969}
   handle: {fileID: 1231061264}
+  copyhandle: {fileID: 604701945}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 1581912980}
-  syncEditLine: {fileID: 932388669451323329}
-  mainLine: {fileID: 932388670886426032}
-  sucessoLabel: {fileID: 932388669653842710}
-  blockLabel: {fileID: 932388671037680517}
-  valueFrq: {fileID: 932388671312261536}
-  valueAmp: {fileID: 932388670166691352}
-  valuePos: {fileID: 932388670323114328}
-  finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  audiosourceFreq: {fileID: 47348766}
-  audiosourceAmp: {fileID: 47348766}
-  audiosourcePos: {fileID: 47348766}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: Pos
+  finish: 0
 --- !u!1 &1191758722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1287,7 @@ GameObject:
   - component: {fileID: 1191758723}
   - component: {fileID: 1191758724}
   m_Layer: 5
-  m_Name: RadialSliderUI_2
+  m_Name: RadialSliderUI_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,7 +1300,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191758722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.005417333, y: 0.14166155, z: 0.0378275, w: 0.9891773}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
@@ -1338,7 +1310,7 @@ RectTransform:
   - {fileID: 604701945}
   m_Father: {fileID: 932388669372733742}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 16.3, z: 4.38}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 417, y: -187.7}
@@ -1359,25 +1331,11 @@ MonoBehaviour:
   fillImage: {fileID: 1704969969}
   copyFillImage: {fileID: 0}
   handle: {fileID: 604701945}
+  copyhandle: {fileID: 604701945}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 0}
-  syncEditLine: {fileID: 0}
-  mainLine: {fileID: 0}
-  sucessoLabel: {fileID: 0}
-  blockLabel: {fileID: 0}
-  valueFrq: {fileID: 0}
-  valueAmp: {fileID: 0}
-  valuePos: {fileID: 0}
-  finalLine: {fileID: 0}
-  audiosourceFreq: {fileID: 0}
-  audiosourceAmp: {fileID: 0}
-  audiosourcePos: {fileID: 0}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: 
+  finish: 0
 --- !u!1 &1231061263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4745098, g: 0.09803922, b: 0.50980395, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1886,9 +1844,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584013736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.005417333, y: -0.14166155, z: -0.0378275, w: 0.9891773}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1598006551}
@@ -1896,7 +1854,7 @@ RectTransform:
   - {fileID: 995634016}
   m_Father: {fileID: 932388669372733742}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -16.3, z: -4.38}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -430, y: -187.7}
@@ -1917,25 +1875,11 @@ MonoBehaviour:
   fillImage: {fileID: 543898215}
   copyFillImage: {fileID: 0}
   handle: {fileID: 995634016}
+  copyhandle: {fileID: 0}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 0}
-  syncEditLine: {fileID: 0}
-  mainLine: {fileID: 0}
-  sucessoLabel: {fileID: 0}
-  blockLabel: {fileID: 0}
-  valueFrq: {fileID: 0}
-  valueAmp: {fileID: 0}
-  valuePos: {fileID: 0}
-  finalLine: {fileID: 0}
-  audiosourceFreq: {fileID: 0}
-  audiosourceAmp: {fileID: 0}
-  audiosourcePos: {fileID: 0}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: 
+  finish: 0
 --- !u!1 &1598006550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,8 +2262,8 @@ RectTransform:
   m_GameObject: {fileID: 1942956565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -795.8}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.8, y: 0.7, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 282598086}
   - {fileID: 1752659379}
@@ -2329,8 +2273,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -504, y: -314}
-  m_SizeDelta: {x: -18, y: 0}
+  m_AnchoredPosition: {x: -500.95, y: -298.75006}
+  m_SizeDelta: {x: -24.100006, y: 30.500122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942956567
 MonoBehaviour:
@@ -2347,25 +2291,11 @@ MonoBehaviour:
   fillImage: {fileID: 1752659380}
   copyFillImage: {fileID: 543898215}
   handle: {fileID: 195110700}
+  copyhandle: {fileID: 995634016}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 1581912980}
-  syncEditLine: {fileID: 932388669451323329}
-  mainLine: {fileID: 932388670886426032}
-  sucessoLabel: {fileID: 932388669653842710}
-  blockLabel: {fileID: 932388671037680517}
-  valueFrq: {fileID: 932388671312261536}
-  valueAmp: {fileID: 932388670166691352}
-  valuePos: {fileID: 932388670323114328}
-  finalLine: {fileID: 2100000, guid: 262fbfa4c98328a4b9aa8907b83e86e7, type: 2}
-  audiosourceFreq: {fileID: 727816092}
-  audiosourceAmp: {fileID: 727816092}
-  audiosourcePos: {fileID: 727816092}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: Freq
+  finish: 0
 --- !u!1 &191436527230097877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,7 +3169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388669529332233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3499,6 +3429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 932388669632401706}
+  - component: {fileID: 900657358}
   m_Layer: 5
   m_Name: AllButtons
   m_TagString: Untagged
@@ -3534,6 +3465,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -32}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &900657358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932388669632401749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244351cbf8f1dc14f883585a2c7a9834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1581912980}
+  syncEditLine: {fileID: 932388669451323329}
+  mainLine: {fileID: 932388670886426032}
+  sucessoLabel: {fileID: 932388669653842710}
+  blockLabel: {fileID: 932388671037680517}
+  valueFrq: {fileID: 932388671312261536}
+  valueAmp: {fileID: 932388670166691352}
+  valuePos: {fileID: 932388670323114328}
+  finalLine: {fileID: 2100000, guid: f88500220cea8f74189e968b2cb13cfb, type: 2}
+  audiosourceFreq: {fileID: 727816092}
+  audiosourceAmp: {fileID: 1462854898}
+  audiosourcePos: {fileID: 47348766}
+  sensibilityFreq: 0.2
+  sensibilityAmp: 0.015
+  sensibilityPos: 0.013
+  sliderFreq: {fileID: 1942956567}
+  sliderAmp: {fileID: 1156068583}
+  sliderPos: {fileID: 1183100431}
 --- !u!1 &932388669653842710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,7 +3804,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388669858820809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3908,7 +3869,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fab3abb90d44061489bc9a9c83cdc909, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 0.5
   Loop: 1
   Mute: 0
@@ -4720,7 +4681,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388670164996296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5298,7 +5259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388670454505432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -6308,7 +6269,7 @@ LineRenderer:
   - {x: 1, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.08
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -6816,7 +6777,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388671233012388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7240,7 +7201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932388671376325304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7305,7 +7266,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a41432af54dc1c54a8d3062e82e7398e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.35
   m_Pitch: 0.5
   Loop: 1
   Mute: 0
@@ -9606,7 +9567,7 @@ GameObject:
   - component: {fileID: 4570761341701540847}
   - component: {fileID: 4570761341701540832}
   m_Layer: 5
-  m_Name: RadialSliderUI
+  m_Name: RadialSliderUI_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9650,25 +9611,11 @@ MonoBehaviour:
   fillImage: {fileID: 4570761340960048410}
   copyFillImage: {fileID: 0}
   handle: {fileID: 4570761341809833586}
+  copyhandle: {fileID: 0}
   fillAmount: 0
   maxValue: 360
   radius: 200
-  controller: {fileID: 0}
-  syncEditLine: {fileID: 0}
-  mainLine: {fileID: 0}
-  sucessoLabel: {fileID: 0}
-  blockLabel: {fileID: 0}
-  valueFrq: {fileID: 0}
-  valueAmp: {fileID: 0}
-  valuePos: {fileID: 0}
-  finalLine: {fileID: 0}
-  audiosourceFreq: {fileID: 0}
-  audiosourceAmp: {fileID: 0}
-  audiosourcePos: {fileID: 0}
-  sensibilityFreq: 0.2
-  sensibilityAmp: 0.015
-  sensibilityPos: 0.013
-  typeValue: 
+  finish: 0
 --- !u!1 &4570761341809833585
 GameObject:
   m_ObjectHideFlags: 0
@@ -9686,7 +9633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4570761341809833586
 RectTransform:
   m_ObjectHideFlags: 0
