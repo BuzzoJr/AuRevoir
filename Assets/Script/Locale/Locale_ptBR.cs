@@ -102,8 +102,8 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData("SALA DE UPLOAD"),
-                    new TextData("SELECIONE\nUMA COBAIA"),
-                    new TextData("Cobaia: 31s9x0\nRanque: Platina\nMemória: 1.3 PB\nMorte: Acidente de carro"),
+                    new TextData("SELECIONE\nUMA MENTE"),
+                    new TextData("MENTE: 31s9x0\nRanque: Platina\nMemória: 1.3 PB\nMorte: Acidente de carro"),
                     new TextData("ESCOLHA UM CLIENTE\nantes de começar"),
                     new TextData("INICIAR\nUPLOAD"),
                 }

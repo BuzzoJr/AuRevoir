@@ -15,16 +15,17 @@ public class WaitCarArrival : MonoBehaviour
 
     IEnumerator ExitCar()
     {
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-
+        yield return null;
         player.SetActive(false);
-
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+        CursorController.inCutscene = true;
         yield return new WaitForSeconds(delay);
         livre.SetActive(false);
         ocupado.SetActive(true);
         player.SetActive(true);
         player.GetComponent<Animator>().SetTrigger("ExitCar");
         yield return new WaitForSeconds(4f);
+        CursorController.inCutscene = false;
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 }

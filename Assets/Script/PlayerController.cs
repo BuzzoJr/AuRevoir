@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public Camera cam;
     public Transform destination;
-
+    public float runningDistance = 25f;
     public static NavMeshAgent navMeshAgent;
     private AudioSource audioSource;
     public static Animator anim;
@@ -84,6 +84,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && cam.gameObject.activeSelf)
         {
+            if (CursorController.inCutscene)
+                return;
+
             if (GameManager.Instance.State == GameManager.GameState.Walking)
             {
                 // Cancel walking to interaction
@@ -225,6 +228,10 @@ public class PlayerController : MonoBehaviour
         lookAtTarget = LookAtTarget;
         destination.position = dest;
         navMeshAgent.destination = dest;
+        if(Vector3.Distance(dest, transform.position) > runningDistance && canRun)
+        {
+            running = true;
+        }
     }
 
     private void OpenInteractionWheel(GameObject target)
