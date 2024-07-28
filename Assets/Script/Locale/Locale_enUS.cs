@@ -221,7 +221,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "No sir, she does not have a synthetic brain."), //index 7
                     new TextData(TextType.CarCrashClient, "Ah, damn... I know, I know. Damn, damn, damn."), //index 8
                     new TextData(TextType.TristanThinking, "Tristan can feel the client's sadness."), //index 9
-                    new TextData(TextType.Tristan, "I kindly ask you to stay calm and to make the process smoother."), //index 10
+                    new TextData(TextType.Tristan, "I kindly ask you to stay calm to make the process smoother."), //index 10
                     new TextData(TextType.Tristan, "I am going to ask some questions to verify the integrity of the download."), //index 11
 
                     // Option 1

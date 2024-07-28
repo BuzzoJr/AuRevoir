@@ -221,7 +221,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Tristan, "Não senhor, ela não tem um cérebro sintético."),
                     new TextData(TextType.CarCrashClient, "Ah, droga... eu sei, eu sei, merda merda merda."),
                     new TextData(TextType.TristanThinking, "Tristan pode sentir a tristeza do cliente."),
-                    new TextData(TextType.Tristan, "Peço educadamente que mantenha a calma e para o processo ser mais tranquilo."),
+                    new TextData(TextType.Tristan, "Peço educadamente que mantenha a calma para o processo ser mais tranquilo."),
                     new TextData(TextType.Tristan, "Vou realizar algumas perguntas para averiguar a integridade do download."),
 
                     new TextData(TextType.Tristan, "Qual seu nome?"),
