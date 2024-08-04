@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using DG.Tweening;
 
 [System.Serializable]
 public class TypeList
@@ -93,36 +94,23 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 isPressed = false;
                 blockLabel.SetActive(true);
                 sucessoLabel.SetActive(true);
-                StartCoroutine(TransitionToMainLineValues());
+                AjusteAllLine();
             }
         }
     }
 
-    private IEnumerator TransitionToMainLineValues()
-    {
-        float timer = 0f;
-        float initialFreq = syncEditLine.frequency;
-        float initialAmp = syncEditLine.amplitude;
-        float initialPos = syncEditLine.position;
+    public void AjusteAllLine() {
+        float duration = 3f;
 
-        while (timer < 3f)
-        {
-            timer += Time.deltaTime;
+        DOTween.To(() => syncEditLine.frequency, x => syncEditLine.frequency = x, mainLine.frequency, duration)
+        .SetEase(Ease.Linear);
 
-            float t = timer / 3f;
+        DOTween.To(() => syncEditLine.amplitude, x => syncEditLine.amplitude = x, mainLine.amplitude, duration)
+            .SetEase(Ease.Linear);
 
-            syncEditLine.frequency = Mathf.Lerp(initialFreq, mainLine.frequency, t);
-            syncEditLine.amplitude = Mathf.Lerp(initialAmp, mainLine.amplitude, t);
-            syncEditLine.position = Mathf.Lerp(initialPos, mainLine.position, t);
-
-            yield return null;
-        }
-
-        syncEditLine.frequency = mainLine.frequency;
-        syncEditLine.amplitude = mainLine.amplitude;
-        syncEditLine.position = mainLine.position;
-
-        controller.EndSync();
+        DOTween.To(() => syncEditLine.position, x => syncEditLine.position = x, mainLine.position, duration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => controller.EndSync());
     }
 
     private float GetValueBasedOnAngle(float angle)
