@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Collections;
+using DG.Tweening;
 
 public class SyncWavePuzzle : MonoBehaviour
 {
@@ -59,39 +60,22 @@ public class SyncWavePuzzle : MonoBehaviour
             mainLine.gameObject.GetComponent<LineRenderer>().material = finalLine;
             blockLabel.SetActive(true);
             sucessoLabel.SetActive(true);
-            StartCoroutine(TransitionToMainLineValues());
+            AjusteAllLine();
         }
     }
 
-    private IEnumerator TransitionToMainLineValues()
-    {
-        float timer = 0f;
-        float initialFreq = syncEditLine.frequency;
-        float initialAmp = syncEditLine.amplitude;
-        float initialPos = syncEditLine.position;
+    public void AjusteAllLine() {
+        float duration = 3f;
 
-        while (timer < 3f)
-        {
-            timer += Time.deltaTime;
+        DOTween.To(() => syncEditLine.frequency, x => syncEditLine.frequency = x, mainLine.frequency, duration)
+        .SetEase(Ease.Linear);
 
-            float t = timer / 3f;
+        DOTween.To(() => syncEditLine.amplitude, x => syncEditLine.amplitude = x, mainLine.amplitude, duration)
+            .SetEase(Ease.Linear);
 
-            syncEditLine.frequency = Mathf.Lerp(initialFreq, mainLine.frequency, t);
-            syncEditLine.amplitude = Mathf.Lerp(initialAmp, mainLine.amplitude, t);
-            syncEditLine.position = Mathf.Lerp(initialPos, mainLine.position, t);
-
-            audiosourcePos.volume = Mathf.Lerp(0.3f, 0f, t);
-            audiosourceAmp.volume = Mathf.Lerp(1, 0f, t);
-            audiosourceFreq.volume = Mathf.Lerp(0.35f, 0f, t);
-
-            yield return null;
-        }
-
-        syncEditLine.frequency = mainLine.frequency;
-        syncEditLine.amplitude = mainLine.amplitude;
-        syncEditLine.position = mainLine.position;
-
-        controller.EndSync();
+        DOTween.To(() => syncEditLine.position, x => syncEditLine.position = x, mainLine.position, duration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => controller.EndSync());
     }
 
     private float NormalizeToRange(float value, float min, float max, float newMin, float newMax)

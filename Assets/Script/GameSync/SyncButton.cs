@@ -43,6 +43,7 @@ public class SyncButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Start()
     {
+        DOTween.Init();
         selected = TypeList.typesStrings[(int)selectedType];
     }
 
