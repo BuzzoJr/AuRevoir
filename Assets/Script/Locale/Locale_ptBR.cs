@@ -150,7 +150,7 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Hank, "Ou em se aposentar, pelo jeito."),
                     new TextData(TextType.Tristan, "É, talvez eu me clone para não ter que trabalhar mais."),
                     // Inserir Special pra tocar o celular
-                    new TextData(TextType.CellPhone, "Phone ringing..."),
+                    new TextData(TextType.CellPhone, "Telefone tocando..."),
                     // Inserir Special pra parar de tocar e animar o Tristan como se estivesse atendendo o celular
                     new TextData(TextType.Boss, "Tristan, temos uma situação perto de você."),
                     new TextData(TextType.Tristan, "Certo, uma coleta?"),

@@ -29,6 +29,9 @@ public class SyncWavePuzzle : MonoBehaviour
 
     private void Update()
     {
+        if(finish)
+            return;
+
         float normalizedFreq = NormalizeToRange(sliderFreq.fillAmount, 0f, 1f, 0f, 100f);
         syncEditLine.frequency = NormalizeToRange(sliderFreq.fillAmount, 0f, 1f, 1f, 5f);
         valueFrq.text = normalizedFreq.ToString("F2");
