@@ -555,6 +555,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 13276513}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &55547851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 55547852}
+  - component: {fileID: 55547854}
+  - component: {fileID: 55547853}
+  m_Layer: 0
+  m_Name: Vista
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!4 &55547852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55547851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.93, y: -16.63, z: 59.2}
+  m_LocalScale: {x: 2.55, y: 2.55, z: 2.55}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7495377685509261944}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
+--- !u!114 &55547853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55547851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  textGroup: 98
+  dialogBox: {fileID: 1516802924}
+  ThinkingBox: {fileID: 4357632719355704092}
+  lookAtObj: {fileID: 55547852}
+  HasText: 1
+  CustomWalkOffset: {x: 0, y: 0, z: -3.5}
+--- !u!65 &55547854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55547851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.604773, y: 14.529024, z: 5.3947234}
+  m_Center: {x: 0.13291901, y: -4.860392, z: -2.0082874}
 --- !u!1 &64982480
 GameObject:
   m_ObjectHideFlags: 0
@@ -11781,6 +11846,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 20595608}
+  - {fileID: 55547852}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

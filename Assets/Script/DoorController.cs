@@ -80,7 +80,7 @@ public class DoorController : MonoBehaviour, ILangConsumer
             if (transObj != null)
                 StartCoroutine(DelayTransition());
             else
-                SceneManager.LoadScene("Scenes/" + moveRef.ToString());
+                SceneManager.LoadScene(moveRef.ToString());
         }
         else if (locked)
         {

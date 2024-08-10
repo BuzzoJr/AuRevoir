@@ -98,6 +98,9 @@
         BadDream,
         BadDreamCapsule,
         PolicePhoto,
+        BrainOffice,
+        WaterOffice,
+        SceneOffice,
     }
 
     public enum ItemGroup
