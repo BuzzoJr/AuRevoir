@@ -40,6 +40,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     private void Awake()
     {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         bool needToActivate = playerPos.gameObject.activeSelf;
 
         if (dialogBox)
@@ -74,7 +75,6 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     private void Start()
     {
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (IsFirstTimeInScene(gameObject.scene.name))
         {
             if (audioSource != null)
@@ -108,6 +108,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
                 if (doorToUpload != null)
                     doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
             }
+
+            DeletarFigurantes();
         }
 
         stopRun(gameObject.scene.name);
@@ -180,5 +182,16 @@ public class SceneController : MonoBehaviour, ILangConsumer
         Locale.UnregisterConsumer(this);
         dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+    }
+
+    private void DeletarFigurantes()
+    {
+        GameObject[] figurantes = GameObject.FindGameObjectsWithTag("Figurante");
+
+        // Itera sobre cada objeto encontrado e o destroi
+        foreach (GameObject figurante in figurantes)
+        {
+            Destroy(figurante);
+        }
     }
 }

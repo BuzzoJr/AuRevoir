@@ -37,8 +37,9 @@ public class GameManager : MonoBehaviour
     public void UpdateGameState(GameState newState)
     {
         State = newState;
+        Debug.Log(newState);
 
-        if(newState == GameState.Playing)
+        if (newState == GameState.Playing)
             CursorController.inCutscene = false;
 
         OnGameStateChange?.Invoke(newState);
