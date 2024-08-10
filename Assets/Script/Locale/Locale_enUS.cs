@@ -1049,6 +1049,16 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Why is this here?"),
                 }
             },
+            {
+                TextGroup.PolicePhoto,
+                new List<TextData>()
+                {
+                    new TextData(TextType.PoliceOfficer, "Do you need anything?"),
+                    new TextData(TextType.Tristan, "How many victims were there in this accident?"),
+                    new TextData(TextType.PoliceOfficer, "Just the couple there."),
+                    new TextData(TextType.PoliceOfficer, "Can't you see I'm working here? Can you get out of the way now?"),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

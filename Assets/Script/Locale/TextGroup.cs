@@ -97,6 +97,7 @@
         EndDemo,
         BadDream,
         BadDreamCapsule,
+        PolicePhoto,
     }
 
     public enum ItemGroup
