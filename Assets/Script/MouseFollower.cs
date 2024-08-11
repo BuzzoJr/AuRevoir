@@ -1,7 +1,5 @@
 using Assets.Script.Interaction;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class MouseFollower : MonoBehaviour
 {
@@ -37,11 +35,27 @@ public class MouseFollower : MonoBehaviour
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
                 if (useItem is not null)
                 {
-                    useItem.UseItem(gameObject);
+                    if (!CheckInteractionLimit(hitPoint.transform))
+                        useItem.UseItem(gameObject);
                 }
                 Destroy(this.gameObject);
             }
         }
 
+    }
+
+    private bool CheckInteractionLimit(Transform target)
+    {
+        // Limitar interação
+        foreach (ILimit limiter in target.GetComponentsInChildren<ILimit>())
+        {
+            if (limiter.ShouldLimit(gameObject))
+            {
+                limiter.Limited(gameObject);
+                return true;
+            }
+        }
+
+        return false;
     }
 }
