@@ -101,6 +101,9 @@
         BrainOffice,
         WaterOffice,
         SceneOffice,
+        InspectOfficeDrawer,
+        InspectOfficeBoard,
+        InspectOfficeSofa,
     }
 
     public enum ItemGroup

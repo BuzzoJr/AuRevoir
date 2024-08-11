@@ -314,6 +314,28 @@ namespace Assets.Script.Locale
                     new TextData(TextType.Boss, "Go to the upload room and finish the job."),
                 }
             },
+            {
+                TextGroup.InspectOfficeDrawer,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Better not to touch these documents."),
+                    new TextData(TextType.TristanThinking, "Maybe she'll ask me to tidy up later."),
+                }
+            },
+            {
+                TextGroup.InspectOfficeBoard,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "The amount of cases is definitely decreasing by the day."),
+                }
+            },
+            {
+                TextGroup.InspectOfficeSofa,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "If the boss catches me resting without finishing my work, I'm going to be in trouble."),
+                }
+            },
             // Chapter 1 - Scene C2
             {
                 TextGroup.ShouldOpenDoorInNightmareLivingroom,
