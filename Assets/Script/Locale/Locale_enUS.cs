@@ -1129,9 +1129,9 @@ namespace Assets.Script.Locale
                 TextGroup.PoliceCar,
                 new List<TextData>()
                 {
-                    new TextData(TextType.TristanThinking, "The police are getting more and more on Au Revoir's case."),
+                    new TextData(TextType.TristanThinking, "The police are getting more and more on Au Revoir's tail."),
                     new TextData(TextType.TristanThinking, "They should be grateful they can now interrogate the dead."),
-                    new TextData(TextType.TristanThinking, "Still, they don't like how we mess with their work."),
+                    new TextData(TextType.TristanThinking, "However, they don't like the way we mess with their work."),
                 }
             },
         };

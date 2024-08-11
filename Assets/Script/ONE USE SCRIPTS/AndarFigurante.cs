@@ -58,10 +58,12 @@ public class AndarFigurante : MonoBehaviour
     {
         // Loop back to the first waypoint if all are reached
         currentWaypointIndex += 1;
-        if(currentWaypointIndex > waypoints.Count)
+        if(currentWaypointIndex >= waypoints.Count)
         {
             Destroy(gameObject);
         }
-        myNavMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
+        else {
+            myNavMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
+        }
     }
 }
