@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 2940677828765599982}
   m_Layer: 0
   m_Name: woman
-  m_TagString: Untagged
+  m_TagString: Figurante
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,7 +821,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5518807344448657389}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 233.74, y: -47.05, z: 10.95}
   m_LocalScale: {x: 4.3, y: 4.3, z: 4.3}
   m_ConstrainProportionsScale: 1
@@ -873,7 +873,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 41.42
+  MaxDistance: 24.93
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -883,32 +883,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.1317523
-      value: 1
-      inSlope: -7.5930357
-      outSlope: -7.5930357
+      time: 0.0024645776
+      value: 0.7123642
+      inSlope: -1.1457244
+      outSlope: -1.1457244
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.24775977
     - serializedVersion: 3
-      time: 0.2635046
-      value: 0.5
-      inSlope: -1.4943043
-      outSlope: -1.4943043
+      time: 0.58256644
+      value: 0.2197113
+      inSlope: -0.7181473
+      outSlope: -0.7181473
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33483478
-    - serializedVersion: 3
-      time: 0.5403454
-      value: 0.2041626
-      inSlope: -0.63624024
-      outSlope: -0.63624024
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.25951055
+      inWeight: 0.2273047
+      outWeight: 0.29206812
     - serializedVersion: 3
       time: 1
       value: 0.0077819824
@@ -975,14 +966,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 5518807344448657389}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.47
+  m_Radius: 0.2
   m_Speed: 4
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0.6
