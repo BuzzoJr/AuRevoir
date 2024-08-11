@@ -187,7 +187,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
         inventoryUI.SetActive(open);
         GameObject ply = GameObject.FindWithTag("Player");
 
-        if(open)
+        if (open)
             ply.GetComponent<PlayerController>().CloseInteractionWheel();
 
         if (inventoryUI.activeSelf)
@@ -227,7 +227,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
         }
     }
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, bool openInventory = true)
     {
         if (items.Any(existingItem => existingItem.itemID == item.itemID))
             return;
@@ -238,7 +238,9 @@ public class Inventory : MonoBehaviour, ILangConsumer
         itemNavigation.Add(newItem);
         itemNavigationText = itemNavigation[index].GetComponentInChildren<TMP_Text>();
         itemNavigationText.text = Locale.Item[item.itemID].Name;
-        OpenInventory(true, index);
+
+        if (openInventory)
+            OpenInventory(true, index);
     }
 
     public void ChangeItem(int direction)

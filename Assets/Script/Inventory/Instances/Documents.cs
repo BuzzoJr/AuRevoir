@@ -200,7 +200,7 @@ public class Documents : MonoBehaviour, ILangConsumer
         }
     }
 
-    public void AddDocument(Item document)
+    public void AddDocument(Item document, bool openInventory = true)
     {
         if (documents.Any(existingItem => existingItem.itemID == document.itemID))
             return;
@@ -211,7 +211,9 @@ public class Documents : MonoBehaviour, ILangConsumer
         documentNavigation.Add(newItem);
         documentNavigationText = documentNavigation[index].GetComponentInChildren<TMP_Text>();
         documentNavigationText.text = Locale.Item[document.itemID].Name;
-        OpenDocuments(true, index);
+
+        if (openInventory)
+            OpenDocuments(true, index);
     }
 
     public void ChangeItem(int direction)

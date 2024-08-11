@@ -47,7 +47,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
         GameManager.Instance.showingDialog = false;
 
-        if(needToActivate)
+        if (needToActivate)
             playerPos.gameObject.SetActive(false);
 
         if (playerData.previousScene != null)
@@ -64,7 +64,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
             }
         }
 
-        if(needToActivate)
+        if (needToActivate)
             playerPos.gameObject.SetActive(true);
 
         playerData.previousScene = SceneManager.GetActiveScene().name;
@@ -102,14 +102,14 @@ public class SceneController : MonoBehaviour, ILangConsumer
                 }
             }
 
-            if (gameObject.scene.name == "C0HallOffice" && playerData.HasStep(GameSteps.BossFirstMission))
-            {
-                GameObject doorToUpload = GameObject.Find("Door Right");
-                if (doorToUpload != null)
-                    doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
-            }
-
             DeletarFigurantes();
+        }
+
+        if (gameObject.scene.name == "C0HallOffice" && playerData.HasStep(GameSteps.BossFirstMission))
+        {
+            GameObject doorToUpload = GameObject.Find("Door Right");
+            if (doorToUpload != null)
+                doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
         }
 
         stopRun(gameObject.scene.name);

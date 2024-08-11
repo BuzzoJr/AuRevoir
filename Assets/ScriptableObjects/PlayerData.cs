@@ -10,7 +10,7 @@ public class PlayerData : ScriptableObject
     public List<string> visitedScenes = new();
 
     [SerializeField]
-    private List<GameSteps> steps = new();
+    public List<GameSteps> steps = new();
 
     [Header("Scenes Player Can't Run")]
     public List<string> IndoorScenes = new();

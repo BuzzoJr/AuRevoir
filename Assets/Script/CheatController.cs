@@ -1,6 +1,6 @@
 using Assets.Script;
-using System;
-using System.Linq;
+using Assets.Script.Locale;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,52 +12,82 @@ public class CheatController : MonoBehaviour
 
     public PlayerData playerData;
 
+    [Header("Items")]
+    public GameObject objCard;
+    public GameObject mouseCard;
+
     private bool reading = false;
-    private int menu = 0;
     private string details = "";
 
     void Update()
     {
-        if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.Home))
         {
+            reading = !reading;
             if (reading)
             {
-                for (int i = grid.childCount - 1; i >= 0; i--)
-                    DestroyImmediate(grid.GetChild(i).gameObject);
-
+                PopUp("You have started the cheating the system.\n" +
+                      "Insert your desired destination and confirm by pressing 'HOME' again.\n" +
+                      "Press 'DELETE' at any time to close.\n" +
+                      "Choose your destination:\n" +
+                      "   0 - Menu\n" +
+                      "   1 - Bar's Bathroom\n" +
+                      "   2 - Bar\n" +
+                      "   3 - Bar after talking to Hank and Boss\n" +
+                      "   4 - Back street\n" +
+                      "   5 - Back street after cleared by police officer\n" +
+                      "   6 - Back street after downloading client\n" +
+                      "   7 - Bar ready to take the car\n" +
+                      "   8 - Office Garage\n" +
+                      "   9 - Office hall\n" +
+                      "  10 - Office\n" +
+                      "  11 - Office after talking to boss\n" +
+                      "  12 - Office hall after talking to boss\n" +
+                      "  13 - Upload room\n" +
+                      "  14 - Nightmare bedroom\n" +
+                      "  15 - Nightmare livingroom\n" +
+                      "  16 - Bedroom\n" +
+                      "  90 - EXTRA! Morge\n" +
+                      "  91 - EXTRA! Laboratory",
+                      new Vector2(510, 685),
+                      -1f); ;
+            }
+            else
+            {
+                RemovePopUps();
                 ExecuteCheat();
-                menu = 0;
-                reading = false;
+                return;
             }
 
-            return;
+            details = "";
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
-            reading = true;
-            PopUp("You have started the cheating the system.\n" +
-                "Keep holding Shift to proceed.\n" +
-                "Choose your cheating action:\n" +
-                "  L - load a scene\n" +
-                "  A - add a step",
-                new Vector2(470, 155),
-                3f);
+            reading = false;
+            RemovePopUps();
+            return;
         }
 
         if (!reading)
             return;
 
-        if (menu == 0)
-            MainMenu();
-        else
+        for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
         {
-            for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
-            {
-                if (Input.GetKeyDown(k))
-                    details += k - KeyCode.Alpha0;
-            }
+            if (Input.GetKeyDown(k))
+                details += k - KeyCode.Alpha0;
         }
+
+        for (KeyCode k = KeyCode.Keypad0; k <= KeyCode.Keypad9; k++)
+        {
+            if (Input.GetKeyDown(k))
+                details += k - KeyCode.Keypad0;
+        }
+    }
+    private void RemovePopUps()
+    {
+        for (int i = grid.childCount - 1; i >= 0; i--)
+            DestroyImmediate(grid.GetChild(i).gameObject);
     }
 
     private void PopUp(string message, Vector2 size, float delay)
@@ -65,12 +95,240 @@ public class CheatController : MonoBehaviour
         var instance = Instantiate(popUp, grid);
         instance.GetComponent<RectTransform>().sizeDelta = size;
         instance.GetComponentInChildren<TMP_Text>().text = message;
-        Destroy(instance, delay);
+
+        if (delay > 0)
+            Destroy(instance, delay);
     }
 
     private void ExecuteCheat()
     {
-        switch (menu)
+        if (!int.TryParse(details, out int option))
+        {
+            PopUp($"Failed to read command '{details}'.",
+                  new Vector2(250, 75),
+                  2f);
+            return;
+        }
+
+        switch (option)
+        {
+            case 0:
+                // MENU
+                SceneManager.LoadScene(0);
+                break;
+
+            case 1:
+                // Bar's Bathroom
+                LoadSceneWithPreviousData(1);
+                break;
+
+            case 2:
+                // Bar
+                LoadSceneWithPreviousData(2);
+                break;
+
+            case 3:
+                // Bar after talking to Hank and Boss
+                LoadSceneWithPreviousData(2, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                    });
+                break;
+
+            case 4:
+                // Back street
+                LoadSceneWithPreviousData(3, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                    });
+                break;
+
+            case 5:
+                // Back street after cleared by police officer
+                LoadSceneWithPreviousData(3, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                    });
+                break;
+
+            case 6:
+                // Back street after downloading client
+                LoadSceneWithPreviousData(3, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                    });
+                break;
+
+            case 7:
+                // Bar ready to take the car
+                LoadSceneWithPreviousData(2, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                    }, 3);
+                break;
+
+            case 8:
+                // Office Garage
+                LoadSceneWithPreviousData(4, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                    });
+                break;
+
+            case 9:
+                // Office hall
+                LoadSceneWithPreviousData(5, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                    });
+                break;
+
+            case 10:
+                // Office
+                LoadSceneWithPreviousData(6, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                    });
+                break;
+
+            case 11:
+                // Office after talking to boss
+                LoadSceneWithPreviousData(6, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    });
+                break;
+
+            case 12:
+                // Office hall after talking to boss
+                LoadSceneWithPreviousData(5, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    }, 6);
+                break;
+
+            case 13:
+                // Upload room
+                LoadSceneWithPreviousData(7, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    });
+                break;
+
+            case 14:
+                // Nightmare bedroom
+                LoadSceneWithPreviousData(8, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    });
+                break;
+
+            case 15:
+                // Nightmare livingroom
+                LoadSceneWithPreviousData(9, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    });
+                break;
+
+            case 16:
+                // Bedroom
+                LoadSceneWithPreviousData(10, new List<GameSteps>() {
+                        GameSteps.GetFirstMission,
+                        GameSteps.CarCrashPoliceTalk,
+                        GameSteps.CarCrashClientDownload,
+                        GameSteps.BossFirstMission,
+                    });
+                break;
+
+            case 90:
+                // EXTRA! Morge
+                LoadSceneWithPreviousData(11);
+                break;
+
+            case 91:
+                // EXTRA! Laboratory
+                LoadSceneWithPreviousData(12);
+                break;
+
+            default:
+                // ERROR
+                PopUp($"Failed to read command '{details}'.",
+                      new Vector2(250, 75),
+                      2f);
+                break;
+        }
+    }
+
+    private void LoadSceneWithPreviousData(int scene, List<GameSteps> steps = null, int lastScene = 0)
+    {
+        // PLAYER DATA
+        playerData.ResetData();
+
+        if (scene >= 2)
+        {
+            string sceneName = "";
+
+            for (int s = 1; s < scene; s++)
+            {
+                sceneName = GetSceneName(s);
+                playerData.visitedScenes.Add(sceneName);
+            }
+
+            playerData.previousScene = sceneName;
+        }
+
+        if (lastScene > 0)
+        {
+            playerData.visitedScenes.Add(playerData.previousScene);
+            playerData.previousScene = GetSceneName(lastScene);
+        }
+
+        if (steps != null)
+            playerData.steps = steps;
+
+        // ITEMS
+        if (steps != null && steps.Contains(GameSteps.GetFirstMission))
+            AddItem(ItemType.Item, ItemGroup.KeyCard, objCard, mouseCard);
+
+        // WARN
+        PopUp($"Loading scene!",
+              new Vector2(250, 45),
+              2f);
+
+        // LOAD
+        SceneManager.LoadScene(scene);
+    }
+
+    private string GetSceneName(int scene)
+    {
+        return System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(scene));
+    }
+
+    private void AddItem(ItemType type, ItemGroup group, GameObject obj, GameObject mouseObj)
+    {
+        if (type == ItemType.Item)
+            Inventory.instance.AddItem(new Item(group, obj, mouseObj), false);
+        else
+            Documents.instance.AddDocument(new Item(group, obj, mouseObj), false);
+    }
+
+    /*
+
+            switch (menu)
         {
             case 1:
 
@@ -118,29 +376,7 @@ public class CheatController : MonoBehaviour
                 break;
         }
     }
-
-    private void MainMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            menu = 1;
-            PopUp("To load a scene, press the numbers that form the scene id and release Shift.\n" +
-                "List of scenes:" + GetSceneList(),
-                new Vector2(470, 75 + (30 * SceneManager.sceneCountInBuildSettings)),
-                5f);
-            details = "";
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            menu = 2;
-            PopUp("To add a step, press the numbers that form the step id and release Shift.\n" +
-                "List of steps:" + GetStepList(),
-                new Vector2(470, 75 + (30 * Enum.GetValues(typeof(GameSteps)).Cast<int>().ToList().Count)),
-                5f);
-            details = "";
-        }
-    }
-
+    
     private string GetSceneList()
     {
         string list = "";
@@ -161,5 +397,5 @@ public class CheatController : MonoBehaviour
             list += string.Format($"\n  {{0,{digits}}} - {{1}}", (int)step, step.ToString());
         }
         return list;
-    }
+    }*/
 }
