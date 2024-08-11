@@ -6,8 +6,10 @@ using UnityEngine.AI;
 public class AndarFigurante : MonoBehaviour
 {
     NavMeshAgent myNavMeshAgent;
+
     [Header("Movement by one point")]
     public Transform target;
+
     [Header("Movement by Waypoint")]
     public bool moveByWaypoint = false;
     private int currentWaypointIndex = -1; // Index of the current waypoint
@@ -22,8 +24,6 @@ public class AndarFigurante : MonoBehaviour
         myNavMeshAgent = GetComponent<NavMeshAgent>();
         Invoke("StartWalking", delayToStartWalking);
         walkingSound = GetComponent<AudioSource>();
-
-
     }
 
     private void StartWalking()
@@ -33,7 +33,6 @@ public class AndarFigurante : MonoBehaviour
         if (waypoints != null && waypoints.Count > 0 && moveByWaypoint)
         {
             GoToNextWaypoint();
-            Debug.Log("Waypoint");
         }
         else
         {
@@ -47,7 +46,6 @@ public class AndarFigurante : MonoBehaviour
         {
             if ((int)myNavMeshAgent.destination.x == (int)transform.position.x && (int)myNavMeshAgent.destination.z == (int)transform.position.z)
             {
-                Debug.Log("Chegou em um destino");
                 if (waypoints != null && waypoints.Count > 0 && moveByWaypoint)
                 {
                     GoToNextWaypoint();
@@ -59,8 +57,7 @@ public class AndarFigurante : MonoBehaviour
     private void GoToNextWaypoint()
     {
         // Loop back to the first waypoint if all are reached
-        currentWaypointIndex = (currentWaypointIndex +1) % waypoints.Count;
-        Debug.Log(currentWaypointIndex);
+        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
         myNavMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 }
