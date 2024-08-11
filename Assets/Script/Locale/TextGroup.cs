@@ -104,6 +104,9 @@
         InspectOfficeDrawer,
         InspectOfficeBoard,
         InspectOfficeSofa,
+        InspectUploadRoomScreens,
+        InspectUploadRoomPipeValve,
+        InspectUploadRoomTVs,
     }
 
     public enum ItemGroup

@@ -315,6 +315,28 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Se a chefe me pega descansando sem terminar o trabalho vou ter problemas."),
                 }
             },
+            {
+                TextGroup.InspectUploadRoomScreens,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Esta sala me faz pensar se o Hank não estava certo."),
+                    new TextData(TextType.TristanThinking, "Parece que estou naquele filme Matrix."),
+                }
+            },
+            {
+                TextGroup.InspectUploadRoomPipeValve,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Apenas alguns tubos para controlar o fluxo de líquido para os sistemas de refrigeração."),
+                }
+            },
+            {
+                TextGroup.InspectUploadRoomTVs,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Eu me pergunto por que colocamos essas TVs aqui. Eles parecem tão sem importância."),
+                }
+            },
             // Chapter 1 - Scene C2
             {
                 TextGroup.ShouldOpenDoorInNightmareLivingroom,
