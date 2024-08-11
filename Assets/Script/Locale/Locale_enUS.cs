@@ -348,7 +348,7 @@ namespace Assets.Script.Locale
                 TextGroup.InspectUploadRoomPipeValve,
                 new List<TextData>()
                 {
-                    new TextData(TextType.TristanThinking, "Just some pipes to control the flow of liquid to the cooling systems."),
+                    new TextData(TextType.TristanThinking, "These servers must need a lot of nitrogen to stay cool."),
                 }
             },
             {
