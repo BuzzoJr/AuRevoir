@@ -2055,7 +2055,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4620377aac43b1d43bb3d67ebb9a6f3e, type: 3}
@@ -2479,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
@@ -4777,7 +4777,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
@@ -7895,7 +7895,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4620377aac43b1d43bb3d67ebb9a6f3e, type: 3}
@@ -8441,7 +8441,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
@@ -9703,7 +9703,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4620377aac43b1d43bb3d67ebb9a6f3e, type: 3}
@@ -10404,7 +10404,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4620377aac43b1d43bb3d67ebb9a6f3e,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4620377aac43b1d43bb3d67ebb9a6f3e, type: 3}
@@ -11270,6 +11270,8 @@ GameObject:
   - component: {fileID: 2059856397}
   - component: {fileID: 2059856399}
   - component: {fileID: 2059856398}
+  - component: {fileID: 2059856401}
+  - component: {fileID: 2059856400}
   m_Layer: 0
   m_Name: Screens
   m_TagString: Interactable
@@ -11325,8 +11327,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9919655, y: 2.9045997, z: 15.202078}
-  m_Center: {x: -19.855371, y: 7.855403, z: -5.3826866}
+  m_Size: {x: 2.846239, y: 3.1670625, z: 10.535626}
+  m_Center: {x: -27.915714, y: 7.724181, z: -4.5269203}
+--- !u!65 &2059856400
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059856396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.362483, y: 3.2340443, z: 3.9940317}
+  m_Center: {x: -23.4084, y: 7.950593, z: -11.547305}
+--- !u!65 &2059856401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059856396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.490471, y: 3.2550263, z: 4.069597}
+  m_Center: {x: -24.019302, y: 7.899024, z: 1.8729888}
 --- !u!1 &2071600921
 GameObject:
   m_ObjectHideFlags: 0
