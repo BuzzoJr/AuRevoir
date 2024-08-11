@@ -1105,6 +1105,15 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Me pergunto quantas pessoas trabalham na Au Revoir?"),
                 }
             },
+            {
+                TextGroup.PoliceCar,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "A polícia está cada vez mais no pé da Au Revoir."),
+                    new TextData(TextType.TristanThinking, "Eles deveriam agradecer que agora eles conseguem interrogar os mortos."),
+                    new TextData(TextType.TristanThinking, "Ainda sim, eles não gostam de como a gente interfere no trabalho deles."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

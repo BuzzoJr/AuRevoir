@@ -107,6 +107,7 @@
         InspectUploadRoomScreens,
         InspectUploadRoomPipeValve,
         InspectUploadRoomTVs,
+        PoliceCar,
     }
 
     public enum ItemGroup
