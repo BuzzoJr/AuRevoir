@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour, ILangConsumer
 {
     //Controla para qual cena vai ao colidir com a porta
-    public SceneRef moveRef = SceneRef.SampleScene;
+    public SceneRef moveRef = SceneRef.B_BarBathroom;
     public GameObject transObj, globalObj;
     public bool locked = false;
     public TextGroup textGroup = TextGroup.LockedDoor;
@@ -36,30 +36,41 @@ public class DoorController : MonoBehaviour, ILangConsumer
 
     public enum SceneRef
     {
-        C0Bar,
-        C0Rua,
-        C0HallOffice,
-        C0OfficeGarage,
-        C0UploadRoom,
-        C0Livingroom,
-        C1Bedroom,
-        C2Livingroom,
-        C3Office,
-        C4GuardedWall,
-        C5SewersAccess,
-        C6Sewers,
-        C7Alley,
-        C8ExteriorLavanderia,
-        C9InteriorLavanderia,
-        C10Transicao,
-        C11RuaNecroterio,
-        C12Necroterio,
-        C13EscritorioMafia,
-        C15ExteriorLab,
-        C16Laboratory,
-        SampleScene,
+        B_BarBathroom,
+        B_Bar,
+        B_Rua,
+        O_OfficeGarage,
+        O_HallOffice,
+        O_Office,
+        O_UploadRoom,
+        AP_BedroomBadDream,
+        AP_LivingroomBadDream,
+        AP_Bedroom,
+        AP_Livingroom,
+        DB_GuardedWall,
+        DB_SewersAccess,
+        SW_Sewers,
+        CR_Ap13,
+        CR_Ap43,
+        CR_ApartamentStreet,
+        CR_FloorFour,
+        CR_FloorOne,
+        CR_Park,
+        CC_Alley,
+        CC_EscritorioMafia,
+        CC_ExteriorLavanderia,
+        CC_InteriorLavanderia,
+        CC_RuaNecroterio,
+        CC_Transicao,
+        CC_Necroterio,
+        CL_ClubExterior,
+        CL_Clublnterior,
+        LAB_LabCorridor,
+        LAB_MainetenceDoor,
+        LAB_ParkEntry,
+        LAB_Laboratory,
+
         EndScene,
-        C0Bedroom,
     }
 
     void Start()
