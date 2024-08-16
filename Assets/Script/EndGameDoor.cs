@@ -11,7 +11,7 @@ public class EndGameDoor : MonoBehaviour
         if (playerData.HasStep(GameSteps.EndGame))
         {
             door = GetComponent<DoorController>();
-            door.moveRef = DoorController.SceneRef.EndScene;
+            door.moveRef = SceneRef.EndScene;
         }
     }
 

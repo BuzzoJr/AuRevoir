@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Script;
 
 public class DoorController : MonoBehaviour, ILangConsumer
 {
@@ -32,45 +33,6 @@ public class DoorController : MonoBehaviour, ILangConsumer
     void OnDestroy()
     {
         Locale.UnregisterConsumer(this);
-    }
-
-    public enum SceneRef
-    {
-        B_BarBathroom,
-        B_Bar,
-        B_Rua,
-        O_OfficeGarage,
-        O_HallOffice,
-        O_Office,
-        O_UploadRoom,
-        AP_BedroomBadDream,
-        AP_LivingroomBadDream,
-        AP_Bedroom,
-        AP_Livingroom,
-        DB_GuardedWall,
-        DB_SewersAccess,
-        SW_Sewers,
-        CR_Ap13,
-        CR_Ap43,
-        CR_ApartamentStreet,
-        CR_FloorFour,
-        CR_FloorOne,
-        CR_Park,
-        CC_Alley,
-        CC_EscritorioMafia,
-        CC_ExteriorLavanderia,
-        CC_InteriorLavanderia,
-        CC_RuaNecroterio,
-        CC_Transicao,
-        CC_Necroterio,
-        CL_ClubExterior,
-        CL_Clublnterior,
-        LAB_LabCorridor,
-        LAB_MainetenceDoor,
-        LAB_ParkEntry,
-        LAB_Laboratory,
-
-        EndScene,
     }
 
     void Start()

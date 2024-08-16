@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1228150694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6155,7 +6155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5829503703902927275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6262,6 +6262,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MapController, Assembly-CSharp
         m_MethodName: SelectDestiny
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5095871844127476503}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13884,7 +13896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5829503705035613568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13991,6 +14003,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MapController, Assembly-CSharp
         m_MethodName: SelectDestiny
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5095871844127476503}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15008,11 +15032,11 @@ MonoBehaviour:
   - {fileID: 5829503704137592326}
   - {fileID: 5829503703933622274}
   - {fileID: 5829503704429275984}
-  sceneBuildIndexList: 02000000040000000000000000000000
+  sceneBuildList: 01000000030000000a0000000b000000
   audioOn: {fileID: 1579888487}
   audioOff: {fileID: 1127655994}
   playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
-  elementsSteps: ffffffff020000000900000009000000
+  elementsSteps: ffffffff020000000400000003000000
   elementsCanvas:
   - {fileID: 5829503705114806173}
   - {fileID: 5829503704604313643}

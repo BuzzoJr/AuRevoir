@@ -10,7 +10,7 @@ public class MapController : MonoBehaviour
     public GameObject labelsCanvas;
     public GameObject videoTransition1, videoTransition0;
     public GameObject[] selectLabel;
-    public List<int> sceneBuildIndexList; //ALTERAR FUTURAMENTE PARA TER AS ID'S CORRETAS!!
+    public List<SceneRef> sceneBuildList;
     public AudioSource audioOn, audioOff;
 
     [Header("Hide/Show elements")]
@@ -81,10 +81,10 @@ public class MapController : MonoBehaviour
         audioOff.Play();
         yield return new WaitForSeconds(0.3f);
 
-        int curScene = SceneManager.GetActiveScene().buildIndex;
+        string curScene = SceneManager.GetActiveScene().name;
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
-        if (!exit && curScene != sceneBuildIndexList[finalDestiny])
+        if (!exit && curScene != sceneBuildList[finalDestiny].ToString())
         {
             PlayerPrefs.SetInt("LastMapSelect", finalDestiny);
 
@@ -98,7 +98,7 @@ public class MapController : MonoBehaviour
                 yield return new WaitForSeconds(4f);
             }
 
-            SceneManager.LoadScene(sceneBuildIndexList[finalDestiny]);
+            SceneManager.LoadScene(sceneBuildList[finalDestiny].ToString());
         }
         else
         {
