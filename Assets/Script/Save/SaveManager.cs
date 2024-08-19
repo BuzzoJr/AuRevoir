@@ -36,6 +36,7 @@ public class SaveManager : MonoBehaviour
         UpdateFiles();
     }
 
+    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
@@ -50,6 +51,7 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             Debug.Log("SaveExists(\"teste\") = " + SaveExists("teste"));
     }
+    */
 
     public void UpdateFiles()
     {
@@ -87,7 +89,6 @@ public class SaveManager : MonoBehaviour
             return false;
 
         SaveData data = fileHandler.LoadFile(saveName + SAVEFILE_EXTENSION);
-        Debug.Log(data);
         if (data == null)
             return false;
 
