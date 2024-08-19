@@ -8,6 +8,5 @@ public class SaveData
     public string previousScene;
     public List<string> visitedScenes;
     public List<GameSteps> steps;
-    public List<ItemGroup> items;
-    public List<ItemGroup> documents;
+    public List<ItemGroup> inventoryGroups;
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public bool showingDialog = false;
 
     public static event System.Action<GameState> OnGameStateChange;
+
+    public List<InventoryObject> inventoryObjects;
 
     private AudioSource AudioInstance { get; set; }
 

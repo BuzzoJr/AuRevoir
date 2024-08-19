@@ -19,7 +19,10 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         if (Instance != null)
-            Debug.LogError("Only one SaveManagers is allowed to exist!");
+        {
+            Destroy(this);
+            return;
+        }
 
         Instance = this;
         DontDestroyOnLoad(this);
@@ -73,11 +76,12 @@ public class SaveManager : MonoBehaviour
             steps = playerData.steps,
         };
 
+        data.inventoryGroups = new();
         if (Inventory.instance != null)
-            data.items = Inventory.instance.items.Select(i => i.itemID).ToList();
+            data.inventoryGroups = data.inventoryGroups.Concat(Inventory.instance.items.Select(i => i.itemID)).ToList();
 
-        if (Inventory.instance != null)
-            data.documents = Documents.instance.documents.Select(i => i.itemID).ToList();
+        if (Documents.instance != null)
+            data.inventoryGroups = data.inventoryGroups.Concat(Documents.instance.documents.Select(i => i.itemID)).ToList();
 
         fileHandler.SaveFile(data, saveName + SAVEFILE_EXTENSION);
         UpdateFiles();
@@ -98,9 +102,19 @@ public class SaveManager : MonoBehaviour
         playerData.visitedScenes = data.visitedScenes;
         playerData.steps = data.steps;
 
-        // Add items
+        // TODO: Reset inventory
 
-        // Add documents
+        // Add items and documents
+        GameManager.Instance.inventoryObjects
+            .Where(o => data.inventoryGroups.Contains(o.group))
+            .ToList()
+            .ForEach(o =>
+            {
+                if (o.type == ItemType.Item)
+                    Inventory.instance.AddItem(o, false);
+                else
+                    Documents.instance.AddDocument(o, false);
+            });
 
         SceneManager.LoadScene(data.currentScene);
 

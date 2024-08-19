@@ -1,6 +1,7 @@
 using Assets.Script;
 using Assets.Script.Locale;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,10 +12,6 @@ public class CheatController : MonoBehaviour
     public GameObject popUp;
 
     public PlayerData playerData;
-
-    [Header("Items")]
-    public GameObject objCard;
-    public GameObject mouseCard;
 
     private bool reading = false;
     private string details = "";
@@ -301,8 +298,14 @@ public class CheatController : MonoBehaviour
             playerData.steps = steps;
 
         // ITEMS
+        List<ItemGroup> groups = new();
+
         if (steps != null && steps.Contains(GameSteps.GetFirstMission))
-            AddItem(ItemType.Item, ItemGroup.KeyCard, objCard, mouseCard);
+            groups.Add(ItemGroup.KeyCard);
+
+        // TODO: Reset inventory
+        if (groups.Count > 0)
+            AddItems(groups);
 
         // WARN
         PopUp($"Loading scene!",
@@ -318,12 +321,18 @@ public class CheatController : MonoBehaviour
         return System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(scene));
     }
 
-    private void AddItem(ItemType type, ItemGroup group, GameObject obj, GameObject mouseObj)
+    private void AddItems(List<ItemGroup> groups)
     {
-        if (type == ItemType.Item)
-            Inventory.instance.AddItem(new Item(group, obj, mouseObj), false);
-        else
-            Documents.instance.AddDocument(new Item(group, obj, mouseObj), false);
+        GameManager.Instance.inventoryObjects
+            .Where(o => groups.Contains(o.group))
+            .ToList()
+            .ForEach(o =>
+            {
+                if (o.type == ItemType.Item)
+                    Inventory.instance.AddItem(o, false);
+                else
+                    Documents.instance.AddDocument(o, false);
+            });
     }
 
     /*

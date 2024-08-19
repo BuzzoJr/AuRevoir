@@ -200,6 +200,14 @@ public class Documents : MonoBehaviour, ILangConsumer
         }
     }
 
+    public void AddDocument(InventoryObject obj, bool openInventory = true)
+    {
+        if (obj.type != ItemType.Document)
+            return;
+
+        AddDocument(new Item(obj.group, obj.prefab, obj.mousePrefab), openInventory);
+    }
+
     public void AddDocument(Item document, bool openInventory = true)
     {
         if (documents.Any(existingItem => existingItem.itemID == document.itemID))

@@ -227,6 +227,14 @@ public class Inventory : MonoBehaviour, ILangConsumer
         }
     }
 
+    public void AddItem(InventoryObject obj, bool openInventory = true)
+    {
+        if (obj.type != ItemType.Item)
+            return;
+
+        AddItem(new Item(obj.group, obj.prefab, obj.mousePrefab), openInventory);
+    }
+
     public void AddItem(Item item, bool openInventory = true)
     {
         if (items.Any(existingItem => existingItem.itemID == item.itemID))
