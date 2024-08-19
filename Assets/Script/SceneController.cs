@@ -40,6 +40,9 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     private void Awake()
     {
+        playerData.previousScene = playerData.currentScene;
+        playerData.currentScene = SceneManager.GetActiveScene().name;
+
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         bool needToActivate = playerPos.gameObject.activeSelf;
 
@@ -67,9 +70,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(true);
 
-        playerData.previousScene = SceneManager.GetActiveScene().name;
-
-        if (playerData.previousScene == "C9InteriorLavanderia")
+        if (playerData.currentScene == "C9InteriorLavanderia")
             playerData.AddStep(GameSteps.LaundryVisited);
     }
 
