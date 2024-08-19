@@ -39,7 +39,6 @@ public class SaveManager : MonoBehaviour
         UpdateFiles();
     }
 
-    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
@@ -54,7 +53,6 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             Debug.Log("SaveExists(\"teste\") = " + SaveExists("teste"));
     }
-    */
 
     public void UpdateFiles()
     {
@@ -98,7 +96,7 @@ public class SaveManager : MonoBehaviour
 
         // Player Data
         playerData.ResetData();
-        playerData.previousScene = data.previousScene;
+        playerData.currentScene = data.previousScene;  // Vai virar previous scene assim que carregar a cena
         playerData.visitedScenes = data.visitedScenes;
         playerData.steps = data.steps;
 

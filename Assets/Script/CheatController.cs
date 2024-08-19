@@ -285,13 +285,13 @@ public class CheatController : MonoBehaviour
                 playerData.visitedScenes.Add(sceneName);
             }
 
-            playerData.previousScene = sceneName;
+            playerData.currentScene = sceneName;
         }
 
         if (lastScene > 0)
         {
             playerData.visitedScenes.Add(playerData.previousScene);
-            playerData.previousScene = GetSceneName(lastScene);
+            playerData.currentScene = GetSceneName(lastScene);
         }
 
         if (steps != null)
