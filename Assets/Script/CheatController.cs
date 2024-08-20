@@ -1,5 +1,6 @@
 using Assets.Script;
 using Assets.Script.Locale;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -282,16 +283,16 @@ public class CheatController : MonoBehaviour
             for (int s = 1; s < scene; s++)
             {
                 sceneName = GetSceneName(s);
-                playerData.visitedScenes.Add(sceneName);
+                playerData.visitedScenes.Add((SceneRef)Enum.Parse(typeof(SceneRef), sceneName));
             }
 
-            playerData.currentScene = sceneName;
+            playerData.currentScene = (SceneRef)Enum.Parse(typeof(SceneRef), sceneName);
         }
 
         if (lastScene > 0)
         {
             playerData.visitedScenes.Add(playerData.previousScene);
-            playerData.currentScene = GetSceneName(lastScene);
+            playerData.previousScene = (SceneRef)Enum.Parse(typeof(SceneRef), GetSceneName(lastScene));
         }
 
         if (steps != null)

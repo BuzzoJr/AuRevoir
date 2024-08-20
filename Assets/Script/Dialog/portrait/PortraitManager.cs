@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Assets.Script;
+using System;
 
 public static class PortraitManager
 {
-    private static Dictionary<string, Dictionary<string, Sprite>> portraitDictionary;
+    private static Dictionary<string, Dictionary<SceneRef, Sprite>> portraitDictionary;
 
     static PortraitManager()
     {
@@ -14,7 +16,7 @@ public static class PortraitManager
     {
         if (portraitDictionary == null)
         {
-            portraitDictionary = new Dictionary<string, Dictionary<string, Sprite>>();
+            portraitDictionary = new Dictionary<string, Dictionary<SceneRef, Sprite>>();
 
             //---------------DA LOAD EM TODOS NA PASTA RESOURCES
             CharacterPortraits[] allCharacterPortraits = Resources.LoadAll<CharacterPortraits>(""); 
@@ -25,7 +27,7 @@ public static class PortraitManager
             {
                 if (!portraitDictionary.ContainsKey(characterPortraits.characterName))
                 {
-                    portraitDictionary[characterPortraits.characterName] = new Dictionary<string, Sprite>();
+                    portraitDictionary[characterPortraits.characterName] = new Dictionary<SceneRef, Sprite>();
                 }
 
                 foreach (var scenePortrait in characterPortraits.scenePortraits)
@@ -44,9 +46,9 @@ public static class PortraitManager
             return null;
         }
 
-        if (portraitDictionary.ContainsKey(character) && portraitDictionary[character].ContainsKey(scene))
+        if (portraitDictionary.ContainsKey(character) && portraitDictionary[character].ContainsKey((SceneRef)Enum.Parse(typeof(SceneRef), scene)))
         {
-            return portraitDictionary[character][scene];
+            return portraitDictionary[character][(SceneRef)Enum.Parse(typeof(SceneRef), scene)];
         }
         else
         {

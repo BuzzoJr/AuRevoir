@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class SaveData
 {
-    public string currentScene;
-    public string previousScene;
-    public List<string> visitedScenes;
+    public SceneRef currentScene;
+    public SceneRef previousScene;
+    public List<SceneRef> visitedScenes;
     public List<GameSteps> steps;
     public List<ItemGroup> inventoryGroups;
 }

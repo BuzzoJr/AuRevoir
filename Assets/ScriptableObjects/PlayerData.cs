@@ -5,16 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
 public class PlayerData : ScriptableObject
 {
-    public string currentScene;
-    public string previousScene;
+    public SceneRef currentScene;
+    public SceneRef previousScene;
 
-    public List<string> visitedScenes = new();
+    public List<SceneRef> visitedScenes = new();
 
     [SerializeField]
     public List<GameSteps> steps = new();
 
     [Header("Scenes Player Can't Run")]
-    public List<string> IndoorScenes = new();
+    public List<SceneRef> IndoorScenes = new();
 
     public void ResetData()
     {

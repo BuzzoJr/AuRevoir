@@ -2,6 +2,7 @@ using Assets.Script;
 using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -41,7 +42,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
     private void Awake()
     {
         playerData.previousScene = playerData.currentScene;
-        playerData.currentScene = SceneManager.GetActiveScene().name;
+        playerData.currentScene = (SceneRef)Enum.Parse(typeof(SceneRef), SceneManager.GetActiveScene().name);
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         bool needToActivate = playerPos.gameObject.activeSelf;
@@ -53,11 +54,11 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(false);
 
-        if (playerData.previousScene != null)
+        if (playerData.previousScene != SceneRef.B_BarBathroom)
         {
             foreach (GameObject spawnPos in spawnPosition)
             {
-                if (spawnPos.name == playerData.previousScene || spawnPos.name == "Else")
+                if (spawnPos.name == playerData.previousScene.ToString() || spawnPos.name == "Else")
                 {
                     playerPos.position = new Vector3(spawnPos.transform.position.x, playerPos.position.y, spawnPos.transform.position.z);
                     playerPos.rotation = Quaternion.Euler(0f, spawnPos.transform.rotation.eulerAngles.y, 0f);
@@ -70,13 +71,13 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(true);
 
-        if (playerData.currentScene == "C9InteriorLavanderia")
+        if (playerData.currentScene == SceneRef.CC_InteriorLavanderia)
             playerData.AddStep(GameSteps.LaundryVisited);
     }
 
     private void Start()
     {
-        if (IsFirstTimeInScene(gameObject.scene.name))
+        if (IsFirstTimeInScene(playerData.currentScene.ToString()))
         {
             if (audioSource != null)
                 audioSource.Play();
@@ -89,7 +90,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         }
         else
         {
-            if (gameObject.scene.name == "C1Bedroom" && playerData.HasStep(GameSteps.PhoneAnswered))
+            if (playerData.currentScene == SceneRef.AP_Bedroom && playerData.HasStep(GameSteps.PhoneAnswered))
             {
                 GameObject phone = GameObject.Find("answering-machine");
                 if (phone != null)
@@ -106,29 +107,29 @@ public class SceneController : MonoBehaviour, ILangConsumer
             DeletarFigurantes();
         }
 
-        if (gameObject.scene.name == "C0HallOffice" && playerData.HasStep(GameSteps.BossFirstMission))
+        if (playerData.currentScene == SceneRef.O_HallOffice && playerData.HasStep(GameSteps.BossFirstMission))
         {
             GameObject doorToUpload = GameObject.Find("Door Right");
             if (doorToUpload != null)
                 doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
         }
 
-        stopRun(gameObject.scene.name);
+        stopRun(playerData.currentScene);
     }
 
     private bool IsFirstTimeInScene(string sceneName)
     {
-        if (playerData.visitedScenes.Contains(sceneName))
+        if (playerData.visitedScenes.Contains((SceneRef)Enum.Parse(typeof(SceneRef), sceneName)))
         {
             return false;
         }
         else
         {
-            playerData.visitedScenes.Add(sceneName);
+            playerData.visitedScenes.Add((SceneRef)Enum.Parse(typeof(SceneRef), sceneName));
             return true;
         }
     }
-    private void stopRun(string sceneName)
+    private void stopRun(SceneRef sceneName)
     {
         if (playerData.IndoorScenes.Contains(sceneName))
         {

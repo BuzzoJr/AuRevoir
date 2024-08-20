@@ -68,7 +68,7 @@ public class SaveManager : MonoBehaviour
     {
         SaveData data = new()
         {
-            currentScene = SceneManager.GetActiveScene().name,
+            currentScene = playerData.currentScene,
             previousScene = playerData.previousScene,
             visitedScenes = playerData.visitedScenes,
             steps = playerData.steps,
@@ -114,7 +114,7 @@ public class SaveManager : MonoBehaviour
                     Documents.instance.AddDocument(o, false);
             });
 
-        SceneManager.LoadScene(data.currentScene);
+        SceneManager.LoadScene(data.currentScene.ToString());
 
         return true;
     }

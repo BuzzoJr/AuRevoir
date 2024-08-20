@@ -1,3 +1,4 @@
+using Assets.Script;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterPortraits", menuName = "ScriptableObjects/CharacterPortraits", order = 1)]
@@ -10,6 +11,6 @@ public class CharacterPortraits : ScriptableObject
 [System.Serializable]
 public class ScenePortraits
 {
-    public string sceneName;
+    public SceneRef sceneName;
     public Sprite portrait;
 }
