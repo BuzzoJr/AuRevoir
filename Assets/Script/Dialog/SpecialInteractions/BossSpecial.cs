@@ -16,7 +16,7 @@ public class BossSpecial : MonoBehaviour, ISpecial
     public float duration = 20f;
     private ParticleSystem.EmissionModule rainEmission; // To modify the emission rate
 
-    void Awake()
+    void Start()
     {
         if (playerData.HasStep(GameSteps.MissonReceived))
         {

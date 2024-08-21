@@ -71,7 +71,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(true);
 
-        if (playerData.currentScene == SceneRef.CC_InteriorLavanderia)
+        if (playerData.currentScene == SceneRef.CC_InteriorLavanderia) //TIRAR DAQUI?
             playerData.AddStep(GameSteps.LaundryVisited);
     }
 
@@ -90,7 +90,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         }
         else
         {
-            if (playerData.currentScene == SceneRef.AP_Bedroom && playerData.HasStep(GameSteps.PhoneAnswered))
+            if (playerData.currentScene == SceneRef.AP_Bedroom && playerData.HasStep(GameSteps.PhoneAnswered)) //TIRAR DAQUI
             {
                 GameObject phone = GameObject.Find("answering-machine");
                 if (phone != null)
@@ -107,7 +107,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
             DeletarFigurantes();
         }
 
-        if (playerData.currentScene == SceneRef.O_HallOffice && playerData.HasStep(GameSteps.BossFirstMission))
+        if (playerData.currentScene == SceneRef.O_HallOffice && playerData.HasStep(GameSteps.BossFirstMission)) //TIRAR DAQUI, LIBERANDO UPLOAD
         {
             GameObject doorToUpload = GameObject.Find("Door Right");
             if (doorToUpload != null)
