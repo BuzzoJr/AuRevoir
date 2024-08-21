@@ -94,6 +94,13 @@ public class SaveManager : MonoBehaviour
         if (data == null)
             return false;
 
+        LoadGameData(data);
+
+        return true;
+    }
+
+    public void LoadGameData(SaveData data)
+    {
         // Player Data
         playerData.ResetData();
         playerData.currentScene = data.previousScene;  // Vai virar previous scene assim que carregar a cena
@@ -115,7 +122,5 @@ public class SaveManager : MonoBehaviour
             });
 
         SceneManager.LoadScene(data.currentScene.ToString());
-
-        return true;
     }
 }

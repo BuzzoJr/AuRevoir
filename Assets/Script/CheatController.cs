@@ -1,8 +1,6 @@
 using Assets.Script;
 using Assets.Script.Locale;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -108,304 +106,255 @@ public class CheatController : MonoBehaviour
             return;
         }
 
-        switch (option)
-        {
-            case 0:
-                // MENU
-                SceneManager.LoadScene(0);
-                break;
-
-            case 1:
-                // Bar's Bathroom
-                LoadSceneWithPreviousData(1);
-                break;
-
-            case 2:
-                // Bar
-                LoadSceneWithPreviousData(2);
-                break;
-
-            case 3:
-                // Bar after talking to Hank and Boss
-                LoadSceneWithPreviousData(2, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                    });
-                break;
-
-            case 4:
-                // Back street
-                LoadSceneWithPreviousData(3, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                    });
-                break;
-
-            case 5:
-                // Back street after cleared by police officer
-                LoadSceneWithPreviousData(3, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                    });
-                break;
-
-            case 6:
-                // Back street after downloading client
-                LoadSceneWithPreviousData(3, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                    });
-                break;
-
-            case 7:
-                // Bar ready to take the car
-                LoadSceneWithPreviousData(2, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                    }, 3);
-                break;
-
-            case 8:
-                // Office Garage
-                LoadSceneWithPreviousData(4, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                    });
-                break;
-
-            case 9:
-                // Office hall
-                LoadSceneWithPreviousData(5, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                    });
-                break;
-
-            case 10:
-                // Office
-                LoadSceneWithPreviousData(6, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                    });
-                break;
-
-            case 11:
-                // Office after talking to boss
-                LoadSceneWithPreviousData(6, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    });
-                break;
-
-            case 12:
-                // Office hall after talking to boss
-                LoadSceneWithPreviousData(5, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    }, 6);
-                break;
-
-            case 13:
-                // Upload room
-                LoadSceneWithPreviousData(7, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    });
-                break;
-
-            case 14:
-                // Nightmare bedroom
-                LoadSceneWithPreviousData(8, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    });
-                break;
-
-            case 15:
-                // Nightmare livingroom
-                LoadSceneWithPreviousData(9, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    });
-                break;
-
-            case 16:
-                // Bedroom
-                LoadSceneWithPreviousData(10, new List<GameSteps>() {
-                        GameSteps.GetFirstMission,
-                        GameSteps.CarCrashPoliceTalk,
-                        GameSteps.CarCrashClientDownload,
-                        GameSteps.BossFirstMission,
-                    });
-                break;
-
-            case 90:
-                // EXTRA! Morge
-                LoadSceneWithPreviousData(11);
-                break;
-
-            case 91:
-                // EXTRA! Laboratory
-                LoadSceneWithPreviousData(12);
-                break;
-
-            default:
-                // ERROR
-                PopUp($"Failed to read command '{details}'.",
-                      new Vector2(250, 75),
-                      2f);
-                break;
-        }
+        RunCheat(option);
     }
 
-    private void LoadSceneWithPreviousData(int scene, List<GameSteps> steps = null, int lastScene = 0)
+    private void LoadSceneWithPreviousData(SaveData data)
     {
-        // PLAYER DATA
-        playerData.ResetData();
-
-        if (scene >= 2)
-        {
-            string sceneName = "";
-
-            for (int s = 1; s < scene; s++)
-            {
-                sceneName = GetSceneName(s);
-                playerData.visitedScenes.Add((SceneRef)Enum.Parse(typeof(SceneRef), sceneName));
-            }
-
-            playerData.currentScene = (SceneRef)Enum.Parse(typeof(SceneRef), sceneName);
-        }
-
-        if (lastScene > 0)
-        {
-            playerData.visitedScenes.Add(playerData.previousScene);
-            playerData.previousScene = (SceneRef)Enum.Parse(typeof(SceneRef), GetSceneName(lastScene));
-        }
-
-        if (steps != null)
-            playerData.steps = steps;
-
-        // ITEMS
-        List<ItemGroup> groups = new();
-
-        if (steps != null && steps.Contains(GameSteps.GetFirstMission))
-            groups.Add(ItemGroup.KeyCard);
-
-        // TODO: Reset inventory
-        if (groups.Count > 0)
-            AddItems(groups);
-
         // WARN
         PopUp($"Loading scene!",
               new Vector2(250, 45),
               2f);
 
-        // LOAD
-        SceneManager.LoadScene(scene);
+        SaveManager.Instance.LoadGameData(data);
     }
 
-    private string GetSceneName(int scene)
+    private void RunCheat(int option)
     {
-        return System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(scene));
-    }
+        // Executa um método de nome dinâmico
+        string methodName = $"RunCheat{option}";
+        MethodInfo methodInfo = GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
-    private void AddItems(List<ItemGroup> groups)
-    {
-        GameManager.Instance.inventoryObjects
-            .Where(o => groups.Contains(o.group))
-            .ToList()
-            .ForEach(o =>
-            {
-                if (o.type == ItemType.Item)
-                    Inventory.instance.AddItem(o, false);
-                else
-                    Documents.instance.AddDocument(o, false);
-            });
-    }
-
-    /*
-
-            switch (menu)
+        if (methodInfo != null)
         {
-            case 1:
-
-                if (int.TryParse(details, out int scene) && scene > 0 && scene <= SceneManager.sceneCountInBuildSettings)
-                {
-                    PopUp($"Loading scene:\n" +
-                        $"  - {scene}: {System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(scene - 1))}",
-                        new Vector2(250, 75),
-                        2f);
-
-                    SceneManager.LoadScene(scene - 1);
-                }
-                else
-                {
-                    PopUp($"Failed to load scene:\n" +
-                        $"  - {details}.",
-                        new Vector2(250, 75),
-                        2f);
-                }
-                break;
-
-            case 2:
-                if (int.TryParse(details, out int step) && Enum.IsDefined(typeof(GameSteps), step))
-                {
-                    PopUp($"Adding step:\n" +
-                        $"  - {step}: {(GameSteps)step}",
-                        new Vector2(250, 75),
-                        2f);
-
-                    playerData.AddStep((GameSteps)step);
-                }
-                else
-                {
-                    PopUp($"Failed to add step:\n" +
-                        $"  - {details}.",
-                        new Vector2(250, 75),
-                        2f);
-                }
-                break;
-
-            default:
-                PopUp("Cheating system deactivated!",
-                    new Vector2(340, 45),
-                    1f);
-                break;
+            methodInfo.Invoke(this, null); // O método está aqui no CheatController (this), e não precisa de parâmetro
+            return;
         }
-    }
-    
-    private string GetSceneList()
-    {
-        string list = "";
-        int digits = SceneManager.sceneCountInBuildSettings.ToString().Length;
-        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-        {
-            list += string.Format($"\n  {{0,{digits}}} - {{1}}", i + 1, System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
-        }
-        return list;
+
+        // ERROR
+        PopUp($"Failed to read command '{details}'.",
+              new Vector2(250, 75),
+              2f);
     }
 
-    private string GetStepList()
+    private void RunCheat0()
     {
-        string list = "";
-        int digits = Enum.GetValues(typeof(GameSteps)).Cast<int>().ToList().Max().ToString().Length;
-        foreach (GameSteps step in Enum.GetValues(typeof(GameSteps)))
+        SceneManager.LoadScene(SceneRef.NewMenu.ToString());
+    }
+
+    private void RunCheat1()
+    {
+        LoadSceneWithPreviousData(new SaveData()
         {
-            list += string.Format($"\n  {{0,{digits}}} - {{1}}", (int)step, step.ToString());
-        }
-        return list;
-    }*/
+            currentScene = SceneRef.B_BarBathroom,
+            previousScene = SceneRef.B_BarBathroom,
+            visitedScenes = new(),
+            steps = new(),
+            inventoryGroups = new(),
+        });
+    }
+
+    private void RunCheat2()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Bar,
+            previousScene = SceneRef.B_BarBathroom,
+            visitedScenes = new() { SceneRef.B_BarBathroom },
+            steps = new(),
+            inventoryGroups = new(),
+        });
+    }
+
+    private void RunCheat3()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Bar,
+            previousScene = SceneRef.B_BarBathroom,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar },
+            steps = new() { GameSteps.GetFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat4()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Rua,
+            previousScene = SceneRef.B_Bar,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar },
+            steps = new() { GameSteps.GetFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat5()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Rua,
+            previousScene = SceneRef.B_Bar,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat6()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Rua,
+            previousScene = SceneRef.B_Bar,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat7()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.B_Bar,
+            previousScene = SceneRef.B_Rua,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat8()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_OfficeGarage,
+            previousScene = SceneRef.B_Bar,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat9()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_HallOffice,
+            previousScene = SceneRef.O_OfficeGarage,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat10()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_Office,
+            previousScene = SceneRef.O_HallOffice,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat11()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_Office,
+            previousScene = SceneRef.O_HallOffice,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat12()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_HallOffice,
+            previousScene = SceneRef.O_Office,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat13()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.O_UploadRoom,
+            previousScene = SceneRef.O_HallOffice,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat14()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.AP_BedroomBadDream,
+            previousScene = SceneRef.O_UploadRoom,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat15()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.AP_LivingroomBadDream,
+            previousScene = SceneRef.AP_BedroomBadDream,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat16()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.AP_Bedroom,
+            previousScene = SceneRef.AP_LivingroomBadDream,
+            visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream, SceneRef.AP_LivingroomBadDream },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
+            inventoryGroups = new() { ItemGroup.KeyCard },
+        });
+    }
+
+    private void RunCheat90()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.CC_Necroterio,
+            previousScene = SceneRef.NewMenu,
+            visitedScenes = new(),
+            steps = new(),
+            inventoryGroups = new(),
+        });
+    }
+
+    private void RunCheat91()
+    {
+        LoadSceneWithPreviousData(new SaveData()
+        {
+            currentScene = SceneRef.LAB_Laboratory,
+            previousScene = SceneRef.NewMenu,
+            visitedScenes = new(),
+            steps = new(),
+            inventoryGroups = new(),
+        });
+    }
 }

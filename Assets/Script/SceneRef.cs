@@ -37,5 +37,6 @@
         LAB_Laboratory,
 
         EndScene,
+        NewMenu,
     }
 }
