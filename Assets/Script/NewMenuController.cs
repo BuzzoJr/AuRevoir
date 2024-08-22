@@ -1,3 +1,4 @@
+using Assets.Script;
 using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
@@ -93,14 +94,6 @@ public class NewMenuController : MonoBehaviour
 
             audioMixer.SetFloat("Music", dB);
         }
-
-        // Remover invent�rio
-        if (Inventory.instance != null)
-            Destroy(Inventory.instance.gameObject);
-        if (Documents.instance != null)
-            Destroy(Documents.instance.gameObject);
-        if (Notes.instance != null)
-            Destroy(Notes.instance.gameObject);
     }
 
     void Update()
@@ -176,6 +169,9 @@ public class NewMenuController : MonoBehaviour
 
     public void PlayButton()
     {
+        if (SaveManager.Instance.LoadGame("autosave"))
+            return;
+
         StartCoroutine(AnimPcPlay());
     }
 
@@ -258,7 +254,16 @@ public class NewMenuController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(timeFade);
-        SceneManager.LoadScene("C0BarBathroom"); //C0Rua
+
+        // Remover invent�rio
+        if (Inventory.instance != null)
+            Destroy(Inventory.instance.gameObject);
+        if (Documents.instance != null)
+            Destroy(Documents.instance.gameObject);
+        if (Notes.instance != null)
+            Destroy(Notes.instance.gameObject);
+
+        SceneManager.LoadScene(SceneRef.B_BarBathroom.ToString());
     }
 
     IEnumerator AnimPcPlay()

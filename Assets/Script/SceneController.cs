@@ -73,6 +73,9 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         if (playerData.currentScene == SceneRef.CC_InteriorLavanderia) //TIRAR DAQUI?
             playerData.AddStep(GameSteps.LaundryVisited);
+
+        // AutoSave
+        SaveManager.Instance.SaveGame("autosave");
     }
 
     private void Start()

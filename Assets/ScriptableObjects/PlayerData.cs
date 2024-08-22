@@ -31,6 +31,9 @@ public class PlayerData : ScriptableObject
             return;
 
         steps.Add(step);
+
+        // AutoSave
+        SaveManager.Instance.SaveGame("autosave");
     }
 
     public bool HasStep(GameSteps step)

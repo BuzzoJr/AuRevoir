@@ -1,3 +1,4 @@
+using Assets.Script;
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
@@ -169,19 +170,25 @@ public class Inventory : MonoBehaviour, ILangConsumer
                 }
             }
         }
-        if (currentState == GameManager.GameState.Playing && SceneManager.GetActiveScene().name != "C0Bedroom" && SceneManager.GetActiveScene().name != "C0Livingroom")
+        inventoryBag.SetActive(CanOpenInventory());
+    }
+
+    private bool CanOpenInventory()
+    {
+        List<string> blockInventoryInScenes = new()
         {
-            inventoryBag.SetActive(true);
-        }
-        else
-        {
-            inventoryBag.SetActive(false);
-        }
+            SceneRef.NewMenu.ToString(),
+            SceneRef.AP_BedroomBadDream.ToString(),
+            SceneRef.AP_LivingroomBadDream.ToString(),
+        };
+
+        return currentState == GameManager.GameState.Playing &&
+            !blockInventoryInScenes.Contains(SceneManager.GetActiveScene().name);
     }
 
     public void OpenInventory(bool open = true, int index = 0)
     {
-        if (SceneManager.GetActiveScene().name == "C0Bedroom" || SceneManager.GetActiveScene().name == "C0Livingroom")
+        if (open && !CanOpenInventory())
             return;
 
         inventoryUI.SetActive(open);
