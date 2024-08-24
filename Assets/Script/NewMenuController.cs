@@ -16,7 +16,7 @@ public class NewMenuController : MonoBehaviour
     public AudioSource menuSong;
     public AudioMixer audioMixer;
     public Color c1, c2;
-    public GameObject panelTxt, loadingObj, mainCanvas, panelButton, starBtn, continueBtn, moveTxt;
+    public GameObject panelTxt, loadingObj, mainCanvas, panelButton, starBtn, continueBtn, moveTxt, questionLabel, allQuestButtons;
     public GameObject[] allCircles;
     public Slider volumeScreen, volumeOpt, musicScreen, musicOpt;
     public float timeFade;
@@ -98,7 +98,6 @@ public class NewMenuController : MonoBehaviour
 
     void Update()
     {
-        // Ativa o bot�o de continuar quando terminou a anima��o do rollup
         if (panelTxt.activeSelf && animTextIntro.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !continueBtn.activeSelf && panelButton.activeSelf)
         {
             starBtn.SetActive(false);
@@ -167,12 +166,25 @@ public class NewMenuController : MonoBehaviour
         btnPressed = !btnPressed;
     }
 
+    public void NewGameButton() {
+        if(SaveManager.Instance.VerificaSaveGame("autosave")) {
+            //Pergunta se quer novo jogo
+            StartCoroutine(WaitQuestion());
+        }
+        else {
+            StartCoroutine(AnimPcPlay(false));
+        }
+    }
+
+    public void YesButton()
+    {
+        questionLabel.GetComponent<Animator>().SetTrigger("yes");
+        StartCoroutine(AnimPcPlay(false));
+    }
+
     public void PlayButton()
     {
-        if (SaveManager.Instance.LoadGame("autosave"))
-            return;
-
-        StartCoroutine(AnimPcPlay());
+        StartCoroutine(AnimPcPlay(true));
     }
 
     public void ChangeResolution(int value)
@@ -266,11 +278,22 @@ public class NewMenuController : MonoBehaviour
         SceneManager.LoadScene(SceneRef.B_BarBathroom.ToString());
     }
 
-    IEnumerator AnimPcPlay()
+    IEnumerator AnimPcPlay(bool cont)
     {
         yield return new WaitForSeconds(3f);
         panelTxt.SetActive(true);
         panelButton.SetActive(true);
         loadingObj.SetActive(false);
+
+        if(cont) {
+            SaveManager.Instance.LoadGame("autosave");
+        }
+    }
+
+    IEnumerator WaitQuestion()
+    {
+        yield return new WaitForSeconds(3f);
+        questionLabel.SetActive(true);
+        allQuestButtons.SetActive(true);
     }
 }

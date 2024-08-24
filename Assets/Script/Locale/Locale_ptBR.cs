@@ -20,13 +20,16 @@ namespace Assets.Script.Locale
                 TextGroup.NewMenu,
                 new List<TextData>()
                 {
-                    new TextData(">Novo Jogo\n\n>Opções\n\n>Sair"),
+                    new TextData(">Novo Jogo\n\n>Continuar\n\n>Opções\n\n>Sair"),
                     new TextData("Tela cheia"),
                     new TextData("Resolução:"),
                     new TextData("Idioma:"),
                     new TextData("Volume:"),
                     new TextData("Música:"),
                     new TextData("Voltar\n--->"),
+                    new TextData("Jogos salvos anteriormente serão apagados.\n\nDeseja continuar?"),
+                    new TextData("SIM"),
+                    new TextData("NÃO"),
                 }
             },
             {

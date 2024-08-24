@@ -99,6 +99,17 @@ public class SaveManager : MonoBehaviour
         return true;
     }
 
+    public bool VerificaSaveGame(string saveName) { //Verifica se ja existe algum arquivo de save
+        if (!saveFiles.Contains(saveName))
+            return false;
+
+        SaveData data = fileHandler.LoadFile(saveName + SAVEFILE_EXTENSION);
+        if (data == null)
+            return false;
+
+        return true;
+    }
+
     public void LoadGameData(SaveData data)
     {
         // Player Data
