@@ -57,6 +57,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     {
         if (dialogBox)
         {
+            ThinkingText = ThinkingBox.GetComponentInChildren<TMP_Text>();
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
             Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
             DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
@@ -114,7 +115,9 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
             dialogBox.SetActive(false);
             ThinkingBox.SetActive(false);
         }
+
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+
         if (itemType == ItemType.Item)
             Inventory.instance.AddItem(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
         else

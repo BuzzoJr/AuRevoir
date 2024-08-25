@@ -1117,6 +1117,13 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Ainda sim, eles não gostam de como a gente interfere no trabalho deles."),
                 }
             },
+            {
+                TextGroup.LockedDoorHouse,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Onde coloquei minhas chaves mesmo?"),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

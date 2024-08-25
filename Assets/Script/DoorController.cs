@@ -10,8 +10,9 @@ public class DoorController : MonoBehaviour, ILangConsumer
 {
     //Controla para qual cena vai ao colidir com a porta
     public SceneRef moveRef = SceneRef.B_BarBathroom;
-    public GameObject transObj, globalObj;
+    public GameObject transObj, globalObj, allMap;
     public bool locked = false;
+    public bool map = false;
     public TextGroup textGroup = TextGroup.LockedDoor;
     [SerializeField] private GameObject dialogBox = null;
     private TMP_Text dialogText;
@@ -52,6 +53,8 @@ public class DoorController : MonoBehaviour, ILangConsumer
         {
             if (transObj != null)
                 StartCoroutine(DelayTransition());
+            else if(map)
+                allMap.SetActive(true);
             else
                 SceneManager.LoadScene(moveRef.ToString());
         }
