@@ -6,6 +6,7 @@ using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using TMPro;
 using UnityEngine.UI;
+using Assets.Script;
 
 public class TristanWakingUp : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TristanWakingUp : MonoBehaviour
 
     public GameObject playableTristan; // Assign this in the Inspector
     public bool pesadelo = true;
+    public PlayerData playerData;
     private Animator animator;
     private Dialog dialog;
 
@@ -39,7 +41,15 @@ public class TristanWakingUp : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(Execute());
+
+        if(playerData.HasStep(GameSteps.AwakeBed)) {
+            playableTristan.SetActive(true);
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+            Destroy(this.gameObject);
+        }
+        else {
+            StartCoroutine(Execute());
+        }
     }
 
     IEnumerator Execute()
@@ -55,6 +65,7 @@ public class TristanWakingUp : MonoBehaviour
             yield return new WaitForSeconds(9f); //Scare + Layingdown
         }
 
+        playerData.AddStep(GameSteps.AwakeBed);
         playableTristan.SetActive(true);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         Destroy(this.gameObject);

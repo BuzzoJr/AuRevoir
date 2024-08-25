@@ -15,5 +15,6 @@
         MorgueVisited,
         CutsceneWatched,
         EndGame,
+        AwakeBed,
     }
 }

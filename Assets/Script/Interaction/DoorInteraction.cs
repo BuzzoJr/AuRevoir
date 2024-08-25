@@ -18,6 +18,7 @@ public class DoorInteraction : MonoBehaviour, IUseItem
     {
         m_AudioSource = GetComponent<AudioSource>();
     }
+
     public void UseItem(GameObject who)
     {
         if (targetItem == who.name)

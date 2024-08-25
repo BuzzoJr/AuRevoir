@@ -35,7 +35,6 @@ public class PhoneSpecial : MonoBehaviour, ISpecial
 
         if(DEMO) {  //FIM DA DEMO
             allCanvas.SetActive(true);
-            
         }
         else {
             GameManager.Instance.UpdateSong(IntroductionSong);
