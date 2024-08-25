@@ -13,7 +13,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
 {
     public PlayerData playerData;
     public Transform playerPos;
-    public List<GameObject> spawnPosition = new List<GameObject>();
+    public List<GameObject> spawnPosition = new();
+    public List<SceneRef> spawnReferece = new();
     [Header("FIRST TIME IN SCENE")]
     [SerializeField] private bool HasText = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
@@ -54,18 +55,14 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(false);
 
-        if (playerData.previousScene != SceneRef.B_BarBathroom)
-        {
-            foreach (GameObject spawnPos in spawnPosition)
-            {
-                if (spawnPos.name == playerData.previousScene.ToString() || spawnPos.name == "Else")
-                {
-                    playerPos.position = new Vector3(spawnPos.transform.position.x, playerPos.position.y, spawnPos.transform.position.z);
-                    playerPos.rotation = Quaternion.Euler(0f, spawnPos.transform.rotation.eulerAngles.y, 0f);
+        int spawnIndex = spawnReferece.IndexOf(playerData.previousScene);
+        if (spawnIndex < 0 && spawnPosition.Count > spawnReferece.Count)
+            spawnIndex = spawnPosition.Count - 1;
 
-                    break;
-                }
-            }
+        if (spawnIndex >= 0)
+        {
+            playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, playerPos.position.y, spawnPosition[spawnIndex].transform.position.z);
+            playerPos.rotation = Quaternion.Euler(0f, spawnPosition[spawnIndex].transform.rotation.eulerAngles.y, 0f);
         }
 
         if (needToActivate)
@@ -75,7 +72,8 @@ public class SceneController : MonoBehaviour, ILangConsumer
             playerData.AddStep(GameSteps.LaundryVisited);
 
         // AutoSave
-        SaveManager.Instance.SaveGame("autosave");
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
     }
 
     private void Start()
