@@ -11,7 +11,7 @@ public class UpdateRevolutionaryInAlley : MonoBehaviour
     {
         if (playerData.HasStep(GameSteps.CutsceneWatched))
             revolutionary.SetActive(false);
-        else if (playerData.HasStep(GameSteps.LaundryVisited))
+        else if (playerData.visitedScenes.Contains(SceneRef.CC_InteriorLavanderia))
             revolutionary.GetComponent<DialogInteraction>().textGroup = TextGroup.DirectionsToMorgue;
     }
 }

@@ -2678,6 +2678,7 @@ GameObject:
   - component: {fileID: 402235271}
   - component: {fileID: 402235270}
   - component: {fileID: 402235269}
+  - component: {fileID: 402235273}
   m_Layer: 0
   m_Name: DirectionPoint
   m_TagString: Untagged
@@ -2783,6 +2784,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402235267}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &402235273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402235267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7e0973161529f44b68e0a6e8b3c4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  door: {fileID: 402235269}
+  step: 3
+  lockBeforeStep: 1
 --- !u!1 &408934148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,22 +2832,22 @@ Transform:
   - {fileID: 1076550805}
   - {fileID: 1527905168113525914}
   - {fileID: 1959634619}
+  - {fileID: 2745828695658709827}
   - {fileID: 1643134636}
   - {fileID: 1468132427}
   - {fileID: 1927050669}
   - {fileID: 1670478251}
-  - {fileID: 2745828695658709827}
   - {fileID: 834749773}
   - {fileID: 1465169085}
   - {fileID: 1031518999}
+  - {fileID: 2036818934}
   - {fileID: 723552864}
   - {fileID: 76470929}
   - {fileID: 113220655}
-  - {fileID: 2036818934}
   - {fileID: 2003299965}
   - {fileID: 782890502}
-  - {fileID: 933162195}
   - {fileID: 1074592635}
+  - {fileID: 933162195}
   - {fileID: 543450652067559266}
   - {fileID: 649536821}
   - {fileID: 728072983}
@@ -2843,8 +2860,8 @@ Transform:
   - {fileID: 1730266146}
   - {fileID: 1060925050}
   - {fileID: 1537045547}
-  - {fileID: 2118160775}
   - {fileID: 1269859446}
+  - {fileID: 2118160775}
   - {fileID: 745990102}
   - {fileID: 3149062769446426169}
   m_Father: {fileID: 499235052}
@@ -6574,7 +6591,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 408934149}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 88.372, y: 0, z: 0}
 --- !u!114 &1074592636
 MonoBehaviour:
@@ -13111,7 +13128,7 @@ Transform:
   - {fileID: 102604235}
   - {fileID: 824745428}
   m_Father: {fileID: 408934149}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2036818935
 Animator:
@@ -13909,7 +13926,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 408934149}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3149062769446426168
 ParticleSystem:

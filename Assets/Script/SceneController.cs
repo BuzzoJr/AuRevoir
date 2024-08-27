@@ -68,9 +68,6 @@ public class SceneController : MonoBehaviour, ILangConsumer
         if (needToActivate)
             playerPos.gameObject.SetActive(true);
 
-        if (playerData.currentScene == SceneRef.CC_InteriorLavanderia) //TIRAR DAQUI?
-            playerData.AddStep(GameSteps.LaundryVisited);
-
         // AutoSave
         if (SaveManager.Instance != null)
             SaveManager.Instance.SaveGame("autosave");
@@ -91,28 +88,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
         }
         else
         {
-            if (playerData.currentScene == SceneRef.AP_Bedroom && playerData.HasStep(GameSteps.PhoneAnswered)) //TIRAR DAQUI
-            {
-                GameObject phone = GameObject.Find("answering-machine");
-                if (phone != null)
-                {
-                    DialogInteraction dialogInteraction = phone.GetComponent<DialogInteraction>();
-                    AudioSource audio = phone.GetComponent<AudioSource>();
-                    if (dialogInteraction != null)
-                        Destroy(dialogInteraction);
-                    if (audio != null)
-                        audio.clip = null;
-                }
-            }
-
             DeletarFigurantes();
-        }
-
-        if (playerData.currentScene == SceneRef.O_HallOffice && playerData.HasStep(GameSteps.BossFirstMission)) //TIRAR DAQUI, LIBERANDO UPLOAD
-        {
-            GameObject doorToUpload = GameObject.Find("Door Right");
-            if (doorToUpload != null)
-                doorToUpload.GetComponentInChildren<DoorController>().SetLock(false);
         }
 
         stopRun(playerData.currentScene);

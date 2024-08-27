@@ -11,8 +11,6 @@
         // Old
         PhoneAnswered,
         MissonReceived,
-        LaundryVisited,
-        MorgueVisited,
         CutsceneWatched,
         EndGame,
         AwakeBed,

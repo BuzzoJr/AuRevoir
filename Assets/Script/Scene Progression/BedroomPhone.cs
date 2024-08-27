@@ -5,6 +5,8 @@ public class BedroomPhone : MonoBehaviour
 {
     public PlayerData playerData;
     public Inspect voicemailScript;
+    public DialogInteraction dialogInteraction;
+    public AudioSource audioRinging;
     public Light lightRinging;
     public Light lightVoicemail;
 
@@ -12,6 +14,11 @@ public class BedroomPhone : MonoBehaviour
     {
         if (playerData.HasStep(GameSteps.PhoneAnswered))
         {
+            if (dialogInteraction != null)
+                Destroy(dialogInteraction);
+            if (audioRinging != null)
+                audioRinging.clip = null;
+
             voicemailScript.enabled = true;
             lightRinging.enabled = false;
             lightVoicemail.enabled = true;
