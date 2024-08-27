@@ -1,5 +1,6 @@
 using Assets.Script;
 using Assets.Script.Locale;
+using Steamworks;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -37,6 +38,23 @@ public class NewMenuController : MonoBehaviour
                 default:
                     ToEnUs();
                     break;
+            }
+        }
+        else
+        {
+            // Pegar lang da steam
+            if (SteamManager.Initialized)
+            {
+                var steamLang = SteamApps.GetCurrentGameLanguage();
+                Debug.Log(steamLang);
+                if (steamLang == "english")
+                {
+                    ToEnUs();
+                }
+                else if (steamLang == "brazilian")
+                {
+                    ToPtBr();
+                }
             }
         }
 
