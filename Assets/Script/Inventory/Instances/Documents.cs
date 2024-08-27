@@ -228,16 +228,10 @@ public class Documents : MonoBehaviour, ILangConsumer
             int index = (i + current) % showing.Count;
             float angle = i * 2 * Mathf.PI / showing.Count;
 
-            PlaceItemAt(showing.Values.ElementAt(index).transform,
-                        new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)),
-                        Quaternion.identity);
+            showing.Values.ElementAt(index).transform.SetPositionAndRotation(
+                circleParent.position + new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)), // position
+                Quaternion.identity); // rotation
         }
-    }
-
-    private void PlaceItemAt(Transform transform, Vector3 position, Quaternion rotation)
-    {
-        transform.localPosition = position;
-        transform.rotation = rotation;
     }
 
     private void OrganizeNavigation()

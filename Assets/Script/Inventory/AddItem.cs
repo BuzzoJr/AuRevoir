@@ -65,7 +65,8 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 
     void Start()
     {
-        runSpecial();
+        if (playerData.items.Contains(itemGroup))
+            runSpecial();
     }
 
     public void Use(GameObject who)
