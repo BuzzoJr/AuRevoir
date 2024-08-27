@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 
 public class Notes : MonoBehaviour, ILangConsumer
 {
-    public static Notes Instance;
-
     public PlayerData playerData;
 
     private Dictionary<ItemGroup, GameObject> navigation = new();
@@ -32,20 +30,7 @@ public class Notes : MonoBehaviour, ILangConsumer
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         Locale.RegisterConsumer(this);
-
-        ui = transform.GetChild(0).gameObject;
-        UpdateLangTexts();
     }
 
     void OnDestroy()
@@ -68,6 +53,9 @@ public class Notes : MonoBehaviour, ILangConsumer
             navigation.Add(obj.group, nav);
             //nav.GetComponentInChildren<TMP_Text>().text = Locale.Item[obj.group].Name;
         }
+
+        ui = transform.GetChild(0).gameObject;
+        UpdateLangTexts();
     }
 
     public void UpdateLangTexts()

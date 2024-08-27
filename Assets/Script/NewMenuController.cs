@@ -166,12 +166,15 @@ public class NewMenuController : MonoBehaviour
         btnPressed = !btnPressed;
     }
 
-    public void NewGameButton() {
-        if(SaveManager.Instance.VerificaSaveGame("autosave")) {
+    public void NewGameButton()
+    {
+        if (SaveManager.Instance.VerificaSaveGame("autosave"))
+        {
             //Pergunta se quer novo jogo
             StartCoroutine(WaitQuestion());
         }
-        else {
+        else
+        {
             StartCoroutine(AnimPcPlay(false));
         }
     }
@@ -267,14 +270,6 @@ public class NewMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(timeFade);
 
-        // Remover invent�rio
-        if (Inventory.Instance != null)
-            Destroy(Inventory.Instance.gameObject);
-        if (Documents.Instance != null)
-            Destroy(Documents.Instance.gameObject);
-        if (Notes.Instance != null)
-            Destroy(Notes.Instance.gameObject);
-
         SceneManager.LoadScene(SceneRef.B_BarBathroom.ToString());
     }
 
@@ -285,7 +280,8 @@ public class NewMenuController : MonoBehaviour
         panelButton.SetActive(true);
         loadingObj.SetActive(false);
 
-        if(cont) {
+        if (cont)
+        {
             SaveManager.Instance.LoadGame("autosave");
         }
     }

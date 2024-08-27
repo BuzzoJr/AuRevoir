@@ -14,6 +14,10 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryBag;
     public List<InventoryObject> objects = new();
 
+    public Inventory items;
+    public Documents documents;
+    public Notes notes;
+
     private ItemType lastType = ItemType.Item;
     private AudioSource audioSource;
 
@@ -65,7 +69,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OpenClose()
     {
-        if (Inventory.Instance.opened || Documents.Instance.opened || Notes.Instance.opened)
+        if (items.opened || documents.opened || notes.opened)
             StartCoroutine(WaitMouseReleaseToPlay()); // Close
         else
             Open();
@@ -74,21 +78,21 @@ public class InventoryManager : MonoBehaviour
     private IEnumerator WaitMouseReleaseToPlay()
     {
         yield return new WaitUntil(() => !Input.GetMouseButton(0));
-        Inventory.Instance.Close();
-        Documents.Instance.Close();
-        Notes.Instance.Close();
+        items.Close();
+        documents.Close();
+        notes.Close();
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
     public void Open(ItemType type)
     {
         lastType = type;
-        Open();
+        Open(force: true);
     }
 
-    public void Open(ItemGroup selected = ItemGroup.Default)
+    public void Open(ItemGroup selected = ItemGroup.Default, bool force = false)
     {
-        if (!CanOpen())
+        if (!CanOpen() && !force)
             return;
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
@@ -104,21 +108,21 @@ public class InventoryManager : MonoBehaviour
         switch (lastType)
         {
             case ItemType.Item:
-                Documents.Instance.Close();
-                Notes.Instance.Close();
-                Inventory.Instance.Open(selected);
+                documents.Close();
+                notes.Close();
+                items.Open(selected);
                 return;
 
             case ItemType.Document:
-                Inventory.Instance.Close();
-                Notes.Instance.Close();
-                Documents.Instance.Open(selected);
+                items.Close();
+                notes.Close();
+                documents.Open(selected);
                 return;
 
             case ItemType.Note:
-                Inventory.Instance.Close();
-                Documents.Instance.Close();
-                Notes.Instance.Open(selected);
+                items.Close();
+                documents.Close();
+                notes.Open(selected);
                 return;
         }
     }

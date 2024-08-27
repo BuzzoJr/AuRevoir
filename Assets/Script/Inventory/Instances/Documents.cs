@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 
 public class Documents : MonoBehaviour, ILangConsumer
 {
-    public static Documents Instance;
-
     public PlayerData playerData;
 
     public Dictionary<ItemGroup, GameObject> all = new();
@@ -43,21 +41,7 @@ public class Documents : MonoBehaviour, ILangConsumer
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         Locale.RegisterConsumer(this);
-
-        ui = transform.GetChild(0).gameObject;
-        UpdateLangTexts();
-        interact = useText.GetComponentInChildren<TMP_Text>();
     }
 
     void OnDestroy()
@@ -85,6 +69,10 @@ public class Documents : MonoBehaviour, ILangConsumer
             navigation.Add(obj.group, nav);
             nav.GetComponentInChildren<TMP_Text>().text = Locale.Item[obj.group].Name;
         }
+
+        ui = transform.GetChild(0).gameObject;
+        interact = useText.GetComponentInChildren<TMP_Text>();
+        UpdateLangTexts();
     }
 
     public void UpdateLangTexts()
@@ -218,7 +206,6 @@ public class Documents : MonoBehaviour, ILangConsumer
         showing = all.Where(i => i.Value.activeSelf).ToDictionary(i => i.Key, i => i.Value);
 
         // Prepara o offset para deixar o item selecionado na frente
-        current = 0;
         if (selected != ItemGroup.Default && showing.Keys.Contains(selected))
             current = showing.Keys.ToList().IndexOf(selected);
 
