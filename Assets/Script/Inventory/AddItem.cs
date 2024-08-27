@@ -2,18 +2,17 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class AddItem : MonoBehaviour, IUse, ILangConsumer
 {
+    public PlayerData playerData;
+
     [Tooltip("Item or Document")]
-    public ItemType itemType = ItemType.Item;
     public ItemGroup itemGroup = ItemGroup.Default;
-    [SerializeField] private GameObject ItemPrefab;
-    [SerializeField] private GameObject ItemMousePrefab;
     [SerializeField] private AudioClip pickupAudio;
+
     [Header("DIALOG ON PICKUP ITEM")]
     [SerializeField] private bool HasText = false;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
@@ -66,9 +65,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 
     void Start()
     {
-        if (itemType == ItemType.Item)
-            if (Inventory.instance.items.Any(item => item.itemID == itemGroup) || Documents.instance.documents.Any(item => item.itemID == itemGroup))
-                runSpecial();
+        runSpecial();
     }
 
     public void Use(GameObject who)
@@ -118,12 +115,10 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
-        if (itemType == ItemType.Item)
-            Inventory.instance.AddItem(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
-        else
-            Documents.instance.AddDocument(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
+        InventoryManager.Instance.PickUpAudio(pickupAudio);
+        if (playerData.AddItem(itemGroup))
+            InventoryManager.Instance.Open(itemGroup);
 
-        Inventory.instance.PickUpAudio(pickupAudio);
         runSpecial();
     }
 

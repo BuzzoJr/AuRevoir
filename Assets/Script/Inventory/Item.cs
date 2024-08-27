@@ -20,4 +20,5 @@ public enum ItemType
 {
     Item,
     Document,
+    Note,
 }

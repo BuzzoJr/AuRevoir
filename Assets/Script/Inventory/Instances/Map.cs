@@ -57,16 +57,13 @@ public class Map : MonoBehaviour
                                 OpenMap(false);
                                 break;
                             case "Items":
-                                Inventory.instance.OpenInventory(true);
-                                OpenMap(false);
+                                InventoryManager.Instance.Open(ItemType.Item);
                                 break;
                             case "Documents":
-                                Documents.instance.OpenDocuments(true);
-                                OpenMap(false);
+                                InventoryManager.Instance.Open(ItemType.Document);
                                 break;
                             case "Notes":
-                                Notes.instance.OpenNotes(true);
-                                OpenMap(false);
+                                InventoryManager.Instance.Open(ItemType.Note);
                                 break;
                         }
                     }

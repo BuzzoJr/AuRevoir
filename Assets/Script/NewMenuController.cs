@@ -268,12 +268,12 @@ public class NewMenuController : MonoBehaviour
         yield return new WaitForSeconds(timeFade);
 
         // Remover invent�rio
-        if (Inventory.instance != null)
-            Destroy(Inventory.instance.gameObject);
-        if (Documents.instance != null)
-            Destroy(Documents.instance.gameObject);
-        if (Notes.instance != null)
-            Destroy(Notes.instance.gameObject);
+        if (Inventory.Instance != null)
+            Destroy(Inventory.Instance.gameObject);
+        if (Documents.Instance != null)
+            Destroy(Documents.Instance.gameObject);
+        if (Notes.Instance != null)
+            Destroy(Notes.Instance.gameObject);
 
         SceneManager.LoadScene(SceneRef.B_BarBathroom.ToString());
     }

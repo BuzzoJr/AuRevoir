@@ -8,75 +8,44 @@ using UnityEngine.EventSystems;
 
 public class Documents : MonoBehaviour, ILangConsumer
 {
-    public static Documents instance;
-    public List<Item> documents = new List<Item>();
-    [Header("Clickable Item List")]
-    private List<GameObject> documentNavigation = new List<GameObject>();
-    [SerializeField] private GameObject documentNavigationParent;
-    [SerializeField] private GameObject documentNavigationPrefab;
+    public static Documents Instance;
+
+    public PlayerData playerData;
+
+    public Dictionary<ItemGroup, GameObject> all = new();
+    private Dictionary<ItemGroup, GameObject> showing = new();
+    private Dictionary<ItemGroup, GameObject> navigation = new();
+
+    public bool opened = false;
+
+    [Header("Clickable List")]
+    [SerializeField] private GameObject navigationParent;
+    [SerializeField] private GameObject navigationPrefab;
+
     [Header("UI Text")]
-    [SerializeField] private TMP_Text DocumentName;
-    [SerializeField] private TMP_Text DocumentDetails;
+    [SerializeField] private TMP_Text objName;
+    [SerializeField] private TMP_Text objDetails;
     [SerializeField] private GameObject useText;
+
     [Header("Reference Points")]
-    [SerializeField] private GameObject DocumentDetailsParent;
-    [Header("Item Circle")]
-    [SerializeField] private Transform DocumentParent;
+    [SerializeField] private GameObject detailsParent;
+
+    [Header("Circle")]
+    [SerializeField] private Transform circleParent;
     [SerializeField] private float radius = 20f;
     [SerializeField] private float rotationDuration = 1.0f;
 
-    private AudioSource audioSource;
     private bool isRotating = false;
-    private GameObject documentsUI;
-    private int currentDocument = 0;
-    private TMP_Text interactDocument;
-    private TMP_Text documentNavigationText;
+    private GameObject ui;
+    private int current = 0;
+    private TMP_Text interact;
+    private ItemType myType = ItemType.Document;
 
-    public void UpdateLangTexts()
+    void Awake()
     {
-        DocumentName.text = Locale.Texts[TextGroup.Inventory][0].Text;
-        DocumentDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
-
-        if (documents.Count > 0)
+        if (Instance == null)
         {
-            for (int i = 0; i < documents.Count; i++)
-            {
-                documentNavigation[i].GetComponentInChildren<TMP_Text>().text = Locale.Item[documents[i].itemID].Name;
-            }
-
-            Item document = documents[currentDocument];
-            ItemData documentData = Locale.Item[document.itemID];
-
-            DocumentName.text = documentData.Name;
-
-            if (document.itemMousePrefab != null)
-            {
-                useText.SetActive(true);
-                interactDocument.text = Locale.Texts[TextGroup.Inventory][1].Text;
-            }
-            else if (documentData.Details != null)
-            {
-                useText.SetActive(true);
-                interactDocument.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                DocumentDetails.text = documentData.Details;
-            }
-            else
-            {
-                useText.SetActive(false);
-            }
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -86,195 +55,222 @@ public class Documents : MonoBehaviour, ILangConsumer
 
         Locale.RegisterConsumer(this);
 
-        audioSource = GetComponent<AudioSource>();
-        documentsUI = transform.GetChild(0).gameObject;
+        ui = transform.GetChild(0).gameObject;
         UpdateLangTexts();
-        interactDocument = useText.GetComponentInChildren<TMP_Text>();
+        interact = useText.GetComponentInChildren<TMP_Text>();
     }
 
-    private void Update()
+    void OnDestroy()
     {
-        if (documentsUI.activeSelf)
+        Locale.UnregisterConsumer(this);
+    }
+
+    void Start()
+    {
+        all = new();
+        navigation = new();
+
+        // Initiate all items
+        foreach (InventoryObject obj in InventoryManager.Instance.objects)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+            if (obj.type != myType)
+                continue;
 
-            if (Input.GetKeyDown(KeyCode.Tab))
+            // Instance
+            GameObject inst = Instantiate(obj.prefab, circleParent);
+            all.Add(obj.group, inst);
+
+            // Navigation
+            GameObject nav = Instantiate(navigationPrefab, navigationParent.transform);
+            navigation.Add(obj.group, nav);
+            nav.GetComponentInChildren<TMP_Text>().text = Locale.Item[obj.group].Name;
+        }
+    }
+
+    public void UpdateLangTexts()
+    {
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().text = Locale.Item[nav.Key].Name;
+
+        if (showing.Count <= 0)
+        {
+            objName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            objDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            return;
+        }
+
+        UpdateCurrentItemData();
+    }
+
+    private void UpdateCurrentItemData()
+    {
+        ItemGroup group = showing.Keys.ElementAt(current);
+        ItemData itemData = Locale.Item[group];
+
+        objName.text = itemData.Name;
+
+        if (InventoryManager.Instance.GetObjectByGroup(group).mousePrefab != null)
+        {
+            useText.SetActive(true);
+            interact.text = Locale.Texts[TextGroup.Inventory][1].Text;
+        }
+        else if (itemData.Details != null)
+        {
+            useText.SetActive(true);
+            interact.text = Locale.Texts[TextGroup.Inventory][2].Text;
+            objDetails.text = itemData.Details;
+        }
+        else
+        {
+            useText.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (!ui.activeSelf)
+            return;
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (detailsParent.activeSelf)
+                detailsParent.SetActive(false);
+
+            // Use the mouse position directly for the PointerEventData
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
             {
-                OpenDocuments(false);
-            }
+                position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            };
 
-            if (Input.GetMouseButtonDown(0))
+            // Raycast using the event system and mouse position
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            foreach (var result in raycastResults)
             {
-                if (DocumentDetailsParent.activeSelf)
-                    DocumentDetailsParent.SetActive(false);
-                // Use the mouse position directly for the PointerEventData
-                PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                // Ensure we hit the UI layer
+                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {
-                    position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
-                };
-
-                // Raycast using the event system and mouse position
-                List<RaycastResult> raycastResults = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-                foreach (var result in raycastResults)
-                {
-                    // Ensure we hit the UI layer
-                    if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                    if (navigation.Values.Contains(result.gameObject))
                     {
-                        if (documentNavigation.Contains(result.gameObject))
-                        {
-                            RotateToItem(documentNavigation.IndexOf(result.gameObject));
+                        RotateToItem(navigation.Values.ToList().IndexOf(result.gameObject));
+                        break;
+                    }
+
+                    switch (result.gameObject.name)
+                    {
+                        case "UseItem":
+                            ItemGroup group = showing.Keys.ElementAt(current);
+                            GameObject mouse = InventoryManager.Instance.GetObjectByGroup(group).mousePrefab;
+                            if (mouse != null)
+                            {
+                                Instantiate(mouse, Vector3.zero, Quaternion.identity);
+                                ui.SetActive(false);
+                                GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+                            }
+                            else if (Locale.Item[group].Details != null)
+                            {
+                                detailsParent.SetActive(true);
+                            }
                             break;
-                        }
-                        switch (result.gameObject.name)
-                        {
-                            case "UseItem":
-                                Item document = documents[currentDocument];
-                                if (document.itemMousePrefab != null)
-                                {
-                                    Instantiate(documents[currentDocument].itemMousePrefab, Vector3.zero, Quaternion.identity);
-                                    documentsUI.SetActive(false);
-                                    GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-                                }
-                                else if (Locale.Item[documents[currentDocument].itemID].Details != null)
-                                {
-                                    DocumentDetailsParent.SetActive(true);
-                                }
-                                break;
-                            case "Close":
-                                OpenDocuments(false);
-                                break;
-                            case "Items":
-                                Inventory.instance.OpenInventory(true);
-                                OpenDocuments(false);
-                                break;
-                            case "Notes":
-                                Notes.instance.OpenNotes(true);
-                                OpenDocuments(false);
-                                break;
-                        }
+                        case "Close":
+                            Close();
+                            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+                            break;
+                        case "Items":
+                            InventoryManager.Instance.Open(ItemType.Item);
+                            break;
+                        case "Documents":
+                            InventoryManager.Instance.Open(ItemType.Document);
+                            break;
+                        case "Notes":
+                            InventoryManager.Instance.Open(ItemType.Note);
+                            break;
                     }
                 }
             }
         }
     }
 
-    public void OpenDocuments(bool open = true, int index = 0)
+    public void Close()
     {
-        documentsUI.SetActive(open);
-        if (documentsUI.activeSelf)
+        ui.SetActive(false);
+        opened = false;
+    }
+
+    public void Open(ItemGroup selected = ItemGroup.Default)
+    {
+        ui.SetActive(true);
+        opened = true;
+        OrganizeCircle(selected);
+        OrganizeNavigation();
+        UpdateInfo();
+    }
+
+    private void OrganizeCircle(ItemGroup selected = ItemGroup.Default)
+    {
+        // Ativa / Desativa baseado na lista de items do player data
+        foreach (var obj in all)
+            obj.Value.SetActive(playerData.items.Contains(obj.Key));
+
+        // Pega somente a lista de items que podem ser apresentados
+        showing = all.Where(i => i.Value.activeSelf).ToDictionary(i => i.Key, i => i.Value);
+
+        // Prepara o offset para deixar o item selecionado na frente
+        current = 0;
+        if (selected != ItemGroup.Default && showing.Keys.Contains(selected))
+            current = showing.Keys.ToList().IndexOf(selected);
+
+        // Posiciona os ativos no circulo
+        for (int i = 0; i < showing.Count; i++)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            if (index != 0)
-                currentDocument = documents.Count - 1;
-            ClearItems();
-            PopulateCircle(currentDocument);
-            UpdateInfo();
-        }
-        else
-        {
-            StartCoroutine(WaitMouseReleaseToPlay());
+            int index = (i + current) % showing.Count;
+            float angle = i * 2 * Mathf.PI / showing.Count;
+
+            PlaceItemAt(showing.Values.ElementAt(index).transform,
+                        new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)),
+                        Quaternion.identity);
         }
     }
 
-    private IEnumerator WaitMouseReleaseToPlay()
+    private void PlaceItemAt(Transform transform, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitUntil(() => !Input.GetMouseButton(0));
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        transform.localPosition = position;
+        transform.rotation = rotation;
+    }
+
+    private void OrganizeNavigation()
+    {
+        // Ativa / Desativa baseado na lista de items do player data
+        foreach (var nav in navigation)
+            nav.Value.SetActive(playerData.items.Contains(nav.Key));
     }
 
     private void UpdateInfo()
     {
-        foreach (var navText in documentNavigation)
-        {
-            documentNavigationText = navText.GetComponentInChildren<TMP_Text>();
-            documentNavigationText.color = Color.grey;
-        }
-        if (documents.Count != 0)
-        {
-            DocumentName.text = Locale.Item[documents[currentDocument].itemID].Name;
-            documentNavigationText = documentNavigation[currentDocument].GetComponentInChildren<TMP_Text>();
-            documentNavigationText.color = Color.white;
-            UpdateLangTexts();
-        }
-    }
-
-    public void AddDocument(InventoryObject obj, bool openInventory = true)
-    {
-        if (obj.type != ItemType.Document)
+        if (showing.Count <= 0)
             return;
 
-        AddDocument(new Item(obj.group, obj.prefab, obj.mousePrefab), openInventory);
-    }
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().color = (nav.Key == showing.Keys.ElementAt(current)) ? Color.white : Color.grey;
 
-    public void AddDocument(Item document, bool openInventory = true)
-    {
-        if (documents.Any(existingItem => existingItem.itemID == document.itemID))
-            return;
-
-        documents.Add(document);
-        int index = documents.Count - 1;
-        GameObject newItem = Instantiate(documentNavigationPrefab, documentNavigationParent.transform);
-        documentNavigation.Add(newItem);
-        documentNavigationText = documentNavigation[index].GetComponentInChildren<TMP_Text>();
-        documentNavigationText.text = Locale.Item[document.itemID].Name;
-
-        if (openInventory)
-            OpenDocuments(true, index);
+        UpdateCurrentItemData();
     }
 
     public void ChangeItem(int direction)
     {
-        currentDocument += direction;
-        currentDocument = (currentDocument + documents.Count) % documents.Count;
+        current += direction;
+        current = (current + all.Count) % all.Count;
         UpdateInfo();
     }
 
     public void RotateItemsParent(int dir)
     {
-        if (documents.Count <= 1 || isRotating) return;
+        if (showing.Count <= 1 || isRotating) return;
 
-        float angleBetweenItems = 360f / documents.Count;
+        float angleBetweenItems = 360f / showing.Count;
         StartCoroutine(SmoothRotation(angleBetweenItems, dir));
-    }
-
-    private void ClearItems()
-    {
-        foreach (Transform child in DocumentParent)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
-    private void PopulateCircle(int offset = 0)
-    {
-        int itemCount = documents.Count;
-        for (int i = 0; i < itemCount; i++)
-        {
-            // Calculate the adjusted index with the offset
-            int adjustedIndex = (i + offset) % itemCount;
-
-            // Calculate the angle for the current position
-            float angle = i * 360f / itemCount;
-            Vector3 position = CalculatePosition(angle);
-
-            // Instantiate the prefab at the calculated position
-            Instantiate(documents[adjustedIndex].itemPrefab, position, Quaternion.identity, DocumentParent);
-        }
-    }
-
-    private Vector3 CalculatePosition(float angle)
-    {
-        // Convert angle from degrees to radians
-        float radian = angle * Mathf.Deg2Rad;
-
-        // Calculate x and z position for a horizontal circle on X-Z plane
-        float x = radius * Mathf.Cos(radian);
-        float z = radius * Mathf.Sin(radian);
-
-        // Adjust position based on the DocumentParent's position
-        return new Vector3(x + DocumentParent.position.x, DocumentParent.position.y, z + DocumentParent.position.z);
     }
 
     private IEnumerator SmoothRotation(float angleItem, int dir)
@@ -282,42 +278,35 @@ public class Documents : MonoBehaviour, ILangConsumer
         float angle = angleItem * dir;
         isRotating = true;
         float elapsedTime = 0;
-        Quaternion startingRotation = DocumentParent.rotation;
-        Quaternion finalRotation = Quaternion.Euler(DocumentParent.eulerAngles + new Vector3(0, angle, 0));
+        Quaternion startingRotation = circleParent.rotation;
+        Quaternion finalRotation = Quaternion.Euler(circleParent.eulerAngles + new Vector3(0, angle, 0));
 
         while (elapsedTime < rotationDuration)
         {
-            DocumentParent.rotation = Quaternion.Slerp(startingRotation, finalRotation, elapsedTime / rotationDuration);
+            circleParent.rotation = Quaternion.Slerp(startingRotation, finalRotation, elapsedTime / rotationDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        DocumentParent.rotation = finalRotation;
+        circleParent.rotation = finalRotation;
         isRotating = false;
         ChangeItem(dir);
     }
 
-    public void PickUpAudio(AudioClip audio)
-    {
-        audioSource.PlayOneShot(audio);
-    }
-
-
-
     public void RotateToItem(int targetIndex)
     {
-        if (targetIndex == -1 || targetIndex == currentDocument) return;
+        if (targetIndex == -1 || targetIndex == current) return;
 
-        int direction = CalculateRotationDirection(currentDocument, targetIndex);
-        int distance = CalculateRotationDistance(currentDocument, targetIndex, direction);
+        int direction = CalculateRotationDirection(current, targetIndex);
+        int distance = CalculateRotationDistance(current, targetIndex, direction);
         RotateItemsParent(distance * direction);
     }
 
 
     private int CalculateRotationDirection(int currentIndex, int targetIndex)
     {
-        int forwardDistance = (targetIndex - currentIndex + documents.Count) % documents.Count;
-        int backwardDistance = (currentIndex - targetIndex + documents.Count) % documents.Count;
+        int forwardDistance = (targetIndex - currentIndex + all.Count) % showing.Count;
+        int backwardDistance = (currentIndex - targetIndex + all.Count) % showing.Count;
 
         return forwardDistance <= backwardDistance ? 1 : -1;
     }
@@ -325,8 +314,8 @@ public class Documents : MonoBehaviour, ILangConsumer
     private int CalculateRotationDistance(int currentIndex, int targetIndex, int direction)
     {
         if (direction > 0)
-            return (targetIndex - currentIndex + documents.Count) % documents.Count;
+            return (targetIndex - currentIndex + all.Count) % showing.Count;
         else
-            return (currentIndex - targetIndex + documents.Count) % documents.Count;
+            return (currentIndex - targetIndex + all.Count) % showing.Count;
     }
 }

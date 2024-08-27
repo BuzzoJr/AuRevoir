@@ -72,14 +72,8 @@ public class SaveManager : MonoBehaviour
             previousScene = playerData.previousScene,
             visitedScenes = playerData.visitedScenes,
             steps = playerData.steps,
+            items = playerData.items,
         };
-
-        data.inventoryGroups = new();
-        if (Inventory.instance != null)
-            data.inventoryGroups = data.inventoryGroups.Concat(Inventory.instance.items.Select(i => i.itemID)).ToList();
-
-        if (Documents.instance != null)
-            data.inventoryGroups = data.inventoryGroups.Concat(Documents.instance.documents.Select(i => i.itemID)).ToList();
 
         fileHandler.SaveFile(data, saveName + SAVEFILE_EXTENSION);
         UpdateFiles();
@@ -99,7 +93,8 @@ public class SaveManager : MonoBehaviour
         return true;
     }
 
-    public bool VerificaSaveGame(string saveName) { //Verifica se ja existe algum arquivo de save
+    public bool VerificaSaveGame(string saveName)
+    { //Verifica se ja existe algum arquivo de save
         if (!saveFiles.Contains(saveName))
             return false;
 
@@ -117,20 +112,7 @@ public class SaveManager : MonoBehaviour
         playerData.currentScene = data.previousScene;  // Vai virar previous scene assim que carregar a cena
         playerData.visitedScenes = data.visitedScenes;
         playerData.steps = data.steps;
-
-        // TODO: Reset inventory
-
-        // Add items and documents
-        GameManager.Instance.inventoryObjects
-            .Where(o => data.inventoryGroups.Contains(o.group))
-            .ToList()
-            .ForEach(o =>
-            {
-                if (o.type == ItemType.Item)
-                    Inventory.instance.AddItem(o, false);
-                else
-                    Documents.instance.AddDocument(o, false);
-            });
+        playerData.items = data.items;
 
         SceneManager.LoadScene(data.currentScene.ToString());
     }

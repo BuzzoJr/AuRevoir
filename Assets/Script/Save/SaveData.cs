@@ -8,5 +8,5 @@ public class SaveData
     public SceneRef previousScene;
     public List<SceneRef> visitedScenes;
     public List<GameSteps> steps;
-    public List<ItemGroup> inventoryGroups;
+    public List<ItemGroup> items;
 }

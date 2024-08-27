@@ -10,11 +10,7 @@ public class HankSpecial : MonoBehaviour, ISpecial
     public AudioClip pickup;
 
     [Header("Item")]
-    [Tooltip("Item or Document")]
-    public ItemType itemType = ItemType.Item;
     public ItemGroup itemGroup = ItemGroup.Default;
-    [SerializeField] private GameObject ItemPrefab;
-    [SerializeField] private GameObject ItemMousePrefab;
     [SerializeField] private AudioClip pickupAudio;
 
     private int step = 0;
@@ -36,12 +32,9 @@ public class HankSpecial : MonoBehaviour, ISpecial
                 break;
 
             case 3:
-                if (itemType == ItemType.Item)
-                    Inventory.instance.AddItem(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
-                else
-                    Documents.instance.AddDocument(new Item(itemGroup, ItemPrefab, ItemMousePrefab));
-
-                Inventory.instance.PickUpAudio(pickupAudio);
+                InventoryManager.Instance.PickUpAudio(pickupAudio);
+                if (playerData.AddItem(itemGroup))
+                    InventoryManager.Instance.Open(itemGroup);
 
                 playerData.AddStep(GameSteps.GetFirstMission);
 

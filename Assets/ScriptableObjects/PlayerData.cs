@@ -1,4 +1,5 @@
 using Assets.Script;
+using Assets.Script.Locale;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,14 @@ public class PlayerData : ScriptableObject
     public SceneRef currentScene;
     public SceneRef previousScene;
 
+    [Header("Visited Scenes")]
     public List<SceneRef> visitedScenes = new();
 
-    [SerializeField]
+    [Header("Game Steps - Progression")]
     public List<GameSteps> steps = new();
+
+    [Header("Item Collected")]
+    public List<ItemGroup> items = new();
 
     [Header("Scenes Player Can't Run")]
     public List<SceneRef> IndoorScenes = new();
@@ -20,6 +25,7 @@ public class PlayerData : ScriptableObject
     {
         visitedScenes.Clear();
         steps.Clear();
+        items.Clear();
     }
 
     public void AddStep(GameSteps step)
@@ -33,7 +39,22 @@ public class PlayerData : ScriptableObject
         steps.Add(step);
 
         // AutoSave
-        SaveManager.Instance.SaveGame("autosave");
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
+    }
+
+    public bool AddItem(ItemGroup item)
+    {
+        if (items.Contains(item))
+            return false;
+
+        items.Add(item);
+
+        // AutoSave
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
+
+        return true;
     }
 
     public bool HasStep(GameSteps step)

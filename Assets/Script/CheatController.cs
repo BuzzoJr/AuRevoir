@@ -150,7 +150,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_BarBathroom,
             visitedScenes = new(),
             steps = new(),
-            inventoryGroups = new(),
+            items = new(),
         });
     }
 
@@ -162,7 +162,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_BarBathroom,
             visitedScenes = new() { SceneRef.B_BarBathroom },
             steps = new(),
-            inventoryGroups = new(),
+            items = new(),
         });
     }
 
@@ -174,7 +174,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_BarBathroom,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar },
             steps = new() { GameSteps.GetFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -186,7 +186,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_Bar,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar },
             steps = new() { GameSteps.GetFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -198,7 +198,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_Bar,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -210,7 +210,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_Bar,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -222,7 +222,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_Rua,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -234,7 +234,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.B_Bar,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -246,7 +246,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_OfficeGarage,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -258,7 +258,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_HallOffice,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -270,7 +270,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_HallOffice,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -282,7 +282,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_Office,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -294,7 +294,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_HallOffice,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -306,7 +306,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.O_UploadRoom,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -318,7 +318,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.AP_BedroomBadDream,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -330,7 +330,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.AP_LivingroomBadDream,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream, SceneRef.AP_LivingroomBadDream },
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
-            inventoryGroups = new() { ItemGroup.KeyCard },
+            items = new() { ItemGroup.KeyCard },
         });
     }
 
@@ -342,7 +342,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.NewMenu,
             visitedScenes = new(),
             steps = new(),
-            inventoryGroups = new(),
+            items = new(),
         });
     }
 
@@ -354,7 +354,7 @@ public class CheatController : MonoBehaviour
             previousScene = SceneRef.NewMenu,
             visitedScenes = new(),
             steps = new(),
-            inventoryGroups = new(),
+            items = new(),
         });
     }
 }

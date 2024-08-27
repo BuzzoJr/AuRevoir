@@ -1,115 +1,186 @@
-using System.Collections;
+using Assets.Script.Locale;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Notes : MonoBehaviour
+public class Notes : MonoBehaviour, ILangConsumer
 {
-    public static Notes instance;
-    // public List<Notes> notes = new List<Notes>();
-    [Header("Clickable Item List")]
-    private List<GameObject> notesNavigation = new List<GameObject>();
-    [SerializeField] private GameObject notesNavigationParent;
-    [SerializeField] private GameObject notesNavigationPrefab;
+    public static Notes Instance;
 
-    private GameObject notesUI;
+    public PlayerData playerData;
 
-    private void Awake()
+    private Dictionary<ItemGroup, GameObject> navigation = new();
+
+    public bool opened = false;
+
+    [Header("Clickable List")]
+    [SerializeField] private GameObject navigationParent;
+    [SerializeField] private GameObject navigationPrefab;
+
+    [Header("UI Text")]
+    //[SerializeField] private TMP_Text objName;
+    //[SerializeField] private TMP_Text objDetails;
+
+    [Header("Reference Points")]
+    //[SerializeField] private GameObject detailsParent;
+
+    private GameObject ui;
+    private ItemGroup current = ItemGroup.Default;
+    private ItemType myType = ItemType.Note;
+
+    void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        notesUI = transform.GetChild(0).gameObject;
+
+        Locale.RegisterConsumer(this);
+
+        ui = transform.GetChild(0).gameObject;
+        UpdateLangTexts();
     }
 
-    private void Update()
+    void OnDestroy()
     {
-        if (notesUI.activeSelf)
+        Locale.UnregisterConsumer(this);
+    }
+
+    void Start()
+    {
+        navigation = new();
+
+        // Initiate all items
+        foreach (InventoryObject obj in InventoryManager.Instance.objects)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+            if (obj.type != myType)
+                continue;
 
-            if (Input.GetKeyDown(KeyCode.Tab))
+            // Navigation
+            GameObject nav = Instantiate(navigationPrefab, navigationParent.transform);
+            navigation.Add(obj.group, nav);
+            //nav.GetComponentInChildren<TMP_Text>().text = Locale.Item[obj.group].Name;
+        }
+    }
+
+    public void UpdateLangTexts()
+    {
+
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().text = Locale.Item[nav.Key].Name;
+
+        if (!navigation.Any(n => n.Value.activeSelf))
+        {
+            //objName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            //objDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            return;
+        }
+
+        UpdateCurrentItemData();
+    }
+
+    private void UpdateCurrentItemData()
+    {
+        ItemData itemData = Locale.Item[current];
+
+        //objName.text = itemData.Name;
+
+        //if (itemData.Details != null)
+        //objDetails.text = itemData.Details;
+    }
+
+    void Update()
+    {
+        if (!ui.activeSelf)
+            return;
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+        if (Input.GetMouseButtonDown(0))
+        {
+            //if (detailsParent.activeSelf)
+            //detailsParent.SetActive(false);
+
+            // Use the mouse position directly for the PointerEventData
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
             {
-                OpenNotes(false);
-            }
+                position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            };
 
-            if (Input.GetMouseButtonDown(0))
+            // Raycast using the event system and mouse position
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            foreach (var result in raycastResults)
             {
-                // Use the mouse position directly for the PointerEventData
-                PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                // Ensure we hit the UI layer
+                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {
-                    position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
-                };
-
-                // Raycast using the event system and mouse position
-                List<RaycastResult> raycastResults = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-                foreach (var result in raycastResults)
-                {
-                    // Ensure we hit the UI layer
-                    if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                    var selected = navigation.FirstOrDefault(n => n.Value == result.gameObject).Key;
+                    if (selected != ItemGroup.Default)
                     {
-                        if (notesNavigation.Contains(result.gameObject))
-                        {
-                            UpdateInfo(notesNavigation.IndexOf(result.gameObject));
+                        current = selected;
+                        UpdateInfo();
+                        break;
+                    }
+
+                    switch (result.gameObject.name)
+                    {
+                        case "Close":
+                            Close();
+                            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
                             break;
-                        }
-                        switch (result.gameObject.name)
-                        {
-                            case "Close":
-                                OpenNotes(false);
-                                break;
-                            case "Items":
-                                Inventory.instance.OpenInventory(true);
-                                OpenNotes(false);
-                                break;
-                            case "Documents":
-                                Documents.instance.OpenDocuments(true);
-                                OpenNotes(false);
-                                break;
-                        }
+                        case "Items":
+                            InventoryManager.Instance.Open(ItemType.Item);
+                            break;
+                        case "Documents":
+                            InventoryManager.Instance.Open(ItemType.Document);
+                            break;
+                        case "Notes":
+                            InventoryManager.Instance.Open(ItemType.Note);
+                            break;
                     }
                 }
             }
         }
     }
 
-    public void OpenNotes(bool open = true, int index = 0)
+    public void Close()
     {
-        notesUI.SetActive(open);
-        if (notesUI.activeSelf)
-        {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            UpdateInfo();
-        }
-        else
-        {
-            StartCoroutine(WaitMouseReleaseToPlay());
-        }
+        ui.SetActive(false);
+        opened = false;
     }
 
-    private IEnumerator WaitMouseReleaseToPlay()
+    public void Open(ItemGroup selected = ItemGroup.Default)
     {
-        yield return new WaitUntil(() => !Input.GetMouseButton(0));
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        ui.SetActive(true);
+        opened = true;
+
+        if (selected != ItemGroup.Default && playerData.items.Contains(selected))
+            current = selected;
+
+        OrganizeNavigation();
+        UpdateInfo();
     }
 
-    private void UpdateInfo(int index = 0)
+    private void OrganizeNavigation()
     {
-
+        // Ativa / Desativa baseado na lista de items do player data
+        foreach (var nav in navigation)
+            nav.Value.SetActive(playerData.items.Contains(nav.Key));
     }
 
-    public void AddNote()
+    private void UpdateInfo()
     {
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().color = (nav.Key == current) ? Color.white : Color.grey;
 
+        UpdateCurrentItemData();
     }
-
-
 }

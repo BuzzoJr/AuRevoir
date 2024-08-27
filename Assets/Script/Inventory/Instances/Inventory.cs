@@ -1,4 +1,3 @@
-using Assets.Script;
 using Assets.Script.Locale;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,82 +5,47 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour, ILangConsumer
 {
-    public static Inventory instance;
-    public List<Item> items = new List<Item>();
-    [Header("Clickable Item List")]
-    private List<GameObject> itemNavigation = new List<GameObject>();
-    [SerializeField] private GameObject itemNavigationParent;
-    [SerializeField] private GameObject itemNavigationPrefab;
+    public static Inventory Instance;
+
+    public PlayerData playerData;
+
+    public Dictionary<ItemGroup, GameObject> all = new();
+    private Dictionary<ItemGroup, GameObject> showing = new();
+    private Dictionary<ItemGroup, GameObject> navigation = new();
+
+    public bool opened = false;
+
+    [Header("Clickable List")]
+    [SerializeField] private GameObject navigationParent;
+    [SerializeField] private GameObject navigationPrefab;
+
     [Header("UI Text")]
-    [SerializeField] private TMP_Text ItemName;
-    [SerializeField] private TMP_Text ItemDetails;
+    [SerializeField] private TMP_Text objName;
+    [SerializeField] private TMP_Text objDetails;
     [SerializeField] private GameObject useText;
+
     [Header("Reference Points")]
-    [SerializeField] private GameObject ItemDetailsParent;
-    [SerializeField] private GameObject inventoryBag;
-    [Header("Item Circle")]
-    [SerializeField] private Transform itemsParent;
+    [SerializeField] private GameObject detailsParent;
+
+    [Header("Circle")]
+    [SerializeField] private Transform circleParent;
     [SerializeField] private float radius = 20f;
     [SerializeField] private float rotationDuration = 1.0f;
 
-    private AudioSource audioSource;
     private bool isRotating = false;
-    private GameObject inventoryUI;
-    private int currentItem = 0;
-    private TMP_Text interactItem;
-    private TMP_Text itemNavigationText;
-    private GameManager.GameState currentState = GameManager.GameState.Playing;
+    private GameObject ui;
+    private int current = 0;
+    private TMP_Text interact;
+    private ItemType myType = ItemType.Item;
 
-    public void UpdateLangTexts()
+    void Awake()
     {
-        ItemName.text = Locale.Texts[TextGroup.Inventory][0].Text;
-        ItemDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
-
-        if (items.Count > 0)
+        if (Instance == null)
         {
-            for (int i = 0; i < items.Count; i++)
-            {
-                itemNavigation[i].GetComponentInChildren<TMP_Text>().text = Locale.Item[items[i].itemID].Name;
-            }
-
-            Item item = items[currentItem];
-            ItemData itemData = Locale.Item[item.itemID];
-
-            ItemName.text = itemData.Name;
-
-            if (item.itemMousePrefab != null)
-            {
-                useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][1].Text;
-            }
-            else if (itemData.Details != null)
-            {
-                useText.SetActive(true);
-                interactItem.text = Locale.Texts[TextGroup.Inventory][2].Text;
-                ItemDetails.text = itemData.Details;
-            }
-            else
-            {
-                useText.SetActive(false);
-            }
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-        GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -91,224 +55,222 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
         Locale.RegisterConsumer(this);
 
-        audioSource = GetComponent<AudioSource>();
-        inventoryUI = transform.GetChild(0).gameObject;
+        ui = transform.GetChild(0).gameObject;
         UpdateLangTexts();
-        interactItem = useText.GetComponentInChildren<TMP_Text>();
-        GameManager.OnGameStateChange += GameManagerOnGameStateChange;
+        interact = useText.GetComponentInChildren<TMP_Text>();
     }
 
-    private void GameManagerOnGameStateChange(GameManager.GameState state)
+    void OnDestroy()
     {
-        currentState = state;
+        Locale.UnregisterConsumer(this);
     }
 
-    private void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        all = new();
+        navigation = new();
+
+        // Initiate all items
+        foreach (InventoryObject obj in InventoryManager.Instance.objects)
         {
-            if (currentState == GameManager.GameState.Playing)
-                OpenInventory(true);
-            else
-                OpenInventory(false);
+            if (obj.type != myType)
+                continue;
+
+            // Instance
+            GameObject inst = Instantiate(obj.prefab, circleParent);
+            all.Add(obj.group, inst);
+
+            // Navigation
+            GameObject nav = Instantiate(navigationPrefab, navigationParent.transform);
+            navigation.Add(obj.group, nav);
+            nav.GetComponentInChildren<TMP_Text>().text = Locale.Item[obj.group].Name;
         }
-        if (inventoryUI.activeSelf)
+    }
+
+    public void UpdateLangTexts()
+    {
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().text = Locale.Item[nav.Key].Name;
+
+        if (showing.Count <= 0)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            if (Input.GetMouseButtonDown(0))
+            objName.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            objDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            return;
+        }
+
+        UpdateCurrentItemData();
+    }
+
+    private void UpdateCurrentItemData()
+    {
+        ItemGroup group = showing.Keys.ElementAt(current);
+        ItemData itemData = Locale.Item[group];
+
+        objName.text = itemData.Name;
+
+        if (InventoryManager.Instance.GetObjectByGroup(group).mousePrefab != null)
+        {
+            useText.SetActive(true);
+            interact.text = Locale.Texts[TextGroup.Inventory][1].Text;
+        }
+        else if (itemData.Details != null)
+        {
+            useText.SetActive(true);
+            interact.text = Locale.Texts[TextGroup.Inventory][2].Text;
+            objDetails.text = itemData.Details;
+        }
+        else
+        {
+            useText.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (!ui.activeSelf)
+            return;
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (detailsParent.activeSelf)
+                detailsParent.SetActive(false);
+
+            // Use the mouse position directly for the PointerEventData
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
             {
-                if (ItemDetailsParent.activeSelf)
-                    ItemDetailsParent.SetActive(false);
-                // Use the mouse position directly for the PointerEventData
-                PointerEventData pointerData = new PointerEventData(EventSystem.current)
-                {
-                    position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
-                };
+                position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            };
 
-                // Raycast using the event system and mouse position
-                List<RaycastResult> raycastResults = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointerData, raycastResults);
+            // Raycast using the event system and mouse position
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-                foreach (var result in raycastResults)
+            foreach (var result in raycastResults)
+            {
+                // Ensure we hit the UI layer
+                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {
-                    // Ensure we hit the UI layer
-                    if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                    if (navigation.Values.Contains(result.gameObject))
                     {
-                        if (itemNavigation.Contains(result.gameObject))
-                        {
-                            RotateToItem(itemNavigation.IndexOf(result.gameObject));
+                        RotateToItem(navigation.Values.ToList().IndexOf(result.gameObject));
+                        break;
+                    }
+
+                    switch (result.gameObject.name)
+                    {
+                        case "UseItem":
+                            ItemGroup group = showing.Keys.ElementAt(current);
+                            GameObject mouse = InventoryManager.Instance.GetObjectByGroup(group).mousePrefab;
+                            if (mouse != null)
+                            {
+                                Instantiate(mouse, Vector3.zero, Quaternion.identity);
+                                ui.SetActive(false);
+                                GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+                            }
+                            else if (Locale.Item[group].Details != null)
+                            {
+                                detailsParent.SetActive(true);
+                            }
                             break;
-                        }
-                        switch (result.gameObject.name)
-                        {
-                            case "UseItem":
-                                Item item = items[currentItem];
-                                if (item.itemMousePrefab != null)
-                                {
-                                    Instantiate(item.itemMousePrefab, Vector3.zero, Quaternion.identity);
-                                    inventoryUI.SetActive(false);
-                                    GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-                                }
-                                else if (Locale.Item[item.itemID].Details != null)
-                                {
-                                    ItemDetailsParent.SetActive(true);
-                                }
-                                break;
-                            case "Close":
-                                OpenInventory(false);
-                                break;
-                            case "Documents":
-                                Documents.instance.OpenDocuments(true);
-                                OpenInventory(false);
-                                break;
-                            case "Notes":
-                                Notes.instance.OpenNotes(true);
-                                OpenInventory(false);
-                                break;
-                        }
+                        case "Close":
+                            Close();
+                            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+                            break;
+                        case "Items":
+                            InventoryManager.Instance.Open(ItemType.Item);
+                            break;
+                        case "Documents":
+                            InventoryManager.Instance.Open(ItemType.Document);
+                            break;
+                        case "Notes":
+                            InventoryManager.Instance.Open(ItemType.Note);
+                            break;
                     }
                 }
             }
         }
-        inventoryBag.SetActive(CanOpenInventory());
     }
 
-    private bool CanOpenInventory()
+    public void Close()
     {
-        List<string> blockInventoryInScenes = new()
-        {
-            SceneRef.NewMenu.ToString(),
-            SceneRef.AP_BedroomBadDream.ToString(),
-            SceneRef.AP_LivingroomBadDream.ToString(),
-        };
-
-        return currentState == GameManager.GameState.Playing &&
-            !blockInventoryInScenes.Contains(SceneManager.GetActiveScene().name);
+        ui.SetActive(false);
+        opened = false;
     }
 
-    public void OpenInventory(bool open = true, int index = 0)
+    public void Open(ItemGroup selected = ItemGroup.Default)
     {
-        if (open && !CanOpenInventory())
-            return;
+        ui.SetActive(true);
+        opened = true;
+        OrganizeCircle(selected);
+        OrganizeNavigation();
+        UpdateInfo();
+    }
 
-        inventoryUI.SetActive(open);
-        GameObject ply = GameObject.FindWithTag("Player");
+    private void OrganizeCircle(ItemGroup selected = ItemGroup.Default)
+    {
+        // Ativa / Desativa baseado na lista de items do player data
+        foreach (var obj in all)
+            obj.Value.SetActive(playerData.items.Contains(obj.Key));
 
-        if (open)
-            ply.GetComponent<PlayerController>().CloseInteractionWheel();
+        // Pega somente a lista de items que podem ser apresentados
+        showing = all.Where(i => i.Value.activeSelf).ToDictionary(i => i.Key, i => i.Value);
 
-        if (inventoryUI.activeSelf)
+        // Prepara o offset para deixar o item selecionado na frente
+        current = 0;
+        if (selected != ItemGroup.Default && showing.Keys.Contains(selected))
+            current = showing.Keys.ToList().IndexOf(selected);
+
+        // Posiciona os ativos no circulo
+        for (int i = 0; i < showing.Count; i++)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Menu);
-            if (index != 0)
-                currentItem = items.Count - 1;
-            ClearItems();
-            PopulateCircle(currentItem);
-            UpdateInfo();
+            int index = (i + current) % showing.Count;
+            float angle = i * 2 * Mathf.PI / showing.Count;
+
+            PlaceItemAt(showing.Values.ElementAt(index).transform,
+                        new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)),
+                        Quaternion.identity);
         }
-        else
-        {
-            StartCoroutine(WaitMouseReleaseToPlay());
-        }
     }
 
-    private IEnumerator WaitMouseReleaseToPlay()
+    private void PlaceItemAt(Transform transform, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitUntil(() => !Input.GetMouseButton(0));
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        transform.localPosition = position;
+        transform.rotation = rotation;
+    }
+
+    private void OrganizeNavigation()
+    {
+        // Ativa / Desativa baseado na lista de items do player data
+        foreach (var nav in navigation)
+            nav.Value.SetActive(playerData.items.Contains(nav.Key));
     }
 
     private void UpdateInfo()
     {
-        foreach (var navText in itemNavigation)
-        {
-            itemNavigationText = navText.GetComponentInChildren<TMP_Text>();
-            itemNavigationText.color = Color.grey;
-        }
-        if (items.Count != 0)
-        {
-            ItemName.text = Locale.Item[items[currentItem].itemID].Name;
-            itemNavigationText = itemNavigation[currentItem].GetComponentInChildren<TMP_Text>();
-            itemNavigationText.color = Color.white;
-            UpdateLangTexts();
-        }
-    }
-
-    public void AddItem(InventoryObject obj, bool openInventory = true)
-    {
-        if (obj.type != ItemType.Item)
+        if (showing.Count <= 0)
             return;
 
-        AddItem(new Item(obj.group, obj.prefab, obj.mousePrefab), openInventory);
-    }
+        foreach (var nav in navigation)
+            nav.Value.GetComponentInChildren<TMP_Text>().color = (nav.Key == showing.Keys.ElementAt(current)) ? Color.white : Color.grey;
 
-    public void AddItem(Item item, bool openInventory = true)
-    {
-        if (items.Any(existingItem => existingItem.itemID == item.itemID))
-            return;
-
-        items.Add(item);
-        int index = items.Count - 1;
-        GameObject newItem = Instantiate(itemNavigationPrefab, itemNavigationParent.transform);
-        itemNavigation.Add(newItem);
-        itemNavigationText = itemNavigation[index].GetComponentInChildren<TMP_Text>();
-        itemNavigationText.text = Locale.Item[item.itemID].Name;
-
-        if (openInventory)
-            OpenInventory(true, index);
+        UpdateCurrentItemData();
     }
 
     public void ChangeItem(int direction)
     {
-        currentItem += direction;
-        currentItem = (currentItem + items.Count) % items.Count;
+        current += direction;
+        current = (current + all.Count) % all.Count;
         UpdateInfo();
     }
 
     public void RotateItemsParent(int dir)
     {
-        if (items.Count <= 1 || isRotating) return;
+        if (showing.Count <= 1 || isRotating) return;
 
-        float angleBetweenItems = 360f / items.Count;
+        float angleBetweenItems = 360f / showing.Count;
         StartCoroutine(SmoothRotation(angleBetweenItems, dir));
-    }
-
-    private void ClearItems()
-    {
-        foreach (Transform child in itemsParent)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
-    private void PopulateCircle(int offset = 0)
-    {
-        int itemCount = items.Count;
-        for (int i = 0; i < itemCount; i++)
-        {
-            // Calculate the adjusted index with the offset
-            int adjustedIndex = (i + offset) % itemCount;
-
-            // Calculate the angle for the current position
-            float angle = i * 360f / itemCount;
-            Vector3 position = CalculatePosition(angle);
-
-            // Instantiate the prefab at the calculated position
-            Instantiate(items[adjustedIndex].itemPrefab, position, Quaternion.identity, itemsParent);
-        }
-    }
-
-    private Vector3 CalculatePosition(float angle)
-    {
-        // Convert angle from degrees to radians
-        float radian = angle * Mathf.Deg2Rad;
-
-        // Calculate x and z position for a horizontal circle on X-Z plane
-        float x = radius * Mathf.Cos(radian);
-        float z = radius * Mathf.Sin(radian);
-
-        // Adjust position based on the itemsParent's position
-        return new Vector3(x + itemsParent.position.x, itemsParent.position.y, z + itemsParent.position.z);
     }
 
     private IEnumerator SmoothRotation(float angleItem, int dir)
@@ -316,42 +278,35 @@ public class Inventory : MonoBehaviour, ILangConsumer
         float angle = angleItem * dir;
         isRotating = true;
         float elapsedTime = 0;
-        Quaternion startingRotation = itemsParent.rotation;
-        Quaternion finalRotation = Quaternion.Euler(itemsParent.eulerAngles + new Vector3(0, angle, 0));
+        Quaternion startingRotation = circleParent.rotation;
+        Quaternion finalRotation = Quaternion.Euler(circleParent.eulerAngles + new Vector3(0, angle, 0));
 
         while (elapsedTime < rotationDuration)
         {
-            itemsParent.rotation = Quaternion.Slerp(startingRotation, finalRotation, elapsedTime / rotationDuration);
+            circleParent.rotation = Quaternion.Slerp(startingRotation, finalRotation, elapsedTime / rotationDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        itemsParent.rotation = finalRotation;
+        circleParent.rotation = finalRotation;
         isRotating = false;
         ChangeItem(dir);
     }
 
-    public void PickUpAudio(AudioClip audio)
-    {
-        audioSource.PlayOneShot(audio);
-    }
-
-
-
     public void RotateToItem(int targetIndex)
     {
-        if (targetIndex == -1 || targetIndex == currentItem) return;
+        if (targetIndex == -1 || targetIndex == current) return;
 
-        int direction = CalculateRotationDirection(currentItem, targetIndex);
-        int distance = CalculateRotationDistance(currentItem, targetIndex, direction);
+        int direction = CalculateRotationDirection(current, targetIndex);
+        int distance = CalculateRotationDistance(current, targetIndex, direction);
         RotateItemsParent(distance * direction);
     }
 
 
     private int CalculateRotationDirection(int currentIndex, int targetIndex)
     {
-        int forwardDistance = (targetIndex - currentIndex + items.Count) % items.Count;
-        int backwardDistance = (currentIndex - targetIndex + items.Count) % items.Count;
+        int forwardDistance = (targetIndex - currentIndex + all.Count) % showing.Count;
+        int backwardDistance = (currentIndex - targetIndex + all.Count) % showing.Count;
 
         return forwardDistance <= backwardDistance ? 1 : -1;
     }
@@ -359,13 +314,8 @@ public class Inventory : MonoBehaviour, ILangConsumer
     private int CalculateRotationDistance(int currentIndex, int targetIndex, int direction)
     {
         if (direction > 0)
-            return (targetIndex - currentIndex + items.Count) % items.Count;
+            return (targetIndex - currentIndex + all.Count) % showing.Count;
         else
-            return (currentIndex - targetIndex + items.Count) % items.Count;
-    }
-
-    public void BagButton()
-    {
-        OpenInventory(true);
+            return (currentIndex - targetIndex + all.Count) % showing.Count;
     }
 }
