@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1a08f54196097724c8d8eb866e060410, type: 2}
+--- !u!1001 &63842055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.47568
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.713172
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 42.94732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432077, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2bdd3432b93660449e737ec4e0b5fee, type: 3}
 --- !u!1 &154646351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,6 +3540,9 @@ MonoBehaviour:
   shouldWalk: 1
   textGroup: 10
   dialogBox: {fileID: 4357632717992667557}
+  ThinkingBox: {fileID: 0}
+  lookAtObj: {fileID: 0}
+  HasText: 1
   CustomWalkOffset: {x: 3.3, y: -3, z: 0}
 --- !u!64 &861952274
 MeshCollider:
@@ -4470,8 +4542,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
+  shouldSit: 0
   textGroup: 63
+  isDialog: 1
   dialogBox: {fileID: 4357632718213021887}
+  thinkingBox: {fileID: 0}
   CustomWalkOffset: {x: 0, y: 0, z: -6}
 --- !u!65 &1151234176
 BoxCollider:

@@ -1744,6 +1744,9 @@ MonoBehaviour:
   shouldWalk: 1
   textGroup: 54
   dialogBox: {fileID: 366102123}
+  ThinkingBox: {fileID: 0}
+  lookAtObj: {fileID: 0}
+  HasText: 1
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &605454611
 GameObject:
@@ -4920,7 +4923,9 @@ MonoBehaviour:
   moveRef: 10
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
+  allMap: {fileID: 0}
   locked: 0
+  map: 0
   textGroup: 60
   dialogBox: {fileID: 0}
 --- !u!135 &1712661723
@@ -5499,6 +5504,75 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1843571656
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.47568
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.713172
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 42.94732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432075, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683108703657432077, guid: d2bdd3432b93660449e737ec4e0b5fee,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2bdd3432b93660449e737ec4e0b5fee, type: 3}
 --- !u!1 &1846045418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5817,7 +5891,9 @@ MonoBehaviour:
   moveRef: 10
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
+  allMap: {fileID: 0}
   locked: 0
+  map: 0
   textGroup: 60
   dialogBox: {fileID: 0}
 --- !u!135 &2011330608
@@ -6614,10 +6690,12 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 1082780757810973763}
   - {fileID: 1082780757213093369}
+  spawnReferece: 
   HasText: 0
   textGroup: 3
   dialogBox: {fileID: 0}
   audioSource: {fileID: 0}
+  backgroundMusic: {fileID: 0}
 --- !u!1001 &1612404042387572588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7037,7 +7115,9 @@ MonoBehaviour:
   moveRef: 14
   transObj: {fileID: 910905163}
   globalObj: {fileID: 1583718406}
+  allMap: {fileID: 0}
   locked: 1
+  map: 0
   textGroup: 66
   dialogBox: {fileID: 366102123}
 --- !u!135 &5202210278849566013
