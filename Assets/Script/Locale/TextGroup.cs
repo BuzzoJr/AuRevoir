@@ -109,6 +109,7 @@
         InspectUploadRoomTVs,
         PoliceCar,
         LockedDoorHouse,
+        HoverText,
     }
 
     public enum ItemGroup

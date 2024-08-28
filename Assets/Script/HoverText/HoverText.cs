@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class HoverText : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class HoverText : MonoBehaviour
             (offset.y * Screen.height) / renderTexture.height
         );
 
-        hoverText.transform.position = new Vector2 (mousePosition.x + scaledOffset.x, mousePosition.y + scaledOffset.y);
+        hoverText.transform.position = new Vector2(mousePosition.x + scaledOffset.x, mousePosition.y + scaledOffset.y);
 
         // Verifica se o cursor está sobre um objeto com as tags desejadas
         Ray ray = mainCamera.ScreenPointToRay(scaledMousePosition);
@@ -36,16 +36,18 @@ public class HoverText : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject.CompareTag("Interactable") || hitObject.CompareTag("Character") || hitObject.CompareTag("Door"))
             {
+                if (hitObject.TryGetComponent(out HoverTextTranslate translated))
+                {
+                    hoverText.text = translated.text;
+                    return;
+                }
+
+                Debug.LogWarning(hitObject.name + " is not being translated when hovering because it doesn't have a HoverTextTranslate script attached to it.");
                 hoverText.text = hitObject.name;
-            }
-            else
-            {
-                hoverText.text = "";
+                return;
             }
         }
-        else
-        {
-            hoverText.text = "";
-        }
+
+        hoverText.text = "";
     }
 }

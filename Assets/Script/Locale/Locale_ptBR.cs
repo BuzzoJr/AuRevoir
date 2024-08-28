@@ -1124,6 +1124,15 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Onde coloquei minhas chaves mesmo?"),
                 }
             },
+            {
+                TextGroup.HoverText,
+                new List<TextData>()
+                {
+                    new TextData("Back street"),
+                    new TextData("Hank"),
+                    new TextData("Car"),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()
