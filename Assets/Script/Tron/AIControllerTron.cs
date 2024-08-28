@@ -1,34 +1,48 @@
+using System.Collections.Generic;
+using DG.Tweening.Core.Easing;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AIControllerTron : MonoBehaviour
 {
     public Transform player;
+    public GameManagerTron gameManager;
     public float moveSpeed = 5f;
     public float decisionTime = 1f; // Time between decisions
     public float raycastDistance = 5f;  // Distance for raycasting to detect walls
     public GameObject trailPrefab;
 
+    private GameObject currentTrailSegment;
     private Vector3 lastPosition;
+    private Vector3 initialSegmentScale;
     private float timer;
+    private PlayerControllerTron playerController;
+    public bool alive = true;
+    public bool wait = false;
 
     private enum Direction { Forward, Left, Right, None }
     private Direction currentDirection = Direction.Forward;
+    private List<GameObject> trailList = new List<GameObject>();
 
     void Start()
     {
         lastPosition = transform.position;
+        CreateNewTrailSegment();
         timer = decisionTime;
     }
 
     void Update()
     {
-        HandleMovement();
-        //CreateTrail();
-        timer -= Time.deltaTime;
-        if (timer <= 0f)
+        if (alive && !wait)
         {
-            DecideNextMove();
-            timer = decisionTime;
+            HandleMovement();
+            ExtendTrail();
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                DecideNextMove();
+                timer = decisionTime;
+            }
         }
     }
 
@@ -37,9 +51,45 @@ public class AIControllerTron : MonoBehaviour
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
+    void CreateNewTrailSegment()
+    {
+        // Instantiate a new trail segment at the current position
+        currentTrailSegment = Instantiate(trailPrefab, lastPosition, transform.rotation);
+        initialSegmentScale = currentTrailSegment.transform.localScale;
+        trailList.Add(currentTrailSegment.gameObject);
+
+        // Align the trail segment with the AI's current direction
+        AlignTrailSegmentWithMovement();
+    }
+
+    void AlignTrailSegmentWithMovement()
+    {
+        // Rotate the trail segment to match the AI's current direction
+        currentTrailSegment.transform.rotation = transform.rotation;
+    }
+
+    void ExtendTrail()
+    {
+        // Calculate how far the AI has moved since the last position
+        float distanceMoved = Vector3.Distance(lastPosition, transform.position);
+
+        // Adjust the scale of the current trail segment to extend it
+        currentTrailSegment.transform.localScale = new Vector3(
+            initialSegmentScale.x,
+            initialSegmentScale.y,
+            currentTrailSegment.transform.localScale.z + distanceMoved
+        );
+
+        // Update the position of the trail segment to keep it attached to the AI's previous position
+        currentTrailSegment.transform.Translate(Vector3.forward * (moveSpeed / 2) * Time.deltaTime);
+
+        // Update last position for the next frame
+        lastPosition = transform.position;
+    }
+
     void DecideNextMove()
     {
-        // Try to predict and intercept player's path
+        // Try to predict and intercept the player's path
         Vector3 directionToPlayer = player.position - transform.position;
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
@@ -55,15 +105,17 @@ public class AIControllerTron : MonoBehaviour
             {
                 currentDirection = Direction.Left;
                 transform.Rotate(Vector3.up, -90f);
+                CreateNewTrailSegment();
             }
             else if (!IsNearWall(Direction.Right))
             {
                 currentDirection = Direction.Right;
                 transform.Rotate(Vector3.up, 90f);
+                CreateNewTrailSegment();
             }
             else
             {
-                // If no turn is possible, just go forward (or reverse logic to trap player)
+                // If no turn is possible, just go forward
                 currentDirection = Direction.Forward;
             }
         }
@@ -94,23 +146,24 @@ public class AIControllerTron : MonoBehaviour
         return false;
     }
 
-    void CreateTrail()
+    void OnTriggerEnter(Collider collision)
     {
-        if (Vector3.Distance(lastPosition, transform.position) >= 1f)
+        if (collision.gameObject.CompareTag("Wall") && collision.gameObject != currentTrailSegment)
         {
-            Instantiate(trailPrefab, lastPosition, Quaternion.identity);
-            lastPosition = transform.position;
+            FindObjectOfType<GameManagerTron>().AddPointsForKillingAI();
+            alive = false;
+            player.GetComponent<PlayerControllerTron>().wait = true;
+            gameManager.LeveWin();
+            Debug.Log("IA morreu!");
         }
     }
 
-    void OnTriggerEnter(Collider collision)
+    private void OnDestroy()
     {
-        Debug.Log(collision);
-        if (collision.gameObject.CompareTag("Wall"))
+        foreach (GameObject obj in trailList)
         {
-            FindObjectOfType<GameManagerTron>().AddPointsForKillingAI();
-            Debug.Log("IA morreu!");
-            Time.timeScale = 0f;
+            Destroy(obj);
         }
+        trailList.Clear();
     }
 }
