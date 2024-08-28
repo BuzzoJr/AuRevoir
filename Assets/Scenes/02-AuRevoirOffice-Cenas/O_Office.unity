@@ -5492,11 +5492,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   textGroup: 99
+  isDialog: 1
   dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 516371316}
+  thinkingBox: {fileID: 516371316}
+  CustomWalkOffset: {x: 2, y: 0, z: 0}
   lookAtObj: {fileID: 857487820}
   HasText: 1
-  CustomWalkOffset: {x: 2, y: 0, z: 0}
 --- !u!65 &857487822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5557,11 +5558,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   textGroup: 16
+  isDialog: 1
   dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 516371316}
+  thinkingBox: {fileID: 516371316}
+  CustomWalkOffset: {x: 2, y: -3, z: 1.5}
   lookAtObj: {fileID: 861952277}
   HasText: 1
-  CustomWalkOffset: {x: 2, y: -3, z: 1.5}
 --- !u!23 &861952275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7181,11 +7183,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 0
   textGroup: 101
+  isDialog: 1
   dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 516371316}
+  thinkingBox: {fileID: 516371316}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
   lookAtObj: {fileID: 716508504}
   HasText: 1
-  CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!64 &1127481167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8946,11 +8949,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   textGroup: 100
+  isDialog: 1
   dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 516371316}
+  thinkingBox: {fileID: 516371316}
+  CustomWalkOffset: {x: 3, y: 0, z: -0.5}
   lookAtObj: {fileID: 887008240}
   HasText: 1
-  CustomWalkOffset: {x: 3, y: 0, z: -0.5}
 --- !u!65 &1455959382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10495,7 +10499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdaf9a01aafa8d41ac0757b159dac5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
   conditionList: 
   npcList: []
 --- !u!1 &1739551240
