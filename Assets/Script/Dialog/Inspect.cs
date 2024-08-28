@@ -4,65 +4,36 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Inspect : MonoBehaviour, ILook, ILangConsumer
+public class Inspect : MonoBehaviour, ILook
 {
     public bool shouldWalk = true;
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    public bool isDialog = true;
     [SerializeField] private GameObject dialogBox;
-    private TMP_Text dialogText;
-    public GameObject ThinkingBox;
-    public Transform lookAtObj;
-    private TMP_Text DialogSpeaker { get; set; }
-    [SerializeField] private bool HasText = true;
+    [SerializeField] private GameObject thinkingBox;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+    public Transform lookAtObj;
+    [SerializeField] private bool HasText = true;
 
-    private TMP_Text ThinkingText;
-
-    private int currentIndex = -1;
-
-    private Image Portrait;
-    private string currentSceneName;
-
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            if (TextType.TristanThinking == data.Type)
-            {
-                dialogBox.SetActive(false);
-                ThinkingBox.SetActive(true);
-                ThinkingText.text = "* " + data.Text + " *";
-            }
-            else
-            {
-                dialogBox.SetActive(true);
-                ThinkingBox.SetActive(false);
-                //dialogText.color = TextColorManager.textTypeColors[data.Type];
-                dialogText.text = data.Text;
-                DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = Locale.Titles[data.Type];
-                Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, data.Type.ToString());
-            }
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    private Dialog dialog;
 
     void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        ThinkingText = ThinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog = gameObject.AddComponent<Dialog>();
+        dialog.DialogBox = dialogBox;
+        dialog.TextGroup = textGroup;
+        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+        dialog.ThinkingBox = thinkingBox;
+        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
+
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
-        currentSceneName = SceneManager.GetActiveScene().name;
-        Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
     }
 
     void Start()
@@ -72,10 +43,10 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
 
     void ILook.Look(GameObject who)
     {
-        StartCoroutine(CoroutineExample());
+        StartCoroutine(CoroutineExample(who));
     }
 
-    IEnumerator CoroutineExample()
+    IEnumerator CoroutineExample(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
@@ -90,37 +61,15 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
         }
         yield return null;
 
+        DialogAction result = DialogAction.None;
         if (HasText)
-        {
-            dialogBox.SetActive(true);
-            Locale.RegisterConsumer(this);
-            for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-            {
-                currentIndex = i;
-                UpdateLangTexts();
-
-                TextData data = Locale.Texts[textGroup][currentIndex];
-                bool clicked = false;
-                float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-                float elapsedTime = 0;
-
-                while (elapsedTime < delayTime && !clicked)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        clicked = true;
-                    }
-                    elapsedTime += Time.deltaTime;
-                    yield return null;
-                }
-            }
-            Locale.UnregisterConsumer(this);
-            dialogBox.SetActive(false);
-            ThinkingBox.SetActive(false);
-        }
+            yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         runSpecial();
+
+        if (result == DialogAction.RemoveDialog)
+            Destroy(this);
     }
 
     private void runSpecial()
