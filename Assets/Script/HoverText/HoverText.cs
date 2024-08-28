@@ -42,7 +42,7 @@ public class HoverText : MonoBehaviour
                     return;
                 }
 
-                Debug.LogWarning(hitObject.name + " is not being translated when hovering because it doesn't have a HoverTextTranslate script attached to it.");
+                Debug.LogWarning(hitObject.name + " ESTÁ SEM TRADUÇÃO!!!!! COLOQUE UM SCRIPT HoverTextTranslate!!!!!");
                 hoverText.text = hitObject.name;
                 return;
             }
