@@ -65,6 +65,7 @@ public class DialogInteraction : MonoBehaviour, ITalk
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         PlayerController.anim.SetBool("Sit", false);
+
         if (result == DialogAction.RemoveDialog)
             Destroy(this);
     }

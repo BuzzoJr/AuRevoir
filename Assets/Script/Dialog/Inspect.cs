@@ -4,6 +4,8 @@ using Assets.Script.Locale;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Inspect : MonoBehaviour, ILook, ILangConsumer
 {
@@ -20,6 +22,9 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
     private TMP_Text ThinkingText;
 
     private int currentIndex = -1;
+
+    private Image Portrait;
+    private string currentSceneName;
 
     public void UpdateLangTexts()
     {
@@ -39,7 +44,8 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
                 //dialogText.color = TextColorManager.textTypeColors[data.Type];
                 dialogText.text = data.Text;
                 DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = "";
+                DialogSpeaker.text = Locale.Titles[data.Type];
+                Portrait.sprite = PortraitManager.GetPortrait(currentSceneName, data.Type.ToString());
             }
         }
     }
@@ -55,6 +61,8 @@ public class Inspect : MonoBehaviour, ILook, ILangConsumer
         ThinkingText = ThinkingBox.GetComponentInChildren<TMP_Text>();
         Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
         DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        currentSceneName = SceneManager.GetActiveScene().name;
+        Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
     }
 
     void Start()

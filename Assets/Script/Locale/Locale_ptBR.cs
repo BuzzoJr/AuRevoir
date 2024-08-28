@@ -409,7 +409,7 @@ namespace Assets.Script.Locale
                 TextGroup.TVNews,
                 new List<TextData>()
                 {
-                    new TextData(TextType.NewsAnchor, "...as últimas notícias de hoje"),
+                    new TextData(TextType.NewsAnchor, "[...]as últimas notícias de hoje"),
                     new TextData(TextType.NewsAnchor, "Moradores das proximidades do Distrito Desconectado reclamam de mau cheiro na região"),
                     new TextData(TextType.NewsAnchor, "Uma ação judicial coletiva foi iniciada contra a prestadora de serviços de limpeza"),
                     new TextData(TextType.NewsAnchor, "A empresa informa ter dificuldades com a falta de sinal para os robôs que atuam na região"),
