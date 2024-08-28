@@ -1163,7 +1163,7 @@ namespace Assets.Script.Locale
             { TextType.CellPhone, "Cell Phone" },
             { TextType.CEO, "René Revoir" },
             { TextType.Daughter, "Julie" },
-            { TextType.ExWife, "Vivan" },
+            { TextType.ExWife, "Vivian" },
             { TextType.Guard, "Guard" },
             { TextType.Hank, "Hank" },
             { TextType.LabWorker1, "Cientist" },
