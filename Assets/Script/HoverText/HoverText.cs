@@ -16,7 +16,10 @@ public class HoverText : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.State != GameManager.GameState.Playing)
+        {
+            hoverText.text = "";
             return;
+        }
 
         // Converte a posição do mouse para coordenadas da Render Texture
         Vector2 mousePosition = Input.mousePosition;
