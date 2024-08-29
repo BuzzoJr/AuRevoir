@@ -142,7 +142,8 @@ public class Inventory : MonoBehaviour, ILangConsumer
                 {
                     if (navigation.Values.Contains(result.gameObject))
                     {
-                        RotateToItem(navigation.Values.ToList().IndexOf(result.gameObject));
+                        ItemGroup group = navigation.FirstOrDefault(n => n.Value == result.gameObject).Key;
+                        RotateToItem(showing.Keys.ToList().IndexOf(group));
                         break;
                     }
 
@@ -242,7 +243,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
     public void ChangeItem(int direction)
     {
         current += direction;
-        current = (current + all.Count) % all.Count;
+        current = (current + showing.Count) % showing.Count;
         UpdateInfo();
     }
 
@@ -286,8 +287,8 @@ public class Inventory : MonoBehaviour, ILangConsumer
 
     private int CalculateRotationDirection(int currentIndex, int targetIndex)
     {
-        int forwardDistance = (targetIndex - currentIndex + all.Count) % showing.Count;
-        int backwardDistance = (currentIndex - targetIndex + all.Count) % showing.Count;
+        int forwardDistance = (targetIndex - currentIndex + showing.Count) % showing.Count;
+        int backwardDistance = (currentIndex - targetIndex + showing.Count) % showing.Count;
 
         return forwardDistance <= backwardDistance ? 1 : -1;
     }
@@ -295,8 +296,8 @@ public class Inventory : MonoBehaviour, ILangConsumer
     private int CalculateRotationDistance(int currentIndex, int targetIndex, int direction)
     {
         if (direction > 0)
-            return (targetIndex - currentIndex + all.Count) % showing.Count;
+            return (targetIndex - currentIndex + showing.Count) % showing.Count;
         else
-            return (currentIndex - targetIndex + all.Count) % showing.Count;
+            return (currentIndex - targetIndex + showing.Count) % showing.Count;
     }
 }
