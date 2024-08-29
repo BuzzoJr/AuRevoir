@@ -2,9 +2,7 @@ using Assets.Script;
 using Assets.Script.Dialog;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AreaLimitByStep : MonoBehaviour
 {
@@ -14,30 +12,22 @@ public class AreaLimitByStep : MonoBehaviour
 
     public Transform outOfLimit;
 
-    public bool HasText = false;
-
-    public TextGroup textGroup;
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
-
-    public bool isDialog = true;
+    [Header("Text Interaction")]
+    [SerializeField] private bool HasText = true;
+    [ConditionalHide("HasText")] public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    [ConditionalHide("HasText")] public TextInteractionType textInteractionType = TextInteractionType.Dialog;
+    [ConditionalHide("HasText")] public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
+    [ConditionalHide("HasText")] [SerializeField] private GameObject dialogBox;
+    [ConditionalHide("HasText")] [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
-        dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.TextGroup = textGroup;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
-
-        dialog.ThinkingBox = thinkingBox;
-        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
-
-        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        if (HasText)
+        {
+            dialog = gameObject.AddComponent<Dialog>();
+            dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
+        }
     }
 
     public bool ShouldLimit()
@@ -69,7 +59,7 @@ public class AreaLimitByStep : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
         DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (result == DialogAction.RemoveDialog)

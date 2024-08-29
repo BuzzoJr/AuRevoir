@@ -4632,11 +4632,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
+  CustomWalkOffset: {x: -3, y: 0, z: -0.5}
   textGroup: 95
+  textInteractionType: 1
   isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  CustomWalkOffset: {x: -3, y: 0, z: -0.5}
 --- !u!1 &422353989
 GameObject:
   m_ObjectHideFlags: 0
@@ -7093,9 +7094,10 @@ MonoBehaviour:
   outOfLimit: {fileID: 635421312}
   HasText: 1
   textGroup: 85
+  textInteractionType: 1
+  isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  isDialog: 0
 --- !u!65 &689907444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14261,11 +14263,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
+  CustomWalkOffset: {x: 1, y: 0, z: -3}
   textGroup: 85
+  textInteractionType: 1
   isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  CustomWalkOffset: {x: 1, y: 0, z: -3}
 --- !u!114 &1202555154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14297,9 +14300,10 @@ MonoBehaviour:
   shouldWalk: 1
   CustomWalkOffset: {x: 1, y: 0, z: -3}
   textGroup: 84
+  textInteractionType: 1
+  isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  isDialog: 0
 --- !u!114 &1202555156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14315,12 +14319,14 @@ MonoBehaviour:
   shouldWalk: 1
   shouldSit: 0
   targetItem: MouseKeyCard(Clone)
+  CustomWalkOffset: {x: 1, y: 0, z: -3}
   textGroupSuccess: 6
+  textInteractionTypeSuccess: 0
   textGroupFail: 85
-  isDialog: 1
+  textInteractionTypeFail: 1
+  isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  CustomWalkOffset: {x: 1, y: 0, z: -3}
 --- !u!1 &1203702372
 GameObject:
   m_ObjectHideFlags: 0
@@ -28628,9 +28634,10 @@ MonoBehaviour:
   shouldWalk: 1
   CustomWalkOffset: {x: 2, y: 0, z: 0}
   textGroup: 82
+  textInteractionType: 1
+  isDialog: 0
   dialogBox: {fileID: 1516802924}
   thinkingBox: {fileID: 4357632719355704092}
-  isDialog: 0
 --- !u!1 &1865273852
 GameObject:
   m_ObjectHideFlags: 0
@@ -32488,12 +32495,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 83
-  dialogBox: {fileID: 1516802924}
-  ThinkingBox: {fileID: 4357632719355704092}
+  CustomWalkOffset: {x: 1.5, y: 0, z: 3}
   lookAtObj: {fileID: 1751860681}
   HasText: 1
-  CustomWalkOffset: {x: 1.5, y: 0, z: 3}
+  textGroup: 83
+  textInteractionType: 1
+  isDialog: 0
+  dialogBox: {fileID: 1516802924}
+  thinkingBox: {fileID: 4357632719355704092}
 --- !u!4 &946448988254822168
 Transform:
   m_ObjectHideFlags: 0

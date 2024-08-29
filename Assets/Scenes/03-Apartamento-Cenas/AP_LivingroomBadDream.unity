@@ -1869,7 +1869,6 @@ Transform:
   - {fileID: 665457368}
   - {fileID: 1412724614}
   - {fileID: 1465169085}
-  - {fileID: 2090797350}
   - {fileID: 412859512}
   m_Father: {fileID: 2013288749}
   m_RootOrder: 0
@@ -1887,7 +1886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f9b1e647e94b55643afb1a6286d973da, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f9b1e647e94b55643afb1a6286d973da, type: 3}
       propertyPath: m_LocalScale.x
@@ -4450,6 +4449,7 @@ Transform:
   - {fileID: 6045243090251543524}
   - {fileID: 1911938698702053659}
   - {fileID: 543450653150592305}
+  - {fileID: 2090797350}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10937,7 +10937,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 408934149}
+    m_TransformParent: {fileID: 880940291}
     m_Modifications:
     - target: {fileID: -9172783357109984489, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
@@ -10962,22 +10962,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7
+      value: 1.7000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7
+      value: 1.7000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7
+      value: 1.7000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
@@ -10987,7 +10987,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.40000004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6256b29bca59405448279f9e55e6fbc4,
         type: 3}
@@ -11345,12 +11345,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 94
-  dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 4357632719355704093}
+  CustomWalkOffset: {x: 1.5, y: 0, z: -1}
   lookAtObj: {fileID: 2090797350}
   HasText: 1
-  CustomWalkOffset: {x: 1.5, y: 0, z: -1}
+  textGroup: 94
+  textInteractionType: 1
+  isDialog: 0
+  dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 4357632719355704093}
 --- !u!136 &2090797352
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13073,6 +13075,11 @@ PrefabInstance:
       propertyPath: textGroup
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
+        type: 3}
+      propertyPath: ThinkingBox
+      value: 
+      objectReference: {fileID: 4357632719355704093}
     - target: {fileID: 1911938697333853487, guid: 97c48c6bea0a1d24b884537f5bace420,
         type: 3}
       propertyPath: pickupAudio
@@ -16735,12 +16742,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 6
-  dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 0}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
   lookAtObj: {fileID: 0}
   HasText: 1
-  CustomWalkOffset: {x: 0, y: 0, z: 0}
+  textGroup: 12
+  textInteractionType: 1
+  isDialog: 0
+  dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 4357632719355704093}
 --- !u!114 &7226833859015146564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16770,9 +16779,9 @@ MonoBehaviour:
   itemGroup: 3
   pickupAudio: {fileID: 8300000, guid: ec63f2915f00fa442813af7928e33b37, type: 3}
   HasText: 1
-  textGroup: 7
+  textGroup: 13
   dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 0}
+  ThinkingBox: {fileID: 4357632719355704093}
 --- !u!1001 &7383347091124567804
 PrefabInstance:
   m_ObjectHideFlags: 0

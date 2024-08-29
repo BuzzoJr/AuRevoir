@@ -8236,6 +8236,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1987564998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550048338694955956, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4357632719355704091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2012447138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3,
@@ -8687,11 +8693,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
-  textGroup: 14
+  CustomWalkOffset: {x: -7, y: 0, z: 0}
+  textGroup: 20
+  textInteractionType: 0
   isDialog: 1
   dialogBox: {fileID: 2012447138}
-  thinkingBox: {fileID: 0}
-  CustomWalkOffset: {x: -7, y: 0, z: 0}
+  thinkingBox: {fileID: 1987564998}
 --- !u!1 &207420160635327259
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,9 +2,7 @@
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogItemInteraction : MonoBehaviour, IUseItem
 {
@@ -12,38 +10,37 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
     public bool shouldSit = false;
 
     public string targetItem;
-    public TextGroup textGroupSuccess = TextGroup.DialogWakeUpCall;
-    public TextGroup textGroupFail = TextGroup.DialogWakeUpCall;
-    public bool isDialog = true;
-
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
+
+    [Header("Text Interaction")]
+    public TextGroup textGroupSuccess = TextGroup.DialogWakeUpCall;
+    public TextInteractionType textInteractionTypeSuccess = TextInteractionType.Dialog;
+    public TextGroup textGroupFail = TextGroup.DialogWakeUpCall;
+    public TextInteractionType textInteractionTypeFail = TextInteractionType.Dialog;
+    public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
+    [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
-
-        dialog.ThinkingBox = thinkingBox;
-        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
-
-        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        dialog.Configure(dialogBox, thinkingBox, textGroupSuccess, textInteractionTypeSuccess);
     }
 
     public void UseItem(GameObject who)
     {
         if (targetItem == who.name)
+        {
             dialog.TextGroup = textGroupSuccess;
+            dialog.Type = textInteractionTypeSuccess;
+        }
         else
+        {
             dialog.TextGroup = textGroupFail;
+            dialog.Type = textInteractionTypeFail;
+        }
 
         StartCoroutine(Execute(who));
     }
@@ -68,7 +65,7 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
         }
 
         DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         PlayerController.anim.SetBool("Sit", false);

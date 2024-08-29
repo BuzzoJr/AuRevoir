@@ -2,38 +2,30 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Inspect : MonoBehaviour, ILook
 {
     public bool shouldWalk = true;
-    public TextGroup textGroup = TextGroup.DialogWakeUpCall;
-    public bool isDialog = true;
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
     public Transform lookAtObj;
-    [SerializeField] private bool HasText = true;
 
+    [Header("Text Interaction")]
+    [SerializeField] private bool HasText = true;
+    [ConditionalHide("HasText")] public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    [ConditionalHide("HasText")] public TextInteractionType textInteractionType = TextInteractionType.Dialog;
+    [ConditionalHide("HasText")] public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
+    [ConditionalHide("HasText")] [SerializeField] private GameObject dialogBox;
+    [ConditionalHide("HasText")] [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
-        dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.TextGroup = textGroup;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
-
-        dialog.ThinkingBox = thinkingBox;
-        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
-
-        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        if (HasText)
+        {
+            dialog = gameObject.AddComponent<Dialog>();
+            dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
+        }
     }
 
     void Start()
@@ -63,7 +55,7 @@ public class Inspect : MonoBehaviour, ILook
 
         DialogAction result = DialogAction.None;
         if (HasText)
-            yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
+            yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         runSpecial();

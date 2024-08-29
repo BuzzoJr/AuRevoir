@@ -3506,12 +3506,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 96
-  dialogBox: {fileID: 0}
-  ThinkingBox: {fileID: 0}
+  CustomWalkOffset: {x: 0, y: 0, z: -3.5}
   lookAtObj: {fileID: 547947648}
   HasText: 1
-  CustomWalkOffset: {x: 0, y: 0, z: -3.5}
+  textGroup: 96
+  textInteractionType: 1
+  isDialog: 0
+  dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 4357632719355704093}
 --- !u!65 &547947650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12748,12 +12750,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 97
-  dialogBox: {fileID: 0}
-  ThinkingBox: {fileID: 0}
+  CustomWalkOffset: {x: -1.5, y: 0, z: 3}
   lookAtObj: {fileID: 1950356526}
   HasText: 1
-  CustomWalkOffset: {x: -1.5, y: 0, z: 3}
+  textGroup: 97
+  textInteractionType: 1
+  isDialog: 0
+  dialogBox: {fileID: 4357632719355704092}
+  thinkingBox: {fileID: 4357632719355704093}
 --- !u!65 &1950356528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24444,6 +24448,12 @@ PrefabInstance:
 --- !u!1 &4357632719355704092 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4357632719355704091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4357632719355704093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550048338694955956, guid: 17868ca8f286bc54b81104eb68ba8cc3,
     type: 3}
   m_PrefabInstance: {fileID: 4357632719355704091}
   m_PrefabAsset: {fileID: 0}

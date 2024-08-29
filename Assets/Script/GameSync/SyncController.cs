@@ -2,17 +2,10 @@ using Assets.Script;
 using Assets.Script.Dialog;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SyncController : MonoBehaviour
 {
-    public TextGroup textGroup = TextGroup.CarCrashClient;
-    [SerializeField] private GameObject dialogBox, thinkingBox;
-
-    private Dialog dialog;
-
     public PlayerData playerData;
     public Animator mapAnim;
     public GameObject playerObj;
@@ -20,21 +13,17 @@ public class SyncController : MonoBehaviour
     public GameObject childObj, canvasAll, canvasText, canvasBtn, maskObj, manHolog;
     public AudioSource audioOff;
 
+    [Header("Text Interaction")]
+    public TextGroup textGroup = TextGroup.CarCrashClient;
+    public TextInteractionType textInteractionType = TextInteractionType.Dialog;
+    [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject thinkingBox;
+    private Dialog dialog;
+
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.TextGroup = textGroup;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
-
-        dialog.ThinkingBox = thinkingBox;
-        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
-
-        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
     }
 
     public void EndSync()

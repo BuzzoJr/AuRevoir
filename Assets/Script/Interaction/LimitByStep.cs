@@ -3,9 +3,7 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LimitByStep : MonoBehaviour, ILimit
 {
@@ -16,29 +14,18 @@ public class LimitByStep : MonoBehaviour, ILimit
     public bool shouldWalk = true;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
-    public TextGroup textGroup;
+    [Header("Text Interaction")]
+    public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    public TextInteractionType textInteractionType = TextInteractionType.Dialog;
+    public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private GameObject thinkingBox;
-
-    public bool isDialog = true;
     private Dialog dialog;
 
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.DialogBox = dialogBox;
-        dialog.TextGroup = textGroup;
-        dialog.DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-        dialog.Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
-
-
-        dialog.ThinkingBox = thinkingBox;
-        dialog.ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-        dialog.ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
-
-        Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-        dialog.DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+        dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
     }
 
     public bool ShouldLimit(GameObject who)
@@ -72,7 +59,7 @@ public class LimitByStep : MonoBehaviour, ILimit
         }
 
         DialogAction result = DialogAction.None;
-        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, isDialog));
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         if (result == DialogAction.RemoveDialog)

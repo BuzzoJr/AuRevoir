@@ -16,6 +16,7 @@ namespace Assets.Script.Dialog
         public TMP_Text DialogSpeaker { get; set; }
         public Image Portrait { get; set; }
         public TextGroup TextGroup { get; set; }
+        public TextInteractionType Type { get; set; }
 
         public GameObject ThinkingBox { get; set; }
         public TMP_Text ThinkingText { get; set; }
@@ -26,13 +27,29 @@ namespace Assets.Script.Dialog
         private int currentIndex = -1;
 
         private AudioSource typingSound;
-        private bool isTyping = false;
         private bool skip = false;
 
-        void Start()
+        private bool configured = false;
+
+        public void Configure(GameObject dialogBox, GameObject thinkingBox, TextGroup textGroup, TextInteractionType type)
         {
+            DialogBox = dialogBox;
+            DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+            DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
+            DialogSpeaker = dialogBox.transform.Find("DialogSpeaker").GetComponent<TMP_Text>();
+            Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+            ThinkingBox = thinkingBox;
+            ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
+            ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
+
+            TextGroup = textGroup;
+            Type = type;
             typingSound = DialogBox.GetComponent<AudioSource>();
+
+            configured = true;
         }
+
         void OnDestroy()
         {
             Locale.Locale.UnregisterConsumer(this);
@@ -46,8 +63,20 @@ namespace Assets.Script.Dialog
             }
         }
 
-        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback, bool isDialog = true)
+        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
         {
+            if (!configured)
+            {
+                Debug.LogError(transform.name + ": INTERAÇÃO DE TEXTO NÃO CONFIGURADA!!!!! Devemos chamar a função Configure no script de origem.");
+                yield break;
+            }
+
+            if (Type == TextInteractionType.Dialog && !AllDialogs.Sequence.ContainsKey(TextGroup))
+            {
+                Debug.LogError(transform.name + ": INTERAÇÃO DE TEXTO COM TIPO DIALOG, MAS NÃO EXISTE NO ALLDIALOGS!!!!!");
+                yield break;
+            }
+
             DialogAction result = DialogAction.None;
 
             DialogBox.SetActive(true);
@@ -56,8 +85,8 @@ namespace Assets.Script.Dialog
             if (!GameManager.Instance.showingDialog)
             {
                 GameManager.Instance.showingDialog = true;
-                
-                if (isDialog)
+
+                if (Type == TextInteractionType.Dialog)
                     yield return StartCoroutine(ExecuteDialog(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
                 else
                     yield return StartCoroutine(ExecuteText());
@@ -213,7 +242,6 @@ namespace Assets.Script.Dialog
         private IEnumerator DisplayLine(string line)
         {
             typingSound.Play();
-            isTyping = true;
             DialogText.text = "";
             skip = false;
 
@@ -237,7 +265,6 @@ namespace Assets.Script.Dialog
                 }
             }
             typingSound.Stop();
-            isTyping = false;
         }
 
         public void UpdateLangTexts()
