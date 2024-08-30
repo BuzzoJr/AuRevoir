@@ -17,7 +17,8 @@ public class VerticalJoystick : MonoBehaviour
     private Vector3 initialMousePosition;
     private Quaternion initialRotation;
     private bool canRotate = false;  // Flag to check if joystick rotation is allowed
-    private bool active = false;
+    private bool LockDirectionX = false;
+    private bool LockDirectionY = false;
     private AudioSource audioSource;
 
     private void Awake()
@@ -55,9 +56,10 @@ public class VerticalJoystick : MonoBehaviour
 
             // Calculate the rotation angle based on the X-axis movement of the mouse
             float rotationAmountX = Mathf.Clamp(mouseDelta.x * rotationSpeed, -maxRotationAngle, maxRotationAngle);
+            float rotationAmountZ = Mathf.Clamp(mouseDelta.z * rotationSpeed, -maxRotationAngle, maxRotationAngle);
 
             // Apply rotation based on mouse movement, pivoting from the bottom of the joystick
-            joystick.rotation = initialRotation * Quaternion.Euler(0, 0, rotationAmountX * -1);  // Rotating around X-axis
+            joystick.rotation = initialRotation * Quaternion.Euler(rotationAmountZ, 0, rotationAmountX * -1);  // Rotating around X-axis
             CheckActivation();
         }
 
@@ -79,16 +81,20 @@ public class VerticalJoystick : MonoBehaviour
     {
 
         float currentRotationAngle = joystick.localEulerAngles.z;
+        float currentRotationAngleForward = joystick.localEulerAngles.x;
 
         // Normalize the angle to be between -180 and 180 degrees
         if (currentRotationAngle > 180)
             currentRotationAngle -= 360;
 
+        if (currentRotationAngleForward > 180)
+            currentRotationAngleForward -= 360;
+
 
         // Check if the rotation exceeds the activation threshold
         if (currentRotationAngle > activationAngle || currentRotationAngle < -activationAngle)
         {
-            if (!active)
+            if (!LockDirectionX)
             {
                 audioSource.PlayOneShot(move);
 
@@ -97,12 +103,27 @@ public class VerticalJoystick : MonoBehaviour
                 else
                     player.Move(90); //Right
 
-                active = true;
+                LockDirectionX = true;
             }
-        }else if (active)
+        }
+        else if(LockDirectionX)
         {
             audioSource.PlayOneShot(release);
-            active = false;
+            LockDirectionX = false;
+        }
+        
+        
+        if (currentRotationAngleForward > activationAngle || currentRotationAngleForward < -activationAngle)
+        {
+            if (!LockDirectionY)
+            {
+                audioSource.PlayOneShot(move);
+                LockDirectionY = true;
+            }
+        } else if(LockDirectionY)
+        {
+            audioSource.PlayOneShot(release);
+            LockDirectionY = false;
         }
     }
 }
