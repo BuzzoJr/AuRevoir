@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening.Core.Easing;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerControllerTron : MonoBehaviour
@@ -48,19 +49,7 @@ public class PlayerControllerTron : MonoBehaviour
 
     void HandleMovement()
     {
-        Debug.Log(moveSpeed);
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            transform.Rotate(Vector3.up, -90f);
-            CreateNewTrailSegment();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.up, 90f);
-            CreateNewTrailSegment();
-        }
     }
 
     void CreateNewTrailSegment()
@@ -106,6 +95,12 @@ public class PlayerControllerTron : MonoBehaviour
             gameManager.GameOver();
             Debug.Log("Player morreu!");
         }
+    }
+
+    public void Move(float dir)
+    {
+        transform.Rotate(Vector3.up, dir);
+        CreateNewTrailSegment();
     }
 
     private void OnDestroy()
