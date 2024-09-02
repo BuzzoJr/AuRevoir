@@ -1,5 +1,7 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
@@ -86,6 +88,49 @@ public class CursorController : MonoBehaviour
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                     currentCursor = "null";
                 }
+            }
+        }
+        else
+        {
+            CursorUI();
+        }
+    }
+
+    private void CursorUI()
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+        };
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+        List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList" };
+
+        foreach (var result in raycastResults)
+        {
+            // Ensure we hit the UI layer
+            if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+            {
+                if (buttonNames.Contains(result.gameObject.name))
+                {
+                    inButton = true;
+                    break;
+                }
+                else
+                {
+                    inButton = false;
+                }
+            }
+        }
+
+        if (inButton)
+        {
+            if (currentCursor != "clickCursor")
+            {
+                Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
+                currentCursor = "clickCursor";
             }
         }
         else
