@@ -7,7 +7,7 @@
         GetFirstMission = 0,
         CarCrashPoliceTalk,
         CarCrashClientDownload,
-        BossFirstMission,
+        BossFirstMission, //Não ta claro mas aqui é quando conversa com chefe antes do upload
         // Old
         PhoneAnswered,
         MissonReceived,
