@@ -1,16 +1,31 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.Script;
 using UnityEngine;
 
 public class WaitCarArrival : MonoBehaviour
 {
+    public PlayerData playerData;
     public GameObject player;
     public float delay = 5f;
     public GameObject livre;
     public GameObject ocupado;
+    public List<SceneRef> notTriggerFrom;
+    private Animator animator;
 
     void Start()
     {
-        StartCoroutine(ExitCar());
+        animator = GetComponent<Animator>();
+        if (!notTriggerFrom.Contains(playerData.previousScene))
+        {
+            StartCoroutine(ExitCar());
+            animator.SetBool("Parked", false);
+        }
+        else
+        {
+            animator.SetBool("Parked", true);
+        }
     }
 
     IEnumerator ExitCar()

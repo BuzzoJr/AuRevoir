@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject MainCamera;
     public GameObject Camera2;
-    public List<Collider> colliders2 = new();
-    public bool cameraChange = false;
+    public List<Collider> collidersToEnable = new();
+    public List<Collider> collidersToDisable = new();
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -17,8 +17,10 @@ public class CameraController : MonoBehaviour
         initialPosition = MainCamera.transform.position;
         initialRotation = MainCamera.transform.rotation;
 
-        foreach (Collider col in colliders2)
-            col.enabled = cameraChange;
+        foreach (Collider col in collidersToEnable)
+            col.enabled = false;
+        foreach (Collider col in collidersToDisable)
+            col.enabled = true;
     }
 
     private void OnTriggerStay(Collider collision)
@@ -28,8 +30,10 @@ public class CameraController : MonoBehaviour
             MainCamera.transform.position = Camera2.transform.position;
             MainCamera.transform.rotation = Camera2.transform.rotation;
 
-            foreach (Collider col in colliders2)
-                col.enabled = !cameraChange;
+            foreach (Collider col in collidersToEnable)
+                col.enabled = true;
+            foreach (Collider col in collidersToDisable)
+                col.enabled = false;
         }
     }
 
@@ -49,8 +53,10 @@ public class CameraController : MonoBehaviour
             MainCamera.transform.rotation = initialRotation;
             collision.gameObject.GetComponent<PlayerController>().CloseInteractionWheel();
 
-            foreach (Collider col in colliders2)
-                col.enabled = cameraChange;
+            foreach (Collider col in collidersToEnable)
+                col.enabled = false;
+            foreach (Collider col in collidersToDisable)
+                col.enabled = true;
         }
     }
 }
