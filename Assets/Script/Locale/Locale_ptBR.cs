@@ -323,7 +323,6 @@ namespace Assets.Script.Locale
                 new List<TextData>()
                 {
                     new TextData(TextType.TristanThinking, "Esta sala me faz pensar se o Hank não estava certo."),
-                    new TextData(TextType.TristanThinking, "Parece que estou naquele filme Matrix."),
                 }
             },
             {
