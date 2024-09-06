@@ -3,89 +3,94 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class PasswordPanelInteraction : MonoBehaviour, IUse
+public class PasswordPanelInteraction : MonoBehaviour
 {
     public DoorController door;
-    public Light alertLight;
-    public GameObject canvas;
-    public TMP_Text password;
-    public AudioSource click, confirm, wrong;
+    //public Light alertLight;
+    //public GameObject canvas;
+    //public TMP_Text password;
+    //public AudioSource click, confirm, wrong;
 
-    public void Use(GameObject who)
+    public void Unlock()
     {
-        if (door.locked)
-            StartCoroutine(UsePanel());
+        door.SetLock(false);
+        Destroy(this);
     }
+    //public void Use(GameObject who)
+    //{
+    //    if (door.locked)
+    //        StartCoroutine(UsePanel());
+    //}
 
-    IEnumerator UsePanel()
-    {
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+    //IEnumerator UsePanel()
+    //{
+    //    GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
-        var g = new GoTo();
-        yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x, transform.position.y, transform.position.z), null));
+    //    var g = new GoTo();
+    //    yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x, transform.position.y, transform.position.z), null));
 
-        // Action cancelled
-        if (GameManager.Instance.State != GameManager.GameState.Interacting)
-            yield break;
+    //    // Action cancelled
+    //    if (GameManager.Instance.State != GameManager.GameState.Interacting)
+    //        yield break;
 
-        password.text = "#----";
-        canvas.SetActive(true);
-    }
+    //    password.text = "#----";
+    //    canvas.SetActive(true);
+    //}
 
-    private void AddCharToPassword(string c)
-    {
-        for (int i = 1; i < password.text.Length; i++)
-        {
-            if (password.text[i] == '-')
-            {
-                password.text = password.text.Remove(i, c.Length).Insert(i, c);
-                break;
-            }
-        }
-        click.Play();
-    }
+    //private void AddCharToPassword(string c)
+    //{
+    //    for (int i = 1; i < password.text.Length; i++)
+    //    {
+    //        if (password.text[i] == '-')
+    //        {
+    //            password.text = password.text.Remove(i, c.Length).Insert(i, c);
+    //            break;
+    //        }
+    //    }
+    //    click.Play();
+    //}
 
-    private void EraseCharFromPassword()
-    {
-        for (int i = password.text.Length - 1; i > 0; i--)
-        {
-            if (password.text[i] != '-')
-            {
-                password.text = password.text.Remove(i, 1).Insert(i, "-");
-                break;
-            }
-        }
-        click.Play();
-    }
+    //private void EraseCharFromPassword()
+    //{
+    //    for (int i = password.text.Length - 1; i > 0; i--)
+    //    {
+    //        if (password.text[i] != '-')
+    //        {
+    //            password.text = password.text.Remove(i, 1).Insert(i, "-");
+    //            break;
+    //        }
+    //    }
+    //    click.Play();
+    //}
 
-    private void CheckPassword()
-    {
-        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-        canvas.SetActive(false);
+    //private void CheckPassword()
+    //{
+    //    GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+    //    canvas.SetActive(false);
 
-        if (password.text == "#0000")
-        {
-            door.SetLock(false);
-            alertLight.color = Color.green;
-            confirm.Play();
-            Destroy(this);
-            return;
-        }
-        else
-        {
-            wrong.Play();
-        }
+    //    if (password.text == "#0000")
+    //    {
+    //        door.SetLock(false);
+    //        alertLight.color = Color.green;
+    //        confirm.Play();
+    //        Destroy(this);
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        wrong.Play();
+    //    }
 
-        password.text = "#----";
-    }
+    //    password.text = "#----";
+    //}
 
-    public void PressButton(string c)
-    {
-        if (c == ">")
-            CheckPassword();
-        else if (c == "-")
-            EraseCharFromPassword();
-        else
-            AddCharToPassword(c);
-    }
+    //public void PressButton(string c)
+    //{
+    //    if (c == ">")
+    //        CheckPassword();
+    //    else if (c == "-")
+    //        EraseCharFromPassword();
+    //    else
+    //        AddCharToPassword(c);
+    //}
 }
