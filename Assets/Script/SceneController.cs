@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
     private TMP_Text dialogText;
     public AudioSource audioSource = null;
     public AudioClip backgroundMusic = null;
+    public bool exactPosition = false;
 
     private int currentIndex = -1;
 
@@ -50,6 +51,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         if (dialogBox)
             dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+
         GameManager.Instance.showingDialog = false;
 
         if (needToActivate)
@@ -61,7 +63,11 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         if (spawnIndex >= 0)
         {
-            playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, playerPos.position.y, spawnPosition[spawnIndex].transform.position.z);
+            if(exactPosition)
+                playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, spawnPosition[spawnIndex].transform.position.y, spawnPosition[spawnIndex].transform.position.z);
+            else
+                playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, playerPos.position.y, spawnPosition[spawnIndex].transform.position.z);
+
             playerPos.rotation = Quaternion.Euler(0f, spawnPosition[spawnIndex].transform.rotation.eulerAngles.y, 0f);
         }
 
