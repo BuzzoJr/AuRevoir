@@ -9,6 +9,7 @@ public class LookClose : MonoBehaviour, ILook
     public Transform mainCamera;
     public Transform destinationCamera;
     public bool goBackToPlaying = true;
+    public bool customExit;
 
     public float transitionDuration = 2f;
 
@@ -30,6 +31,9 @@ public class LookClose : MonoBehaviour, ILook
 
     void Update()
     {
+        if(customExit)
+            return;
+
         if (close && Input.GetMouseButtonDown(0))
         {
             StartCoroutine(OpenUp());
@@ -100,5 +104,9 @@ public class LookClose : MonoBehaviour, ILook
         var special = GetComponent<ILookSpecial>();
         if (special != null)
             special.LookSpecial(gameObject);
+    }
+
+    public void CustomExitAnim() {
+        StartCoroutine(OpenUp());
     }
 }
