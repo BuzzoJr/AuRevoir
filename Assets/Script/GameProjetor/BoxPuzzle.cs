@@ -1,31 +1,30 @@
 using UnityEngine;
 using TMPro;
-using DG.Tweening;
 
 public class BoxPuzzle : MonoBehaviour
 {
     public TMP_Text smallBoxText;
-    public TMP_Text expandedText;
-    public TMP_Text pageText;
-    public GameObject closeButton, nextButton, prevButton;
+    public string[] contentPages;
 
+    private TMP_Text expandedText;
+    private TMP_Text pageText;
     private int currentPage;
-    private bool isBoxExpanded = false;
     private BoxPuzzleController controller;
     private int boxIndex;
 
     void Start()
     {
+        expandedText = BoxPuzzleController.instance.bigPage.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+        pageText = BoxPuzzleController.instance.bigPage.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
         currentPage = 1;
-        controller = BoxPuzzleController.Instance;
+        controller = BoxPuzzleController.instance;
         boxIndex = controller.GetBoxIndex(gameObject);
         UpdateSmallBoxText();
     }
 
     public void OnBoxClicked()
     {
-        if (isBoxExpanded) return;
-
+        BoxPuzzleController.instance.SetCurrentBox(boxIndex);
         currentPage = controller.GetPageForBox(boxIndex);
         expandedText.text = GetExpandedText(currentPage);
         pageText.text = $"{currentPage}/3";
@@ -34,24 +33,13 @@ public class BoxPuzzle : MonoBehaviour
 
     void AnimateExpandBox()
     {
-        isBoxExpanded = true;
-        transform.DOScale(Vector3.one * 1.5f, 0.5f).OnComplete(() => ShowExpandedView());
-    }
-
-    void ShowExpandedView()
-    {
-        closeButton.SetActive(true);
-        nextButton.SetActive(true);
-        prevButton.SetActive(true);
+        BoxPuzzleController.instance.bigPage.SetActive(true);
     }
 
     public void OnCloseButtonClicked()
     {
-        closeButton.SetActive(false);
-        nextButton.SetActive(false);
-        prevButton.SetActive(false);
         UpdateSmallBoxText();
-        transform.DOScale(Vector3.one, 0.5f).OnComplete(() => isBoxExpanded = false);
+        BoxPuzzleController.instance.bigPage.SetActive(false);
 
         controller.CheckVictory();
     }
@@ -86,12 +74,6 @@ public class BoxPuzzle : MonoBehaviour
 
     string GetExpandedText(int page)
     {
-        switch (page)
-        {
-            case 1: return "Page 1 large text content...";
-            case 2: return "Page 2 large text content...";
-            case 3: return "Page 3 large text content...";
-            default: return "";
-        }
+        return contentPages[page - 1];
     }
 }

@@ -29,7 +29,6 @@ public class InspectPuzzleProjetor : MonoBehaviour, ILookSpecial
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Cria um ray a partir da posição do mouse
             if (Physics.Raycast(ray, out RaycastHit hit)) // Verifica se o ray colide com algo
             {
-                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.tag == "Finish") // Verifica se o objeto colidido tem a tag específica
                 {
                     gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -39,6 +38,17 @@ public class InspectPuzzleProjetor : MonoBehaviour, ILookSpecial
                 }
                 else if(hit.collider.gameObject.GetComponent<BoxPuzzle>() != null) {
                     hit.collider.gameObject.GetComponent<BoxPuzzle>().OnBoxClicked();
+                }
+                else {
+                    if(hit.collider.gameObject.name == "Close") {
+                        BoxPuzzleController.instance.boxes[BoxPuzzleController.instance.currentBox].OnCloseButtonClicked();
+                    }
+                    else if(hit.collider.gameObject.name == "Next") {
+                        BoxPuzzleController.instance.boxes[BoxPuzzleController.instance.currentBox].OnNextPage();
+                    }
+                    else if(hit.collider.gameObject.name == "Prev") {
+                        BoxPuzzleController.instance.boxes[BoxPuzzleController.instance.currentBox].OnPreviousPage();
+                    }
                 }
             }
         }

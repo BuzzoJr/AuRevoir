@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class BoxPuzzleController : MonoBehaviour
 {
-    public static BoxPuzzleController Instance;
+    public static BoxPuzzleController instance;
     public BoxPuzzle[] boxes;
     public int[] correctPages;
+    public GameObject bigPage;
+    public int currentBox;
 
     private int[] currentPages;
 
     void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
@@ -27,6 +29,10 @@ public class BoxPuzzleController : MonoBehaviour
         {
             currentPages[i] = 1;
         }
+    }
+
+    public void SetCurrentBox(int index) {
+        currentBox = index;
     }
 
     public void SetPageForBox(int boxIndex, int page)
