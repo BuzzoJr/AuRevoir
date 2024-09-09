@@ -4,7 +4,7 @@ using Assets.Script.Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
+public class InspectPuzzleProjetor : MonoBehaviour, ILookSpecial
 {
     public GameObject player, exitPuzzle;
     public Transform target;
@@ -29,6 +29,7 @@ public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Cria um ray a partir da posição do mouse
             if (Physics.Raycast(ray, out RaycastHit hit)) // Verifica se o ray colide com algo
             {
+                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.tag == "Finish") // Verifica se o objeto colidido tem a tag específica
                 {
                     gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -36,8 +37,8 @@ public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
                     GetComponent<LookClose>().CustomExitAnim();
                     return true;
                 }
-                else if(hit.collider.gameObject.GetComponent<PuzzleLight>() != null) {
-                    hit.collider.gameObject.GetComponent<PuzzleLight>().OnClick();
+                else if(hit.collider.gameObject.GetComponent<BoxPuzzle>() != null) {
+                    hit.collider.gameObject.GetComponent<BoxPuzzle>().OnBoxClicked();
                 }
             }
         }
