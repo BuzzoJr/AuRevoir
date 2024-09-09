@@ -14,9 +14,6 @@ public class Inspect : MonoBehaviour, ILook
     [SerializeField] private bool HasText = true;
     [ConditionalHide("HasText")] public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [ConditionalHide("HasText")] public TextInteractionType textInteractionType = TextInteractionType.Dialog;
-    [ConditionalHide("HasText")] public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
-    [ConditionalHide("HasText")] [SerializeField] private GameObject dialogBox;
-    [ConditionalHide("HasText")] [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
@@ -24,7 +21,7 @@ public class Inspect : MonoBehaviour, ILook
         if (HasText)
         {
             dialog = gameObject.AddComponent<Dialog>();
-            dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
+            dialog.Configure(textGroup, textInteractionType);
         }
     }
 

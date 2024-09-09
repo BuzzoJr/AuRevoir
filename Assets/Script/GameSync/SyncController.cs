@@ -16,14 +16,12 @@ public class SyncController : MonoBehaviour
     [Header("Text Interaction")]
     public TextGroup textGroup = TextGroup.CarCrashClient;
     public TextInteractionType textInteractionType = TextInteractionType.Dialog;
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
+        dialog.Configure(textGroup, textInteractionType);
     }
 
     public void EndSync()

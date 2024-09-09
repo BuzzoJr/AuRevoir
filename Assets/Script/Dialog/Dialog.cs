@@ -20,7 +20,6 @@ namespace Assets.Script.Dialog
 
         public GameObject ThinkingBox { get; set; }
         public TMP_Text ThinkingText { get; set; }
-        public TMP_Text ThinkingSpeaker { get; set; }
 
         int? selectedKey = null;
 
@@ -31,17 +30,34 @@ namespace Assets.Script.Dialog
 
         private bool configured = false;
 
-        public void Configure(GameObject dialogBox, GameObject thinkingBox, TextGroup textGroup, TextInteractionType type)
+        public void Configure(TextGroup textGroup, TextInteractionType type)
         {
-            DialogBox = dialogBox;
-            DialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-            DialogSpeaker = dialogBox.GetComponentInChildren<TMP_Text>();
-            DialogSpeaker = dialogBox.transform.Find("DialogSpeaker").GetComponent<TMP_Text>();
-            Portrait = dialogBox.transform.Find("Portrait").GetComponent<Image>();
+            GameObject canvas = GameObject.Find("Canvas");
+            if (!canvas)
+            {
+                Debug.LogError($"{gameObject.name} não conseguiu localizar 'Canvas' na cena!");
+                return;
+            }
 
-            ThinkingBox = thinkingBox;
-            ThinkingText = thinkingBox.GetComponentInChildren<TMP_Text>();
-            ThinkingSpeaker = thinkingBox.GetComponentInChildren<TMP_Text>();
+            DialogBox = canvas.transform.Find("DialogBox").gameObject;
+            if (!DialogBox)
+            {
+                Debug.LogError($"{gameObject.name} não conseguiu localizar 'DialogBox' em {canvas.name}!");
+                return;
+            }
+
+            DialogText = DialogBox.GetComponentInChildren<TMP_Text>();
+            DialogSpeaker = DialogBox.transform.Find("DialogSpeaker").GetComponent<TMP_Text>();
+            Portrait = DialogBox.transform.Find("Portrait").GetComponent<Image>();
+
+            ThinkingBox = canvas.transform.Find("ThinkingBox").gameObject;
+            if (!DialogBox)
+            {
+                Debug.LogError($"{gameObject.name} não conseguiu localizar 'ThinkingBox' em {canvas.name}!");
+                return;
+            }
+
+            ThinkingText = ThinkingBox.GetComponentInChildren<TMP_Text>();
 
             TextGroup = textGroup;
             Type = type;

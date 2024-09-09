@@ -13,15 +13,12 @@ public class TristanWakingUp : MonoBehaviour
     [Header("Text Interaction")]
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     public TextInteractionType textInteractionType = TextInteractionType.Dialog;
-    public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.Configure(dialogBox, thinkingBox, textGroup, textInteractionType);
+        dialog.Configure(textGroup, textInteractionType);
     }
 
     void Start()

@@ -18,15 +18,12 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
     public TextInteractionType textInteractionTypeSuccess = TextInteractionType.Dialog;
     public TextGroup textGroupFail = TextGroup.DialogWakeUpCall;
     public TextInteractionType textInteractionTypeFail = TextInteractionType.Dialog;
-    public bool isDialog = true; // TODO: Depois de configurar os DialogTypes, remover este campo e usar o DialogType
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject thinkingBox;
     private Dialog dialog;
 
     void Awake()
     {
         dialog = gameObject.AddComponent<Dialog>();
-        dialog.Configure(dialogBox, thinkingBox, textGroupSuccess, textInteractionTypeSuccess);
+        dialog.Configure(textGroupSuccess, textInteractionTypeSuccess);
     }
 
     public void UseItem(GameObject who)
