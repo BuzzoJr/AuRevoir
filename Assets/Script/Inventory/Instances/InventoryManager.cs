@@ -36,6 +36,18 @@ public class InventoryManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        SceneManager.sceneUnloaded += OnsceneUnloaded;
+    }
+
+    private void OnsceneUnloaded(Scene scene)
+    {
+        items.Close();
+        documents.Close();
+        notes.Close();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
