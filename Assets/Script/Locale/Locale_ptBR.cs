@@ -77,6 +77,13 @@ namespace Assets.Script.Locale
                 }
             },
             {
+                TextGroup.WrongItemUse,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Não posso usar isso aqui"),
+                }
+            },
+            {
                 TextGroup.Map,
                 new List<TextData>()
                 {

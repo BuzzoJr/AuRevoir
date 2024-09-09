@@ -110,6 +110,7 @@
         PoliceCar,
         LockedDoorHouse,
         HoverText,
+        WrongItemUse,
     }
 
     public enum ItemGroup
