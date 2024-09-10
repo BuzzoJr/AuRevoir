@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Locale;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ namespace Assets.Script.Interaction
         public ItemGroup itemGroupToTake = ItemGroup.Default;
         public ItemGroup itemGroupToReceive = ItemGroup.Default;
 
+        [Header("Walk before use")]
+        public bool shouldWalk = false;
+        [ConditionalHide("shouldWalk")] public Vector3 CustomWalkOffset = Vector3.zero;
+        [ConditionalHide("shouldWalk")] public Transform lookAtObj;
+
 
         public bool UseItem(GameObject item)
         {
@@ -21,16 +27,35 @@ namespace Assets.Script.Interaction
             if (obj == null)
                 return false;
 
-            Debug.Log("Used: " + item.name);
-            Debug.Log("Expected: " + obj.mousePrefab.name);
             if (item.name != obj.mousePrefab.name + "(Clone)")
                 return false;
 
-            playerData.RemoveItem(itemGroupToTake);
-            playerData.AddItem(itemGroupToReceive);
-            InventoryManager.Instance.Open(itemGroupToReceive);
+            StartCoroutine(GoToAndUse());
 
             return true;
+        }
+
+        IEnumerator GoToAndUse()
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+
+            if (shouldWalk)
+            {
+                var g = new GoTo();
+                yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAtObj));
+
+                // Action cancelled
+                if (GameManager.Instance.State != GameManager.GameState.Interacting)
+                    yield break;
+            }
+            yield return null;
+
+            playerData.RemoveItem(itemGroupToTake);
+            playerData.AddItem(itemGroupToReceive);
+
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+
+            InventoryManager.Instance.Open(itemGroupToReceive);
         }
     }
 }
