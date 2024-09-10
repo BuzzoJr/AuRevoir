@@ -1,45 +1,28 @@
 using Assets.Script;
 using Assets.Script.Dialog;
-using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour, ILangConsumer
+public class SceneController : MonoBehaviour
 {
     public PlayerData playerData;
     public Transform playerPos;
     public List<GameObject> spawnPosition = new();
     public List<SceneRef> spawnReferece = new();
+
     [Header("FIRST TIME IN SCENE")]
-    [SerializeField] private bool HasText = false;
-    public TextGroup textGroup = TextGroup.DialogWakeUpCall;
-    [SerializeField] private GameObject dialogBox;
-    private TMP_Text dialogText;
+
     public AudioSource audioSource = null;
     public AudioClip backgroundMusic = null;
     public bool exactPosition = false;
 
-    private int currentIndex = -1;
-
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = data.Text;
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    [SerializeField] private bool HasText = false;
+    [ConditionalHide("HasText")] public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    [ConditionalHide("HasText")] public TextInteractionType textInteractionType = TextInteractionType.Sequence;
 
     private void Awake()
     {
@@ -48,11 +31,6 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         bool needToActivate = playerPos.gameObject.activeSelf;
-
-        if (dialogBox)
-            dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-
-        GameManager.Instance.showingDialog = false;
 
         if (needToActivate)
             playerPos.gameObject.SetActive(false);
@@ -63,7 +41,7 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
         if (spawnIndex >= 0)
         {
-            if(exactPosition)
+            if (exactPosition)
                 playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, spawnPosition[spawnIndex].transform.position.y, spawnPosition[spawnIndex].transform.position.z);
             else
                 playerPos.position = new Vector3(spawnPosition[spawnIndex].transform.position.x, playerPos.position.y, spawnPosition[spawnIndex].transform.position.z);
@@ -124,48 +102,16 @@ public class SceneController : MonoBehaviour, ILangConsumer
 
     IEnumerator DoFirstTimeAction()
     {
-        if (!dialogBox)
-            yield break;
-
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-        {
-            currentIndex = i;
-            UpdateLangTexts();
 
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-            float elapsedTime = 0;
+        while (Input.GetMouseButtonDown(0))
+            yield return null;
 
-            while (elapsedTime < delayTime && !clicked)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    clicked = true;
-                }
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
+        Dialog dialog = gameObject.AddComponent<Dialog>();
+        dialog.Configure(textGroup, textInteractionType);
 
-            if (textGroup == TextGroup.LabDiscussion && i == 6)
-            {
-                var special = GetComponentInChildren<ISpecial>();
-                if (special != null)
-                    special.Special(playerPos.gameObject);
-            }
+        yield return StartCoroutine(dialog.Execute(gameObject, (value) => { }));
 
-        }
-        if (textGroup == TextGroup.LabDiscussion)
-        {
-            var special = GetComponentInChildren<ISpecial>();
-            if (special != null)
-                special.Special(playerPos.gameObject);
-        }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 

@@ -585,11 +585,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldWalk: 1
   shouldSit: 0
-  textGroup: 22
-  isDialog: 1
-  dialogBox: {fileID: 4357632719355704092}
-  thinkingBox: {fileID: 0}
   CustomWalkOffset: {x: 0, y: 0, z: -2}
+  textGroup: 22
+  textInteractionType: 0
 --- !u!1 &143306891
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,11 +6938,12 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 3805754902723497251}
   spawnReferece: 
-  HasText: 1
-  textGroup: 21
-  dialogBox: {fileID: 4357632719355704092}
   audioSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
+  exactPosition: 0
+  HasText: 1
+  textGroup: 27
+  textInteractionType: 1
 --- !u!1 &3948933247452833896
 GameObject:
   m_ObjectHideFlags: 0
@@ -7209,12 +7208,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
---- !u!1 &4357632719355704092 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4357632719355704091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!33 &4436850804040956705
 MeshFilter:
   m_ObjectHideFlags: 0
