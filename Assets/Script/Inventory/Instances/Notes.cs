@@ -76,7 +76,7 @@ public class Notes : MonoBehaviour, ILangConsumer
 
     private void UpdateCurrentItemData()
     {
-        ItemData itemData = Locale.Item[current];
+        //ItemData itemData = Locale.Item[current];
 
         //objName.text = itemData.Name;
 
@@ -162,6 +162,9 @@ public class Notes : MonoBehaviour, ILangConsumer
         // Ativa / Desativa baseado na lista de items do player data
         foreach (var nav in navigation)
             nav.Value.SetActive(playerData.items.Contains(nav.Key));
+
+        if (!navigation[current].activeSelf)
+            current = ItemGroup.Default;
     }
 
     private void UpdateInfo()

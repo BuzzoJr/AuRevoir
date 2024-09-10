@@ -19,12 +19,16 @@ public class DoorInteraction : MonoBehaviour, IUseItem
         m_AudioSource = GetComponent<AudioSource>();
     }
 
-    public void UseItem(GameObject who)
+    public bool UseItem(GameObject who)
     {
         if (targetItem == who.name)
+        {
             StartCoroutine(CoroutineExample());
-        else
-            m_AudioSource.PlayOneShot(errorClip);
+            return true;
+        }
+
+        m_AudioSource.PlayOneShot(errorClip);
+        return false;
     }
 
     IEnumerator CoroutineExample()

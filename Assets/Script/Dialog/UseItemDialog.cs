@@ -39,21 +39,23 @@ public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
         dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
     }
 
-    public void UseItem(GameObject who)
+    public bool UseItem(GameObject who)
     {
         if (who.name == targetItem1)
         {
             textGroup = textGroup1;
             StartCoroutine(CoroutineExample());
-            return;
+            return true;
         }
 
         if (who.name == targetItem2)
         {
             textGroup = textGroup2;
             StartCoroutine(CoroutineExample());
-            return;
+            return true;
         }
+
+        return false;
     }
 
     IEnumerator CoroutineExample()

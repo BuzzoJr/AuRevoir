@@ -57,6 +57,20 @@ public class PlayerData : ScriptableObject
         return true;
     }
 
+    public bool RemoveItem(ItemGroup item)
+    {
+        if (!items.Contains(item))
+            return false;
+
+        items.Remove(item);
+
+        // AutoSave
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
+
+        return true;
+    }
+
     public bool HasStep(GameSteps step)
     {
         if (step == GameSteps.None)

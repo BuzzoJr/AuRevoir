@@ -26,7 +26,7 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
         dialog.Configure(textGroupSuccess, textInteractionTypeSuccess);
     }
 
-    public void UseItem(GameObject who)
+    public bool UseItem(GameObject who)
     {
         if (targetItem == who.name)
         {
@@ -40,6 +40,8 @@ public class DialogItemInteraction : MonoBehaviour, IUseItem
         }
 
         StartCoroutine(Execute(who));
+
+        return true;
     }
 
     IEnumerator Execute(GameObject who)

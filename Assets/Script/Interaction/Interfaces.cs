@@ -31,7 +31,7 @@ namespace Assets.Script.Interaction
 
     public interface IUseItem
     {
-        void UseItem(GameObject who);
+        bool UseItem(GameObject who);
     }
     public interface IUseSpecial
     {

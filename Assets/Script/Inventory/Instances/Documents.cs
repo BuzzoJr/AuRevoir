@@ -210,6 +210,9 @@ public class Documents : MonoBehaviour, ILangConsumer
         if (selected != ItemGroup.Default && showing.Keys.Contains(selected))
             current = showing.Keys.ToList().IndexOf(selected);
 
+        if (current >= showing.Count)
+            current = 0;
+
         // Posiciona os ativos no circulo
         for (int i = 0; i < showing.Count; i++)
         {

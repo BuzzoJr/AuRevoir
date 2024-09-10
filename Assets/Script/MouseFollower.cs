@@ -38,10 +38,11 @@ public class MouseFollower : MonoBehaviour
                 GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
                 if (useItem is not null)
                 {
-                    if (!CheckInteractionLimit(hitPoint.transform))
-                        useItem.UseItem(gameObject);
-
-                    Destroy(this.gameObject);
+                    if (!CheckInteractionLimit(hitPoint.transform) && useItem.UseItem(gameObject))
+                    {
+                        Destroy(this.gameObject);
+                        return;
+                    }
                 }
 
                 StartCoroutine(WrongItem());
