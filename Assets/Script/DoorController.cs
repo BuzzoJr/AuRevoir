@@ -1,47 +1,32 @@
+using Assets.Script;
 using Assets.Script.Dialog;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Script;
 
-public class DoorController : MonoBehaviour, ILangConsumer
+public class DoorController : MonoBehaviour
 {
     //Controla para qual cena vai ao colidir com a porta
     public SceneRef moveRef = SceneRef.B_BarBathroom;
     public GameObject transObj, globalObj, allMap;
-    public bool locked = false;
     public bool map = false;
+
+    [Header("Lock Interaction")]
+    public bool locked = false;
     public TextGroup textGroup = TextGroup.LockedDoor;
-    [SerializeField] private GameObject dialogBox = null;
-    private TMP_Text dialogText;
+    public TextInteractionType textInteractionType = TextInteractionType.Sequence;
+    private Dialog dialog;
 
     private Animator anim;
-
-    private int currentIndex = -1;
-
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = "* " + data.Text + " *";
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
 
     void Start()
     {
         if (transform.parent.TryGetComponent(out anim))
             anim.SetBool("Locked", locked);
-        if (dialogBox != null)
-            dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+
+        dialog = gameObject.AddComponent<Dialog>();
+        dialog.Configure(textGroup, textInteractionType);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -53,7 +38,7 @@ public class DoorController : MonoBehaviour, ILangConsumer
         {
             if (transObj != null)
                 StartCoroutine(DelayTransition());
-            else if(map)
+            else if (map)
                 allMap.SetActive(true);
             else
                 SceneManager.LoadScene(moveRef.ToString());
@@ -78,30 +63,11 @@ public class DoorController : MonoBehaviour, ILangConsumer
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-        {
-            currentIndex = i;
-            UpdateLangTexts();
+        while (Input.GetMouseButtonDown(0))
+            yield return null;
 
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-            float elapsedTime = 0;
+        yield return StartCoroutine(dialog.Execute(gameObject, (value) => { }));
 
-            while (elapsedTime < delayTime && !clicked)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    clicked = true;
-                }
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-        }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 

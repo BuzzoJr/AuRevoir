@@ -1183,12 +1183,6 @@ Transform:
   m_Father: {fileID: 408934149}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &483841657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4357632719355704091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &506736682
 GameObject:
   m_ObjectHideFlags: 0
@@ -5420,12 +5414,12 @@ MonoBehaviour:
   - {fileID: 2546005197202271355}
   - {fileID: 2546005196954870711}
   spawnReferece: 0b0000000d000000
-  HasText: 0
-  textGroup: 3
-  dialogBox: {fileID: 0}
   audioSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
   exactPosition: 1
+  HasText: 0
+  textGroup: 3
+  textInteractionType: 1
 --- !u!23 &2546005196954870704
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6769,10 +6763,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 66
-  dialogBox: {fileID: 0}
+  textInteractionType: 1
 --- !u!135 &7675589526643658577
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6900,10 +6894,10 @@ MonoBehaviour:
   transObj: {fileID: 180993237}
   globalObj: {fileID: 832575517}
   allMap: {fileID: 0}
-  locked: 1
   map: 0
-  textGroup: 16
-  dialogBox: {fileID: 483841657}
+  locked: 1
+  textGroup: 66
+  textInteractionType: 1
 --- !u!4 &7675589527014086082
 Transform:
   m_ObjectHideFlags: 0
