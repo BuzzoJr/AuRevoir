@@ -155,7 +155,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
                             if (mouse != null)
                             {
                                 Instantiate(mouse, Vector3.zero, Quaternion.identity);
-                                ui.SetActive(false);
+                                Close();
                                 GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
                             }
                             else if (Locale.Item[group].Details != null)

@@ -1,4 +1,7 @@
+using Assets.Script.Dialog;
 using Assets.Script.Interaction;
+using Assets.Script.Locale;
+using System.Collections;
 using UnityEngine;
 
 public class MouseFollower : MonoBehaviour
@@ -37,11 +40,13 @@ public class MouseFollower : MonoBehaviour
                 {
                     if (!CheckInteractionLimit(hitPoint.transform))
                         useItem.UseItem(gameObject);
+
+                    Destroy(this.gameObject);
                 }
-                Destroy(this.gameObject);
+
+                StartCoroutine(WrongItem());
             }
         }
-
     }
 
     private bool CheckInteractionLimit(Transform target)
@@ -57,5 +62,21 @@ public class MouseFollower : MonoBehaviour
         }
 
         return false;
+    }
+
+    IEnumerator WrongItem()
+    {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
+
+        while (Input.GetMouseButtonDown(0))
+            yield return null;
+
+        Dialog dialog = gameObject.AddComponent<Dialog>();
+        dialog.Configure(TextGroup.WrongItemUse, TextInteractionType.Sequence);
+
+        yield return StartCoroutine(dialog.Execute(gameObject, (value) => { }));
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Destroy(this.gameObject);
     }
 }

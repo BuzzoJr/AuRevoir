@@ -34,7 +34,7 @@ public class HankSpecial : MonoBehaviour, ISpecial
             case 3:
                 InventoryManager.Instance.PickUpAudio(pickupAudio);
                 if (playerData.AddItem(itemGroup))
-                    InventoryManager.Instance.Open(itemGroup);
+                    InventoryManager.Instance.Open(itemGroup, true);
 
                 playerData.AddStep(GameSteps.GetFirstMission);
 
