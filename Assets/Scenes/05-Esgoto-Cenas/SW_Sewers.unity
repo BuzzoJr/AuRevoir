@@ -10048,8 +10048,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 43.483196, y: 56.210934, z: 40}
-  m_Center: {x: -6.7415934, y: 8.105496, z: 0.000000012368904}
+  m_Size: {x: 36.953423, y: 56.210934, z: 40}
+  m_Center: {x: -3.476703, y: 8.105496, z: 0.000000022591761}
 --- !u!114 &1135642917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10066,7 +10066,7 @@ MonoBehaviour:
   itemGroupToTake: 14
   itemGroupToReceive: 15
   shouldWalk: 1
-  CustomWalkOffset: {x: 2, y: 0, z: 0}
+  CustomWalkOffset: {x: 6, y: 0, z: 0}
   lookAtObj: {fileID: 543450653416089615}
 --- !u!1 &1150274424
 GameObject:
@@ -24634,7 +24634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149479748277}
   m_LocalRotation: {x: -0, y: 0.9994433, z: -0, w: -0.033363685}
-  m_LocalPosition: {x: -30.48, y: 0.19, z: 40.04}
+  m_LocalPosition: {x: -30.48, y: -0.13, z: 40.04}
   m_LocalScale: {x: 0.12697698, y: 0.12697698, z: 0.12697698}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24804,6 +24804,7 @@ GameObject:
   - component: {fileID: 543450653416089615}
   - component: {fileID: 1135642916}
   - component: {fileID: 1135642917}
+  - component: {fileID: 919132149479748278}
   m_Layer: 0
   m_Name: GasStorage01
   m_TagString: Interactable
@@ -24811,6 +24812,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132149479748278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149479748277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337834478802f5b4685175d957355426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldWalk: 1
+  CustomWalkOffset: {x: 6, y: 0, z: 0}
+  lookAtObj: {fileID: 543450653416089615}
+  HasText: 1
+  textGroup: 109
+  textInteractionType: 1
 --- !u!4 &928767726929316038
 Transform:
   m_ObjectHideFlags: 0

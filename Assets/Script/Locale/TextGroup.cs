@@ -111,6 +111,7 @@
         LockedDoorHouse,
         HoverText,
         WrongItemUse,
+        InspectGas,
     }
 
     public enum ItemGroup

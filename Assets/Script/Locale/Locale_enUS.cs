@@ -1159,6 +1159,13 @@ namespace Assets.Script.Locale
                     new TextData("Carro"),
                 }
             },
+            {
+                TextGroup.InspectGas,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Gasoline smell, this could come in handy."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()
