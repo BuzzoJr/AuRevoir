@@ -1220,6 +1220,10 @@ namespace Assets.Script.Locale
                 ItemGroup.Chips,
                 new ItemData(12, "Chips Au Revoir", "Chips do CEO e Revolucionário")
             },
+            {
+                ItemGroup.Bottle,
+                new ItemData(13, "Garrafa vazia", "Uma garrafa de cerveja vazia")
+            },
         };
     }
 }

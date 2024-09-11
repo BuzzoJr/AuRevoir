@@ -18,6 +18,8 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     public TextGroup textGroup = TextGroup.DialogWakeUpCall;
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private GameObject ThinkingBox;
+    public Vector3 CustomWalkOffset = Vector3.zero;
+    public Transform lookAtObj;
     private TMP_Text dialogText;
     private TMP_Text DialogSpeaker { get; set; }
 
@@ -79,7 +81,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
         var g = new GoTo();
-        yield return StartCoroutine(g.GoToRoutine(transform.position, transform));
+        yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAtObj == null ? transform : lookAtObj));
 
         // Action cancelled
         if (GameManager.Instance.State != GameManager.GameState.Interacting)
@@ -117,6 +119,7 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
         InventoryManager.Instance.PickUpAudio(pickupAudio);
+
         if (playerData.AddItem(itemGroup))
             InventoryManager.Instance.Open(itemGroup);
 

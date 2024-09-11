@@ -129,5 +129,6 @@
         Mafia_Doc_TestSubjects,
         Mafia_Doc_NewSleeve,
         Chips,
+        Bottle,
     }
 }
