@@ -130,5 +130,6 @@
         Mafia_Doc_NewSleeve,
         Chips,
         Bottle,
+        BottleGas,
     }
 }

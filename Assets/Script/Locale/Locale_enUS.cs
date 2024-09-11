@@ -1244,6 +1244,10 @@ namespace Assets.Script.Locale
                 ItemGroup.Bottle,
                 new ItemData(13, "Empty bottle", "An empty beer bottle")
             },
+            {
+                ItemGroup.BottleGas,
+                new ItemData(14, "Bottle with gasoline", "A bottle full of gasoline")
+            },
         };
     }
 }
