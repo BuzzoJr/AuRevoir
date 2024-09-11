@@ -11,6 +11,7 @@ namespace Assets.Script.Interaction
 
         public ItemGroup itemGroupToTake = ItemGroup.Default;
         public ItemGroup itemGroupToReceive = ItemGroup.Default;
+        [SerializeField] private AudioClip pickupAudio;
 
         [Header("Walk before use")]
         public bool shouldWalk = false;
@@ -56,6 +57,7 @@ namespace Assets.Script.Interaction
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 
             InventoryManager.Instance.Open(itemGroupToReceive);
+            InventoryManager.Instance.PickUpAudio(pickupAudio);
         }
     }
 }
