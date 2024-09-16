@@ -2,48 +2,38 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
-public class InspectSequenced : MonoBehaviour, ILook, ILangConsumer
+public class InspectSequenced : MonoBehaviour, ILook
 {
     public bool shouldWalk = true;
-    private TextGroup textGroup = TextGroup.LaundryBody;
-    [SerializeField] private GameObject dialogBox;
-    private TMP_Text dialogText;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+    public Transform lookAtObj;
 
-    public void UpdateLangTexts()
-    {
-        TextData data = Locale.Texts[textGroup][StaticSequences.laundryCorpses];
-        dialogText.color = TextColorManager.textTypeColors[data.Type];
-        dialogText.text = data.Text;
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    [Header("Text Interaction")]
+    public TextGroup textGroup = TextGroup.LaundryBody;
+    private Dialog dialog;
 
     void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog = gameObject.AddComponent<Dialog>();
+        dialog.Configure(textGroup, TextInteractionType.Sequence);
         StaticSequences.laundryCorpses = 0;
     }
 
     void ILook.Look(GameObject who)
     {
-        StartCoroutine(CoroutineExample());
+        StartCoroutine(CoroutineExample(who));
     }
 
-    IEnumerator CoroutineExample()
+    IEnumerator CoroutineExample(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
         if (shouldWalk)
         {
             var g = new GoTo();
-            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), null));
+            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAtObj));
 
             // Action cancelled
             if (GameManager.Instance.State != GameManager.GameState.Interacting)
@@ -51,28 +41,22 @@ public class InspectSequenced : MonoBehaviour, ILook, ILangConsumer
         }
         yield return null;
 
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        UpdateLangTexts();
+        DialogAction result = DialogAction.None;
+        yield return StartCoroutine(dialog.Execute(who, (value) => result = value, StaticSequences.laundryCorpses, StaticSequences.laundryCorpses + 1));
 
-        TextData data = Locale.Texts[textGroup][StaticSequences.laundryCorpses++];
-        bool clicked = false;
-        float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-        float elapsedTime = 0;
+        StaticSequences.laundryCorpses++;
 
-        while (elapsedTime < delayTime && !clicked)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                clicked = true;
-            }
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-        tag = "Untagged";
-        Destroy(this);
+        runSpecial();
+
+        if (result == DialogAction.RemoveDialog)
+            Destroy(this);
+    }
+
+    private void runSpecial()
+    {
+        var special = GetComponent<ILookSpecial>();
+        if (special != null)
+            special.LookSpecial(gameObject);
     }
 }

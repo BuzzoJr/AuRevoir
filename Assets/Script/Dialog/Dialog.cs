@@ -79,7 +79,7 @@ namespace Assets.Script.Dialog
             }
         }
 
-        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback)
+        public IEnumerator Execute(GameObject who, System.Action<DialogAction> callback, int seqStart = -1, int seqEnd = -1)
         {
             if (!configured)
             {
@@ -105,7 +105,7 @@ namespace Assets.Script.Dialog
                 if (Type == TextInteractionType.Dialog)
                     yield return StartCoroutine(ExecuteDialog(who, AllDialogs.Sequence[TextGroup], (value) => result = value));
                 else
-                    yield return StartCoroutine(ExecuteText());
+                    yield return StartCoroutine(ExecuteText(seqStart, seqEnd));
 
                 GameManager.Instance.showingDialog = false;
             }
@@ -314,11 +314,17 @@ namespace Assets.Script.Dialog
             }
         }
 
-        IEnumerator ExecuteText()
+        IEnumerator ExecuteText(int start = -1, int end = -1)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
 
-            for (int i = 0; i < Locale.Locale.Texts[TextGroup].Count; i++)
+            if (start < 0 || start > Locale.Locale.Texts[TextGroup].Count)
+                start = 0;
+
+            if (end < 0 || end > Locale.Locale.Texts[TextGroup].Count)
+                end = Locale.Locale.Texts[TextGroup].Count;
+
+            for (int i = start; i < end; i++)
             {
                 currentIndex = i;
                 TextData data = Locale.Locale.Texts[TextGroup][currentIndex];
