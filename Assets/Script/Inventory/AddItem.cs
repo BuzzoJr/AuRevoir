@@ -2,10 +2,9 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
-public class AddItem : MonoBehaviour, IUse, ILangConsumer
+public class AddItem : MonoBehaviour, IUse
 {
     public PlayerData playerData;
 
@@ -13,55 +12,22 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
     public ItemGroup itemGroup = ItemGroup.Default;
     [SerializeField] private AudioClip pickupAudio;
 
-    [Header("DIALOG ON PICKUP ITEM")]
-    [SerializeField] private bool HasText = false;
-    public TextGroup textGroup = TextGroup.DialogWakeUpCall;
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private GameObject ThinkingBox;
+    [Header("Walk To")]
     public Vector3 CustomWalkOffset = Vector3.zero;
     public Transform lookAtObj;
-    private TMP_Text dialogText;
-    private TMP_Text DialogSpeaker { get; set; }
 
-    private TMP_Text ThinkingText;
-
-    private int currentIndex = -1;
-
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            if (TextType.TristanThinking == data.Type)
-            {
-                dialogBox.SetActive(false);
-                ThinkingBox.SetActive(true);
-                ThinkingText.text = "* " + data.Text + " *";
-            }
-            else
-            {
-                dialogBox.SetActive(true);
-                ThinkingBox.SetActive(false);
-                dialogText.text = data.Text;
-                DialogSpeaker.color = TextColorManager.textTypeColors[data.Type];
-                DialogSpeaker.text = "";
-            }
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    [Header("DIALOG ON PICKUP ITEM")]
+    [SerializeField] private bool HasText = false;
+    [ConditionalHide("HasText")] public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+    [ConditionalHide("HasText")] public TextInteractionType textInteractionType = TextInteractionType.Sequence;
+    private Dialog dialog;
 
     private void Awake()
     {
-        if (dialogBox)
+        if (HasText)
         {
-            ThinkingText = ThinkingBox.GetComponentInChildren<TMP_Text>();
-            dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
-            Transform dialogSpeakerTransform = dialogBox.transform.Find("DialogSpeaker");
-            DialogSpeaker = dialogSpeakerTransform.GetComponent<TMP_Text>();
+            dialog = gameObject.AddComponent<Dialog>();
+            dialog.Configure(textGroup, textInteractionType);
         }
     }
 
@@ -73,10 +39,10 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
 
     public void Use(GameObject who)
     {
-        StartCoroutine(GettingItem());
+        StartCoroutine(GettingItem(who));
     }
 
-    IEnumerator GettingItem()
+    IEnumerator GettingItem(GameObject who)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
@@ -87,34 +53,9 @@ public class AddItem : MonoBehaviour, IUse, ILangConsumer
         if (GameManager.Instance.State != GameManager.GameState.Interacting)
             yield break;
 
-        if (HasText && dialogBox)
-        {
-            dialogBox.SetActive(true);
-            Locale.RegisterConsumer(this);
-            for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-            {
-                currentIndex = i;
-                UpdateLangTexts();
-
-                TextData data = Locale.Texts[textGroup][currentIndex];
-                bool clicked = false;
-                float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-                float elapsedTime = 0;
-
-                while (elapsedTime < delayTime && !clicked)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        clicked = true; ;
-                    }
-                    elapsedTime += Time.deltaTime;
-                    yield return null;
-                }
-            }
-            Locale.UnregisterConsumer(this);
-            dialogBox.SetActive(false);
-            ThinkingBox.SetActive(false);
-        }
+        DialogAction result = DialogAction.None;
+        if (HasText)
+            yield return StartCoroutine(dialog.Execute(who, (value) => result = value));
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
 

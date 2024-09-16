@@ -6387,6 +6387,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1612404042387572589}
   destinationCamera: {fileID: 149791617}
   goBackToPlaying: 1
+  customExit: 0
   transitionDuration: 2
   CustomWalkOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &1443923447
@@ -8334,11 +8335,12 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 1335465475}
   spawnReferece: 09000000
-  HasText: 0
-  textGroup: 5
-  dialogBox: {fileID: 4357632719355704092}
   audioSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
+  exactPosition: 0
+  HasText: 0
+  textGroup: 5
+  textInteractionType: 1
 --- !u!1 &775257890919768761
 GameObject:
   m_ObjectHideFlags: 0
@@ -8873,9 +8875,6 @@ MonoBehaviour:
   HasText: 1
   textGroup: 15
   textInteractionType: 1
-  isDialog: 0
-  dialogBox: {fileID: 4357632719355704092}
-  thinkingBox: {fileID: 1877737393}
 --- !u!1 &3655000509364859715
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,9 +9402,6 @@ MonoBehaviour:
   HasText: 1
   textGroup: 12
   textInteractionType: 1
-  isDialog: 0
-  dialogBox: {fileID: 4357632719355704092}
-  thinkingBox: {fileID: 1877737393}
 --- !u!114 &7226833859015146564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9434,10 +9430,11 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
   itemGroup: 3
   pickupAudio: {fileID: 8300000, guid: ec63f2915f00fa442813af7928e33b37, type: 3}
-  HasText: 0
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
+  lookAtObj: {fileID: 0}
+  HasText: 1
   textGroup: 13
-  dialogBox: {fileID: 4357632719355704092}
-  ThinkingBox: {fileID: 1877737393}
+  textInteractionType: 1
 --- !u!1001 &7383347091124567804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9591,10 +9588,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 832575517}
   allMap: {fileID: 725205123}
-  locked: 1
   map: 1
+  locked: 1
   textGroup: 106
-  dialogBox: {fileID: 1877737393}
+  textInteractionType: 1
 --- !u!4 &7675589525152400614
 Transform:
   m_ObjectHideFlags: 0
@@ -9694,10 +9691,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 66
-  dialogBox: {fileID: 0}
+  textInteractionType: 1
 --- !u!33 &7675589525866987412
 MeshFilter:
   m_ObjectHideFlags: 0
