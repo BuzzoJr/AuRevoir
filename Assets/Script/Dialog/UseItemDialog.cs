@@ -2,63 +2,57 @@ using Assets.Script.Dialog;
 using Assets.Script.Interaction;
 using Assets.Script.Locale;
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
+public class UseItemDialog : MonoBehaviour, IUseItem
 {
-    public bool shouldWalk = true;
-    public string targetItem1;
-    public TextGroup textGroup1 = TextGroup.DialogWakeUpCall;
-    public string targetItem2;
-    public TextGroup textGroup2 = TextGroup.DialogWakeUpCall;
-    private TextGroup textGroup = TextGroup.DialogWakeUpCall;
-    [SerializeField] private GameObject dialogBox;
-    private TMP_Text dialogText;
-    [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+    [Header("Lista de Itens Aceitos")]
+    public List<ItemGroup> items;
+    [Header("Textos para cada item")]
+    public List<TextGroup> texts;
+    [Header("Tipo de cada texto")]
+    public List<TextInteractionType> types;
 
-    private int currentIndex = -1;
-
-    public void UpdateLangTexts()
-    {
-        if (currentIndex >= 0)
-        {
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            dialogText.color = TextColorManager.textTypeColors[data.Type];
-            dialogText.text = data.Text;
-        }
-    }
-
-    void OnDestroy()
-    {
-        Locale.UnregisterConsumer(this);
-    }
+    [Header("Walk before use")]
+    public bool shouldWalk = false;
+    [ConditionalHide("shouldWalk")] public Vector3 CustomWalkOffset = Vector3.zero;
+    [ConditionalHide("shouldWalk")] public Transform lookAtObj;
+    private Dialog dialog;
 
     void Awake()
     {
-        dialogText = dialogBox.GetComponentInChildren<TMP_Text>();
+        dialog = gameObject.AddComponent<Dialog>();
     }
 
-    public bool UseItem(GameObject who)
+    public bool UseItem(GameObject item)
     {
-        if (who.name == targetItem1)
+        int index = -1;
+        for (int i = 0; i < items.Count; i++)
         {
-            textGroup = textGroup1;
-            StartCoroutine(CoroutineExample());
-            return true;
+            InventoryObject invobj = InventoryManager.Instance.objects.FirstOrDefault(o => o.group == items[i]);
+            if (invobj == null)
+                continue;
+
+            if (item.name == invobj.mousePrefab.name + "(Clone)")
+            {
+                index = i;
+                break;
+            }
         }
 
-        if (who.name == targetItem2)
-        {
-            textGroup = textGroup2;
-            StartCoroutine(CoroutineExample());
-            return true;
-        }
+        if (index < 0)
+            return false;
 
-        return false;
+        dialog.Configure(texts[index], types[index]);
+
+        StartCoroutine(Execute(item));
+
+        return true;
     }
 
-    IEnumerator CoroutineExample()
+    IEnumerator Execute(GameObject item)
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
@@ -73,30 +67,12 @@ public class UseItemDialog : MonoBehaviour, IUseItem, ILangConsumer
         }
         yield return null;
 
-        dialogBox.SetActive(true);
-        Locale.RegisterConsumer(this);
-        for (int i = 0; i < Locale.Texts[textGroup].Count; i++)
-        {
-            currentIndex = i;
-            UpdateLangTexts();
+        DialogAction result = DialogAction.None;
+        yield return StartCoroutine(dialog.Execute(item, (value) => result = value));
 
-            TextData data = Locale.Texts[textGroup][currentIndex];
-            bool clicked = false;
-            float delayTime = data.Delay > 0 ? data.Delay : AllDialogs.defaultDelay;
-            float elapsedTime = 0;
-
-            while (elapsedTime < delayTime && !clicked)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    clicked = true;
-                }
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-        }
-        Locale.UnregisterConsumer(this);
-        dialogBox.SetActive(false);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+
+        if (result == DialogAction.RemoveDialog)
+            Destroy(this);
     }
 }

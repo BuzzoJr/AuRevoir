@@ -1723,12 +1723,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  targetItem1: MouseKeyCard(Clone)
-  textGroup1: 55
-  targetItem2: MouseFinger(Clone)
-  textGroup2: 56
-  dialogBox: {fileID: 366102123}
   CustomWalkOffset: {x: 0, y: 0, z: 0}
+  items: 0700000006000000
+  texts: 3d0000003e000000
+  types: 0100000001000000
+  targetItem1: MouseKeyCard(Clone)
+  textGroup1: 61
+  targetItem2: MouseFinger(Clone)
+  textGroup2: 62
+  dialogBox: {fileID: 366102123}
 --- !u!114 &562618799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,12 +1745,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldWalk: 1
-  textGroup: 54
-  dialogBox: {fileID: 366102123}
-  ThinkingBox: {fileID: 0}
+  CustomWalkOffset: {x: 0, y: 0, z: 0}
   lookAtObj: {fileID: 0}
   HasText: 1
-  CustomWalkOffset: {x: 0, y: 0, z: 0}
+  textGroup: 54
+  textInteractionType: 0
 --- !u!1 &605454611
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,10 +4926,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 60
-  dialogBox: {fileID: 0}
+  textInteractionType: 1
 --- !u!135 &1712661723
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5892,10 +5894,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 60
-  dialogBox: {fileID: 0}
+  textInteractionType: 1
 --- !u!135 &2011330608
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6691,11 +6693,12 @@ MonoBehaviour:
   - {fileID: 1082780757810973763}
   - {fileID: 1082780757213093369}
   spawnReferece: 
-  HasText: 0
-  textGroup: 3
-  dialogBox: {fileID: 0}
   audioSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
+  exactPosition: 0
+  HasText: 0
+  textGroup: 3
+  textInteractionType: 1
 --- !u!1001 &1612404042387572588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7116,10 +7119,10 @@ MonoBehaviour:
   transObj: {fileID: 910905163}
   globalObj: {fileID: 1583718406}
   allMap: {fileID: 0}
-  locked: 1
   map: 0
+  locked: 1
   textGroup: 66
-  dialogBox: {fileID: 366102123}
+  textInteractionType: 1
 --- !u!135 &5202210278849566013
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -24,11 +24,11 @@ namespace Assets.Script.Interaction
             if (!playerData.items.Contains(itemGroupToTake))
                 return false;
 
-            InventoryObject obj = InventoryManager.Instance.objects.FirstOrDefault(o => o.group == itemGroupToTake);
-            if (obj == null)
+            InventoryObject invobj = InventoryManager.Instance.objects.FirstOrDefault(o => o.group == itemGroupToTake);
+            if (invobj == null)
                 return false;
 
-            if (item.name != obj.mousePrefab.name + "(Clone)")
+            if (item.name != invobj.mousePrefab.name + "(Clone)")
                 return false;
 
             StartCoroutine(GoToAndUse());
