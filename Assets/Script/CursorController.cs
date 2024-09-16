@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
@@ -12,8 +11,15 @@ public class CursorController : MonoBehaviour
     [SerializeField] private Texture2D clickCursor;
     public Camera cam;
     public bool inButton = false;
-    private string currentCursor = "null";
-    //private GameManager.GameState currentState;
+
+    private enum CursorTypes
+    {
+        None,
+        Door,
+        Click,
+    }
+    private CursorTypes current;
+    private Dictionary<CursorTypes, Texture2D> textures = new();
 
     private void Awake()
     {
@@ -21,22 +27,15 @@ public class CursorController : MonoBehaviour
         {
             instance = this;
         }
-        //GameManager.OnGameStateChange += GameManagerOnGameStateChange;
     }
-
-    //void OnDestroy()
-    //{
-    //    GameManager.OnGameStateChange -= GameManagerOnGameStateChange;
-    //}
-
-    //private void GameManagerOnGameStateChange(GameManager.GameState state)
-    //{
-    //    currentState = state;
-    //}
 
     void Start()
     {
+        current = CursorTypes.None;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+        textures.Add(CursorTypes.Door, doorCursor);
+        textures.Add(CursorTypes.Click, clickCursor);
     }
 
     void FixedUpdate()
@@ -53,41 +52,21 @@ public class CursorController : MonoBehaviour
 
         if (GameManager.Instance.State == GameManager.GameState.Playing && cam.gameObject.activeSelf)
         {
-            if (inButton)
-            {
-                if (currentCursor != "clickCursor")
-                {
-                    Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "clickCursor";
-                }
-                return;
-            }
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
             Ray ray = cam.ScreenPointToRay(viewportPos);
             RaycastHit hitPoint;
             if (Physics.Raycast(ray, out hitPoint))
             {
                 if (hitPoint.transform.CompareTag("Door"))
-                {
-                    if (currentCursor != "doorCursor")
-                    {
-                        Cursor.SetCursor(doorCursor, Vector2.zero, CursorMode.Auto);
-                        currentCursor = "doorCursor";
-                    }
-                }
+                    SetCursor(CursorTypes.Door);
                 else if (hitPoint.transform.CompareTag("Interactable") || hitPoint.transform.CompareTag("Character"))
-                {
-                    if (currentCursor != "clickCursor")
-                    {
-                        Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
-                        currentCursor = "clickCursor";
-                    }
-                }
-                else if (currentCursor != "null")
-                {
-                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                    currentCursor = "null";
-                }
+                    SetCursor(CursorTypes.Click);
+                else
+                    SetCursor(CursorTypes.None);
+            }
+            else
+            {
+                SetCursor(CursorTypes.None);
             }
         }
         else
@@ -108,6 +87,7 @@ public class CursorController : MonoBehaviour
 
         List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList" };
 
+        inButton = false;
         foreach (var result in raycastResults)
         {
             // Ensure we hit the UI layer
@@ -118,25 +98,29 @@ public class CursorController : MonoBehaviour
                     inButton = true;
                     break;
                 }
-                else
-                {
-                    inButton = false;
-                }
             }
         }
 
         if (inButton)
-        {
-            if (currentCursor != "clickCursor")
-            {
-                Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.Auto);
-                currentCursor = "clickCursor";
-            }
-        }
+            SetCursor(CursorTypes.Click);
         else
+            SetCursor(CursorTypes.None);
+    }
+
+    private void SetCursor(CursorTypes type)
+    {
+        if (type == current)
+            return;
+
+        Debug.Log("Trocando o cursor para: " + type);
+        current = type;
+
+        if (type == CursorTypes.None)
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            currentCursor = "null";
+            return;
         }
+
+        Cursor.SetCursor(textures[type], Vector2.zero, CursorMode.Auto);
     }
 }
