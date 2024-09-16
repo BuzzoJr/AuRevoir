@@ -112,7 +112,6 @@ public class CursorController : MonoBehaviour
         if (type == current)
             return;
 
-        Debug.Log("Trocando o cursor para: " + type);
         current = type;
 
         if (type == CursorTypes.None)
