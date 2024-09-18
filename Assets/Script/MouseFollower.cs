@@ -52,7 +52,7 @@ public class MouseFollower : MonoBehaviour
 
     private bool CheckInteractionLimit(Transform target)
     {
-        // Limitar interação
+        // Limitar interaï¿½ï¿½o
         foreach (ILimit limiter in target.GetComponentsInChildren<ILimit>())
         {
             if (limiter.ShouldLimit(gameObject))

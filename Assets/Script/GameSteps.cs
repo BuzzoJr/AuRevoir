@@ -14,5 +14,7 @@
         CutsceneWatched,
         EndGame,
         AwakeBed,
+        PuzzleSewerActive,
+        PuzzleSewerResolved
     }
 }

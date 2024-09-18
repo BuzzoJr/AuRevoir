@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Assets.Script;
 
 public class PuzzleSewer : MonoBehaviour
 {
     public static PuzzleSewer instance;
+    public PlayerData playerData;
+    public List<GameSteps> steps;
+
     private PuzzleLine[] linhas;
     public TMP_Text[] resultadoTMP;
     private int[] valoresPossiveis = { 1, 2, 3, 5, 8 };
@@ -18,6 +22,17 @@ public class PuzzleSewer : MonoBehaviour
         instance = this;
         linhas = GetComponentsInChildren<PuzzleLine>();
         audioSource = GetComponent<AudioSource>();
+
+        foreach (GameSteps step in steps)
+        {
+            if (playerData.steps.Contains(step))
+            {
+                GetComponent<LookClose>().enabled = false;
+                GetComponent<PuzzleSewer>().enabled = false;
+                GetComponent<InspectPuzzleSewer>().enabled = false;
+                gameObject.tag = "Untagged";
+            }
+        }
     }
 
     void Start() {
