@@ -122,6 +122,7 @@ public class PuzzleSewer : MonoBehaviour
         {
             PlayerPrefs.SetInt("ValorLinha_" + i, valoresLinhas[i]);
         }
+
         PlayerPrefs.Save(); // Salva todos os valores no PlayerPrefs
     }
 

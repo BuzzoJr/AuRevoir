@@ -2,6 +2,7 @@ using Assets.Script.Interaction;
 using System.Collections;
 using UnityEngine;
 using Assets.Script;
+using Assets.Script.Locale;
 
 public class RobotInteraction : MonoBehaviour, IUseItem
 {
@@ -9,6 +10,7 @@ public class RobotInteraction : MonoBehaviour, IUseItem
     public string targetItem;
     public GameObject puzzleActive;
     public PlayerData playerData;
+    public ItemGroup items;
     [SerializeField] private Transform targetTransform = null;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
 
@@ -36,11 +38,11 @@ public class RobotInteraction : MonoBehaviour, IUseItem
                 yield break;
         }
 
+        playerData.RemoveItem(items);
         puzzleActive.SetActive(true);
         puzzleActive.GetComponent<PuzzleSewer>().AttValores();
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         playerData.AddStep(GameSteps.PuzzleSewerActive);
-        Debug.Log("ADD");
         gameObject.SetActive(false);
     }
 
