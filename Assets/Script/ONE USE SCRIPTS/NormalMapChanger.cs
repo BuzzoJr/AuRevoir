@@ -1,19 +1,33 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
+using Assets.Script;
 
 public class NormalMapChanger : MonoBehaviour
 {
-    public Material material; // Material que você deseja alterar
-    public float startValue = 0f; // Valor inicial do normal map
-    public float endValue = 1f; // Valor final do normal map
-    public float duration = 2f; // Tempo para a transição
+    public PlayerData playerData;
+    public GameSteps step;
+    public Material material;
+    public float startValue = 0f;
+    public float endValue = 1f;
+    public float duration = 2f;
 
-    void Start()
+    void Start() {
+        if (playerData.steps.Contains(step)) {
+            material.SetFloat("_BumpScale", endValue);
+            gameObject.tag = "Door";
+        }
+        else {
+            material.SetFloat("_BumpScale", startValue);
+            gameObject.tag = "Untagged";
+        }
+    }
+
+    public void CleanDoor()
     {
-        // Definir o valor inicial do normal map
+        gameObject.tag = "Door";
         material.SetFloat("_BumpScale", startValue);
 
-        // Usar DOTween para fazer a transição
         DOTween.To(() => material.GetFloat("_BumpScale"), 
                    x => material.SetFloat("_BumpScale", x), 
                    endValue, 

@@ -8,7 +8,8 @@ public class PuzzleSewer : MonoBehaviour
 {
     public static PuzzleSewer instance;
     public PlayerData playerData;
-    public List<GameSteps> steps;
+    public GameSteps steps1, steps2;
+    public NormalMapChanger doorSewer;
 
     private PuzzleLine[] linhas;
     public TMP_Text[] resultadoTMP;
@@ -23,20 +24,27 @@ public class PuzzleSewer : MonoBehaviour
         linhas = GetComponentsInChildren<PuzzleLine>();
         audioSource = GetComponent<AudioSource>();
 
-        foreach (GameSteps step in steps)
+        if (playerData.steps.Contains(steps1))
         {
-            if (playerData.steps.Contains(step))
-            {
-                GetComponent<LookClose>().enabled = false;
-                GetComponent<PuzzleSewer>().enabled = false;
-                GetComponent<InspectPuzzleSewer>().enabled = false;
-                gameObject.tag = "Untagged";
-            }
+            GetComponent<LookClose>().enabled = false;
+            GetComponent<PuzzleSewer>().enabled = false;
+            GetComponent<InspectPuzzleSewer>().enabled = false;
+            gameObject.tag = "Untagged";
         }
     }
 
     void Start() {
-        SortearValoresParaLinhas();
+        AttValores();
+    }
+
+    public void AttValores() {
+        if (playerData.steps.Contains(steps2)) {
+            LoadValoresLinhas();
+        }
+        else {
+            SortearValoresParaLinhas();
+        }
+
         AtualizarTMPText();
     }
 
@@ -55,9 +63,10 @@ public class PuzzleSewer : MonoBehaviour
 
     private void PuzzleResolvido()
     {
-        Debug.Log("Puzzle resolvido!");
+        doorSewer.CleanDoor();
         GetComponent<LookClose>().CustomExitAnim();
         gameObject.tag = "Untagged";
+        playerData.AddStep(GameSteps.PuzzleSewerResolved);
 
         if(somConcluir != null)
             audioSource.PlayOneShot(somConcluir);
@@ -79,6 +88,8 @@ public class PuzzleSewer : MonoBehaviour
             valoresGerados.Add(valorSorteado); // Adiciona o valor gerado
             valoresLinhas[i] = valorSorteado;
         }
+
+        SalvarValoresLinhas(); // Salva os valores gerados
     }
 
     private int GerarSomaAleatoria()
@@ -102,6 +113,35 @@ public class PuzzleSewer : MonoBehaviour
         {
             linhas[i].valorObjetivo = valoresLinhas[i];
             resultadoTMP[i].text = valoresLinhas[i].ToString();
+        }
+    }
+
+    private void SalvarValoresLinhas()
+    {
+        for (int i = 0; i < valoresLinhas.Length; i++)
+        {
+            PlayerPrefs.SetInt("ValorLinha_" + i, valoresLinhas[i]);
+        }
+        PlayerPrefs.Save(); // Salva todos os valores no PlayerPrefs
+    }
+
+    private void LoadValoresLinhas()
+    {
+        valoresLinhas = new int[linhas.Length];
+        bool valoresCarregados = false;
+
+        for (int i = 0; i < valoresLinhas.Length; i++)
+        {
+            if (PlayerPrefs.HasKey("ValorLinha_" + i))
+            {
+                valoresLinhas[i] = PlayerPrefs.GetInt("ValorLinha_" + i);
+                valoresCarregados = true;
+            }
+        }
+
+        if (!valoresCarregados)
+        {
+            SortearValoresParaLinhas(); // Se não houver valores salvos, sortear novos
         }
     }
 }

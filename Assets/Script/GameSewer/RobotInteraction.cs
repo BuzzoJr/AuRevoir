@@ -36,9 +36,11 @@ public class RobotInteraction : MonoBehaviour, IUseItem
                 yield break;
         }
 
-        playerData.AddStep(GameSteps.PuzzleSewerActive);
         puzzleActive.SetActive(true);
+        puzzleActive.GetComponent<PuzzleSewer>().AttValores();
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        playerData.AddStep(GameSteps.PuzzleSewerActive);
+        Debug.Log("ADD");
         gameObject.SetActive(false);
     }
 
