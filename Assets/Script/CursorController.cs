@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class CursorController : MonoBehaviour
     [SerializeField] private Texture2D doorCursor;
     [SerializeField] private Texture2D clickCursor;
     public Camera cam;
-    public bool inButton = false;
 
     private enum CursorTypes
     {
@@ -90,11 +90,8 @@ public class CursorController : MonoBehaviour
         foreach (var result in raycastResults)
         {
             // Ensure we hit the UI layer
-            if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
-            {
-                if (result.gameObject.name == "OpenInventory")
-                    return true;
-            }
+            if (result.gameObject.layer == LayerMask.NameToLayer("UI") && result.gameObject.TryGetComponent(out Button _))
+                return true;
         }
 
         return false;
@@ -110,9 +107,8 @@ public class CursorController : MonoBehaviour
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-        List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList" };
+        List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList", "DocumentList" };
 
-        inButton = false;
         foreach (var result in raycastResults)
         {
             // Ensure we hit the UI layer
@@ -120,7 +116,6 @@ public class CursorController : MonoBehaviour
             {
                 if (buttonNames.Contains(result.gameObject.name))
                 {
-                    inButton = true;
                     SetCursor(CursorTypes.Click);
                     return;
                 }

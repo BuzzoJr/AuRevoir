@@ -112,6 +112,7 @@
         HoverText,
         WrongItemUse,
         InspectGas,
+        RecordingFileName,
     }
 
     public enum ItemGroup

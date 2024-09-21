@@ -1146,6 +1146,14 @@ namespace Assets.Script.Locale
                     new TextData(TextType.TristanThinking, "Cheiro de gasolina, isso pode vir a ser útil."),
                 }
             },
+            {
+                TextGroup.RecordingFileName,
+                new List<TextData>()
+                {
+                    new TextData("Minha primeira gravação"),
+                    new TextData("Sobre o meu dia"),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()
