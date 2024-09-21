@@ -5,9 +5,11 @@ using UnityEngine;
 public class FanRotationController : MonoBehaviour
 {
     public float rotationSpeed = 5f;
+    public float rotationSpeedY = 0f;
+    public float rotationSpeedZ = 0f;
 
     void FixedUpdate()
     {
-        transform.Rotate(rotationSpeed, 0, 0);
+        transform.Rotate(rotationSpeed, rotationSpeedY, rotationSpeedZ);
     }
 }
