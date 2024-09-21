@@ -12,12 +12,12 @@ public class RadioSpecial : MonoBehaviour, IUseSpecial
     {
         if(lightOn.activeSelf) {
             lightOn.SetActive(false);
-            radioMusic.Stop();
+            radioMusic.Pause();
             radioSfx.Play();
         }
         else {
             lightOn.SetActive(true);
-            radioMusic.Play();
+            radioMusic.UnPause();
         }
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
