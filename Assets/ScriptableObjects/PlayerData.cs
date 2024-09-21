@@ -43,6 +43,23 @@ public class PlayerData : ScriptableObject
             SaveManager.Instance.SaveGame("autosave");
     }
 
+    public void RemoveStep(GameSteps step)
+    {
+        steps.Remove(step);
+
+        // AutoSave
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
+    }
+
+    public bool HasStep(GameSteps step)
+    {
+        if (step == GameSteps.None)
+            return true;
+
+        return steps.Contains(step);
+    }
+
     public bool AddItem(ItemGroup item)
     {
         if (items.Contains(item))
@@ -69,13 +86,5 @@ public class PlayerData : ScriptableObject
             SaveManager.Instance.SaveGame("autosave");
 
         return true;
-    }
-
-    public bool HasStep(GameSteps step)
-    {
-        if (step == GameSteps.None)
-            return true;
-
-        return steps.Contains(step);
     }
 }

@@ -15,6 +15,7 @@
         EndGame,
         AwakeBed,
         PuzzleSewerActive,
-        PuzzleSewerResolved
+        PuzzleSewerResolved,
+        MafiaRadioOff,
     }
 }
