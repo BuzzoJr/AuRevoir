@@ -8,6 +8,6 @@ public class CarCrashDeliverToBossSpecial : MonoBehaviour, ISpecial
 
     public void Special(GameObject who)
     {
-        playerData.AddStep(GameSteps.BossFirstMission);
+        playerData.AddStep(GameSteps.BossCarCrash);
     }
 }
