@@ -8,28 +8,53 @@ public class VerticalJoystick : MonoBehaviour
     public float rotationSpeed = 30f;  // Sensitivity of the rotation
     public LayerMask miniGameLayer;  // Layer for the MiniGame
     public PlayerControllerTron player;
+    public GameManagerTron gameManagerTron;
 
     public AudioClip move;
     public AudioClip release;
-
 
     private Camera mainCamera;
     private Vector3 initialMousePosition;
     private Quaternion initialRotation;
     private bool canRotate = false;  // Flag to check if joystick rotation is allowed
-    private bool LockDirectionX = false;
-    private bool LockDirectionY = false;
     private AudioSource audioSource;
+
+    private Direction stickDir = Direction.Center;
+    private Direction playerDir = Direction.Up;
+
+    private enum Direction
+    {
+        Center,
+        Up,
+        Down,
+        Left,
+        Right,
+    }
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        audioSource = GetComponent<AudioSource>();  
+        audioSource = GetComponent<AudioSource>();
+        initialRotation = joystick.rotation;
     }
 
     private void Update()
     {
-        HandleJoystickRotation();
+        if (gameManagerTron.playing)
+        {
+            HandleJoystickRotation();
+        }
+        else
+        {
+            playerDir = Direction.Up;
+            ResetJoystick();
+        }
+    }
+
+    private void ResetJoystick()
+    {
+        stickDir = Direction.Center;
+        joystick.rotation = initialRotation;
     }
 
     private void HandleJoystickRotation()
@@ -40,10 +65,9 @@ public class VerticalJoystick : MonoBehaviour
             // Perform raycast to check if the joystick is hit
             var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
             Ray ray = mainCamera.ScreenPointToRay(viewportPos);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, miniGameLayer))
+            if (Physics.Raycast(ray, out RaycastHit _, Mathf.Infinity, miniGameLayer))
             {
                 initialMousePosition = GetMouseWorldPosition();
-                initialRotation = joystick.rotation;
                 canRotate = true;
             }
         }
@@ -67,6 +91,7 @@ public class VerticalJoystick : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             canRotate = false;
+            ResetJoystick();
         }
     }
 
@@ -79,51 +104,99 @@ public class VerticalJoystick : MonoBehaviour
 
     private void CheckActivation()
     {
-
-        float currentRotationAngle = joystick.localEulerAngles.z;
-        float currentRotationAngleForward = joystick.localEulerAngles.x;
+        float currentRotationHorizontal = joystick.localEulerAngles.z;
+        float currentRotationVertical = joystick.localEulerAngles.x;
 
         // Normalize the angle to be between -180 and 180 degrees
-        if (currentRotationAngle > 180)
-            currentRotationAngle -= 360;
+        if (currentRotationHorizontal > 180)
+            currentRotationHorizontal -= 360;
 
-        if (currentRotationAngleForward > 180)
-            currentRotationAngleForward -= 360;
+        if (currentRotationVertical > 180)
+            currentRotationVertical -= 360;
 
-
-        // Check if the rotation exceeds the activation threshold
-        if (currentRotationAngle > activationAngle || currentRotationAngle < -activationAngle)
+        // Verify stick direction
+        if (Mathf.Abs(currentRotationHorizontal) >= Mathf.Abs(currentRotationVertical))
         {
-            if (!LockDirectionX)
+            // Horizontal
+            if (currentRotationHorizontal > activationAngle)
             {
-                audioSource.PlayOneShot(move);
+                stickDir = Direction.Left;
+            }
+            else if (currentRotationHorizontal < -activationAngle)
+            {
+                stickDir = Direction.Right;
+            }
+            else if (stickDir != Direction.Center)
+            {
+                stickDir = Direction.Center;
+                audioSource.PlayOneShot(release);
+            }
+        }
+        else
+        {
+            // Vertical
+            if (currentRotationVertical > activationAngle)
+            {
+                stickDir = Direction.Up;
+            }
+            else if (currentRotationVertical < -activationAngle)
+            {
+                stickDir = Direction.Down;
+            }
+            else if (stickDir != Direction.Center)
+            {
+                stickDir = Direction.Center;
+                audioSource.PlayOneShot(release);
+            }
+        }
 
-                if (currentRotationAngle > 0)
-                    player.Move(-90); //Left
+        // Apply turn if available
+        if (stickDir != Direction.Center && playerDir != stickDir && DirectionIsHorizontal(playerDir) != DirectionIsHorizontal(stickDir))
+        {
+            TurnPlayer(stickDir);
+        }
+    }
+
+    private bool DirectionIsHorizontal(Direction dir)
+    {
+        return dir == Direction.Right || dir == Direction.Left;
+    }
+
+    private void TurnPlayer(Direction direction)
+    {
+        switch (playerDir)
+        {
+            case Direction.Up:
+                if (direction == Direction.Right)
+                    player.Move(90);
                 else
-                    player.Move(90); //Right
+                    player.Move(-90);
+                break;
 
-                LockDirectionX = true;
-            }
+            case Direction.Down:
+                if (direction == Direction.Right)
+                    player.Move(-90);
+                else
+                    player.Move(90);
+                break;
+
+            case Direction.Right:
+                if (direction == Direction.Down)
+                    player.Move(90);
+                else
+                    player.Move(-90);
+                break;
+
+            case Direction.Left:
+                if (direction == Direction.Down)
+                    player.Move(-90);
+                else
+                    player.Move(90);
+                break;
         }
-        else if(LockDirectionX)
-        {
-            audioSource.PlayOneShot(release);
-            LockDirectionX = false;
-        }
-        
-        
-        if (currentRotationAngleForward > activationAngle || currentRotationAngleForward < -activationAngle)
-        {
-            if (!LockDirectionY)
-            {
-                audioSource.PlayOneShot(move);
-                LockDirectionY = true;
-            }
-        } else if(LockDirectionY)
-        {
-            audioSource.PlayOneShot(release);
-            LockDirectionY = false;
-        }
+
+        playerDir = direction;
+
+        audioSource.PlayOneShot(move);
     }
 }

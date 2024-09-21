@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using DG.Tweening.Core.Easing;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AIControllerTron : MonoBehaviour
 {
@@ -154,7 +152,6 @@ public class AIControllerTron : MonoBehaviour
             alive = false;
             player.GetComponent<PlayerControllerTron>().wait = true;
             gameManager.LeveWin();
-            Debug.Log("IA morreu!");
         }
     }
 

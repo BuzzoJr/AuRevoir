@@ -327,6 +327,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 550283203}
+  gameManagerTron: {fileID: 1818918541}
   move: {fileID: 8300000, guid: f7c0c11b30a78ec439ebc933f7a7a29b, type: 3}
   release: {fileID: 8300000, guid: 54b53c8170aea1c4ba26292824130829, type: 3}
 --- !u!82 &399520041
@@ -1365,9 +1366,11 @@ MonoBehaviour:
   enemyPrefab: {fileID: 4777696993202151069, guid: 8295f625ac024cf478aa1946e9383403,
     type: 3}
   player: {fileID: 550283203}
+  joystick: {fileID: 399520040}
   ai: {fileID: 1577543453}
   scoreText: {fileID: 719770150}
   status: {fileID: 1883259009}
+  playing: 1
 --- !u!4 &1818918542
 Transform:
   m_ObjectHideFlags: 0

@@ -1,14 +1,12 @@
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManagerTron : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public PlayerControllerTron player;
+    public VerticalJoystick joystick;
     public AIControllerTron ai;
     public TMP_Text scoreText;
     public TMP_Text status;
@@ -21,7 +19,7 @@ public class GameManagerTron : MonoBehaviour
     private float initEnemySpeed;
     private float dificultyIncrementSpeed = 2;
 
-    private bool playing = true;
+    public bool playing = true;
 
     void Start()
     {
@@ -53,22 +51,7 @@ public class GameManagerTron : MonoBehaviour
     public void NextLevel()
     {
         playing = true;
-
-        // Destroy the current player and AI game objects
-        Destroy(player.gameObject);
-        Destroy(ai.gameObject);
-
-        // Instantiate new Player and AI in this object's position
-        GameObject newPlayer = Instantiate(playerPrefab, initPlayer, Quaternion.identity, transform);
-        GameObject newAI = Instantiate(enemyPrefab, initEnemy, Quaternion.identity, transform);
-
-        // Reference the new player and AI to the variables
-        player = newPlayer.GetComponent<PlayerControllerTron>();
-        player.gameManager = this;
-        ai = newAI.GetComponent<AIControllerTron>();
-        ai.gameManager = this;
-        ai.player = player.transform;
-        player.ai = ai;
+        RecreatePlayers();
 
         // Reset their speeds to initial values
         player.moveSpeed = initPlayerSpeed;
@@ -82,7 +65,17 @@ public class GameManagerTron : MonoBehaviour
     public void Restart()
     {
         playing = true;
+        RecreatePlayers();
 
+        // Reset their speeds to initial values
+        player.moveSpeed = initPlayerSpeed;
+        ai.moveSpeed = initEnemySpeed;
+
+        dificultyIncrementSpeed = 2;
+    }
+
+    private void RecreatePlayers()
+    {
         // Destroy the current player and AI game objects
         Destroy(player.gameObject);
         Destroy(ai.gameObject);
@@ -93,17 +86,12 @@ public class GameManagerTron : MonoBehaviour
 
         // Reference the new player and AI to the variables
         player = newPlayer.GetComponent<PlayerControllerTron>();
+        joystick.player = player;
         player.gameManager = this;
         ai = newAI.GetComponent<AIControllerTron>();
         ai.gameManager = this;
         ai.player = player.transform;
         player.ai = ai;
-
-        // Reset their speeds to initial values
-        player.moveSpeed = initPlayerSpeed;
-        ai.moveSpeed = initEnemySpeed;
-
-        dificultyIncrementSpeed = 2;
     }
 
     public void LeveWin()

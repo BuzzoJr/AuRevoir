@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening.Core.Easing;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerControllerTron : MonoBehaviour
@@ -26,12 +24,12 @@ public class PlayerControllerTron : MonoBehaviour
     {
         if (alive && !wait)
         {
-            Debug.Log("Playing");
             HandleMovement();
             ExtendTrail();
-        }else if (alive && wait)
+        }
+        else if (alive && wait)
         {
-;
+            ;
             if (Input.GetKeyDown(KeyCode.R))
             {
                 gameManager.NextLevel();
@@ -39,7 +37,6 @@ public class PlayerControllerTron : MonoBehaviour
         }
         else
         {
-            Debug.Log("waiting restart");
             if (Input.GetKeyDown(KeyCode.R))
             {
                 gameManager.Restart();
@@ -81,7 +78,7 @@ public class PlayerControllerTron : MonoBehaviour
         );
 
         // Update the position of the trail segment to keep it attached to the player's previous position
-        currentTrailSegment.transform.Translate(Vector3.forward * (moveSpeed/2) * Time.deltaTime);
+        currentTrailSegment.transform.Translate(Vector3.forward * (moveSpeed / 2) * Time.deltaTime);
         // Update last position for the next frame
         lastPosition = transform.position;
     }
@@ -93,7 +90,6 @@ public class PlayerControllerTron : MonoBehaviour
             alive = false;
             ai.wait = true;
             gameManager.GameOver();
-            Debug.Log("Player morreu!");
         }
     }
 
@@ -105,7 +101,7 @@ public class PlayerControllerTron : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach(GameObject obj in trailList)
+        foreach (GameObject obj in trailList)
         {
             Destroy(obj);
         }
