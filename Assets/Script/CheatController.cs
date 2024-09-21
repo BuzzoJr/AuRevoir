@@ -269,7 +269,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.O_Office,
             previousScene = SceneRef.O_HallOffice,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
@@ -281,7 +281,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.O_HallOffice,
             previousScene = SceneRef.O_Office,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
@@ -293,7 +293,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.O_UploadRoom,
             previousScene = SceneRef.O_HallOffice,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
@@ -305,7 +305,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.AP_BedroomBadDream,
             previousScene = SceneRef.O_UploadRoom,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
@@ -317,7 +317,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.AP_LivingroomBadDream,
             previousScene = SceneRef.AP_BedroomBadDream,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
@@ -329,7 +329,7 @@ public class CheatController : MonoBehaviour
             currentScene = SceneRef.AP_Bedroom,
             previousScene = SceneRef.AP_LivingroomBadDream,
             visitedScenes = new() { SceneRef.B_BarBathroom, SceneRef.B_Bar, SceneRef.B_Rua, SceneRef.O_OfficeGarage, SceneRef.O_HallOffice, SceneRef.O_Office, SceneRef.O_UploadRoom, SceneRef.AP_BedroomBadDream, SceneRef.AP_LivingroomBadDream },
-            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossCarCrash },
+            steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.CarCrashBossTalk },
             items = new() { ItemGroup.KeyCard },
         });
     }
