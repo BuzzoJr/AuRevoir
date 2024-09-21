@@ -16,6 +16,9 @@ public class VerticalJoystick : MonoBehaviour
     private Camera mainCamera;
     private Vector3 initialMousePosition;
     private Quaternion initialRotation;
+    private Quaternion currentRotation;
+    private float releaseTimer = 0f;
+    private float releaseDelay = 0.5f;
     private bool canRotate = false;  // Flag to check if joystick rotation is allowed
     private AudioSource audioSource;
 
@@ -40,6 +43,8 @@ public class VerticalJoystick : MonoBehaviour
 
     private void Update()
     {
+        ReturnJoystick();
+
         if (gameManagerTron.playing)
         {
             HandleJoystickRotation();
@@ -47,14 +52,10 @@ public class VerticalJoystick : MonoBehaviour
         else
         {
             playerDir = Direction.Up;
-            ResetJoystick();
-        }
-    }
 
-    private void ResetJoystick()
-    {
-        stickDir = Direction.Center;
-        joystick.rotation = initialRotation;
+            if (currentRotation != initialRotation && releaseTimer <= 0)
+                releaseTimer = releaseDelay;
+        }
     }
 
     private void HandleJoystickRotation()
@@ -68,6 +69,7 @@ public class VerticalJoystick : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit _, Mathf.Infinity, miniGameLayer))
             {
                 initialMousePosition = GetMouseWorldPosition();
+                ResetJoystick();
                 canRotate = true;
             }
         }
@@ -84,6 +86,7 @@ public class VerticalJoystick : MonoBehaviour
 
             // Apply rotation based on mouse movement, pivoting from the bottom of the joystick
             joystick.rotation = initialRotation * Quaternion.Euler(rotationAmountZ, 0, rotationAmountX * -1);  // Rotating around X-axis
+            currentRotation = joystick.rotation;
             CheckActivation();
         }
 
@@ -91,8 +94,32 @@ public class VerticalJoystick : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             canRotate = false;
-            ResetJoystick();
+            releaseTimer = releaseDelay;
         }
+    }
+
+    private void ReturnJoystick()
+    {
+        if (releaseTimer <= 0)
+            return;
+
+        releaseTimer -= Time.deltaTime;
+        if (releaseTimer < 0)
+        {
+            joystick.rotation = initialRotation;
+            currentRotation = initialRotation;
+            return;
+        }
+
+        joystick.rotation = Quaternion.Lerp(initialRotation, currentRotation, releaseTimer / releaseDelay);
+    }
+
+    private void ResetJoystick()
+    {
+        releaseTimer = 0;
+        stickDir = Direction.Center;
+        joystick.rotation = initialRotation;
+        currentRotation = initialRotation;
     }
 
     // Helper method to get the mouse position in world space
