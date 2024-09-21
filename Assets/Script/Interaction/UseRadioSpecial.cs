@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Script.Interaction;
 
-public class RadioSpecial : MonoBehaviour, IUseSpecial
+public class UseRadioSpecial : MonoBehaviour, IUseSpecial
 {
     public AudioSource radioMusic, radioSfx;
     public GameObject lightOn;
