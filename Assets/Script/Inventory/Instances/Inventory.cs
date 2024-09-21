@@ -84,6 +84,7 @@ public class Inventory : MonoBehaviour, ILangConsumer
         {
             objName.text = Locale.Texts[TextGroup.Inventory][0].Text;
             objDetails.text = Locale.Texts[TextGroup.Inventory][0].Text;
+            useText.SetActive(false);
             return;
         }
 

@@ -45,34 +45,59 @@ public class CursorController : MonoBehaviour
             Cursor.visible = false;
             return;
         }
-        else
-        {
-            Cursor.visible = true;
-        }
 
-        if (GameManager.Instance.State == GameManager.GameState.Playing && cam.gameObject.activeSelf)
-        {
-            var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
-            Ray ray = cam.ScreenPointToRay(viewportPos);
-            RaycastHit hitPoint;
-            if (Physics.Raycast(ray, out hitPoint))
-            {
-                if (hitPoint.transform.CompareTag("Door"))
-                    SetCursor(CursorTypes.Door);
-                else if (hitPoint.transform.CompareTag("Interactable") || hitPoint.transform.CompareTag("Character"))
-                    SetCursor(CursorTypes.Click);
-                else
-                    SetCursor(CursorTypes.None);
-            }
-            else
-            {
-                SetCursor(CursorTypes.None);
-            }
-        }
-        else
+        Cursor.visible = true;
+
+        if (GameManager.Instance.State != GameManager.GameState.Playing || !cam.gameObject.activeSelf)
         {
             CursorUI();
+            return;
         }
+
+        if (IsCursorOverInventoryBag())
+        {
+            SetCursor(CursorTypes.Click);
+            return;
+        }
+
+        var viewportPos = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height);
+        Ray ray = cam.ScreenPointToRay(viewportPos);
+        RaycastHit hitPoint;
+        if (!Physics.Raycast(ray, out hitPoint))
+        {
+            SetCursor(CursorTypes.None);
+            return;
+        }
+
+        if (hitPoint.transform.CompareTag("Door"))
+            SetCursor(CursorTypes.Door);
+        else if (hitPoint.transform.CompareTag("Interactable") || hitPoint.transform.CompareTag("Character"))
+            SetCursor(CursorTypes.Click);
+        else
+            SetCursor(CursorTypes.None);
+    }
+
+    private bool IsCursorOverInventoryBag()
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+        };
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+        foreach (var result in raycastResults)
+        {
+            // Ensure we hit the UI layer
+            if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+            {
+                if (result.gameObject.name == "OpenInventory")
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     private void CursorUI()
@@ -96,15 +121,13 @@ public class CursorController : MonoBehaviour
                 if (buttonNames.Contains(result.gameObject.name))
                 {
                     inButton = true;
-                    break;
+                    SetCursor(CursorTypes.Click);
+                    return;
                 }
             }
         }
 
-        if (inButton)
-            SetCursor(CursorTypes.Click);
-        else
-            SetCursor(CursorTypes.None);
+        SetCursor(CursorTypes.None);
     }
 
     private void SetCursor(CursorTypes type)
