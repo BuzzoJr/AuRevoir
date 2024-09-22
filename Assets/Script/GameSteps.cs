@@ -17,5 +17,6 @@
         PuzzleSewerActive,
         PuzzleSewerResolved,
         MafiaRadioOff,
+        PasswordSewer,
     }
 }

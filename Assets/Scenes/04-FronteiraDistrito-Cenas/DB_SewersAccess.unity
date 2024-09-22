@@ -2966,7 +2966,6 @@ GameObject:
   - component: {fileID: 1311042663}
   - component: {fileID: 1311042662}
   - component: {fileID: 1311042661}
-  - component: {fileID: 1311042660}
   m_Layer: 0
   m_Name: BackOfTheDoor
   m_TagString: Interactable
@@ -2989,19 +2988,6 @@ Transform:
   m_Father: {fileID: 136559785}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1311042660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311042658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52cef7aee16e94b4385607cbcd221d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 7675589527014086081}
 --- !u!65 &1311042661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4120,6 +4106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 7675589527014086081}
+  playerData: {fileID: 11400000, guid: 19980491e53f7654a96eb031e8c4e912, type: 2}
+  animDoor: {fileID: 1783249785}
+  steps1: 12
 --- !u!1 &1982856160
 GameObject:
   m_ObjectHideFlags: 0
