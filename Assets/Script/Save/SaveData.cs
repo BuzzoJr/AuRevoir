@@ -9,4 +9,5 @@ public class SaveData
     public List<SceneRef> visitedScenes;
     public List<GameSteps> steps;
     public List<ItemGroup> items;
+    public List<SceneRef> teddybearScenes;
 }

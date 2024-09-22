@@ -33,12 +33,19 @@ namespace Assets.Script.Interaction
     {
         bool UseItem(GameObject who);
     }
+
     public interface IUseSpecial
     {
         void UseSpecial(GameObject who);
     }
+
     public interface ILookSpecial
     {
         void LookSpecial(GameObject who);
+    }
+
+    public interface ICursorOverTrigger
+    {
+        void Trigger();
     }
 }

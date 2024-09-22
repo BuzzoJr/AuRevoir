@@ -1,3 +1,4 @@
+using Assets.Script.Interaction;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -75,6 +76,9 @@ public class CursorController : MonoBehaviour
             SetCursor(CursorTypes.Click);
         else
             SetCursor(CursorTypes.None);
+
+        if (hitPoint.transform.TryGetComponent(out ICursorOverTrigger trigger))
+            trigger.Trigger();
     }
 
     private bool IsCursorOverInventoryBag()

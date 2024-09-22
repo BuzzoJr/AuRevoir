@@ -73,6 +73,7 @@ public class SaveManager : MonoBehaviour
             visitedScenes = playerData.visitedScenes,
             steps = playerData.steps,
             items = playerData.items,
+            teddybearScenes = playerData.teddybearScenes,
         };
 
         fileHandler.SaveFile(data, saveName + SAVEFILE_EXTENSION);
@@ -113,6 +114,7 @@ public class SaveManager : MonoBehaviour
         playerData.visitedScenes = data.visitedScenes;
         playerData.steps = data.steps;
         playerData.items = data.items;
+        playerData.teddybearScenes = data.teddybearScenes;
 
         SceneManager.LoadScene(data.currentScene.ToString());
     }

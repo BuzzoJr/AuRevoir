@@ -15,8 +15,11 @@ public class PlayerData : ScriptableObject
     [Header("Game Steps - Progression")]
     public List<GameSteps> steps = new();
 
-    [Header("Item Collected")]
+    [Header("Items Collected")]
     public List<ItemGroup> items = new();
+
+    [Header("Teddybears Collected")]
+    public List<SceneRef> teddybearScenes = new();
 
     [Header("Scenes Player Can't Run")]
     public List<SceneRef> IndoorScenes = new();
@@ -86,5 +89,17 @@ public class PlayerData : ScriptableObject
             SaveManager.Instance.SaveGame("autosave");
 
         return true;
+    }
+
+    public void AddTeddybear(SceneRef scene)
+    {
+        if (teddybearScenes.Contains(scene))
+            return;
+
+        teddybearScenes.Add(scene);
+
+        // AutoSave
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame("autosave");
     }
 }
