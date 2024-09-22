@@ -7,13 +7,14 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using URPGlitch.Runtime.AnalogGlitch;
 using URPGlitch.Runtime.DigitalGlitch;
 
 public class TeddybearGlitch : MonoBehaviour, ICursorOverTrigger
 {
     public PlayerData playerData;
 
-    public float durationMin = 0.55f;
+    public float durationMin = 0.65f;
     public float durationIncrement = 0.1f;
 
     private Volume globalVolume;
@@ -73,25 +74,48 @@ public class TeddybearGlitch : MonoBehaviour, ICursorOverTrigger
         // Get desired components
         if (!globalVolume.profile.TryGet(out Bloom bloom))
             bloom = globalVolume.profile.Add<Bloom>();
+
         if (!globalVolume.profile.TryGet(out Vignette vignette))
             vignette = globalVolume.profile.Add<Vignette>();
+
         if (!globalVolume.profile.TryGet(out DigitalGlitchVolume digitalGlitch))
             digitalGlitch = globalVolume.profile.Add<DigitalGlitchVolume>();
+
+        if (!globalVolume.profile.TryGet(out AnalogGlitchVolume analogGlitch))
+            analogGlitch = globalVolume.profile.Add<AnalogGlitchVolume>();
 
         // Save state
         bool dga = digitalGlitch.active;
         float dgi = digitalGlitch.intensity.value;
+
         bool va = vignette.active;
         float vi = vignette.intensity.value;
         Color vc = vignette.color.value;
+
+        bool ba = bloom.active;
+        float bi = bloom.intensity.value;
+
+        bool aa = analogGlitch.active;
+        float slj = analogGlitch.scanLineJitter.value;
+        float vj = analogGlitch.verticalJump.value;
+        float hs = analogGlitch.horizontalShake.value;
+        float cd = analogGlitch.colorDrift.value;
 
         // Parameters change
         vignette.intensity.value = 0f;
         vignette.color.value = new Color(0, 0, 0);
         vignette.active = true;
         digitalGlitch.active = true;
+        analogGlitch.active = true;
+        bloom.active = true;
 
-        StartCoroutine(helper.Lerp(digitalGlitch, duration, "intensity", .5f));
+        StartCoroutine(helper.Lerp(digitalGlitch, duration, "intensity", .4f));
+        StartCoroutine(helper.Lerp(analogGlitch, duration, "scanLineJitter", .4f));
+        StartCoroutine(helper.Lerp(analogGlitch, duration, "verticalJump", .4f));
+        StartCoroutine(helper.Lerp(analogGlitch, duration, "horizontalShake", .4f));
+        StartCoroutine(helper.Lerp(analogGlitch, duration, "colorDrift", .4f));
+
+        StartCoroutine(helper.Lerp(bloom, duration, "intensity", 5f));
         yield return StartCoroutine(helper.Lerp(vignette, 0.3f, "intensity", .3f));
         duration -= 0.3f;
 
@@ -100,9 +124,19 @@ public class TeddybearGlitch : MonoBehaviour, ICursorOverTrigger
         // Return original sate
         digitalGlitch.active = dga;
         digitalGlitch.intensity.value = dgi;
+
         vignette.active = va;
         vignette.intensity.value = vi;
         vignette.color.value = vc;
+
+        bloom.active = ba;
+        bloom.intensity.value = bi;
+
+        analogGlitch.active = aa;
+        analogGlitch.scanLineJitter.value = slj;
+        analogGlitch.verticalJump.value = vj;
+        analogGlitch.horizontalShake.value = hs;
+        analogGlitch.colorDrift.value = cd;
 
         // Effect end
 
