@@ -7,6 +7,8 @@ public class BoxPuzzleController : MonoBehaviour
     public int[] correctPages;
     public GameObject bigPage;
     public int currentBox;
+    public LookClose lookCloseScrpt;
+    public BoxCollider lookCollider;
 
     private int[] currentPages;
 
@@ -28,6 +30,31 @@ public class BoxPuzzleController : MonoBehaviour
         for (int i = 0; i < currentPages.Length; i++)
         {
             currentPages[i] = 1;
+        }
+    }
+
+    void Update() {
+        if(lookCollider.enabled)
+            return;
+
+        if (Input.GetMouseButtonDown(0)) // Verifica se houve clique esquerdo
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Cria um ray a partir da posição do mouse
+            if (Physics.Raycast(ray, out RaycastHit hit)) // Verifica se o ray colide com algo
+            {
+                if(hit.collider.gameObject.GetComponent<BoxPuzzle>() != null)
+                    hit.collider.gameObject.GetComponent<BoxPuzzle>().OnBoxClicked();
+                else if(hit.collider.gameObject.name == "Close")
+                    boxes[currentBox].OnCloseButtonClicked();
+                else if(hit.collider.gameObject.name == "Next")
+                    boxes[currentBox].OnNextPage();
+                else if(hit.collider.gameObject.name == "Prev")
+                    boxes[currentBox].OnPreviousPage();
+                else if(!bigPage.activeSelf) {
+                    lookCollider.enabled = true;
+                    lookCloseScrpt.CustomExitAnim();
+                }
+            }
         }
     }
 

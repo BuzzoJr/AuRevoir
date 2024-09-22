@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
 {
-    public GameObject player, exitPuzzle;
+    public GameObject player, puzzleBox;
     public Transform target;
 
     public void LookSpecial(GameObject who)
@@ -18,7 +18,6 @@ public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
     private IEnumerator Peephole()
     {
         gameObject.GetComponent<BoxCollider>().enabled = false;
-        exitPuzzle.SetActive(true);
         yield return new WaitUntil(() => IsMouseClickOnObject());
     }
 
@@ -29,15 +28,13 @@ public class InspectPuzzleSewer : MonoBehaviour, ILookSpecial
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Cria um ray a partir da posição do mouse
             if (Physics.Raycast(ray, out RaycastHit hit)) // Verifica se o ray colide com algo
             {
-                if (hit.collider.tag == "Finish") // Verifica se o objeto colidido tem a tag específica
-                {
+                if(hit.collider.gameObject.GetComponent<PuzzleLight>() != null) {
+                    hit.collider.gameObject.GetComponent<PuzzleLight>().OnClick();
+                }
+                else if(hit.collider.gameObject != puzzleBox) {
                     gameObject.GetComponent<BoxCollider>().enabled = true;
-                    exitPuzzle.SetActive(false);
                     GetComponent<LookClose>().CustomExitAnim();
                     return true;
-                }
-                else if(hit.collider.gameObject.GetComponent<PuzzleLight>() != null) {
-                    hit.collider.gameObject.GetComponent<PuzzleLight>().OnClick();
                 }
             }
         }
