@@ -22,17 +22,7 @@ public class VerticalJoystick : MonoBehaviour
     private bool canRotate = false;  // Flag to check if joystick rotation is allowed
     private AudioSource audioSource;
 
-    private Direction stickDir = Direction.Center;
-    private Direction playerDir = Direction.Up;
-
-    private enum Direction
-    {
-        Center,
-        Up,
-        Down,
-        Left,
-        Right,
-    }
+    private Vector3 stickDir = Vector3.zero;
 
     private void Awake()
     {
@@ -49,12 +39,9 @@ public class VerticalJoystick : MonoBehaviour
         {
             HandleJoystickRotation();
         }
-        else
+        else if (currentRotation != initialRotation && releaseTimer <= 0)
         {
-            playerDir = Direction.Up;
-
-            if (currentRotation != initialRotation && releaseTimer <= 0)
-                releaseTimer = releaseDelay;
+            releaseTimer = releaseDelay;
         }
     }
 
@@ -117,7 +104,7 @@ public class VerticalJoystick : MonoBehaviour
     private void ResetJoystick()
     {
         releaseTimer = 0;
-        stickDir = Direction.Center;
+        stickDir = Vector3.zero;
         joystick.rotation = initialRotation;
         currentRotation = initialRotation;
     }
@@ -147,15 +134,15 @@ public class VerticalJoystick : MonoBehaviour
             // Horizontal
             if (currentRotationHorizontal > activationAngle)
             {
-                stickDir = Direction.Left;
+                stickDir = Vector3.left;
             }
             else if (currentRotationHorizontal < -activationAngle)
             {
-                stickDir = Direction.Right;
+                stickDir = Vector3.right;
             }
-            else if (stickDir != Direction.Center)
+            else if (stickDir != Vector3.zero)
             {
-                stickDir = Direction.Center;
+                stickDir = Vector3.zero;
                 audioSource.PlayOneShot(release);
             }
         }
@@ -164,66 +151,20 @@ public class VerticalJoystick : MonoBehaviour
             // Vertical
             if (currentRotationVertical > activationAngle)
             {
-                stickDir = Direction.Up;
+                stickDir = Vector3.forward;
             }
             else if (currentRotationVertical < -activationAngle)
             {
-                stickDir = Direction.Down;
+                stickDir = Vector3.back;
             }
-            else if (stickDir != Direction.Center)
+            else if (stickDir != Vector3.zero)
             {
-                stickDir = Direction.Center;
+                stickDir = Vector3.zero;
                 audioSource.PlayOneShot(release);
             }
         }
 
-        // Apply turn if available
-        if (stickDir != Direction.Center && playerDir != stickDir && DirectionIsHorizontal(playerDir) != DirectionIsHorizontal(stickDir))
-        {
-            TurnPlayer(stickDir);
-        }
-    }
-
-    private bool DirectionIsHorizontal(Direction dir)
-    {
-        return dir == Direction.Right || dir == Direction.Left;
-    }
-
-    private void TurnPlayer(Direction direction)
-    {
-        switch (playerDir)
-        {
-            case Direction.Up:
-                if (direction == Direction.Right)
-                    player.Move(90);
-                else
-                    player.Move(-90);
-                break;
-
-            case Direction.Down:
-                if (direction == Direction.Right)
-                    player.Move(-90);
-                else
-                    player.Move(90);
-                break;
-
-            case Direction.Right:
-                if (direction == Direction.Down)
-                    player.Move(90);
-                else
-                    player.Move(-90);
-                break;
-
-            case Direction.Left:
-                if (direction == Direction.Down)
-                    player.Move(-90);
-                else
-                    player.Move(90);
-                break;
-        }
-
-        playerDir = direction;
-
-        audioSource.PlayOneShot(move);
+        if (player.RequestTurn(stickDir))
+            audioSource.PlayOneShot(move);
     }
 }
