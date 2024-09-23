@@ -1209,7 +1209,7 @@ namespace Assets.Script.Locale
             },
             {
                 ItemGroup.KeyCard,
-                new ItemData(6, "Crachá", "Crachá do Au-Revoir")
+                new ItemData(6, "Cartão de Acesso", "Cartão de Acesso do Au-Revoir")
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
@@ -1242,6 +1242,10 @@ namespace Assets.Script.Locale
             {
                 ItemGroup.BottleGas,
                 new ItemData(14, "Garrafa com gasolina", "Uma garrafa cheia de gasolina")
+            },
+            {
+                ItemGroup.Badge,
+                new ItemData(15, "Cracha de Sentinela", "Cracha de Sentinela")
             },
         };
     }

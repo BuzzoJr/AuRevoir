@@ -133,5 +133,6 @@
         Chips,
         Bottle,
         BottleGas,
+        Badge,
     }
 }

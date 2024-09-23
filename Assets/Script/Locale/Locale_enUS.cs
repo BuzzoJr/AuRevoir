@@ -1229,7 +1229,7 @@ namespace Assets.Script.Locale
             },
             {
                 ItemGroup.KeyCard,
-                new ItemData(6, "Badge", "Au-Revoir badge")
+                new ItemData(6, "Keycard", "Au-Revoir Keycard")
             },
             {
                 ItemGroup.Mafia_Doc_Equipment,
@@ -1262,6 +1262,10 @@ namespace Assets.Script.Locale
             {
                 ItemGroup.BottleGas,
                 new ItemData(14, "Bottle with gasoline", "A bottle full of gasoline")
+            },
+            {
+                ItemGroup.Badge,
+                new ItemData(15, "Sentinel Badge", "Sentinel Badge")
             },
         };
     }
