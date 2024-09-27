@@ -1072,7 +1072,7 @@ namespace Assets.Script.Locale
                     new TextData("Go back to menu"),
                     new TextData("Scan the QR code to add to your wish list:"),
                     new TextData("Developed by:"),
-                    new TextData("Eric Gama Muller\nLeonardo André Pedroso\nOsny Buzzo Junior\n\n\nLucas Ryan Guszak Stanczyk Brito... 3D Characters\nMariana Pereira Santos... 2D Art\nPedro Henrique Liebl Araujo... Music and SFX\nSamuel Santos Ferraz... 3D Scenarios"),
+                    new TextData("Eric Gama Muller\nLeonardo André Pedroso\nOsny Buzzo Junior\n\n\nLucas Ryan Guszak Stanczyk Brito... 3D Characters\nMariana Pereira Santos... 2D Art\nPedro Henrique Liebl Araujo... Music and SFX\nSamuel Santos Ferraz... 3D Scenarios\nCaioGui... 3D Characters"),
                     new TextData("In colaboration with:"),
                 }
             },
