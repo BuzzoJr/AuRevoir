@@ -42,7 +42,6 @@ public class CheatController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Home))
         {
-            Debug.Log("CHEAT!");
             reading = !reading;
             if (reading)
             {
