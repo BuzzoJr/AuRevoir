@@ -18,7 +18,7 @@ public class VerticalJoystick : MonoBehaviour
     private Quaternion initialRotation;
     private Quaternion currentRotation;
     private float releaseTimer = 0f;
-    private float releaseDelay = 0.5f;
+    public float releaseDelay = 0.2f;
     private bool canRotate = false;  // Flag to check if joystick rotation is allowed
     private AudioSource audioSource;
 

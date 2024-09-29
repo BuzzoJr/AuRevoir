@@ -151,7 +151,7 @@ public class AIControllerTron : MonoBehaviour
             FindObjectOfType<GameManagerTron>().AddPointsForKillingAI();
             alive = false;
             player.GetComponent<PlayerControllerTron>().wait = true;
-            gameManager.LeveWin();
+            gameManager.LevelWin();
         }
     }
 

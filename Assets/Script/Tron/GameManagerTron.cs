@@ -94,7 +94,7 @@ public class GameManagerTron : MonoBehaviour
         player.ai = ai;
     }
 
-    public void LeveWin()
+    public void LevelWin()
     {
         playing = false;
         status.text = "Venceu esse level R para o proximo";
