@@ -334,4 +334,24 @@ public class CheatController : MonoBehaviour
             steps = new() { GameSteps.GetFirstMission, GameSteps.CarCrashPoliceTalk, GameSteps.CarCrashClientDownload, GameSteps.BossFirstMission },
         });
     }
+
+    private void RunCheat90()
+    {
+        LoadSceneWithPreviousData(new GameData()
+        {
+            previousScene = "C12Necroterio",
+            visitedScenes = new() { },
+            steps = new() { },
+        });
+    }
+
+    private void RunCheat91()
+    {
+        LoadSceneWithPreviousData(new GameData()
+        {
+            previousScene = "C16Laboratory",
+            visitedScenes = new() { },
+            steps = new() { },
+        });
+    }
 }

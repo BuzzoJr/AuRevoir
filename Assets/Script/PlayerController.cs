@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour
         lookAtTarget = LookAtTarget;
         destination.position = dest;
         navMeshAgent.destination = dest;
-        if(Vector3.Distance(dest, transform.position) > runningDistance && canRun)
+        if (Vector3.Distance(dest, transform.position) > runningDistance && canRun)
         {
             running = true;
         }
