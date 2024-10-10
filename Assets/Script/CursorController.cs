@@ -85,7 +85,7 @@ public class CursorController : MonoBehaviour
     {
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
-            position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
         };
 
         List<RaycastResult> raycastResults = new List<RaycastResult>();
@@ -105,13 +105,13 @@ public class CursorController : MonoBehaviour
     {
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
-            position = new Vector2((Input.mousePosition.x * 1920) / Screen.width, (Input.mousePosition.y * 1080) / Screen.height)
+            position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
         };
 
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-        List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList", "DocumentList" };
+        List<string> buttonNames = new List<string> { "UseItem", "Close", "Items", "Documents", "Notes", "ItemList", "DocumentList", "SelectButton", "Travel", "Exit" };
 
         foreach (var result in raycastResults)
         {

@@ -1,9 +1,16 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using Assets.Script.Interaction;
+using System.Diagnostics.Tracing;
 
 public class HoverText : MonoBehaviour
 {
     public TextMeshProUGUI hoverText; // Referência ao Text Mesh Pro no Canvas
+    //public TextMeshProUGUI hoverTextMap; // Referência ao Text Mesh Pro no Canvas
+
     private Camera mainCamera;
     public Vector2 offset;
     public RenderTexture renderTexture;
@@ -15,11 +22,6 @@ public class HoverText : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.State != GameManager.GameState.Playing)
-        {
-            hoverText.text = "";
-            return;
-        }
 
         // Converte a posição do mouse para coordenadas da Render Texture
         Vector2 mousePosition = Input.mousePosition;
@@ -34,6 +36,45 @@ public class HoverText : MonoBehaviour
         );
 
         hoverText.transform.position = new Vector2(mousePosition.x + scaledOffset.x, mousePosition.y + scaledOffset.y);
+
+        if (GameManager.Instance.State != GameManager.GameState.Playing)
+        {
+            //hoverTextMap.transform.position = new Vector2(mousePosition.x + scaledOffset.x, mousePosition.y + scaledOffset.y);
+
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = new Vector2(Input.mousePosition.x, Input.mousePosition.y )
+            };
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            List<string> buttonNames = new List<string> {"SelectButton" };
+            foreach (var result in raycastResults)
+            {
+                // Ensure we hit the UI layer
+                if (result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                {
+                    if (buttonNames.Contains(result.gameObject.name))
+                    {
+                        Debug.Log(result.gameObject.name);
+                        if (result.gameObject.TryGetComponent(out HoverTextTranslate translated))
+                        {
+                            //hoverTextMap.text = translated.text;
+                            return;
+                        }
+
+                        Debug.LogWarning(result.gameObject.name + " ESTÁ SEM TRADUÇÃO!!!!! COLOQUE UM SCRIPT HoverTextTranslate!!!!!");
+                        //hoverTextMap.text = result.gameObject.name;
+                        return;
+                    }
+                }
+            }
+            //hoverTextMap.text = "";
+            hoverText.text = "";
+
+            return;
+        }
 
         // Verifica se o cursor está sobre um objeto com as tags desejadas
         Ray ray = mainCamera.ScreenPointToRay(scaledMousePosition);
@@ -54,6 +95,8 @@ public class HoverText : MonoBehaviour
             }
         }
 
+        //hoverTextMap.text = "";
         hoverText.text = "";
+
     }
 }

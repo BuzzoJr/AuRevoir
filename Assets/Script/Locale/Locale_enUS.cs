@@ -1157,6 +1157,10 @@ namespace Assets.Script.Locale
                     new TextData("Rua de trás"),
                     new TextData("Hank"),
                     new TextData("Carro"),
+                    new TextData("Bar"),
+                    new TextData("Office"),
+                    new TextData("Home"),
+                    new TextData("District Border"),
                 }
             },
             {

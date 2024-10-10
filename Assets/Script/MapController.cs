@@ -18,6 +18,8 @@ public class MapController : MonoBehaviour
     public List<GameSteps> elementsSteps;
     public List<GameObject> elementsCanvas;
     public List<GameObject> elements3D;
+    public GameObject travelVisual;
+    public GameObject travelBtn;
 
     private int finalDestiny;
     private GameObject mainCam;
@@ -67,6 +69,7 @@ public class MapController : MonoBehaviour
 
         selectLabel[point].SetActive(true);
         finalDestiny = point;
+        checkTravel();
     }
 
     public void GoToDestiny()
@@ -118,5 +121,21 @@ public class MapController : MonoBehaviour
         videoTransition0.SetActive(false);
         labelsCanvas.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    void checkTravel()
+    {
+        string curScene = SceneManager.GetActiveScene().name;
+        if (curScene == sceneBuildList[finalDestiny].ToString())
+        {
+            travelVisual.SetActive(false);
+            travelBtn.SetActive(false);
+        }
+        else
+        {
+            travelVisual.SetActive(true);
+            travelBtn.SetActive(true);
+        }
+
     }
 }
