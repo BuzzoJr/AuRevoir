@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Script.Interaction;
+using System.Collections;
 using UnityEngine;
 
 public class LookClose : MonoBehaviour, ILook
@@ -17,6 +16,7 @@ public class LookClose : MonoBehaviour, ILook
     private Quaternion originalCamRot;
     private bool close = false;
     [SerializeField] private Vector3 CustomWalkOffset = Vector3.zero;
+    public Transform lookAtObj;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class LookClose : MonoBehaviour, ILook
 
     void Update()
     {
-        if(customExit)
+        if (customExit)
             return;
 
         if (close && Input.GetMouseButtonDown(0))
@@ -47,7 +47,7 @@ public class LookClose : MonoBehaviour, ILook
         if (shouldWalk)
         {
             var g = new GoTo();
-            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), null));
+            yield return StartCoroutine(g.GoToRoutine(new Vector3(transform.position.x + CustomWalkOffset.x, transform.position.y + CustomWalkOffset.y, transform.position.z + CustomWalkOffset.z), lookAtObj));
 
             // Action cancelled
             if (GameManager.Instance.State != GameManager.GameState.Interacting)
@@ -95,7 +95,7 @@ public class LookClose : MonoBehaviour, ILook
         mainCamera.rotation = originalCamRot;
 
         // Reset the game state to default or whatever is appropriate
-        if(goBackToPlaying)
+        if (goBackToPlaying)
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
     }
 
@@ -106,7 +106,8 @@ public class LookClose : MonoBehaviour, ILook
             special.LookSpecial(gameObject);
     }
 
-    public void CustomExitAnim() {
+    public void CustomExitAnim()
+    {
         StartCoroutine(OpenUp());
     }
 }
