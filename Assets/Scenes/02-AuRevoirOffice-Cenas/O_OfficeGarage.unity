@@ -487,9 +487,6 @@ MonoBehaviour:
   HasText: 1
   textGroup: 98
   textInteractionType: 1
-  isDialog: 0
-  dialogBox: {fileID: 1516802924}
-  thinkingBox: {fileID: 4357632719355704092}
 --- !u!65 &55547854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1712,9 +1709,6 @@ MonoBehaviour:
   HasText: 1
   textGroup: 105
   textInteractionType: 1
-  isDialog: 0
-  dialogBox: {fileID: 1516802924}
-  thinkingBox: {fileID: 4357632719355704092}
 --- !u!65 &348586738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3592,7 +3586,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722602336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4477,6 +4471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 4
+  rotationSpeedY: 0
+  rotationSpeedZ: 0
 --- !u!1 &906581305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,6 +6684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
+  rotationSpeedY: 0
+  rotationSpeedZ: 0
 --- !u!1 &1381361222
 GameObject:
   m_ObjectHideFlags: 0
@@ -7501,12 +7499,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c8bb4942773f19418f7f6bdc3a586fa,
     type: 3}
   m_PrefabInstance: {fileID: 1785164908}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1516802924 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1396857534, guid: 17868ca8f286bc54b81104eb68ba8cc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4357632719355704091}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1527928071
 PrefabInstance:
@@ -10426,10 +10418,10 @@ MonoBehaviour:
   transObj: {fileID: 0}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 60
-  dialogBox: {fileID: 0}
+  textInteractionType: 1
 --- !u!135 &2011857729
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11535,12 +11527,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17868ca8f286bc54b81104eb68ba8cc3, type: 3}
---- !u!1 &4357632719355704092 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5550048338694955956, guid: 17868ca8f286bc54b81104eb68ba8cc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4357632719355704091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5202210278849566010
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11607,10 +11593,10 @@ MonoBehaviour:
   transObj: {fileID: 1432185461}
   globalObj: {fileID: 0}
   allMap: {fileID: 0}
-  locked: 0
   map: 0
+  locked: 0
   textGroup: 60
-  dialogBox: {fileID: 4357632719355704092}
+  textInteractionType: 1
 --- !u!135 &5202210278849566013
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11897,11 +11883,12 @@ MonoBehaviour:
   spawnPosition:
   - {fileID: 722602336}
   spawnReferece: 04000000
-  HasText: 0
-  textGroup: 3
-  dialogBox: {fileID: 1516802924}
   audioSource: {fileID: 0}
   backgroundMusic: {fileID: 0}
+  exactPosition: 0
+  HasText: 0
+  textGroup: 3
+  textInteractionType: 1
 --- !u!1 &8037954711096169979
 GameObject:
   m_ObjectHideFlags: 0
