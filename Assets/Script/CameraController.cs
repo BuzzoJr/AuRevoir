@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject Camera2;
     public List<Collider> collidersToEnable = new();
     public List<Collider> collidersToDisable = new();
+    public AudioReverbFilter audioFilter;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -42,6 +43,9 @@ public class CameraController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().CloseInteractionWheel();
+
+            if(audioFilter != null)
+                audioFilter.enabled = true;
         }
     }
 
@@ -57,6 +61,9 @@ public class CameraController : MonoBehaviour
                 col.enabled = false;
             foreach (Collider col in collidersToDisable)
                 col.enabled = true;
+
+            if(audioFilter != null)
+                audioFilter.enabled = false;
         }
     }
 }
