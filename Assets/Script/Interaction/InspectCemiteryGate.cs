@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using Assets.Script.Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Script;
 
 public class InspectCemiteryGate : MonoBehaviour, ILookSpecial
 {
     public GameObject player, gate;
     public Transform target;
+    public GameSteps steps;
+    public PlayerData playerData;
 
     void Start() {
-        if(PlayerPrefs.HasKey("GateCemy")) {
+        if(playerData.steps.Contains(steps)) {
             gate.GetComponent<Animator>().SetBool("Open", true);
             gate.GetComponent<BoxCollider>().enabled = false;
         }
@@ -26,7 +29,7 @@ public class InspectCemiteryGate : MonoBehaviour, ILookSpecial
     {
         GetComponent<AudioSource>().Play();
         gate.GetComponent<Animator>().SetBool("Open", true);
-        PlayerPrefs.SetString("GateCemy", "Open");
+        playerData.AddStep(steps);
         yield return new WaitForSeconds(4f);
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
         gate.GetComponent<BoxCollider>().enabled = false;

@@ -18,5 +18,6 @@
         PuzzleSewerResolved,
         MafiaRadioOff,
         PasswordSewer,
+        GateCemitery,
     }
 }
