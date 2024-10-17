@@ -102,6 +102,7 @@ public class LookClose : MonoBehaviour, ILook
     private void runSpecial()
     {
         var special = GetComponent<ILookSpecial>();
+
         if (special != null)
             special.LookSpecial(gameObject);
     }
