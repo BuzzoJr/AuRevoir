@@ -9,6 +9,8 @@ public class BoxPuzzleController : MonoBehaviour
     public int currentBox;
     public LookClose lookCloseScrpt;
     public BoxCollider lookCollider;
+    public AudioSource click, close, open, w95, proLoop, proOff;
+    public Animator anim;
 
     private int[] currentPages;
 
@@ -60,11 +62,13 @@ public class BoxPuzzleController : MonoBehaviour
 
     public void SetCurrentBox(int index) {
         currentBox = index;
+        open.Play();
     }
 
     public void SetPageForBox(int boxIndex, int page)
     {
         currentPages[boxIndex] = page;
+        click.Play();
     }
 
     public int GetPageForBox(int boxIndex)
@@ -87,6 +91,7 @@ public class BoxPuzzleController : MonoBehaviour
     public void CheckVictory()
     {
         bool allCorrect = true;
+
         for (int i = 0; i < correctPages.Length; i++)
         {
             if (currentPages[i] != correctPages[i])
@@ -95,9 +100,21 @@ public class BoxPuzzleController : MonoBehaviour
                 break;
             }
         }
+
         if (allCorrect)
         {
-            Debug.Log("You won the puzzle!");
+            GetComponent<LookClose>().CustomExitAnim();
+            transform.gameObject.tag = "Untagged";
+            //step resolvido
+            //verifica step para começar certo
+            //Abrir espelho e liberar item/documento
+            anim.SetBool("End", true);
+            proLoop.Stop();
+            proOff.Play();
+            w95.Play();
+        }
+        else {
+            close.Play();
         }
     }
 }
