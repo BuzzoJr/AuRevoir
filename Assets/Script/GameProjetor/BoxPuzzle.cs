@@ -1,25 +1,37 @@
+using Assets.Script.Locale;
 using UnityEngine;
 using TMPro;
 
-public class BoxPuzzle : MonoBehaviour
+public class BoxPuzzle : MonoBehaviour, ILangConsumer
 {
     public TMP_Text smallBoxText;
-    public string[] contentPages;
+    public TextGroup textGroup = TextGroup.PuzzleProjetorBox1;
 
     private TMP_Text expandedText;
     private TMP_Text pageText;
-    private int currentPage;
+    private int currentPage = 1;
     private BoxPuzzleController controller;
     private int boxIndex;
+
+    public void UpdateLangTexts()
+    {
+        expandedText.text = GetExpandedText(currentPage);
+    }
+
+    void OnDestroy()
+    {
+        Locale.UnregisterConsumer(this);
+    }
 
     void Start()
     {
         expandedText = BoxPuzzleController.instance.bigPage.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
         pageText = BoxPuzzleController.instance.bigPage.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
-        currentPage = 1;
         controller = BoxPuzzleController.instance;
         boxIndex = controller.GetBoxIndex(gameObject);
         UpdateSmallBoxText();
+        Locale.RegisterConsumer(this);
+        UpdateLangTexts();
     }
 
     public void OnBoxClicked()
@@ -74,6 +86,6 @@ public class BoxPuzzle : MonoBehaviour
 
     string GetExpandedText(int page)
     {
-        return contentPages[page - 1];
+        return Locale.Texts[textGroup][page - 1].Text;
     }
 }

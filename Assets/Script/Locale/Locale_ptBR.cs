@@ -1158,6 +1158,51 @@ namespace Assets.Script.Locale
                     new TextData("Sobre o meu dia"),
                 }
             },
+            {
+                TextGroup.PuzzleProjetorBox1,
+                new List<TextData>()
+                {
+                    new TextData("Na - Sódio <br><br>O sódio é essencial para o cérebro, ajudando na geração de impulsos nervosos. Em cérebros sintéticos, o controle de íons de sódio é vital para replicar a atividade bioelétrica do cérebro humano."),
+                    new TextData("Li - Lítio <br><br>O Lítio é usado para estabilizar a atividade cerebral, especialmente em distúrbios mentais. Em cérebros sintéticos, ele pode ajudar a controlar processos emocionais e cognitivos e armazenar bateria."),
+                    new TextData("Au - Ouro <br><br>O ouro é um metal precioso conhecido por sua resistência e condutividade. Em cérebros sintéticos, ele atua como um condutor eficaz entre circuitos eletrônicos e células cerebrais, facilitando a comunicação neural."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox2,
+                new List<TextData>()
+                {
+                    new TextData("Começou como uma pequena empresa de biotecnologia dedicada à criação de órgãos sintéticos para salvar soldados feridos, substituindo corações, pulmões e membros danificados. Logo a Au Revoir Ltd, tornou-se essencial para as nações em guerra pela eficiência de seus produtos."),
+                    new TextData("Revoir ampliou suas ambições conforme a guerra continuava, percebeu que não precisava apenas substituir — podia melhorar. Assim, surgiram os corpos aprimorados, que aumentavam a força, resistência e capacidades cognitivas dos soldados, transformando-os em armas vivas."),
+                    new TextData("Com o fim da guerra, a Au Revoir emergiu como a corporação mais rica e poderosa do mundo."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox3,
+                new List<TextData>()
+                {
+                    new TextData("Quer viver para sempre? Agora você pode! Com a Au Revoir e o seu cérebro sintético mais avançado do mercado, sua consciência pode ser transferida para novos corpos em questão de minutos. Não importa se seu corpo biológico está envelhecendo ou se sofreu algum dano."),
+                    new TextData("Precisa de algo que corte tanto quanto suas ambições. A Lâmina Ginzu 3000 é mais do que apenas uma arma – é um símbolo de poder e precisão. Forjada com nanotecnologia de última geração, essa lâmina se adapta ao seu estilo de combate na cozinha, ficando mais afiada a cada corte."),
+                    new TextData("Bem-vindo à Busca's pé: Empreendimentos Eternos! Receba dinheiro enquanto eles descansam em paz! Seus entes queridos continuam a ganhar mesmo após a morte. Um Legado que Paga: Lucre com as visitas, preserve a memória deles enquanto garante seu futuro. Junte-se a nós hoje e transforme cada túmulo em uma oportunidade!"),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox4,
+                new List<TextData>()
+                {
+                    new TextData("Eu recém comecei minha investigação já tenho evidências de crimes muito sérios de uma das maiores empresas do mundo. Essa matéria vai mudar minha vida para sempre, mas preciso de cada detalhe, cada mentira, cada verdade. Me deseje sorte."),
+                    new TextData("Me considero uma mulher morta já, fui fundo demais nisso e não cheguei nem perto de toda a verdade. Você que está lendo isso, junte o que tenho a dizer, prometo que lhe será útil."),
+                    new TextData("Estou claramente sendo seguida, eu e minha amiga conversamos sobre certas coisas, e ela mencionou recentemente um perseguidor. E de repente este distrito se tornou desconectado — que conveniente, não? Que bagunça, anos de pesquisa jogados fora. Temo por minha vida e pela vida dos meus conhecidos. Eu estraguei tudo."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox5,
+                new List<TextData>()
+                {
+                    new TextData("Decepção entre os gamers está crescendo com relatos de que a nova tendência de microtransações obriga os jogadores a pagar para manter seus consoles ligados. Grandes empresas de games introduziram um sistema em que os usuários precisam comprar 'fichas de energia' para prolongar o tempo de jogo, gerando revolta na comunidade."),
+                    new TextData("Noite de ontem, a rede global NeuroLink foi comprometida por um ataque massivo de hackers desconhecidos. Milhões de usuários perderam acesso aos seus dados, memórias digitais e contas financeiras. O ataque levou as corporações a unir forças em uma operação emergencial para tentar restabelecer o sistema. Rumores indicam que o ataque foi uma ação coordenada pela facção de hackers conhecida como 'Os Invisíveis'."),
+                    new TextData("Matar não foi suficiente para silenciar os rebeldes da Zona 12. Na última semana, as forças corporativas da Novatek invadiram os distritos subterrâneos, tentando sufocar os protestos pela liberdade cibernética. No entanto, após a execução pública de seus líderes, um novo grupo de dissidentes surgiu."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

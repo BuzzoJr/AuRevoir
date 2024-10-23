@@ -1178,6 +1178,51 @@ namespace Assets.Script.Locale
                     new TextData("About my day"),
                 }
             },
+            {
+                TextGroup.PuzzleProjetorBox1,
+                new List<TextData>()
+                {
+                    new TextData("Na - Sodium<br><br>Sodium is essential for the brain, helping generate nerve impulses. In synthetic brains, controlling sodium ions is crucial to replicating the bioelectric activity of the human brain."),
+                    new TextData("Li - Lithium<br><br>Lithium is used to stabilize brain activity, especially in mental disorders. In synthetic brains, it can help regulate emotional and cognitive processes and store energy as a battery."),
+                    new TextData("Au - Gold<br><br>Gold is a precious metal known for its resistance and conductivity. In synthetic brains, it acts as an efficient conductor between electronic circuits and brain cells, facilitating neural communication."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox2,
+                new List<TextData>()
+                {
+                    new TextData("Began as a small biotechnology company focused on creating synthetic organs to save injured soldiers, replacing damaged hearts, lungs, and limbs. Au Revoir Ltd. Quickly became essential to warring nations due to the efficiency of its products."),
+                    new TextData("Revoir expanded his ambitions as the war continued, realizing he didn’t just need to replace—he could improve. Thus, enhanced bodies were created, boosting soldiers' strength, endurance, and cognitive abilities, turning them into living weapons."),
+                    new TextData("By the end of the war, Au Revoir had emerged as the richest and most powerful corporation in the world."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox3,
+                new List<TextData>()
+                {
+                    new TextData("Want to live forever? Call now at o-eight-hundred, seven-seven-seven, seven-o, o-o and get your Future Brain today! With Au Revoir's Future Brain, you'll never have to worry again! Au Revoir guarantees to store your complete consciousness, giving you eternal life that's totally safe!"),
+                    new TextData("Need something that cuts as much as your ambitions. The Ginzu 3000 Blade is more than just a weapon – it’s a symbol of power and precision. Forged with cutting-edge nanotechnology, this blade adapts to your cooking combat style, becoming sharper with each cut."),
+                    new TextData("Welcome to Eternal Ventures: Where the Dead Generate Wealth!<br><br>Get paid while they rest in peace! Your loved ones continue to earn even after they’ve passed. A Legacy that Pays: Profit from visitors, Preserve their memory while securing your future. Join us today and transform every grave into an opportunity!"),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox4,
+                new List<TextData>()
+                {
+                    new TextData("I just started my investigation and already have evidence of very serious crimes from one of the largest companies in the world. This story is going to change my life forever, but I need every detail, every lie, every truth."),
+                    new TextData("Me and my friend talked about certain things, and she recently mentioned a stalker. I am clearly being followed, and suddenly this district has become disconnected—how convenient, right? What a mess, years of research down the drain. I fear for my life and the lives of my acquaintances. I messed everything up."),
+                    new TextData("Consider me a dead woman; I went too deep into this and haven’t even come close to the whole truth. You who are reading this, piece together what I have to say; I promise it will be useful to you."),
+                }
+            },
+            {
+                TextGroup.PuzzleProjetorBox5,
+                new List<TextData>()
+                {
+                    new TextData("Frustration is growing among gamers with reports that the latest trend in microtransactions forces players to pay to keep their consoles running. Major gaming companies have introduced a system where users need to purchase 'energy tokens' to extend playtime, sparking outrage within the community."),
+                    new TextData("Last night, the global network NeuroLink was compromised by a massive attack from unknown hackers. Millions of users lost access to their data, digital memories, and financial accounts. The attack forced the corporations to join forces in an emergency operation to try to restore the system. Rumors indicate that the attack was a coordinated action by the hacker faction known as The Invisibles."),
+                    new TextData("Dead robots line the abandoned streets, victims of a relentless energy crisis that has left countless automatons powerless and discarded. Once vital to the city's infrastructure, these mechanical husks now serve as haunting reminders of a bygone era of technological excess."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

@@ -113,6 +113,11 @@
         WrongItemUse,
         InspectGas,
         RecordingFileName,
+        PuzzleProjetorBox1,
+        PuzzleProjetorBox2,
+        PuzzleProjetorBox3,
+        PuzzleProjetorBox4,
+        PuzzleProjetorBox5,
     }
 
     public enum ItemGroup
