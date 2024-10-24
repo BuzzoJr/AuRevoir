@@ -1,4 +1,6 @@
 ﻿using Assets.Script.Locale;
+using Assets.Script.Dialog;
+using Assets.Script.Interaction;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -8,16 +10,23 @@ namespace Assets.Script.Interaction
     public class UseItemChangeItem : MonoBehaviour, IUseItem
     {
         public PlayerData playerData;
-
         public ItemGroup itemGroupToTake = ItemGroup.Default;
         public ItemGroup itemGroupToReceive = ItemGroup.Default;
+        public TextGroup textGroup = TextGroup.DialogWakeUpCall;
+        public TextInteractionType textInteractionType = TextInteractionType.Dialog;
         [SerializeField] private AudioClip pickupAudio;
 
         [Header("Walk before use")]
         public bool shouldWalk = false;
         [ConditionalHide("shouldWalk")] public Vector3 CustomWalkOffset = Vector3.zero;
         [ConditionalHide("shouldWalk")] public Transform lookAtObj;
+        private Assets.Script.Dialog.Dialog dialog;
 
+        void Awake()
+        {
+            dialog = gameObject.AddComponent<Assets.Script.Dialog.Dialog>();
+            dialog.Configure(textGroup, textInteractionType);
+        }
 
         public bool UseItem(GameObject item)
         {
@@ -30,13 +39,12 @@ namespace Assets.Script.Interaction
 
             if (item.name != invobj.mousePrefab.name + "(Clone)")
                 return false;
-
-            StartCoroutine(GoToAndUse());
+            StartCoroutine(GoToAndUse(item));
 
             return true;
         }
 
-        IEnumerator GoToAndUse()
+        IEnumerator GoToAndUse(GameObject item)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Interacting);
 
@@ -50,6 +58,12 @@ namespace Assets.Script.Interaction
                     yield break;
             }
             yield return null;
+
+            DialogAction result = DialogAction.None;
+            yield return StartCoroutine(dialog.Execute(item, (value) => result = value));
+
+            if (result == DialogAction.RemoveDialog)
+                Destroy(this);
 
             playerData.RemoveItem(itemGroupToTake);
             playerData.AddItem(itemGroupToReceive);

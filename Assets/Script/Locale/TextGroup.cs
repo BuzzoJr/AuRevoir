@@ -118,6 +118,7 @@
         PuzzleProjetorBox3,
         PuzzleProjetorBox4,
         PuzzleProjetorBox5,
+        GasBottle,
     }
 
     public enum ItemGroup

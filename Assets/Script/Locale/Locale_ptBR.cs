@@ -1203,6 +1203,13 @@ namespace Assets.Script.Locale
                     new TextData("Matar não foi suficiente para silenciar os rebeldes da Zona 12. Na última semana, as forças corporativas da Novatek invadiram os distritos subterrâneos, tentando sufocar os protestos pela liberdade cibernética. No entanto, após a execução pública de seus líderes, um novo grupo de dissidentes surgiu."),
                 }
             },
+            {
+                TextGroup.GasBottle,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Talvez eu encontre alguma utilidade para esta gasolina."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()

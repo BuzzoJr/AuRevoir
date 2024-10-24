@@ -1223,6 +1223,13 @@ namespace Assets.Script.Locale
                     new TextData("Dead robots line the abandoned streets, victims of a relentless energy crisis that has left countless automatons powerless and discarded. Once vital to the city's infrastructure, these mechanical husks now serve as haunting reminders of a bygone era of technological excess."),
                 }
             },
+            {
+                TextGroup.GasBottle,
+                new List<TextData>()
+                {
+                    new TextData(TextType.TristanThinking, "Maybe I'll find some use for this gasoline."),
+                }
+            },
         };
 
         public static readonly Dictionary<TextType, string> Titles = new()
