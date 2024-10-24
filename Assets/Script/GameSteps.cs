@@ -19,5 +19,6 @@
         MafiaRadioOff,
         PasswordSewer,
         GateCemitery,
+        PuzzleProjetorResolved,
     }
 }

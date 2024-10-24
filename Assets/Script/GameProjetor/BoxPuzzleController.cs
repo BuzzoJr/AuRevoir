@@ -1,11 +1,15 @@
 using UnityEngine;
+using Assets.Script;
 
 public class BoxPuzzleController : MonoBehaviour
 {
     public static BoxPuzzleController instance;
+    public PlayerData playerData;
+    public GameSteps steps;
     public BoxPuzzle[] boxes;
     public int[] correctPages;
-    public GameObject bigPage;
+    public GameObject bigPage, lightShape;
+    public Light lightSource;
     public int currentBox;
     public LookClose lookCloseScrpt;
     public BoxCollider lookCollider;
@@ -23,6 +27,15 @@ public class BoxPuzzleController : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        if (playerData.steps.Contains(steps)) { //verifica step para começar certo
+            anim.enabled = false;
+            proLoop.Stop();
+            transform.gameObject.tag = "Untagged";
+            lightShape.SetActive(false);
+            lightSource.color = Color.black;
+            //Espelho aberto
         }
     }
 
@@ -105,8 +118,8 @@ public class BoxPuzzleController : MonoBehaviour
         {
             GetComponent<LookClose>().CustomExitAnim();
             transform.gameObject.tag = "Untagged";
-            //step resolvido
-            //verifica step para começar certo
+            playerData.AddStep(GameSteps.PuzzleProjetorResolved);
+
             //Abrir espelho e liberar item/documento
             anim.SetBool("End", true);
             proLoop.Stop();
